@@ -31,28 +31,22 @@ SPLITS = (
         "External source; exact generator identity appears in Small train.",
     ),
     (
-        "hard_hourglass",
-        "Hard Hourglass",
-        "data/manifests/community_forensics_val_hard_hourglass.csv",
-        "Hourglass exact identity is unseen; PixDiff family is train-seen.",
+        "hard_hourglass_exact_seen",
+        "Hard Hourglass (exact-seen)",
+        "data/manifests/community_forensics_val_hard_hourglass_v2_exact_seen.csv",
+        "Hourglass exact identity is train-v2-seen; evaluation images are disjoint.",
     ),
     (
-        "hard_dfgan",
-        "Hard DFGAN",
-        "data/manifests/community_forensics_val_hard_dfgan.csv",
-        "DFGAN exact identity is unseen; GAN family is train-seen.",
+        "hard_dfgan_exact_seen",
+        "Hard DFGAN (exact-seen)",
+        "data/manifests/community_forensics_val_hard_dfgan_v2_exact_seen.csv",
+        "DFGAN exact identity is train-v2-seen; evaluation images are disjoint.",
     ),
     (
-        "hard_galip",
-        "Hard GALIP",
-        "data/manifests/community_forensics_val_hard_galip.csv",
-        "GALIP exact identity is unseen; GAN family is train-seen.",
-    ),
-    (
-        "seen_family",
-        "Seen-family",
-        "data/manifests/community_forensics_test_external_seen_family.csv",
-        "Architecture family is train-seen; every exact generator is unseen.",
+        "hard_galip_exact_seen",
+        "Hard GALIP (exact-seen)",
+        "data/manifests/community_forensics_val_hard_galip_v2_exact_seen.csv",
+        "GALIP exact identity is train-v2-seen; evaluation images are disjoint.",
     ),
     (
         "unseen_generator",
@@ -200,6 +194,7 @@ def _matrix_stage_description(index: int, specification: dict[str, Any]) -> str:
 def _load_and_verify(
     evaluation_root: Path,
     matrix_path: Path,
+    source_root: Path,
 ) -> tuple[
     list[dict[str, Any]],
     dict[tuple[str, str], list[dict[str, str]]],
@@ -219,9 +214,9 @@ def _load_and_verify(
     matrix_digest = _sha256(matrix_path)
 
     for model in MODELS:
-        source_run_card = _read_json(Path("outputs/community_forensics") / model / "run_card.json")
-        source_summary = _read_json(Path("outputs/community_forensics") / model / "summary.json")
-        checkpoint_path = Path("outputs/community_forensics") / model / "best.pt"
+        source_run_card = _read_json(source_root / model / "run_card.json")
+        source_summary = _read_json(source_root / model / "summary.json")
+        checkpoint_path = source_root / model / "best.pt"
         checkpoint_digest = _sha256(checkpoint_path)
         if source_run_card["checkpoint_sha256"] != checkpoint_digest:
             raise RuntimeError(f"Checkpoint digest drift for {model}")
@@ -229,12 +224,12 @@ def _load_and_verify(
             "checkpoint_path": str(checkpoint_path),
             "checkpoint_sha256": checkpoint_digest,
             "config_path": str(
-                Path("outputs/community_forensics") / model / "resolved_config.yaml"
+                source_root / model / "resolved_config.yaml"
             ),
             "config_sha256": source_run_card["config_sha256"],
             "parameters": source_run_card["parameters"],
             "threshold": float(source_summary["threshold_from_clean_validation"]),
-            "training_job_id": _read_json(Path("outputs/community_forensics") / model / "DONE")[
+            "training_job_id": _read_json(source_root / model / "DONE")[
                 "slurm_job_id"
             ],
         }
@@ -659,7 +654,7 @@ def _build_artifact(
     cards = [
         {
             "id": "best_clean_card",
-            "description": f"六个切片等权宏平均；最佳模型 {headline['best_clean_model']}。",
+            "description": f"五个切片等权宏平均；最佳模型 {headline['best_clean_model']}。",
             "dataset": "headline_metrics",
             "sourceId": source_ids["headline_metrics"],
             "metrics": [{"label": "最佳 Clean AUROC", "field": "best_clean_auroc", "format": "number"}],
@@ -682,13 +677,13 @@ def _build_artifact(
     charts = [
         {
             "id": "macro_auroc_chart",
-            "title": "跨六切片的模型 AUROC 对比",
-            "subtitle": "Clean、原17种扰动均值和新增三组多阶段均值；六个切片等权。",
+            "title": "跨五切片的模型 AUROC 对比",
+            "subtitle": "Clean、原17种扰动均值和新增三组多阶段均值；五个切片等权。",
             "type": "bar",
             "intent": "comparison",
             "question": "各模型在 clean、原扰动和新增多阶段扰动上的宏平均 AUROC 如何比较？",
             "rationale": "五个离散模型与三组同单位 AUROC 适合使用分组柱状图直接比较。",
-            "comparisonContext": {"unit": "AUROC", "grain": "model by condition group", "normalization": "equal-weight macro mean across six splits"},
+            "comparisonContext": {"unit": "AUROC", "grain": "model by condition group", "normalization": "equal-weight macro mean across five splits"},
             "dataset": "macro_chart",
             "sourceId": source_ids["macro_chart"],
             "encodings": {
@@ -736,7 +731,7 @@ def _build_artifact(
         {
             "id": "worst_new_chart",
             "title": "新增多阶段条件的模型最坏点 AUROC",
-            "subtitle": "每个模型在六切片 × 三个新增条件中的最低 AUROC；越高越稳健。",
+            "subtitle": "每个模型在五切片 × 三个新增条件中的最低 AUROC；越高越稳健。",
             "type": "horizontalBar",
             "intent": "comparison",
             "question": "哪个模型在新增多阶段扰动的全局最坏情况下保持最高 AUROC？",
@@ -763,7 +758,7 @@ def _build_artifact(
         {
             "id": "macro_detail_table",
             "title": "跨切片总体指标",
-            "subtitle": "每个切片先独立汇总，再对六个切片等权平均。",
+            "subtitle": "每个切片先独立汇总，再对五个切片等权平均。",
             "dataset": "macro_detail",
             "sourceId": source_ids["macro_detail"],
             "defaultSort": {"field": "new_3_mean_auroc", "direction": "desc"},
@@ -926,7 +921,7 @@ def _build_artifact(
             "sourceId": source_ids["macro_detail"],
             "body": (
                 "## 多阶段扰动改变了模型间的相对稳健性\n\n"
-                f"六切片等权汇总后，新增三组多阶段条件由 **{best_new}** 取得最高均值。"
+                f"五切片等权汇总后，新增三组多阶段条件由 **{best_new}** 取得最高均值。"
                 f"新增三组相对原17扰动的 AUROC 差值依次为：{macro_deltas}。"
                 "下图用于比较整体形态，随后的表保留精确数值；宏平均避免2000张切片完全支配500张困难切片。"
             ),
@@ -939,7 +934,7 @@ def _build_artifact(
             "sourceId": source_ids["strict_six_chart"],
             "body": (
                 "## 六阶段共同扰动是最直接的部署压力测试\n\n"
-                f"跨六切片宏平均，六阶段条件由 **{best_six}** 取得最高 AUROC "
+                f"跨五切片宏平均，六阶段条件由 **{best_six}** 取得最高 AUROC "
                 f"{_fmt(headline['best_six_auroc'])}。图中同时保留切片维度，便于识别模型优势是否只来自某一生成器暴露类型；"
                 "固定阈值下的 BA、Recall 与 Specificity 可在悬浮信息和后续明细表中审计。"
             ),
@@ -961,7 +956,7 @@ def _build_artifact(
             "type": "markdown",
             "sourceId": source_ids["split_definitions"],
             "body": (
-                "## 六个切片把精确生成器暴露与生成器大类暴露分开\n\n"
+                "## 五个切片把精确生成器暴露与生成器大类暴露分开\n\n"
                 "Exact-seen 表示 Small 训练集与外部验证来源存在精确生成器身份交集；Seen-family 表示大类已见但精确生成器完全未见；"
                 "Unseen-generator 表示生成器大类和精确身份均未见。Hourglass、DFGAN、GALIP 作为困难切片单列。"
                 "每个 manifest 均为 Real/AIGI 平衡；AUROC 与阈值无关，BA、Recall、Specificity 使用原 Small clean validation 冻结阈值。"
@@ -1089,7 +1084,7 @@ def generate(arguments: argparse.Namespace) -> None:
     evaluation_root = Path(arguments.evaluation_root)
     matrix_path = Path(arguments.matrix)
     matrix, metrics, run_cards, model_lineage = _load_and_verify(
-        evaluation_root, matrix_path
+        evaluation_root, matrix_path, Path(arguments.source_root)
     )
     generated_at = datetime.now(ZoneInfo("Asia/Singapore")).isoformat(timespec="seconds")
     snapshot_datasets, queries, macro, headline = _report_datasets(
@@ -1124,9 +1119,9 @@ def generate(arguments: argparse.Namespace) -> None:
         "report_contract": {
             "delivery_mode": "portable_html",
             "audience": "technical",
-            "question": "Compare B0/B1/B2/M2/M3 on six new-data splits under legacy and new multi-stage perturbations.",
+            "question": "Compare B0/B1/B2/M2/M3 on five new-data splits under legacy and new multi-stage perturbations.",
             "baseline": "Clean and the unchanged legacy 17-perturbation matrix.",
-            "success_criteria": "All 5 x 6 x 21 cells complete with frozen checkpoints, thresholds, manifests, and digests.",
+            "success_criteria": "All 5 x 5 x 21 cells complete with frozen checkpoints, thresholds, manifests, and digests.",
             "required_section_mapping": {
                 "title": "title",
                 "technical_summary": "technical_summary",
@@ -1220,7 +1215,11 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--evaluation-root",
-        default="outputs/community_forensics_robustness_v2",
+        default="outputs/community_forensics_v2_robustness_v2",
+    )
+    parser.add_argument(
+        "--source-root",
+        default="outputs/community_forensics_v2",
     )
     parser.add_argument(
         "--matrix",
@@ -1228,15 +1227,15 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--metrics-csv",
-        default="reports/evaluations/robustness_v2/community_forensics_robustness_v2_metrics.csv",
+        default="reports/evaluations/robustness_v2_train_v2/community_forensics_robustness_v2_metrics.csv",
     )
     parser.add_argument(
         "--artifact-json",
-        default="reports/evaluations/robustness_v2/community_forensics_robustness_v2_report_artifact.json",
+        default="reports/evaluations/robustness_v2_train_v2/community_forensics_robustness_v2_report_artifact.json",
     )
     parser.add_argument(
         "--audit-json",
-        default="reports/evaluations/robustness_v2/community_forensics_robustness_v2_report_notes.json",
+        default="reports/evaluations/robustness_v2_train_v2/community_forensics_robustness_v2_report_notes.json",
     )
     return parser.parse_args()
 

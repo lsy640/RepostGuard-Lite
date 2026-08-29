@@ -4,6 +4,7 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=6
 #SBATCH --gres=gpu:1
+#SBATCH --nodelist=TC2N08
 #SBATCH --time=03:00:00
 #SBATCH --mem=24G
 #SBATCH --job-name=rg_sid_strict6

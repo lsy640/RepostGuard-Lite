@@ -1,0 +1,77 @@
+seed: 20260828
+deterministic: true
+data:
+  root: data/raw/community_forensics
+  train_manifest: data/manifests/community_forensics_train_v2.csv
+  val_manifest: data/manifests/community_forensics_val_unseen_generator.csv
+  image_size: 224
+  num_workers: 6
+  pin_memory: true
+  persistent_workers: true
+  train_clean_probability: 0.25
+  train_single_probability: 0.5
+  train_double_probability: 0.25
+  validation_slices:
+    exact_seen_generator: data/manifests/community_forensics_val_external_exact_seen_generator.csv
+    hard_hourglass_exact_seen: data/manifests/community_forensics_val_hard_hourglass_v2_exact_seen.csv
+    hard_dfgan_exact_seen: data/manifests/community_forensics_val_hard_dfgan_v2_exact_seen.csv
+    hard_galip_exact_seen: data/manifests/community_forensics_val_hard_galip_v2_exact_seen.csv
+  external_tests:
+    unseen_generator: data/manifests/community_forensics_test_external_unseen_generator.csv
+  generator_protocol:
+    exact_seen_generator: exact identity seen in train-v2, disjoint evaluation images
+    hard_generators: Hourglass, DFGAN, and GALIP are exact-seen after promotion
+    unseen_generator: architecture family and exact identity both unseen
+    retired_seen_family_test: promoted into train-v2 and forbidden for future evaluation
+  format_debias:
+    enabled: true
+    train_qualities:
+    - 70
+    - 80
+    - 90
+    - 95
+    eval_quality: 90
+    jpeg_subsampling: 2
+model:
+  experiment: m2
+  cnn_backbone: efficientnet_b0
+  cnn_pretrained: true
+  clip_model: ViT-B-32
+  clip_pretrained: laion2b_s34b_b79k
+  clip_cache_dir: data/cache/open_clip
+  clip_mean:
+  - 0.48145466
+  - 0.4578275
+  - 0.40821073
+  clip_std:
+  - 0.26862954
+  - 0.26130258
+  - 0.27577711
+  projection_dim: 256
+  dropout: 0.2
+  forensic:
+    patch_size: 56
+    patches_per_band: 2
+    dct_size: 16
+    output_dim: 256
+train:
+  epochs: 3
+  batch_size: 24
+  learning_rate: 0.0002
+  weight_decay: 0.0001
+  warmup_ratio: 0.05
+  min_learning_rate_ratio: 0.05
+  amp: true
+  gradient_accumulation: 2
+  grad_clip_norm: 1.0
+  log_every_steps: 20
+  checkpoint_every_steps: 250
+  resume: auto
+  lambda_kl: 0.5
+  lambda_feature: 0.25
+evaluation:
+  batch_size: 24
+  threshold: auto
+  matrix: configs/transforms.yaml
+output:
+  directory: outputs/community_forensics_v2/m2

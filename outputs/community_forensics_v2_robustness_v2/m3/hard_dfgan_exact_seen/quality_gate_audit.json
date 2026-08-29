@@ -1,0 +1,42 @@
+{
+  "features": {
+    "effective_resolution_proxy": {
+      "aigc_mean": 1.1818912720680237,
+      "label_separability_auroc": 0.7691680000000001,
+      "raw_label_auroc": 0.23083199999999998,
+      "real_mean": 1.2351530935764312
+    },
+    "gradient_energy": {
+      "aigc_mean": 1.278062714636326,
+      "label_separability_auroc": 0.674688,
+      "raw_label_auroc": 0.32531200000000005,
+      "real_mean": 1.5022179460525513
+    },
+    "high_frequency_noise": {
+      "aigc_mean": 0.9805784955620765,
+      "label_separability_auroc": 0.699584,
+      "raw_label_auroc": 0.300416,
+      "real_mean": 1.2195687125921248
+    },
+    "jpeg_blockiness": {
+      "aigc_mean": 0.7290443394184113,
+      "label_separability_auroc": 0.6949120000000001,
+      "raw_label_auroc": 0.6949120000000001,
+      "real_mean": 0.7078154544830322
+    },
+    "laplacian_energy": {
+      "aigc_mean": 1.9123735320568085,
+      "label_separability_auroc": 0.7001919999999999,
+      "raw_label_auroc": 0.299808,
+      "real_mean": 2.2404077413082124
+    },
+    "luminance_dynamic_range": {
+      "aigc_mean": 1.083827466726303,
+      "label_separability_auroc": 0.62408,
+      "raw_label_auroc": 0.37592000000000003,
+      "real_mean": 1.1809252299070359
+    }
+  },
+  "n": 500,
+  "note": "Quality features control only the gate and never enter the classifier directly."
+}

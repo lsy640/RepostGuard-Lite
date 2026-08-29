@@ -36,15 +36,20 @@ def test_all_community_forensics_configs_resolve() -> None:
         assert config["model"]["experiment"] == experiment
         assert config["seed"] == 20260828
         assert config["data"]["root"] == "data/raw/community_forensics"
-        assert config["data"]["train_manifest"] == "data/manifests/community_forensics_train.csv"
+        assert config["data"]["train_manifest"] == (
+            "data/manifests/community_forensics_train_v2.csv"
+        )
         assert config["data"]["val_manifest"] == (
             "data/manifests/community_forensics_val_unseen_generator.csv"
         )
         assert config["data"]["validation_slices"]["exact_seen_generator"].endswith(
             "community_forensics_val_external_exact_seen_generator.csv"
         )
-        assert config["data"]["generator_protocol"]["seen_family"] == (
-            "train-seen architecture family, exact identity unseen"
+        assert "seen_family" not in config["data"]["external_tests"]
+        assert config["data"]["generator_protocol"]["retired_seen_family_test"] == (
+            "promoted into train-v2 and forbidden for future evaluation"
         )
         assert config["data"]["format_debias"]["enabled"] is True
-        assert config["output"]["directory"] == f"outputs/community_forensics/{experiment}"
+        assert config["output"]["directory"] == (
+            f"outputs/community_forensics_v2/{experiment}"
+        )

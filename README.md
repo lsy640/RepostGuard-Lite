@@ -11,24 +11,26 @@ The canonical project summary is
 [`reports/summaries/COMMUNITY_FORENSICS_PROJECT_SUMMARY.md`](reports/summaries/COMMUNITY_FORENSICS_PROJECT_SUMMARY.md).
 The complete report directory map and regeneration entry points are listed in
 [`reports/README.md`](reports/README.md).
-It documents the model architectures, training lineage, all eight frozen data
-manifests, format debiasing, internal checkpoint selection, six external
-slices, 21 clean/perturbation conditions, fixed-threshold metrics,
+It documents the model architectures, training lineage, the protocol-v1 data
+and results, format debiasing, internal checkpoint selection, external slices,
+21 clean/perturbation conditions, fixed-threshold metrics,
 stage-by-stage improvements, limitations, and artifact locations.
 
-Current headline results on the balanced 2,000-image strict unseen-generator
-test are:
+The metrics below are **protocol-v1 historical results** from checkpoints trained
+before the seen-family cohort was promoted into training. They remain valid for
+that frozen lineage, but are not results for the new train-v2 protocol. On the
+balanced 2,000-image strict unseen-generator test:
 
 - **M3** is the best fixed-threshold detector: clean Accuracy 79.30%, F1
   80.12%, AIGI Recall 83.40%, AUROC 0.8631 and AP 0.8206. Across the 20
   perturbations it retains 76.90% mean Accuracy and 71.05% worst Accuracy.
 - **M2** is slightly more conservative, with 77.93% clean Precision and 77.20%
   Real Specificity.
-- **B2** has the strongest cross-slice ranking: 0.7315 clean macro-AUROC across
+- **B2** had the strongest cross-slice ranking: 0.7315 clean macro-AUROC across
   exact-seen, three hard generators, seen-family/exact-unseen and strict
   unseen-generator. Its frozen operating threshold has low AIGI recall, so this
   AUROC advantage does not make it the best current fixed-threshold detector.
-- Hourglass, DFGAN and GALIP expose a material M2/M3 generalization gap; current
+- Hourglass, DFGAN and GALIP exposed a material M2/M3 generalization gap; the v1
   aggregate strict-unseen performance must not be treated as universal unseen-
   generator performance.
 
@@ -135,31 +137,33 @@ reproducibility. Equalisation materially reduces the shortcut but cannot prove
 that every trace of an image's prior compression history has been removed, so
 source-format-stratified error analysis remains necessary.
 
-## Community Forensics 24k track
+## Community Forensics train-v2 track
 
-The frozen primary track follows
+The materialized source pool follows
 `../Community_Forensics训练与测试集构建方案.md` and pins the public
 CommunityForensics-Small and CommunityForensics-Eval repositories to resolved
 revisions.  It scans only Parquet metadata columns first, freezes a deterministic
-selection plan, and then materialises the selected 24,000 images:
+selection plan, and materialises 24,000 base images. Protocol v2 does not copy or
+redownload images: it promotes every row from the former 2,000-image
+`test_external_seen_family` cohort into a new training manifest.
 
 ```text
-train:                           9,000 real + 9,000 AIGI
-val_unseen_generator:            1,000 real + 1,000 AIGI
-test_external_seen_family:       1,000 real + 1,000 AIGI
-test_external_unseen_generator:  1,000 real + 1,000 AIGI
+train_v2:                        10,000 real + 10,000 AIGI
+val_unseen_generator:             1,000 real +  1,000 AIGI
+test_external_unseen_generator:   1,000 real +  1,000 AIGI
 ```
 
-The Small AIGI split uses equal generator contributions and disjoint train/validation
-generator identities.  In the pinned dataset revisions, Small and Eval have no
-eligible exact generator intersection.  The two frozen Eval tests are retained
-with strict, non-overlapping meanings:
+The original manifests remain immutable for lineage. The active training manifest
+is `data/manifests/community_forensics_train_v2.csv`; its 20,000 rows contain the
+original 18,000-image Small train plus all 1,000 Real and 1,000 AIGI images from
+the former seen-family test. Promoted rows retain their source paths and sample
+IDs, but their `split`, `project_split`, and training exposure fields are changed
+in the derived manifest. File and directory names are never model inputs.
 
-- `test_external_seen_family`: the architecture family occurs in Small train,
-  but every exact Eval generator identity is absent from Small train and validation;
-- `test_external_unseen_generator`: both the exact generator identity and its
-  architecture family are absent from Small train and validation.  A same-family
-  fallback is forbidden.
+`test_external_seen_family` is retired and forbidden for all future model
+evaluation. Its nine exact generators are now train-seen. The remaining strict
+unseen-generator test keeps both its 12 exact identities and its Commercial/Other
+architecture families disjoint from train-v2.
 
 The builder stores SHA-256, a 64-bit perceptual hash,
 source locators, revisions and a complete audit in `data/manifests/`.  SQLite state
@@ -188,18 +192,33 @@ sbatch --dependency=afterok:<CHECK_JOB_ID> \
 After data construction and audit succeed, the preparation script starts a
 single-job chain for B0, B1, B2, M2 and M3.  Each model has a separate train and
 evaluation phase.  Model selection uses `val_unseen_generator`; the clean
-validation threshold is then frozen for the external seen-family/strict-unseen clean tests.
-Training outputs are written under `outputs/community_forensics/<experiment>/`.
+validation threshold is then frozen for the diagnostic slices and strict-unseen
+test. New training outputs are isolated under
+`outputs/community_forensics_v2/<experiment>/`; existing protocol-v1 checkpoints
+under `outputs/community_forensics/<experiment>/` are not resumed or overwritten.
+
+Build and audit the derived manifests before training:
+
+```bash
+sbatch scripts/slurm/prepare_community_forensics_train_v2.sbatch
+```
+
+The job writes `community_forensics_train_v2.csv`, three relabelled hard-slice
+manifests, `community_forensics_train_v2_audit.json`, and the atomic
+`TRAIN_V2_COMPLETE` marker. It verifies 10,000/10,000 class balance, unique
+sample/path/SHA/source locators, all materialized paths and sizes, and continued
+strict-unseen generator/family disjointness.
 
 If a COCO val2017/DALL-E Advanced reserved-image hash manifest is available, pass
-it to the builder with `--reserved-hash-manifest`.  Without it, the audit records
-that official split/source constraints were enforced but reserved-image hash
-overlap could not be verified.
+it to the original corpus builder with `--reserved-hash-manifest`. The derived
+train-v2 builder reuses that frozen audit. Without such a manifest, the audit
+records that official split/source constraints were enforced but reserved-image
+hash overlap could not be verified.
 
 ### Community Forensics validation-v2 extension
 
-The validation-v2 extension adds a true exact-seen cohort without replacing or
-rewriting either frozen Eval test.  It pins
+The validation-v2 extension originally added a true exact-seen cohort and three
+exact-unseen hard slices without rewriting the frozen base manifests. It pins
 [`TheKernel01/AIGIBench`](https://huggingface.co/datasets/TheKernel01/AIGIBench)
 at revision `f125eabc5ac34a4729d74adc1aa1214540f91947`.  The dataset card identifies
 its `SD14` class as Stable Diffusion 1.4; Small train independently contains the
@@ -214,16 +233,20 @@ val_hard_galip:                       250 shared Eval real + 250 GALIP AIGI
 ```
 
 The three hard manifests share one fixed 250-image real reference panel so their
-generator-specific AUROCs are directly comparable.  Their AIGI rows and real
-panel are selected only from Eval locators unused by the frozen external tests.
-SHA-256 and pHash checks also forbid overlap with every frozen base manifest.
-These are diagnostic validation slices; the original Small
-`val_unseen_generator` remains the checkpoint-selection endpoint.
+generator-specific AUROCs are directly comparable. Their AIGI rows and real
+panel were selected from Eval locators unused by the frozen external tests.
+SHA-256 and pHash checks forbid image overlap with every frozen base manifest.
+Under train-v2, other Hourglass/DFGAN/GALIP images are now part of training, so
+the three hard slices are relabelled as **exact-seen hard validation** while
+remaining image-disjoint. The original Small `val_unseen_generator` remains the
+checkpoint-selection endpoint.
 
 Build the extension before starting the model chain:
 
 ```bash
 sbatch scripts/slurm/prepare_community_forensics_validation_v2.sbatch
+sbatch --dependency=afterok:<VALIDATION_V2_JOB_ID> \
+  scripts/slurm/prepare_community_forensics_train_v2.sbatch
 ```
 
 The job is resumable through
@@ -235,22 +258,23 @@ scattering a small subset across hundreds of redundant Parquet reads.
 
 ### Community Forensics data statistics report
 
-The current training split, checkpoint-selection validation split, four
-external/hard validation slices, and two external test splits are summarized in
-the self-contained report
-`reports/data_statistics/COMMUNITY_FORENSICS_DATA_STATISTICS.html`.  It distinguishes manifest
+The existing self-contained report at
+`reports/data_statistics/COMMUNITY_FORENSICS_DATA_STATISTICS.html` is the
+protocol-v1 snapshot and remains unchanged as historical evidence. After the
+train-v2 manifest is built, the current report job writes the seven-active-
+manifest snapshot under `reports/data_statistics/train_v2/`. It distinguishes manifest
 references from unique physical images because the three hard slices reuse one
 250-image real panel.  The report includes class balance, exact-generator and
 architecture-family exposure, real sources, formats, resolution and storage,
-all 28 pairwise split-overlap checks, manifest lineage, and build-audit counts.
+all 21 active pairwise split-overlap checks, manifest lineage, and build-audit counts.
 
 Supporting machine-readable outputs are:
 
-- `reports/data_statistics/community_forensics_data_statistics.csv`: one row per split;
-- `reports/data_statistics/community_forensics_generator_statistics.csv`: complete exact-generator inventory;
-- `reports/data_statistics/community_forensics_distribution_statistics.csv`: class, architecture, format, real-source, and resolution distributions;
-- `reports/data_statistics/community_forensics_data_statistics_notes.json`: report contract, audit details, and SQL/chart lineage;
-- `reports/data_statistics/community_forensics_data_statistics_artifact.json`: canonical portable-report artifact.
+- `reports/data_statistics/train_v2/community_forensics_data_statistics.csv`;
+- `reports/data_statistics/train_v2/community_forensics_generator_statistics.csv`;
+- `reports/data_statistics/train_v2/community_forensics_distribution_statistics.csv`;
+- `reports/data_statistics/train_v2/community_forensics_data_statistics_notes.json`;
+- `reports/data_statistics/train_v2/community_forensics_data_statistics_artifact.json`.
 
 Regenerate and validate the package on a Compute Node with:
 
@@ -258,10 +282,10 @@ Regenerate and validate the package on a Compute Node with:
 sbatch scripts/slurm/report_community_forensics_data_statistics.sbatch
 ```
 
-An annotated exact-generator sample atlas is available at
-`reports/atlases/community_forensics_exact_generators_atlas.jpg`.  It contains one
-deterministically selected AIGI representative for 69 training generators and
-all 21 external-test generators.  The compact training sample keeps every
+The existing atlas under `reports/atlases/` is the protocol-v1 snapshot. The
+current atlas job writes train-v2 outputs under `reports/atlases/train_v2/` and
+contains one deterministically selected AIGI representative for 78 training
+generators and all 12 strict-unseen test generators. The compact training sample keeps every
 generator from rare architecture families (at most five generators) and fills
 the remaining slots proportionally with a fixed hash rank.  Separate train/test
 atlases and the complete tile-to-manifest mapping are stored alongside it as
@@ -281,11 +305,11 @@ Inside an allocated SLURM job, after activating `repostguard`:
 python -m repostguard.train --config configs/community_forensics/b1.yaml
 python -m repostguard.evaluate \
   --config configs/community_forensics/b1.yaml \
-  --checkpoint outputs/community_forensics/b1/best.pt
+  --checkpoint outputs/community_forensics_v2/b1/best.pt
 
 python -m repostguard.infer \
   --config configs/community_forensics/m2.yaml \
-  --checkpoint outputs/community_forensics/m2/best.pt \
+  --checkpoint outputs/community_forensics_v2/m2/best.pt \
   --input-dir ./images \
   --output ./predictions.json \
   --diagnostics ./diagnostics.json
@@ -317,8 +341,10 @@ plus 17 perturbation conditions and appends three stricter composed conditions:
 - six-stage random composition: crop, resize, color jitter, blur, noise and
   JPEG, with deterministic per-sample strengths from the full training ranges.
 
-The frozen B0/B1/B2/M2/M3 checkpoints are evaluated on exact-seen-generator,
-Hourglass, DFGAN, GALIP, seen-family and strict unseen-generator splits by:
+Future train-v2 B0/B1/B2/M2/M3 checkpoints are evaluated on five active
+slices: external exact-seen-generator, exact-seen hard Hourglass, exact-seen
+hard DFGAN, exact-seen hard GALIP, and strict unseen-generator. The retired
+seen-family manifest is not present in the evaluation script.
 
 The normal QoS admits only two submitted jobs, so run two ordinary jobs rather
 than a five-task array:
@@ -328,21 +354,22 @@ sbatch --export=NONE,CF_MODEL_INDICES=0:1:2 scripts/slurm/evaluate_community_for
 sbatch --export=NONE,CF_MODEL_INDICES=3:4 scripts/slurm/evaluate_community_forensics_robustness_v2.sbatch
 ```
 
-Each model uses the probability threshold previously selected from the internal
+Each model uses the probability threshold selected from the internal
 Small clean validation split. The external splits never select their own
 threshold. Evaluation loads the immutable `resolved_config.yaml` stored beside
 each checkpoint, then applies manifest/matrix/threshold overrides only after the
-checkpoint digest has been validated. The report job writes a self-contained,
-validated HTML report at
-`reports/evaluations/robustness_v2/COMMUNITY_FORENSICS_B0_B1_B2_M2_M3_ROBUSTNESS_V2.html`, plus the
-canonical report artifact JSON, a complete machine-readable CSV, audit notes,
-and a portable-delivery verification receipt.
+checkpoint digest has been validated. Outputs are isolated under
+`outputs/community_forensics_v2_robustness_v2/`. The existing
+`reports/evaluations/robustness_v2/` package remains the protocol-v1 report;
+future train-v2 reports are written under
+`reports/evaluations/robustness_v2_train_v2/`.
 
 ### Unseen-generator detailed accuracy report
 
-The frozen B0/B1/B2/M2/M3 predictions on the balanced 2,000-image strict
-unseen-generator test split are analyzed in
-`reports/evaluations/unseen_generator/COMMUNITY_FORENSICS_UNSEEN_GENERATOR_ACCURACY.html`. In addition to
+The existing package under `reports/evaluations/unseen_generator/` analyzes
+protocol-v1 checkpoints. Future train-v2 predictions on the same balanced
+2,000-image strict unseen-generator test are written under
+`reports/evaluations/unseen_generator_train_v2/`. In addition to
 ROC curves and AUROC, the report includes precision-recall curves, Accuracy,
 Precision, AIGI Recall, Real Specificity, NPV, F1/Macro-F1, Balanced Accuracy,
 MCC, AP, FPR/FNR, Brier, ECE-15, low-FPR TPR, confusion counts, stratified
@@ -352,11 +379,11 @@ internal Small clean validation split.
 
 Supporting machine-readable outputs are:
 
-- `reports/evaluations/unseen_generator/community_forensics_unseen_generator_clean_metrics.csv`;
-- `reports/evaluations/unseen_generator/community_forensics_unseen_generator_all_metrics.csv`;
-- `reports/evaluations/unseen_generator/community_forensics_unseen_generator_slice_metrics.csv`;
-- `reports/evaluations/unseen_generator/community_forensics_unseen_generator_accuracy_notes.json`;
-- `reports/evaluations/unseen_generator/community_forensics_unseen_generator_accuracy_artifact.json`.
+- `reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_clean_metrics.csv`;
+- `reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_all_metrics.csv`;
+- `reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_slice_metrics.csv`;
+- `reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_accuracy_notes.json`;
+- `reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_accuracy_artifact.json`.
 
 Regenerate the metrics and portable report on a Compute Node with:
 

@@ -19,8 +19,8 @@ SPLITS = (
         "key": "train",
         "title": "Train",
         "role": "Training",
-        "manifest": "data/manifests/community_forensics_train.csv",
-        "protocol": "Small train; the only split used for parameter fitting.",
+        "manifest": "data/manifests/community_forensics_train_v2.csv",
+        "protocol": "Small train plus the promoted former seen-family cohort; the only split used for parameter fitting.",
     },
     {
         "key": "val_unseen_generator",
@@ -40,33 +40,26 @@ SPLITS = (
         "key": "val_hard_hourglass",
         "title": "Hard Hourglass val",
         "role": "Hard validation",
-        "manifest": "data/manifests/community_forensics_val_hard_hourglass.csv",
-        "protocol": "Exact Hourglass identity unseen; PixDiff architecture family seen.",
+        "manifest": "data/manifests/community_forensics_val_hard_hourglass_v2_exact_seen.csv",
+        "protocol": "Exact Hourglass identity seen in train-v2; evaluation images remain disjoint.",
     },
     {
         "key": "val_hard_dfgan",
         "title": "Hard DFGAN val",
         "role": "Hard validation",
-        "manifest": "data/manifests/community_forensics_val_hard_dfgan.csv",
-        "protocol": "Exact DFGAN identity unseen; GAN architecture family seen.",
+        "manifest": "data/manifests/community_forensics_val_hard_dfgan_v2_exact_seen.csv",
+        "protocol": "Exact DFGAN identity seen in train-v2; evaluation images remain disjoint.",
     },
     {
         "key": "val_hard_galip",
         "title": "Hard GALIP val",
         "role": "Hard validation",
-        "manifest": "data/manifests/community_forensics_val_hard_galip.csv",
-        "protocol": "Exact GALIP identity unseen; GAN architecture family seen.",
-    },
-    {
-        "key": "test_external_seen_family",
-        "title": "External seen-family test",
-        "role": "External test",
-        "manifest": "data/manifests/community_forensics_test_external_seen_family.csv",
-        "protocol": "Architecture family seen in train; every exact generator identity unseen.",
+        "manifest": "data/manifests/community_forensics_val_hard_galip_v2_exact_seen.csv",
+        "protocol": "Exact GALIP identity seen in train-v2; evaluation images remain disjoint.",
     },
     {
         "key": "test_external_unseen_generator",
-        "title": "External unseen-family test",
+        "title": "External strict unseen-generator test",
         "role": "External test",
         "manifest": "data/manifests/community_forensics_test_external_unseen_generator.csv",
         "protocol": "Architecture family and exact generator identity both unseen.",
@@ -673,7 +666,7 @@ def _analyze(
             "check": "Manifest schema and numeric fields",
             "result": "PASS",
             "count": len(SPLITS),
-            "interpretation": "All eight manifests contain the required lineage and image metadata fields.",
+            "interpretation": "All seven active manifests contain the required lineage and image metadata fields.",
         },
         {
             "check_order": 1,
@@ -829,7 +822,7 @@ def _analyze(
                 _pct(sum(row["label"] == 1 for row in all_rows), len(all_rows)), 4
             ),
             "storage_gib": round(_gib(nominal_bytes), 6),
-            "definition": "Sum across eight manifests; shared hard-real panel counted three times.",
+            "definition": "Sum across seven active manifests; shared hard-real panel counted three times.",
         },
         {
             "scope": "Unique physical corpus",
@@ -922,7 +915,7 @@ def _build_artifact(
     cards = [
         {
             "id": "unique_images_card",
-            "description": "All eight manifests deduplicated by selected physical path.",
+            "description": "All seven active manifests deduplicated by selected physical path.",
             "dataset": "headline_metrics",
             "sourceId": source_ids["headline_metrics"],
             "metrics": [
@@ -961,12 +954,12 @@ def _build_artifact(
     charts = [
         {
             "id": "class_composition_chart",
-            "title": "八个 manifest 均在各自口径内保持 Real/AIGI 1:1",
+            "title": "七个 active manifest 均在各自口径内保持 Real/AIGI 1:1",
             "subtitle": "柱高为样本引用数；困难切片各包含250 Real与250 AIGI。",
             "type": "bar",
             "intent": "comparison",
             "question": "训练、验证和测试 manifest 的类别数量是否平衡？",
-            "rationale": "两个互斥类别在八个离散切片上的数量适合分组柱状图。",
+            "rationale": "两个互斥类别在七个离散切片上的数量适合分组柱状图。",
             "comparisonContext": {
                 "unit": "manifest rows",
                 "grain": "class by split",
@@ -1195,7 +1188,7 @@ def _build_artifact(
         },
         {
             "id": "pairwise_overlap_table",
-            "title": "全部28组切片两两重叠审计",
+            "title": "全部21组 active 切片两两重叠审计",
             "subtitle": "图像重叠按路径和SHA256分别计算；生成器重叠仅统计AIGI。",
             "dataset": "pairwise_overlap",
             "sourceId": source_ids["pairwise_overlap"],
@@ -1296,7 +1289,7 @@ def _build_artifact(
             "sourceId": source_ids["class_counts"],
             "body": (
                 "## 每个训练、验证与测试任务都保持类别平衡\n\n"
-                "八份manifest逐份计算均为50% Real与50% AIGI，因此各切片上的balanced accuracy、AUROC等二分类指标不会因"
+                "七份active manifest逐份计算均为50% Real与50% AIGI，因此各切片上的balanced accuracy、AUROC等二分类指标不会因"
                 "manifest级类别比例不同而直接偏移。需要区分的是：合并后按唯一文件去重会移除500条重复Real引用，"
                 "所以唯一物理语料的类别比例不是实验抽样比例。"
             ),
@@ -1311,7 +1304,8 @@ def _build_artifact(
                 "## 生成器暴露协议同时区分精确身份与架构大类\n\n"
                 f"训练集覆盖{headline['train_generator_count']}个精确生成器；内部checkpoint validation使用"
                 f"{headline['internal_val_generator_count']}个与训练不重合的Small生成器。外部Exact-seen切片只有SD 1.4，"
-                "其精确身份在训练中出现；Seen-family与三个困难切片仅复用训练已见架构大类；严格Unseen-family测试的"
+                "其精确身份在训练中出现；Hourglass、DFGAN、GALIP 已由原 Seen-family 切片加入训练，因此三个困难切片现为"
+                "精确生成器已见但图片不重合；严格 Unseen-generator 测试的"
                 "Commercial与Other大类均未在训练出现。下图展示样本层面的架构构成，表格给出身份层面的交集计数。"
             ),
         },
@@ -1364,7 +1358,7 @@ def _build_artifact(
             "sourceId": source_ids["integrity_checks"],
             "body": (
                 "## 统计与审计方法\n\n"
-                "报告程序逐行解析八份CSV，核对必需字段、数值类型和project_split；对每个引用执行文件存在性与stat字节数核对；"
+                "报告程序逐行解析七份active CSV，核对必需字段、数值类型和project_split；对每个引用执行文件存在性与stat字节数核对；"
                 "按路径、sample_id和manifest所存SHA256构建跨切片交集；按label聚合生成器、架构、真实来源、格式、尺寸和字节数。"
                 "它不会重新编码图像，也不会重算全部25 GiB内容哈希；SHA256/pHash完整性沿用构建审计，当前程序验证的是"
                 "manifest之间的哈希集合关系。所有可视化数据先写入内存SQLite并执行报告中声明的SQL，再封装为可移植HTML。"
@@ -1405,7 +1399,7 @@ def _build_artifact(
                 f"{headline['current_tiff_files'] - headline['prior_tiff_valid_files']}张TIFF尚未纳入同一次全帧解码审计。\n"
                 "- CommunityForensics-Small真实图元数据全部缺少可验证real_source，因此训练集的真实来源平衡无法从当前manifest证明；"
                 "报告将其记为UNSPECIFIED，不推断FFHQ/VISION/COCO等组成。\n"
-                "- 未提供COCO val2017/DALL-E Advanced保留集哈希清单，因此只能核对当前八份manifest之间的泄漏，"
+                "- 未提供COCO val2017/DALL-E Advanced保留集哈希清单，因此只能核对当前七份active manifest之间的泄漏，"
                 "无法证明与未来保留集无重叠。\n"
                 "- 文件存在性和byte_size核验不等价于逐文件像素解码；除既有TIFF审计外，本报告没有重新解码全部图像。\n"
                 "- 统计是描述性的冻结快照，不包含抽样置信区间，也不用于根据测试集结果重新选择模型或数据。"
@@ -1430,7 +1424,7 @@ def _build_artifact(
                 "## 仍需回答的问题\n\n"
                 "- Validation-v2新增TIFF在全帧解码下是否全部有效？\n"
                 "- Small真实图来源能否从上游元数据或可追溯索引中恢复？\n"
-                "- 控制格式、分辨率和真实来源后，Seen-family与Unseen-family的难度排序是否保持？\n"
+                "- 新训练协议下，精确生成器已见的困难切片与 strict unseen-generator 之间的难度差异是否稳定？\n"
                 "- 下一轮训练是否需要按架构大类和真实来源进行显式重采样，而不只按二分类标签平衡？"
             ),
         },
@@ -1510,7 +1504,7 @@ def generate(arguments: argparse.Namespace) -> None:
         "delivery_mode": "portable_html",
         "audience": "technical",
         "question": "Describe the current frozen training set and every configured validation/test set, including composition, storage, generator exposure, and leakage checks.",
-        "baseline": "Current eight frozen manifests under configs/community_forensics/base.yaml.",
+        "baseline": "Current seven active manifests under configs/community_forensics/base.yaml; the former seen-family test is training-only.",
         "success_criteria": "All manifests parse; every referenced file exists; byte sizes match; only the declared shared hard-real panel overlaps across splits.",
         "required_section_mapping": {
             "title": "title",
@@ -1621,23 +1615,23 @@ def _parse_args() -> argparse.Namespace:
         "--tiff-audit", default="reports/data_statistics/community_forensics_tiff_integrity.json"
     )
     parser.add_argument(
-        "--split-csv", default="reports/data_statistics/community_forensics_data_statistics.csv"
+        "--split-csv", default="reports/data_statistics/train_v2/community_forensics_data_statistics.csv"
     )
     parser.add_argument(
         "--generator-csv",
-        default="reports/data_statistics/community_forensics_generator_statistics.csv",
+        default="reports/data_statistics/train_v2/community_forensics_generator_statistics.csv",
     )
     parser.add_argument(
         "--distribution-csv",
-        default="reports/data_statistics/community_forensics_distribution_statistics.csv",
+        default="reports/data_statistics/train_v2/community_forensics_distribution_statistics.csv",
     )
     parser.add_argument(
         "--artifact-json",
-        default="reports/data_statistics/community_forensics_data_statistics_artifact.json",
+        default="reports/data_statistics/train_v2/community_forensics_data_statistics_artifact.json",
     )
     parser.add_argument(
         "--audit-json",
-        default="reports/data_statistics/community_forensics_data_statistics_notes.json",
+        default="reports/data_statistics/train_v2/community_forensics_data_statistics_notes.json",
     )
     return parser.parse_args()
 

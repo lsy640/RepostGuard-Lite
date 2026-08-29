@@ -1,10 +1,18 @@
 # RepostGuard-Lite 模型、数据与阶段性验证总结
 
-> 状态日期：2026-08-29
+> 状态日期：2026-08-30
 >
-> 当前主实验：Community Forensics 24k + validation-v2 + robustness-v2
+> 结果快照：Community Forensics protocol-v1 历史结果 + train-v2 完整训练与 robustness-v2 评测
 >
 > 历史原型：CIFAKE、SID-Set（原始数据和 checkpoint 已清理，仅保留报告）
+
+## 0. Protocol-v2 状态说明
+
+自 2026-08-29 起，项目后续训练采用新的 train-v2 协议：原 External seen-family test 的 1,000 张 Real 和 1,000 张 AIGI 全部加入训练，训练集由 18,000 张扩大到 20,000 张且继续保持 10,000/10,000 类别平衡。该 seen-family manifest 从此禁止作为任何后续模型的验证或测试数据。
+
+原 seen-family 中包含 Hourglass、DFGAN、GALIP，因此三个 hard val 在 train-v2 下改为“精确生成器已见、具体图片不重合”的困难验证切片。Strict unseen-generator 的12个精确生成器以及 Commercial/Other 大类仍与 train-v2 不重合。
+
+B0/B1/B2/M2/M3 的 train-v2 重训和完整 21 条件评测已于 2026-08-30 完成。本文第1节之后仍保留 protocol-v1 定量结果作为历史谱系；当前 train-v2 结果及逐切片公平对比见独立报告：[Community Forensics train-v1 / train-v2 训练与测试对比](COMMUNITY_FORENSICS_TRAIN_V1_V2_COMPARISON.md)。
 
 ## 1. 项目结论概览
 
@@ -379,6 +387,8 @@ B2 的内部 Small AUROC不高，但在 exact-seen、三个 hard 和 seen-family
 
 ### 当前报告
 
+- [Community Forensics train-v1 / train-v2 训练与测试对比](COMMUNITY_FORENSICS_TRAIN_V1_V2_COMPARISON.md)
+- [Community Forensics train-v1 / train-v2 可视化 HTML 与 Strict unseen 详细评测](COMMUNITY_FORENSICS_TRAIN_V1_V2_COMPARISON.html)
 - [Community Forensics 数据统计报告](../data_statistics/COMMUNITY_FORENSICS_DATA_STATISTICS.html)
 - [外部 split 构成与 AUROC 诊断](../evaluations/external_split/community_forensics_external_split_diagnostic.html)
 - [B0/B1/B2/M2/M3 robustness-v2 报告](../evaluations/robustness_v2/COMMUNITY_FORENSICS_B0_B1_B2_M2_M3_ROBUSTNESS_V2.html)

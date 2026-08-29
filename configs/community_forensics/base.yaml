@@ -4,23 +4,26 @@ seed: 20260828
 
 data:
   root: data/raw/community_forensics
-  train_manifest: data/manifests/community_forensics_train.csv
+  # Protocol v2 promotes every image from the former external seen-family
+  # cohort into training. The original frozen manifests remain untouched for
+  # lineage, but must not be used as future evaluation data.
+  train_manifest: data/manifests/community_forensics_train_v2.csv
   # Keep the internal Small holdout as the checkpoint-selection split.  The
   # external validation slices are diagnostic and cannot change the frozen
   # endpoint after their results have been inspected.
   val_manifest: data/manifests/community_forensics_val_unseen_generator.csv
   validation_slices:
     exact_seen_generator: data/manifests/community_forensics_val_external_exact_seen_generator.csv
-    hard_hourglass: data/manifests/community_forensics_val_hard_hourglass.csv
-    hard_dfgan: data/manifests/community_forensics_val_hard_dfgan.csv
-    hard_galip: data/manifests/community_forensics_val_hard_galip.csv
+    hard_hourglass_exact_seen: data/manifests/community_forensics_val_hard_hourglass_v2_exact_seen.csv
+    hard_dfgan_exact_seen: data/manifests/community_forensics_val_hard_dfgan_v2_exact_seen.csv
+    hard_galip_exact_seen: data/manifests/community_forensics_val_hard_galip_v2_exact_seen.csv
   external_tests:
-    seen_family: data/manifests/community_forensics_test_external_seen_family.csv
     unseen_generator: data/manifests/community_forensics_test_external_unseen_generator.csv
   generator_protocol:
-    exact_seen_generator: exact identity seen in Small train, external source
-    seen_family: train-seen architecture family, exact identity unseen
+    exact_seen_generator: exact identity seen in train-v2, disjoint evaluation images
+    hard_generators: Hourglass, DFGAN, and GALIP are exact-seen after promotion
     unseen_generator: architecture family and exact identity both unseen
+    retired_seen_family_test: promoted into train-v2 and forbidden for future evaluation
   format_debias:
     enabled: true
     train_qualities: [70, 80, 90, 95]

@@ -4,9 +4,10 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=10
 #SBATCH --gres=gpu:1
+#SBATCH --nodelist=TC2N08
 #SBATCH --time=05:50:00
 #SBATCH --mem=30G
-#SBATCH --job-name=rg_cf_model
+#SBATCH --job-name=rg_cf_v2_model
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
 #SBATCH --signal=B:USR1@300
@@ -34,7 +35,7 @@ fi
 
 EXPERIMENT=${EXPERIMENTS[$EXPERIMENT_INDEX]}
 CONFIG="configs/community_forensics/$EXPERIMENT.yaml"
-OUTPUT_DIRECTORY="outputs/community_forensics/$EXPERIMENT"
+OUTPUT_DIRECTORY="outputs/community_forensics_v2/$EXPERIMENT"
 
 forward_usr1() {
     TIMEOUT_REQUESTED=1
@@ -74,6 +75,8 @@ export CUBLAS_WORKSPACE_CONFIG=:4096:8
 mkdir -p logs "$OUTPUT_DIRECTORY"
 test -s data/raw/community_forensics/COMPLETE
 test -s data/raw/community_forensics/VALIDATION_V2_COMPLETE
+test -s data/raw/community_forensics/TRAIN_V2_COMPLETE
+test -s data/manifests/community_forensics_train_v2.csv
 nvidia-smi
 
 if [[ "$PHASE" == "train" ]]; then
@@ -125,12 +128,14 @@ python -m repostguard.evaluate \
 
 THRESHOLD=$(python -c 'import json,sys; print(json.load(open(sys.argv[1], encoding="utf-8"))["threshold_from_clean_validation"])' "$OUTPUT_DIRECTORY/summary.json")
 
-for VALIDATION_SLICE in \
-    external_exact_seen_generator \
-    hard_hourglass \
-    hard_dfgan \
-    hard_galip; do
-    VALIDATION_MANIFEST="data/manifests/community_forensics_val_${VALIDATION_SLICE}.csv"
+VALIDATION_SPECS=(
+    "external_exact_seen_generator|data/manifests/community_forensics_val_external_exact_seen_generator.csv"
+    "hard_hourglass_exact_seen|data/manifests/community_forensics_val_hard_hourglass_v2_exact_seen.csv"
+    "hard_dfgan_exact_seen|data/manifests/community_forensics_val_hard_dfgan_v2_exact_seen.csv"
+    "hard_galip_exact_seen|data/manifests/community_forensics_val_hard_galip_v2_exact_seen.csv"
+)
+for SPEC in "${VALIDATION_SPECS[@]}"; do
+    IFS='|' read -r VALIDATION_SLICE VALIDATION_MANIFEST <<< "$SPEC"
     test -s "$VALIDATION_MANIFEST"
     python -m repostguard.evaluate \
         --config "$CONFIG" \
@@ -140,15 +145,6 @@ for VALIDATION_SLICE in \
         --threshold "$THRESHOLD" \
         --output-directory "$OUTPUT_DIRECTORY/val_${VALIDATION_SLICE}"
 done
-
-# Seen-family means same architecture family but a disjoint exact generator.
-python -m repostguard.evaluate \
-    --config "$CONFIG" \
-    --checkpoint "$OUTPUT_DIRECTORY/best.pt" \
-    --matrix configs/clean_only.yaml \
-    --val-manifest data/manifests/community_forensics_test_external_seen_family.csv \
-    --threshold "$THRESHOLD" \
-    --output-directory "$OUTPUT_DIRECTORY/test_external_seen_family"
 
 # Unseen-generator means both the exact identity and architecture family are unseen.
 python -m repostguard.evaluate \
@@ -166,5 +162,5 @@ if (( NEXT_INDEX < ${#EXPERIMENTS[@]} )); then
         submit_phase "$NEXT_INDEX" train 0
     fi
 else
-    echo "Community Forensics B0/B1/B2/M2/M3 chain complete"
+    echo "Community Forensics train-v2 B0/B1/B2/M2/M3 chain complete"
 fi

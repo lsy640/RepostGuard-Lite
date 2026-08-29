@@ -297,6 +297,7 @@ def _verify_existing_metrics(recomputed: dict[str, Any], existing: dict[str, str
 
 def _load_and_compute(arguments: argparse.Namespace) -> tuple[dict[str, list[dict[str, Any]]], dict[str, Any]]:
     manifest_path = Path(arguments.manifest)
+    source_root = Path(arguments.source_root)
     manifest_rows = _read_csv(manifest_path)
     if len(manifest_rows) != 2000:
         raise RuntimeError(f"Expected 2,000 manifest rows, found {len(manifest_rows)}")
@@ -336,8 +337,8 @@ def _load_and_compute(arguments: argparse.Namespace) -> tuple[dict[str, list[dic
             raise RuntimeError(f"Unexpected metric row count for {model}")
         run_card = _read_json(output / "run_card.json")
         summary = _read_json(output / "summary.json")
-        source_summary = _read_json(Path("outputs/community_forensics") / model / "summary.json")
-        source_run_card = _read_json(Path("outputs/community_forensics") / model / "run_card.json")
+        source_summary = _read_json(source_root / model / "summary.json")
+        source_run_card = _read_json(source_root / model / "run_card.json")
         threshold = float(source_summary["threshold_from_clean_validation"])
         if abs(threshold - float(summary["threshold_from_clean_validation"])) > 1e-12:
             raise RuntimeError(f"Frozen threshold mismatch for {model}")
@@ -1329,16 +1330,17 @@ def generate(arguments: argparse.Namespace) -> None:
 
 def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate the detailed Community Forensics unseen-generator accuracy report")
-    parser.add_argument("--evaluation-root", default="outputs/community_forensics_robustness_v2")
+    parser.add_argument("--evaluation-root", default="outputs/community_forensics_v2_robustness_v2")
+    parser.add_argument("--source-root", default="outputs/community_forensics_v2")
     parser.add_argument("--manifest", default="data/manifests/community_forensics_test_external_unseen_generator.csv")
     parser.add_argument("--matrix", default="configs/community_forensics_robustness_v2.yaml")
     parser.add_argument("--bootstrap-replicates", type=int, default=1000)
     parser.add_argument("--bootstrap-seed", type=int, default=20260829)
-    parser.add_argument("--metrics-csv", default="reports/evaluations/unseen_generator/community_forensics_unseen_generator_all_metrics.csv")
-    parser.add_argument("--clean-metrics-csv", default="reports/evaluations/unseen_generator/community_forensics_unseen_generator_clean_metrics.csv")
-    parser.add_argument("--slice-metrics-csv", default="reports/evaluations/unseen_generator/community_forensics_unseen_generator_slice_metrics.csv")
-    parser.add_argument("--artifact-json", default="reports/evaluations/unseen_generator/community_forensics_unseen_generator_accuracy_artifact.json")
-    parser.add_argument("--audit-json", default="reports/evaluations/unseen_generator/community_forensics_unseen_generator_accuracy_notes.json")
+    parser.add_argument("--metrics-csv", default="reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_all_metrics.csv")
+    parser.add_argument("--clean-metrics-csv", default="reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_clean_metrics.csv")
+    parser.add_argument("--slice-metrics-csv", default="reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_slice_metrics.csv")
+    parser.add_argument("--artifact-json", default="reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_accuracy_artifact.json")
+    parser.add_argument("--audit-json", default="reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_accuracy_notes.json")
     return parser.parse_args()
 
 

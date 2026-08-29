@@ -4,9 +4,10 @@
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=8
 #SBATCH --gres=gpu:1
+#SBATCH --nodelist=TC2N08
 #SBATCH --time=05:50:00
 #SBATCH --mem=24G
-#SBATCH --job-name=rg_cf_robust_v2
+#SBATCH --job-name=rg_cf_v2_robust
 #SBATCH --output=logs/%x_%j.out
 #SBATCH --error=logs/%x_%j.err
 
@@ -15,15 +16,14 @@ set -euo pipefail
 PROJECT_ROOT=/home/msai/lius0131/AGI/repostguard-lite
 ENV_PREFIX=/home/msai/lius0131/.conda/envs/repostguard
 MATRIX=configs/community_forensics_robustness_v2.yaml
-OUTPUT_ROOT=outputs/community_forensics_robustness_v2
+OUTPUT_ROOT=outputs/community_forensics_v2_robustness_v2
 EXPERIMENTS=(b0 b1 b2 m2 m3)
 MODEL_INDICES=${CF_MODEL_INDICES:?CF_MODEL_INDICES is required, for example 0:1:2}
 SPLIT_SPECS=(
     "exact_seen_generator|data/manifests/community_forensics_val_external_exact_seen_generator.csv"
-    "hard_hourglass|data/manifests/community_forensics_val_hard_hourglass.csv"
-    "hard_dfgan|data/manifests/community_forensics_val_hard_dfgan.csv"
-    "hard_galip|data/manifests/community_forensics_val_hard_galip.csv"
-    "seen_family|data/manifests/community_forensics_test_external_seen_family.csv"
+    "hard_hourglass_exact_seen|data/manifests/community_forensics_val_hard_hourglass_v2_exact_seen.csv"
+    "hard_dfgan_exact_seen|data/manifests/community_forensics_val_hard_dfgan_v2_exact_seen.csv"
+    "hard_galip_exact_seen|data/manifests/community_forensics_val_hard_galip_v2_exact_seen.csv"
     "unseen_generator|data/manifests/community_forensics_test_external_unseen_generator.csv"
 )
 
@@ -44,6 +44,7 @@ mkdir -p logs "$OUTPUT_ROOT"
 
 test -s data/raw/community_forensics/COMPLETE
 test -s data/raw/community_forensics/VALIDATION_V2_COMPLETE
+test -s data/raw/community_forensics/TRAIN_V2_COMPLETE
 test -s "$MATRIX"
 nvidia-smi
 
@@ -60,12 +61,12 @@ for MODEL_INDEX in "${REQUESTED_INDICES[@]}"; do
     fi
 
     EXPERIMENT=${EXPERIMENTS[$MODEL_INDEX]}
-    CHECKPOINT="outputs/community_forensics/${EXPERIMENT}/best.pt"
+    CHECKPOINT="outputs/community_forensics_v2/${EXPERIMENT}/best.pt"
     # Use the immutable config resolved at training time. The live project
     # config now contains additional validation metadata and intentionally no
     # longer has the checkpoint's training digest.
-    CONFIG="outputs/community_forensics/${EXPERIMENT}/resolved_config.yaml"
-    SOURCE_SUMMARY="outputs/community_forensics/${EXPERIMENT}/summary.json"
+    CONFIG="outputs/community_forensics_v2/${EXPERIMENT}/resolved_config.yaml"
+    SOURCE_SUMMARY="outputs/community_forensics_v2/${EXPERIMENT}/summary.json"
     MODEL_OUTPUT="$OUTPUT_ROOT/$EXPERIMENT"
     mkdir -p "$MODEL_OUTPUT"
     test -s "$CONFIG"

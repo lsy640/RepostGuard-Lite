@@ -1,0 +1,2 @@
+n,threshold,auroc,average_precision,balanced_accuracy,macro_f1,aigc_recall,real_specificity,false_positive_rate,tpr_at_fpr_1pct,tpr_at_fpr_5pct,brier,ece_15,tn,fp,fn,tp,transform,transform_name,transform_params
+2000,0.9921875,0.7632329999999999,0.7587621268909928,0.6910000000000001,0.685263935219373,0.556,0.826,0.174,0.112,0.25,0.46755683422088623,0.47670823779702187,826,174,444,556,clean,clean,{}

@@ -22,18 +22,10 @@ SPLITS = (
     {
         "key": "train",
         "title": "Training set",
-        "manifest": "data/manifests/community_forensics_train.csv",
+        "manifest": "data/manifests/community_forensics_train_v2.csv",
         "prefix": "TR",
         "color": "#2F6BFF",
         "group": "Train exact generators",
-    },
-    {
-        "key": "test_external_seen_family",
-        "title": "External test · seen architecture family",
-        "manifest": "data/manifests/community_forensics_test_external_seen_family.csv",
-        "prefix": "SF",
-        "color": "#E39A22",
-        "group": "Test · family-seen / exact-unseen",
     },
     {
         "key": "test_external_unseen_generator",
@@ -537,8 +529,7 @@ def _render_master(
         canvas,
         "COMMUNITY FORENSICS · EXACT GENERATOR SAMPLE ATLAS",
         f"{counts['total']} exact generators / {counts['total']} AIGI representatives · "
-        f"Train {counts['train']} · Test seen-family {counts['seen_family']} · "
-        f"Test unseen-family {counts['unseen_family']}\n"
+        f"Train-v2 {counts['train']} · Strict unseen test {counts['unseen_family']}\n"
         "Representative selection is deterministic and label-safe; full image lineage is stored in the companion CSV.",
         "#78D3B6",
         font_path,
@@ -563,18 +554,15 @@ def build(arguments: argparse.Namespace) -> None:
         arguments.selection_seed,
     )
     train_entries = selected["train"]
-    seen_entries = selected["test_external_seen_family"]
     unseen_entries = selected["test_external_unseen_generator"]
-    test_entries = seen_entries + unseen_entries
+    test_entries = unseen_entries
 
     expected = {
         "train": arguments.train_generator_limit,
-        "seen_family": 9,
         "unseen_family": 12,
     }
     observed = {
         "train": len(train_entries),
-        "seen_family": len(seen_entries),
         "unseen_family": len(unseen_entries),
     }
     if observed != expected:
@@ -618,8 +606,7 @@ def build(arguments: argparse.Namespace) -> None:
         "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
         "scope": {
             "included": [
-                "community_forensics_train.csv label=1",
-                "community_forensics_test_external_seen_family.csv label=1",
+                "community_forensics_train_v2.csv label=1",
                 "community_forensics_test_external_unseen_generator.csv label=1",
             ],
             "excluded": "Real images and all validation manifests, because exact generator identity applies to AIGI and the request names train/test.",
@@ -670,26 +657,26 @@ def _parse_args() -> argparse.Namespace:
         "--font", default="/usr/share/fonts/dejavu-sans-fonts/DejaVuSans.ttf"
     )
     parser.add_argument(
-        "--output", default="reports/atlases/community_forensics_exact_generators_atlas.jpg"
+        "--output", default="reports/atlases/train_v2/community_forensics_exact_generators_atlas.jpg"
     )
     parser.add_argument(
         "--train-output",
-        default="reports/atlases/community_forensics_train_exact_generators_atlas.jpg",
+        default="reports/atlases/train_v2/community_forensics_train_exact_generators_atlas.jpg",
     )
     parser.add_argument(
         "--test-output",
-        default="reports/atlases/community_forensics_test_exact_generators_atlas.jpg",
+        default="reports/atlases/train_v2/community_forensics_test_exact_generators_atlas.jpg",
     )
     parser.add_argument(
         "--index-csv",
-        default="reports/atlases/community_forensics_exact_generators_atlas_index.csv",
+        default="reports/atlases/train_v2/community_forensics_exact_generators_atlas_index.csv",
     )
     parser.add_argument(
         "--audit-json",
-        default="reports/atlases/community_forensics_exact_generators_atlas_audit.json",
+        default="reports/atlases/train_v2/community_forensics_exact_generators_atlas_audit.json",
     )
     parser.add_argument("--quality", type=int, default=92)
-    parser.add_argument("--train-generator-limit", type=int, default=69)
+    parser.add_argument("--train-generator-limit", type=int, default=78)
     parser.add_argument("--selection-seed", type=int, default=20260829)
     return parser.parse_args()
 

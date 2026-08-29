@@ -1,0 +1,12 @@
+{
+  "clean_auroc": 0.5004000000000001,
+  "clean_balanced_accuracy": 0.442,
+  "conditions": 21,
+  "delta_auroc": 0.011292000000000024,
+  "experiment": "m3",
+  "robust_mean_auroc": 0.48910800000000004,
+  "robust_mean_balanced_accuracy": 0.44670000000000004,
+  "robust_worst_auroc": 0.439408,
+  "robust_worst_transform": "color_jitter__brightness=1.2_contrast=1.2_saturation=1.2",
+  "threshold_from_clean_validation": 0.9970703125
+}

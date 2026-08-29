@@ -6,5 +6,4 @@ model:
     hidden_dim: 32
 
 output:
-  directory: outputs/community_forensics/m3
-
+  directory: outputs/community_forensics_v2/m3

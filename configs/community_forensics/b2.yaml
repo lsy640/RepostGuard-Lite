@@ -9,5 +9,4 @@ train:
   weight_decay: 0.00001
 
 output:
-  directory: outputs/community_forensics/b2
-
+  directory: outputs/community_forensics_v2/b2

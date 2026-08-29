@@ -8,5 +8,4 @@ train:
   learning_rate: 0.0003
 
 output:
-  directory: outputs/community_forensics/b1
-
+  directory: outputs/community_forensics_v2/b1

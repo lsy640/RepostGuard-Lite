@@ -1,0 +1,176 @@
+{
+  "completed_at_utc": "2026-08-29T13:59:05.644493+00:00",
+  "hard_slices": {
+    "dfgan": {
+      "aigi_exposure": "exact_seen_hard",
+      "duplicates": {
+        "path": 0,
+        "sample_id": 0,
+        "sha256": 0,
+        "source_locator": 0
+      },
+      "materialized_paths_and_sizes_verified": true,
+      "output_manifest": "data/manifests/community_forensics_val_hard_dfgan_v2_exact_seen.csv",
+      "output_manifest_sha256": "b54846aec698e7386d6c26fdd70a50e39a132d20138891552870b6b2569d290b",
+      "rows": 500,
+      "source_manifest": "data/manifests/community_forensics_val_hard_dfgan.csv",
+      "source_manifest_sha256": "1a60b7d517bb6d4935604778d146f4578d4e41b6469eee767b5d0aae9e9ba555",
+      "train_v2_overlap": {
+        "path": 0,
+        "sample_id": 0,
+        "sha256": 0,
+        "source_locator": 0
+      }
+    },
+    "galip": {
+      "aigi_exposure": "exact_seen_hard",
+      "duplicates": {
+        "path": 0,
+        "sample_id": 0,
+        "sha256": 0,
+        "source_locator": 0
+      },
+      "materialized_paths_and_sizes_verified": true,
+      "output_manifest": "data/manifests/community_forensics_val_hard_galip_v2_exact_seen.csv",
+      "output_manifest_sha256": "9e20b9d04d5cdba9e4b53158f1834123f5864dcb23acc7e66d4a6b53c6eeca73",
+      "rows": 500,
+      "source_manifest": "data/manifests/community_forensics_val_hard_galip.csv",
+      "source_manifest_sha256": "bf9a5b60a52931f8d125182ac406c505678740a991b1d82367d03f52cb9e96dc",
+      "train_v2_overlap": {
+        "path": 0,
+        "sample_id": 0,
+        "sha256": 0,
+        "source_locator": 0
+      }
+    },
+    "hourglass": {
+      "aigi_exposure": "exact_seen_hard",
+      "duplicates": {
+        "path": 0,
+        "sample_id": 0,
+        "sha256": 0,
+        "source_locator": 0
+      },
+      "materialized_paths_and_sizes_verified": true,
+      "output_manifest": "data/manifests/community_forensics_val_hard_hourglass_v2_exact_seen.csv",
+      "output_manifest_sha256": "6acf2986cfa9f1d9a8c7aedb52b82b406958bc552ddefc29d85b4481395fa4a6",
+      "rows": 500,
+      "source_manifest": "data/manifests/community_forensics_val_hard_hourglass.csv",
+      "source_manifest_sha256": "9cad78012352a0cee48475e1128f08cbecdd5b7283fa7e2f81a55dda5f3b2a3d",
+      "train_v2_overlap": {
+        "path": 0,
+        "sample_id": 0,
+        "sha256": 0,
+        "source_locator": 0
+      }
+    }
+  },
+  "inputs": {
+    "base_audit": {
+      "cross_split_phash_near_duplicate_count": 0,
+      "exact_duplicate_count": 0,
+      "path": "data/manifests/community_forensics_audit.json",
+      "phash_hamming_threshold": 4,
+      "sha256": "6d51fd0b2ce5bf097ac6cc14ed44a643a030d76dc8080a1e0cdb5d5e66c6b10e"
+    },
+    "base_train": {
+      "path": "data/manifests/community_forensics_train.csv",
+      "rows": 18000,
+      "sha256": "fdfddade1b8b400183ec03aaa912f203f5fb1edc28bad6e92709372a4340dc55"
+    },
+    "promoted_seen_family": {
+      "path": "data/manifests/community_forensics_test_external_seen_family.csv",
+      "rows": 2000,
+      "sha256": "c55d0652d4d95e17bf2c10c6a8dde2bdde5a4e5ea18a05baa22def0a669d1b42"
+    },
+    "strict_unseen_test": {
+      "path": "data/manifests/community_forensics_test_external_unseen_generator.csv",
+      "rows": 2000,
+      "sha256": "70434fc7b38ed2015cac67bc87897139fb202ffa13e736a5ce2f7c759833e42a"
+    }
+  },
+  "integrity": {
+    "base_promoted_overlap": {
+      "path": 0,
+      "sample_id": 0,
+      "sha256": 0,
+      "source_locator": 0
+    },
+    "materialized_paths_and_sizes_verified": true,
+    "quality_profile": {
+      "columns": 24,
+      "conditional_field_completeness_rate": 1.0,
+      "format_counts": {
+        "JPEG": 4475,
+        "PNG": 15270,
+        "TIFF": 250,
+        "WEBP": 5
+      },
+      "required_field_completeness_rate": 1.0,
+      "role_consistency_rate": 1.0,
+      "rows": 20000,
+      "source_dataset_counts": {
+        "community-forensics-eval": 2000,
+        "community-forensics-small": 18000
+      },
+      "valid_label_rate": 1.0
+    },
+    "train_v2_duplicates": {
+      "path": 0,
+      "sample_id": 0,
+      "sha256": 0,
+      "source_locator": 0
+    },
+    "train_v2_strict_unseen_architecture_overlap": [],
+    "train_v2_strict_unseen_generator_overlap": [],
+    "train_v2_strict_unseen_overlap": {
+      "path": 0,
+      "sample_id": 0,
+      "sha256": 0,
+      "source_locator": 0
+    },
+    "uniqueness_rates": {
+      "path": 1.0,
+      "sample_id": 1.0,
+      "sha256": 1.0,
+      "source_locator": 1.0
+    }
+  },
+  "output": {
+    "architecture_families": [
+      "GAN",
+      "LatDiff",
+      "PixDiff"
+    ],
+    "class_counts": {
+      "aigi": 10000,
+      "real": 10000
+    },
+    "exact_generator_count": 909,
+    "path": "data/manifests/community_forensics_train_v2.csv",
+    "promoted_exact_generators": [
+      "decidiffusionv2",
+      "dfgan",
+      "galip",
+      "hourglass",
+      "kandinsky-2-2",
+      "kvikontent-midjourney-v6",
+      "lcm-lora-sdv15",
+      "lcm-lora-sdxl",
+      "lcm-lora-ssd1b"
+    ],
+    "rows": 20000,
+    "sha256": "493749f51f552aa0a5235253f8c072b018a0f8250f02c94082aecdd98005ecd7"
+  },
+  "policy": {
+    "excluded_from_future_evaluation": true,
+    "original_frozen_manifests_preserved": true,
+    "path_note": "Promoted rows retain their original materialized relative paths and sample IDs for lineage; path text is never a model input.",
+    "physical_images_copied": false,
+    "promoted_manifest": "data/manifests/community_forensics_test_external_seen_family.csv",
+    "promoted_manifest_new_role": "training only",
+    "promoted_manifest_original_role": "external seen-family test"
+  },
+  "protocol_id": "community_forensics_train_v2_seen_family_promoted",
+  "schema_version": 1
+}
