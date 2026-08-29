@@ -1,0 +1,1026 @@
+split,split_order,generator,generator_order,architecture,exposure,aigi_images,share_percent,exact_identity_seen_in_train,architecture_seen_in_train
+Train,0,004t/diffusion-4.0,0,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,004t/v3-5,1,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,00nakul/sd-lanakul,2,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,21lco17/my-pet-dog,3,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,22h/vintedois-diffusion-v0-2,4,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,3ee/ornamental-santa,5,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,72ri/ambrodiffusion,6,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,aadithkumar/my-pet-dog-eaak,7,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,abbasali786/my-pet-dog-xzh,8,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,abbiepam/all-babes-in-1,9,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,abhilashvj/openjourney-copy,10,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,abhinandpv/dog,11,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,abhis91/sd-finetune-dreambooth-door-window,12,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,abhis91/sd-finetune-dreambooth-marble,13,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,abhis91/sd-finetune-dreambooth-stone001,14,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,abinjacob/my-pet-cat-esp,15,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,acheong08/sd-v1-5-cloned,16,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,acmyu/ghibli-howl,17,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,acondess/lineart,18,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,adithyanrs/my-pet-dog,19,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,aditya-t/pixar-mode,20,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,aditya190803/xzp,21,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,aditya1911/random-image-qwe,22,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,adrenex/fastgen,23,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,aff1/pichanabooth,24,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,agangal/text-inversion-model-baseball,25,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ahammedaman/my-cat,26,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ahmed-naseer/desgngen-21k-to-23k,27,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,aiartchan/expmixline-v2,28,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,aiartchan/roughnesspainter-v1.0,29,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,aipicasso/cool-japan-diffusion-for-learning-2-0,30,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,airbusai/my-pet-dog,31,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,akmalinn/soto-ayam-bu-karti,32,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,akshay000/my-pet-dogxzg,33,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,alea31415/onimai-characters,34,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,alekseycalvin/make-putin-queer-please,35,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,alenmandumpal/my-pet-cat-xzg,36,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,alibaba-pai/pai-diffusion-artist-large-zh,37,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,allenbv/kevin-xd,38,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,alx-ai/noggles-v21-6400-best,39,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,amayprro552/zoyya,40,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ameenmuzawar/my-pet-dog,41,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,amildravid4292/amilv15,42,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,amilyaluminaysions/uploadmodel,43,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,amlavande/my-pet-cat-xza,44,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,amongey/egyptian-movie-vintage-posters,45,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,amritalakshmi/kuromi-swg,46,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,amztc34283/textual-inversion-cat,47,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,anantk/textual-inversion-cream-pixart-v1,48,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,anasahmad/my-robot-tsx,49,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,andreamaduzzi/textual-inversion-cat,50,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,andressrg/textual-inversion-cat,51,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,andressrg/textual-inversion-meal-0-100,52,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,andressrg/textual-inversion-meal-2,53,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,andrewburns/clay-icon,54,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,angelurq/lonchera-diffusion,55,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,anic87/textual-inversion,56,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,animetest/rinotuna-man,57,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,anmol-chawla/dyc0004,58,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,anna11/heera,59,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,anupamku/my-pet-dog-xzg,60,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,arham061/arham-lora,61,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,arkaroni/cindy-crawford-skincare-enthusiast,62,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,arsenalalex108/cburnett-pieces-attempt,63,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,arthur-nvk/230409brnavakain-0-2,64,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,artificialguybr/ludica-playgroundv2finetuned,65,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,asahina2k/animagine-xl-3.1-diffuser-variant-fp16,66,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ashdraj/private-dif,67,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ashnrk/textual-inversion-annual-crop,68,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ashnrk/textual-inversion-forest,69,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ashnrk/textual-inversion-highway,70,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ashnrk/textual-inversion-pasture,71,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ashnrk/textual-inversion-residential,72,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ashutosh94/my-pet-character,73,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,asrinmanal/my-pet-cat-bfs,74,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,astraliteheart/pony-diffusion,75,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,aviiax/ds8,76,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,aviiax/majic6,77,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,avrik/abstract-anim-spritesheets,78,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ayush753/my-pet-dog-xyz,79,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ayushhhh/my-pet-cat,80,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,babivill/leidirocha,81,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,badmonk/aimiyoshikawa,82,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,badmonk/anjyu,83,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,badmonk/fay,84,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,badmonk/kirara,85,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,badmonk/lxrab,86,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,badmonk/mgitsgi,87,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,badmonk/rkwtni,88,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,badmonk/sakurako,89,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,badmonk/sxzumi,90,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,balacheran/my-pet-horse,91,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,balux/budapest-suburban-train,92,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,berlinoagent/2000s-fashion-magazine,93,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,bguisard/stable-diffusion-nano-2-1,94,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,birdhouse5/textual-inversion-2000-steps,95,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,birdhouse5/textual-inversion-3000-steps,96,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,birdhouse5/textual-inversion-500-steps,97,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,birdhouse5/textual-inversion-naive-artstyle-ab,98,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,birdhouse5/textual-inversion-naive-artstyle-ac,99,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,blazers/nfmystyle,100,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,blazers/ninetail,101,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,blesser69/my-sneakers,102,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,blucky/rimuru-diffusion-0-4-5,103,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,boologam/my-dog-modal,104,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,brainergy/jjaannaa,105,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,brainergy/jjoossee,106,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,brainergy/zzuurryy,107,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,brainfox25/my-pet-lion-abc,108,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/10,109,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/17,110,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/20,111,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/21,112,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/22,113,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/23,114,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/27,115,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/30,116,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/36,117,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/37,118,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/38,119,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/4,120,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/42,121,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/49,122,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/50,123,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/52,124,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/56,125,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/57,126,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/58,127,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/62,128,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/74,129,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/81,130,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/85,131,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/86,132,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/88,133,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/94,134,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,briannlongzhao/99,135,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,brianpistar/focplanet,136,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,bricejoshy/bmw-m8,137,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,brodarexlhungdim123/paradise-land,138,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,bryanbizzai/brunoo,139,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,bugjuhjugjyy/long-legs-diffusion,140,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,bunnychakri/nature-scr,141,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,cagliostrolab/animagine-xl-3.0-base,142,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,cdefghijkl/wnt1,143,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,challakavali/my-pet-dog,144,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,chaossy/id2047,145,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,chappie99/baahubali-v2,146,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,chebao/stream-girl,147,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,chetana123/my-pet-dog,148,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,chromefan/gmater-poster-style-v1.0,149,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,cips,150,GAN,train_seen,10,0.1111,yes,yes
+Train,0,circulus/sd-anireal-3d-v2,151,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,circulus/sd-photoreal-semi-v2,152,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,circulus/sd-photoreal-v2.7,153,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,circulus/sd-photoreal-v2.8,154,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ckpt/organic-mind,155,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,claton2003/my-airplanes-xzg,156,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,clem/maxdekdt,157,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,coder443/dog,158,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,compvis/ldm-text2im-large-256,159,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,compvis/stable-diffusion-v1-1,160,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,compvis/stable-diffusion-v1-3,161,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,compvis/stable-diffusion-v1-4,162,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,consistentfactor/petuniaxl,163,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,craigdsouza/my-uig-racecar,164,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,crimsonghost/nicolev,165,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,crumb/alpha-wolf-dreambooth,166,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,cuixing/textual-inversion-object-style,167,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,cuixing/textual-inversion-object-style-vangogh08101212-newstyle,168,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,cuixing/textual-inversion-object-style-vangoghsingle08101439,169,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,cuixing/textual-inversion-style0808,170,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,daniil-plotnikov/deepvision,171,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,daniil-plotnikov/deepvision-5-0,172,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,danyalmalik/stable-diffusion-chest-xray,173,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,darksamurai001/my-pet-dog,174,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,darkstorm2150/protogen-infinity-official-release,175,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dataautogpt3/miniaturus-potentiav1.2,176,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dataautogpt3/proteusv0.2,177,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dattag/my-pet-dog,178,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,davidsolan0/coverart,179,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,davolu/omar-ai-interior-v1,180,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ddpn08/subtly,181,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ddpn08/swiminlatent,182,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,decept1on/zephyrs-waifu-diffusion,183,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dfstewart/pendanttest-sd21-v1,184,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dgspitzer/dgspitzer-art-diffusion,185,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dhdbsrlw/pet-zero,186,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dheerajnarne/my-luffy,187,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dhrubasumatary/sd-v-1-5-xaikhwng,188,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/aingdiffusion7.5,189,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/aingdiffusion8,190,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/alstroemeriamix-v1,191,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/analogmadness-realistic-model-v4,192,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/analogmadness-realistic-model-v6,193,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/asyncsmix-v5,194,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/camelliamix-2.5d-diffusers,195,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/camelliamix-2.5d-v1,196,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/chrysanthemummix-v1,197,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/cocotifacute-v1,198,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/coffeedonut-v1,199,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/cyberrealistic-classic-v1.5,200,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/dolka-rusalka-v0.5.1,201,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/dosmix,202,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/dosmixvae-mangled,203,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/envypoodamix-v1.0,204,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/epi-2.5dphotogodess-diffusers,205,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/fantasticanime-diffusers,206,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/fantasticmix-v65-test,207,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/fantasticmix2.5d-test,208,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/fantasticmix2.5d-v3.0,209,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/fantasticmix2.5d-v4.0,210,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/fantasticmix2.5d-v4.5,211,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/fcanimemix-v2,212,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/fcanimemix-v5,213,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/fcanimemix-v6,214,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/fishmix-v1.1,215,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/gap,216,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/ghostmix,217,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/isomix-v3.22,218,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/kencanmix-v1.6,219,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/lunardiffusion-v1.27,220,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/lustermix-v1.5-safetensors,221,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/m3u,222,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/majicmix-realistic-v4,223,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/majicmixfantasy-v1,224,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/meinapastel-v3,225,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/nightmareshaper-v2darkagelobotomy,226,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/oldfish-v1.1mix-hello,227,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/perfectlewdfantasy-v1.01,228,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/perfectworld-v4,229,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/polla-mix-2.4d,230,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/polymorphmix,231,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/remedy,232,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/rundiffusionfx2.5d-v1-diffusers,233,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/sdvn1-real-origin,234,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/sdvn1-real-v1,235,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/soapmix2.5d-v2,236,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/sudachi-diffusers,237,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/sweetmuse-diffusers,238,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/zevinemix-v2.0,239,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,digiplay/zodiac-eclipse-day1,240,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,disty0/sotemix,241,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,divyansh-jain3/my-pet-dog-xzg,242,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dmatrymakeev/diamonic-v3,243,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dmatrymakeev/ponteleich-v1-3500s,244,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dmityul/afrsx,245,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dmityul/tichayadelta,246,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dora1991/murvaidora,247,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,doranzs/dorkaai,248,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dpredrag/aigencloud,249,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,drake123/my-pet-cat,250,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dreamlike-art/dreamlike-photoreal-1.0,251,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,duchaiten/dh-classicanime,252,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,duja1/m123ugg,253,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,duja1/rondage,254,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,duja1/tjmo,255,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dxli/backpack,256,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dxli/backpack-dog,257,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dxli/dog8,258,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dxli/pink-sunglasses,259,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,dytorch/textual-inversion-cat,260,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,earthndusk/earth-animix-super-flat,261,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,earthndusk/identitydisorder-mix,262,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,earthndusk/insane-isometric,263,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,earthndusk/malware-dream-v2,264,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,earthndusk/malwaredream-final,265,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,earthndusk/poltergeist-illustration,266,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,earthndusk/poltergeist-mix,267,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,edinaveres/veresedina,268,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ehristoforu/fluently,269,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,eicu/fastbooth-jsjessy-1400,270,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,eienmojiki/cuteyukimix-kemiaomiao,271,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,elaina617/rubyhoshino,272,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,eliftansusunar/elif,273,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,emilianjr/chilloutmix-niprunedfp32fix,274,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,emilianjr/majicmix-realistic-v6,275,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,end-diffusers/animanga-model,276,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,end-diffusers/duskfall-alters-portrait-plus,277,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,end-diffusers/duskfall-s-artificial-realism,278,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,end-diffusers/duskfall-tarot-card,279,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,end-diffusers/duskfallcomicmixpartdeux,280,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,end-diffusers/gambit-and-rogue,281,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,erens/guiltygearstrivestylev3,282,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ericloux/s2000,283,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,erpix3lt/wadf-dreambooth-dressmadeoutofwater,284,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,eskalofi/loredong,285,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,eslint3/adone,286,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,etri-vilab/koala-1b,287,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,etri-vilab/koala-1b-llava-cap,288,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,extraphy/mustafa-kemal-ataturk,289,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,eyuel/wolde-eyu-5120512,290,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,falah/arabic-amera,291,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,falah/arabic-home-decoration-model,292,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,falah/babylon,293,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,falah/islamicdiffusion,294,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,falah/spacemidj,295,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,fayaz-modz/fayaz,296,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,fazeex/vase,297,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,fazzie/pokemongai,298,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,femboyslover/realisticstockphoto-fp16,299,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,fffiloni/mr-men-and-little-misses,300,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,fictiverse/stable-diffusion-fluidart-model,301,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,flarex/tayko-36772,302,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,fpeters/sd-1-5-felix,303,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,fred99774/nulaurev,304,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,fred99774/parailara001,305,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,fred99774/parailaramid,306,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,fredzhang7/paint-journey-v2,307,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,freemindcore/eanovnty-0409-s2300,308,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,freemindcore/eanovnty-esmlvnty-0412-s8000-full,309,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,friedrichor/stable-diffusion-2-1-realistic,310,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,fyhj/cptndatva,311,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,g30rv17ys/adprlns,312,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,gagong/korean-sumukhwa-model-ver-1,313,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,gapa9999/gapacharone,314,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,georgenakayama/textual-inversion-scnnt-710,315,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,gfalcao/ldsc2-0t7,316,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,gmano321/my-pet-dog,317,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,gokulk1804/my-pet-cat,318,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,gokulram95/swft,319,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,govindkrishnan123/my-pet-dog,320,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,gowri-39/nature-gsh,321,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,greeshma720/converting-instructions-to-painting,322,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,grisha2000/ivan-animated,323,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,gsgfhsfxc/tits,324,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,gsingal/niamv1,325,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,guideddiffusion,326,PixDiff,train_seen,10,0.1111,yes,yes
+Train,0,guizmus/darksoulsdiffusion,327,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,guizmus/sdart-aliceindiffusionland,328,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,guizmus/sdart-chaosandorder768,329,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,guizmus/sdart-cosmichorrors,330,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,guizmus/sdart-somewhere,331,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,guizmus/sdart-synesthesia,332,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,guizmus/sdart-unmythicalcreatures768,333,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,gustavorayo/ryo-takemasa-v1,334,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,haengbok/my-pet-cat,335,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hargup/dua-lipa,336,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hashu/my-pet-dog-xzh,337,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hassanblend/hassanblend1.5.1.2,338,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hearmeneigh/e621-rising-v3,339,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hearmeneigh/sd21-e621-rising-v2,340,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hemaaaaa/my-pet-dog,341,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hemlok/quincemix,342,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hesh0629/hesh2,343,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hetalbi4348r/my-pet-cat-hpt,344,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,heyoiamanishaaa/my-soft-toy,345,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,heyyai/elonmusk01,346,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,heyyai/mikao00,347,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hius/dreamful-v2,348,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hjhjhqw/my-lion,349,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hogiahien/anything-v3-x-edited,350,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hogiahien/fuwafuwamix-edited,351,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hosnasn/ikea5,352,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,howtodowtle/adiaz-1-not-good,353,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hr16/any-ely-wd-ira-olympus-3000,354,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hr16/any-ely-wd-noah-titan-4900,355,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hr16/ira-olympus-4000,356,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hulefei/test-cat,357,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,hurricane18/shanmukh,358,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,husseinhe/hhe-768-2-1-2400steps,359,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,husseinhe/seif-1-5,360,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,iamkaikai/amazing-logos-v3,361,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ifdeluxe01/test-portal-training,362,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,illumotion/majicmix-realistic-v5,363,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,iman1/ida-version-1,364,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,imcapsule/tasomi-capsule,365,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,imjd/my-pet-persian-cat,366,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,imjunaidafzal/saqib-sarahkhan-t350-u4000-11-21-pm,367,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,impikov/game-character-v2,368,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,innocent-charles/innocentsd,369,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,inu-ai/niji-diffusion-xl-base-1.0,370,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,iralighten/besk-cap-5000-1way,371,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ishinelikeastar/my-pet-dog,372,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,iskandre/output2,373,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ismrnobody/miguapaa,374,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,israelsalgado/cosmo-mom,375,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,itsjayqz/lotusbubbleart-diffusion,376,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,izelx1/anything-v3-x,377,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jacobperera/testing-rolls-royce-test2,378,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jacobperera/website-design-mockup-1,379,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jade1211/textual-inversion-bambi,380,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jade1211/textual-inversion-cactus1,381,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jade1211/textual-inversion-car2,382,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jade1211/textual-inversion-laptop,383,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jade1211/textual-inversion-newcar,384,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jahnavikundam/my-pet-dog,385,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jakama/my-pet-dog-xzg,386,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jakfourie/ai-avatar-generator,387,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jamesflare/pastel-mix,388,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jamesspanx/test,389,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jana45/my-toy-bear,390,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jananathan/my-pet-dog,391,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,janetsw/my,392,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,janetsw/ya,393,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jaydeep07/jdp-yamaha-r1,394,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jayshreeanand/asmug,395,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jblalock30/viton-mobile-blue-shirt,396,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jellyw/landscape-rendering,397,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jenilsavaj/my-pet-cat-xzg,398,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jennysun/alexandr-wang,399,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jerrymo/db-simpsons-asim-style,400,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jetpackjules/supegen,401,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jha2ee/stablediffusion-finetuning-special-animal-style,402,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jiaxijiang/textual-inversion-bcar,403,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jiaxijiang/textual-inversion-cat2,404,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jiaxijiang/textual-inversion-dog2,405,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jiaxijiang/textual-inversion-duck,406,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jiaxijiang/textual-inversion-instrument1,407,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jiaxijiang/textual-inversion-pororo,408,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jinouga/cyberpunklucy,409,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jkcarney/romcom-diffusion-1.0,410,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jkcarney/source4-v1.0,411,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jkraasch/albedotxt,412,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,joeythemonster/anything-midjourney-v-4-1,413,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,joeythemonster/sci-fi-landscape,414,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,johndeer/sd-pikachu,415,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,johnhex/clam,416,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,johnslegers/epic-diffusion,417,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jordandavis/textual-inversion-muir-1-5,418,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,joscelino/padrecelino,419,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,josephuscheung/acertainmodel,420,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,jp2004/nicolepamaral-v1,421,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kadirnar/dress-style-v1,422,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kafke/sanrio,423,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kagerage/craig-wazowski-style,424,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kalebanana/textual-inversion-mvtec,425,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kardbord/complex-lineart-unsafe,426,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,karthik678/my-cars,427,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,karumoon/test00a1,428,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kawaiiapp/tomriddle,429,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kayala-lakshman/my-pet-dog,430,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kayteekay/book-cover-demo,431,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,keehun/textual-inversion-human,432,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,keehun/textual-inversion-mpchar-r4,433,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,keehun/textual-inversion-mpchar-r4-2,434,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,keerthana132/my-pet-cat,435,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,keshav-writes-code/my-first-ai-model,436,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ketengan-diffusion/anysomniumxl-v3.5,437,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kharshada/my-pet-monkey-ksv,438,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kimelyle/cave-crayfish-2,439,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,king2806/a-corgi-gft-dog,440,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kittuu/peacock,441,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,koankoan/sbf-diffusion,442,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kopyl/ui-icons-256,443,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kukuhtw/kukuhtw-person,444,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kurapka/ciasto,445,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kurapka/koja,446,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,kvcsrnt/renataai,447,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,lakatosniki/lakiniki84,448,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,lakshay2910/lion-king-xzg,449,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,lambdalabs/dreambooth-avatar,450,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,lavanya7/my-pet-dog,451,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,lekshminarayananm/my-tea-pot,452,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,liamcloud/defrenaicloud,453,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,liamhvn/nuke-colormax-anime,454,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,likith1503/my-pet-dog,455,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,livingbox/industrial-style,456,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,livingbox/livingroom-01,457,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,livingbox/minimalastic-style-v4,458,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,livingbox/modern-style-v3,459,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,livingbox/vintage-model,460,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,loluvulol/sd-1-5-jorocca,461,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,lostmedia/retrodiffusion,462,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,lottepeisch/revanimated-diffusers,463,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,loulou08860/fats,464,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,lucataco/startuplogos,465,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,lucky120901318/v2-base-6-class-enhance-insulator,466,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ludomarza/klimt0512lm,467,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,lykon/neverending-dream,468,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,madcadaver/mymjaw-v6-sd-v1-5,469,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mahmoudelaref/dilbert-dreambooth,470,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,malaikark007/my-sgls,471,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,malavikacomrade/my-pet-dog,472,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,manojnac/my-pet-dog,473,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,manosp/textual-inversion-cat,474,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,manuelrivoir/jormulator,475,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,marco-schouten/textual-inversion-psyduck,476,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mariosantos/mario719santos,477,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,masibasi/disney-ps,478,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,masterelli/tlozmixedtest01,479,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mastergruffly/profile,480,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mayankamrit/my-pet-dog,481,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mdkaif01/space-technology-zam,482,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,meina/unreal-v4.1,483,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,melaris/hannahreal,484,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,metametaivan/anime-test,485,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mikeogezi/textual-inversion-right,486,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,milaidy/rainerr,487,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mitchtech/klingon-diffusion,488,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mitsua/mitsua-diffusion-cc0,489,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mitsua/mitsua-diffusion-one,490,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,model-hub/playground-v2-1024px-aesthetic,491,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,modernnoob/chon-mi105-model,492,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mohamedrashad/diffusion-fashion,493,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mohsin-riad/dreambooth-fast-new,494,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,moln4rvilmos/moln4rvilmos,495,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,monke1/bunnio,496,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,moonlightnexus/shaper,497,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,moonlightnexus/wonder-anime,498,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mounika-7/my-pet-cat,499,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mrcyme/imal-workshop-collage,500,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mshakour/hassan-fathy-diffusion-v2,501,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,muhammadreza/dl-test-1,502,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,muhammadreza/mann-e-4-5-large,503,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,muhammadreza/mann-e-artistic-2-revised-2,504,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,muhammadreza/mann-e-bitmap-revised-2,505,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,muhammadreza/mann-e-concept,506,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,muhammadreza/mann-e-dark-fantasy,507,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,muhammadreza/mann-e-pixel-art-revised-2,508,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mukesh2110/my-pet-dog,509,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,murali1986/murali-test1,510,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,muthran/my-pet-cat,511,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mynefactory/mf-ascendanceofabookworm,512,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mynefactory/mf-base,513,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mynefactory/mf-bofuri,514,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,mynefactory/mf-eminenceinshadow,515,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,nailon/nailon-carlossloki,516,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,nakayama/dedede,517,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,nalisten1/nalisten-likeness-1,518,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,nan2/lcbanner,519,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,nancyathghara23/red-panda-rpd,520,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,narutouz/my-pet-dog,521,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,naveedrajput/floorplan200-200,522,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,navyalizabeth/my-pet-cat,523,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,navzies/my-pet-dog,524,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,neel2212/dragon,525,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,neha0603/my-pet-horse-yim,526,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,neu256/arc-diffusion-1.2.1,527,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,nicoleskinns/nicoleagain,528,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,nikhilkr/sdnikrt,529,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,nikodhrmwn/sampul-berita-indonesia,530,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,nileshpp/aishwarya-inpaint-1,531,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ninadlunge/my-pet-dog,532,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,nishithaeluri/my-pet-dog,533,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,no3/kat-wd-1.4-beta1,534,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,nomsgadded/textual-inversion-van-gogh,535,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,norod78/sd15-caricature-portraits-blip-captions,536,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,norod78/sd15-fluentui-emoji,537,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,norod78/sd2-cartoon-blip,538,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,norod78/sd2-simpsons-blip,539,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,nox974/raratest,540,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,nufais/my-dog-xzg,541,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,oacev/heightmapsstyle,542,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,oevortex/pixelgen,543,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ogstradamus/bugz,544,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,oksanapliushko/prymachenko-beasts,545,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,openskyml/midjourney-mini,546,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,optmal/headshot,547,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,osanseviero/huggingface2,548,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,oshita-n/textual-inversion-10,549,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,panopstor/sd15-768,550,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,pareesa/model-lora,551,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,paulrajacn/cat,552,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,pawelklimkowski/tylko-sd-dream,553,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,peggywang/future-diffusion,554,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,peggywang/stable-diffusion-2-base,555,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,perion/perionv2,556,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,pickleyard/perfectworld,557,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,pinky20/my-pet-dog,558,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,plasmo/colorjizz-768px,559,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,plasmo/naturitize-sd2-1-768px,560,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,plasmo/vox2,561,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,playgroundai/playground-v2-1024px-aesthetic,562,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,playgroundai/playground-v2-256px-base,563,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,prabathdamarla/my-pet-dog-dsp,564,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,prajeevan/akin2,565,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,prajeevan/malavika2,566,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,pranay2/my-project-xzg,567,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,prismglider/jsprdgv3,568,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,prompthero/openjourney-v4,569,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,prushton/text-inv-myra,570,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ptx0/pseudo-flex-base,571,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,purplegenie97/csulogos,572,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,qnfino091/space-tour,573,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,qwertydeena/my-pet-dog,574,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,r929rrjq/my-pet-dog-xzg,575,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,raj1482/my-pet-dog,576,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,rakshagr/pet-elephant-yxz,577,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ramshiva1903/my-car-xzg,578,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ramya7/my-beautiful-flowers,579,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ranajithore/stable-diffusion-v2-1-especially-trained-for-plant-cell-diagram,580,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,raw-vitor/henry,581,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,rd690/rdm-animals,582,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,rebekah19/cute-kitties,583,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,reboot-14/mypetdog,584,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,reddiska/elenakiss,585,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,reddiska/moriarti,586,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,reena123pattan/my-pet-dog,587,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,renee127/magic-cube,588,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,rg-kjsit/xzg-cats,589,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,rithick46/luxurious-home-interior,590,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,rkcr7/rkcrk,591,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,rohanbose/my-pet-dog,592,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,rohit0407rai/product-dieline-model,593,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,romerorz/character-lucy-edr,594,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ronald1991/airplane-yzf,595,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,roodzzz/my-pet-dog-xzg,596,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,roskaik/textual-inversion-cat,597,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,rpip/room-portraits,598,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,rudzinskimaciej/rbto3v2,599,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,s3nh/artwork-arcane-stable-diffusion,600,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sagu7/modelfemaleavatar,601,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sagu7/modelmaleavatar,602,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sahithya10/my-pet-dog,603,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sai-shashaank/sd-quantumis-watch,604,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,saimeghana2004/my-pet-dog,605,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,saisreenidhienugu/my-pet-dog,606,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sam1810/my-pet-cat,607,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sam749/real-ream-10-legendary,608,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sam749/seekyou-mikan,609,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sam749/the-truality-engine-truality-engine-pro,610,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,samu-123/my-favourite-marvel-character-thor-xzg,611,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sans404/somethingidk,612,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sanvean/clpbug,613,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sasa30/ssaassaaddoo,614,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sathvikrapelli/my-pet-dog,615,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/ai-illustration,616,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/asmagalally,617,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/baysalaban123,618,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/epicmixvirtualrealismv6,619,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/fashion,620,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/guizaru,621,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/jatmikoui,622,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/monet-style,623,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/origtron,624,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/persona-5-shigenori-style,625,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/royaldog-royalmale-or-royalfemale,626,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/sksbinjousoudayo,627,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/sksseisupusyamuzero,628,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/this-youtuber-does-not-exist,629,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sd-dreambooth-library/weirdcore,630,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,searchone/search1nedev-dreambooth-sd15,631,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,selcukkubur/rafadan-hayri,632,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,senorkaffee/notyourmary-diff,633,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sevenknight/ter123,634,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sg161222/realistic-vision-v1.4,635,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,shabnamn/my-pet-dog,636,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,shabnamn/my-xsn-dog,637,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,shanayasia/my-pet-dog,638,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,shashank2002/my-kitten-cat,639,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,shawoor/animal-pictures,640,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sheepskin/sd-1-5-keyingwu-v2,641,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sheshenin/vvshsh-4-good,642,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,shibisibili144/my-cat,643,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,shoukanlabs/openniji,644,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,shrikant11/pokemon-text-to-image-2,645,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sid229/posterdemo,646,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,siddhu009/my-fortuner,647,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sidxxd/attn-maps-mist-mask-0,648,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,siliconic/raven-diffusion-v1,649,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sj6/my-pet-dog,650,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,skiszkao/skiszkaoai,651,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,slashy/krystal-test,652,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,snehayadav123/my-pet-dog,653,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,snketh/my-new-pet-dog-xzg,654,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sobabeats/evt-v2,655,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,socialtrait/stable-diffusion-xl-base-1.0-infendpoint,656,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sohamm/my-pet-dog,657,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,somq/fantassified-icons-v2,658,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sonu04/my-sunglasses-xyg,659,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,spitfire4794/photo,660,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,springai/aiangenv1,661,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stabilityai/stable-diffusion-2,662,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/aam-xl-v1,663,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/albedobase-xl-20,664,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/albedobase-xl-v13,665,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/albedobase-xl-v21,666,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/all-526,667,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/all-526-animated,668,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/amazingrealism,669,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/angelxl,670,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/anime-illust-diffusion-xl,671,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/anime-pastel-dream,672,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/animerge,673,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/artium-v20,674,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/better-than-hentai-xxl,675,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/bg-dream-irl,676,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/bluepencil-xl-v5,677,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/bluepencilv6,678,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/boziorealvisxlv4,679,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/coloring-pages,680,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/cusp-of-serenity,681,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/dark-sushi-mix,682,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/deliberate-3,683,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/deliberate-v2,684,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/dreamshaperv8,685,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/dreamshaperxlturbov21fix5,686,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/duchaiten-real3d-nsfw-xl,687,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/dynavision,688,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/epicbabes-realistic,689,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/epicphotogasm,690,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/epicrealismnew,691,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/erotic-vision,692,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/explicit-freedom-nsfw-wai,693,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/foto-assisted-diffusion,694,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/galxl,695,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/hardcore-hentai-v12,696,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/icomix-2,697,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/jn-xl-v9-ph-li-4s,698,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/juggernaut-xl-rundiffusion,699,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/juggernaut-xl-v9,700,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/juggernautxl-v9-rundiffus,701,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/kuronekoanimemixv10,702,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/lyrielv16,703,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/majicmix-v7,704,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/majicmixsombre,705,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/majicmixv5,706,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/mistoonanime,707,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/mistoonanime-v30,708,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/mysterioussdxl,709,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/nightvision-xl,710,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/nightvisionxl-v0811,711,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/omnigen-xl,712,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/omnium-sdxl,713,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/picxreal,714,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/playground-v25,715,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/pvc,716,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/realistic-stock-photo,717,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/realistic-vision-51,718,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/realistic-vision-v13,719,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/realvisxl-v30,720,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/sakib-anim,721,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/sdvn8-artxl,722,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/sdxl-niji-se,723,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/spybg,724,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/strongly-styled,725,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/toonyou,726,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/toonyou-beta,727,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/uber-realistic-merge,728,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/van-gogh-diffusion,729,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/waifu-journey-2,730,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stablediffusionapi/zovya,731,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stale2000/sd-dnditem,732,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stelath/textual-inversion-comic-strip-fp16,733,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stelath/textual-inversion-comic-strip-test,734,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,stylegan2-ada,735,GAN,train_seen,10,0.1111,yes,yes
+Train,0,subhrabiswas023/beautiful-lotus-cpb,736,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sumanth-0413/my-pet-dog,737,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sunil22/king-of-the-jungle,738,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,suniljl/xridl,739,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,supersergiy/lineart-x1,740,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,surekha9797/my-pet-dog,741,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sushma16/rabbit,742,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sweetpablo/diffuwusion,743,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,swl-models/toooajk-yagurumagiku-v3-dreambooth,744,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,swl-models/wind-v4,745,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,syedian123/rachel,746,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,sztanki/hulk-style-v2,747,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tahaiqbal/sd-textile,748,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tahaiqbal/sd-textile-design,749,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,talat12/my-wolfsto,750,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,taskmasterpeace/bcddih-1ndrprkr-rvgbnchly,751,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tayar3/ckpt-1-0,752,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,techi000/my-bull-dog,753,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tejasdhangar/my-pet-dog,754,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tensor-diffusion/asianrealistic-sdlife-chiasedammev9.0,755,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tensor-diffusion/beautiful-realistic-asians,756,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tensor-diffusion/chilloutmix-ni,757,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tensor-diffusion/dark-sushi-2.5d,758,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tensor-diffusion/leosams-helloworld-grain2,759,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tensor-diffusion/toonyou-jp,760,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tftgregrge/mpid-hassanblend-v1-4-last-version,761,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tftgregrge/mpid-hassanblend-v1-4-main-v2,762,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tftgregrge/mpid-hassanblend-v1-5-better-train-3000,763,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,theaughat/comicpanel,764,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,thingthatis/ssd-1b,765,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,timmahw/sd2.1-pokemon3d,766,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tinsae/copper-analog,767,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tinsae/copper-sd1.5,768,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tinsae/grumpy1,769,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tobin2003/my-pet-dog,770,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tolgadev/tolgadreamsinbooth,771,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tommini/trained-model-with-murazzi-photos,772,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tommy19970714/noda-model,773,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tomriddle/anythinv3-vae,774,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,trprkkk/miyo-waifu-diffusion,775,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,trystar/clonediffusion,776,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tuwonga/takeon,777,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tvern/my-pet,778,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tvnagasravani/baby,779,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tzvc/826ebfd7-60b9-4372-96dc-10d7e8202157,780,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tzvc/909b3788-7706-47df-a82a-285de5bc6917,781,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tzvc/944a6d92-22b9-4d3a-bba4-4a6a10284396,782,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,tzvc/benjamincode,783,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ukeeba/cv1-2,784,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ukiyomemes/princessknightface,785,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,usman0007/floorplan-sd-200,786,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,vaddagonivyshnavi/my-pet-cat,787,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,valentinaw1sa4ajh/fusion-final,788,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,valeriafreimut/sayankunduv1,789,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,vanithadannana/my-pet-dog,790,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,varunraj/my-pet-dog-jkl,791,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,vashu73/my-cat,792,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,vedikal/my-chessavk,793,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,ventuss/ventuss-0-1,794,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,vic-yes/fast-efmediastyle-class,795,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,vikhnesh/vvp,796,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,vinodrvinu1010/my-pet-dog-xzg,797,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,vinothananthini/monster-toy,798,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,vishnu342/my-pet-cat-czx,799,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,vishnusanjaykumar/my-pet-dog,800,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,vsukiyaki/shiratakimix,801,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,vuducquang/landscape-style,802,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,waifu-diffusion/wd40,803,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,walidali/bekiamzrev,804,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,walidali/bekiksrilym,805,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,walidali/bekinorrev,806,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,walidali/burjkhalifaly,807,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,walidali/lyrieldiff,808,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,walidali/rawaawlylyr,809,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,walidali/toonyoudif,810,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,wavymulder/analog-diffusion,811,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,wilfrenm/ainew1,812,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,wilfrenm/dog2,813,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,wimvanhenden/ultmedm-abstract20-v4,814,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,wittenberg/model,815,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,wusul/aperturescience,816,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,wusul/fat-irish-ship-transporting-carrots-with-face-image-generator,817,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,wusul/portaltestchamber,818,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,xero5000/my-pet-dog-and-cat,819,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,xiaomindlut/textual-inversion-style,820,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,xpeng2022/fotorx,821,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,xyn-ai/cyberpunk-anime-diffusion,822,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,xyn-ai/epic-diffusion,823,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yahyasmt/brain-tumor-3,824,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yastreb/anilin123,825,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yatharthjain120/my-pet-dog,826,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yb23code/emojis-2000,827,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yeisond/lamasigo,828,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yesh2005/my-tiger-rpy,829,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/526mix,830,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/a-zovyarpgartistv2vae,831,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/a-zovyarpgv3vae,832,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/animesextillion,833,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/anythingv3.1,834,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/arcticfowl,835,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/based64,836,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/basilremix,837,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/beenyou,838,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/brandimilne,839,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/cartoonstyleclassic,840,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/chik2,841,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/chiliconcarne,842,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/cinemaeros,843,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/cinematicreality,844,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/crystalclear,845,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/cyberrealistic,846,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/delishaper,847,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/dreamlike-photoreal-remix,848,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/dreamlikediffusion,849,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/dreamlikeremix,850,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/dreamscapes-n-dragonfire-v2,851,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/dreamsphere,852,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/dreamworks,853,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/duchaiten-anyunreal,854,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/duchaitendarkside4,855,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/duchaitenniji,856,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/elldrethsretromix-diffusers,857,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/elldrethsvividmix,858,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/fennphoto,859,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/gameassetsdigitalunitscreationkit,860,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/gofish,861,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/goldfish,862,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/idlefancy,863,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/lameanime,864,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/luckystrike,865,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/lunar,866,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/lyriel,867,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/makeitdoubleplz,868,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/maplesyrup,869,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/mistoonemerald2,870,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/naughtychildren,871,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/novelairemix,872,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/nuipenimix,873,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/oiran,874,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/paragon,875,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/paramount,876,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/protogen,877,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/scmix,878,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/sillysymphonies,879,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/thedarknight,880,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/toonify2,881,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/uberrealisticlegacy,882,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/vintedois,883,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yntec/yabalmixtrue25d-v2-vae,884,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,youngwoo3283/emoji-test-v1,885,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yuanbit/max-15-1e-6-1500,886,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yuanzheng/familyportrait,887,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yuanzheng/zhu-family-v1-sd15,888,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,yuvalkirstain/textual-inversion-cat,889,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,zapper/battlemap-1024,890,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,zb-tech/text-to-image,891,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,zhoubinjason/first-avartar,892,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,zigg-ai/d5cf4e49-bdba-434c-b8ed-1efdb5941486,893,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,zigg-ai/kemar,894,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,zigg-ai/zackfreedman,895,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,zlikwid/zlikwid,896,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,zlikwid/zlikwidv2,897,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,zmaro/zmaro1402,898,LatDiff,train_seen,10,0.1111,yes,yes
+Train,0,zzzisey/lulalady,899,LatDiff,train_seen,10,0.1111,yes,yes
+Internal unseen-generator val,1,2weaks/bottle1,0,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,aaronec/ac-2-1-512,1,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,amayprro552/jugggi,2,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,andromeda12/mirtha-legran,3,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,anonim3327/scott-malin-art-style,4,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,aphophis420/stargate,5,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,appledamapple/reenatest,6,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,ashnrk/textual-inversion-herb-veg,7,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,bencem/ai-avatar,8,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,brainfox25/my-pet-dog-xzg,9,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,briannlongzhao/26,10,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,briannlongzhao/32,11,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,briannlongzhao/77,12,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,briannlongzhao/90,13,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,briannlongzhao/91,14,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,camus-ng/textual-inversion-cory,15,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,chrisniekler/movement-illusion,16,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,chrizzcarter/bikes,17,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,cxyz/mrnlthkrrgl,18,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,daniil-plotnikov/russian-vision-v4,19,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,darkstorm2150/protogen-nova-official-release,20,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,digiplay/colorful-v2.0,21,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,digiplay/miraclemixglitter-v1,22,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,digiplay/planetbumix-v1,23,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,digiplay/richyrichmix-v2fp16,24,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,digiplay/xtremixultimatemerge-v1.5,25,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,digiplay/yismix2.8d-v1,26,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,dmityul/ikrinadara,27,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,dxli/shiny-sneaker,28,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,eicu/huggingface-jsjessy-1400,29,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,eicu/jessy-3500,30,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,end-diffusers/duskfalls-artificial-photography,31,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,erick4512/my-pet-cat,32,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,falah/female-style,33,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,febi/my-pet-cat-zxy,34,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,floydiansound/aoi-ogata-artstyle-v1-5,35,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,gnanasree/my-pet-dog,36,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,gowri-39/volley-ball-rgv,37,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,hafis123/kittens,38,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,hangeol/textual-inversion-cat-original,39,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,hemlok/rev-mix,40,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,hr16/any-ely-wd-ira-olympus-3500,41,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,husseinhe/sjfrdv2,42,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,iamkaikai/amazing-logos,43,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,jackie/jbandmbsession1,44,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,jiaxijiang/textual-inversion-backpack,45,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,jiaxijiang/textual-inversion-unicorn,46,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,jimmu14/my-pet-dog,47,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,jinouga/brie-larson-v2,48,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,jrdnrgrs/jogipie-faces,49,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,kyanoss/bnhatest-alpha0.1,50,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,livingbox/dining-room-v1,51,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,macrmaw/ucl-match-ball,52,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,malaikark007/my-bicycle,53,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,manasaksl02/my-pet-dog,54,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,manaswin05/my-pet-dog,55,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,meharajbanu074/my-pet-dog,56,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,muhammadreza/mann-e-4-4,57,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,nayanraut1412/my-pet-cat,58,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,nihirc/prompt2medimage,59,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,nileshbhai/my-pet-cat-nil,60,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,nira123/car-craze-lpk,61,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,oterrivelalister/eufinal,62,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,rahul077/my-pet-dog-xzg,63,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,raka21/my-pet-cat,64,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,raw-vitor/karoliel,65,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,recoilme/workspace,66,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,rioriyaz/my-bird,67,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,rktf/osage-v2-0,68,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,sam749/realcartoon3d-v15,69,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,sanyasahu14/my-pet-dog,70,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,sasa30/ppeeddrriittoo,71,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,sd-dreambooth-library/hairdye,72,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,sd-dreambooth-library/organic-mind,73,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,sd-dreambooth-library/riffusion-rage,74,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,sivar/legoblocksstyle,75,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,slukas99/textual-inversion-cat,76,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,stablediffusionapi/realistic-vision,77,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,swarna123/dog-was,78,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,tahaiqbal/designgen1-0,79,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,thiru6102005/my-ai-dog-model,80,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,ukeeba/kk1-1,81,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,umar2003/my-pet-cat,82,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,valhalla/emoji-diffusion,83,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,vani-24/my-pet-dog-xzg,84,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,vanshtyagi203/cars-xzg,85,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,vizhi/mf-xzg,86,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,vraddhi123/my-pet-dog,87,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,vsukiyaki/yaki-dofu-mix,88,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,vtwoods/mike,89,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,warriormama777/elyorangemix,90,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,wasisyed/shiba-inu-dog-jsa,91,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,willvalley/willdahlberg,92,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,yntec/elldrethsimagination,93,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,yntec/emeraldcity,94,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,yntec/fanta,95,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,yntec/sinkorswim,96,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,yntec/theallysmixiv-verisimilar,97,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,zhyemmmm/moxin,98,LatDiff,strict_unseen,10,1.0,no,yes
+Internal unseen-generator val,1,zigg-ai/9a8cdaaf-5e35-40f4-9981-647c1926846a,99,LatDiff,strict_unseen,10,1.0,no,yes
+External exact-seen val,2,compvis/stable-diffusion-v1-4,0,LatDiff,exact_seen,1000,100.0,yes,yes
+Hard Hourglass val,3,hourglass,0,PixDiff,family_seen_exact_unseen_hard,250,100.0,no,yes
+Hard DFGAN val,4,dfgan,0,GAN,family_seen_exact_unseen_hard,250,100.0,no,yes
+Hard GALIP val,5,galip,0,GAN,family_seen_exact_unseen_hard,250,100.0,no,yes
+External seen-family test,6,lcm-lora-sdv15,0,LatDiff,family_seen,112,11.2,no,yes
+External seen-family test,6,decidiffusionv2,1,LatDiff,family_seen,111,11.1,no,yes
+External seen-family test,6,dfgan,2,GAN,family_seen,111,11.1,no,yes
+External seen-family test,6,galip,3,GAN,family_seen,111,11.1,no,yes
+External seen-family test,6,hourglass,4,PixDiff,family_seen,111,11.1,no,yes
+External seen-family test,6,kandinsky-2-2,5,LatDiff,family_seen,111,11.1,no,yes
+External seen-family test,6,kvikontent-midjourney-v6,6,LatDiff,family_seen,111,11.1,no,yes
+External seen-family test,6,lcm-lora-sdxl,7,LatDiff,family_seen,111,11.1,no,yes
+External seen-family test,6,lcm-lora-ssd1b,8,LatDiff,family_seen,111,11.1,no,yes
+External unseen-family test,7,dalle3,0,Commercial,strict_unseen,84,8.4,no,no
+External unseen-family test,7,firefly-image3,1,Commercial,strict_unseen,84,8.4,no,no
+External unseen-family test,7,ideogramv1,2,Commercial,strict_unseen,84,8.4,no,no
+External unseen-family test,7,midjourneyv5-2,3,Commercial,strict_unseen,84,8.4,no,no
+External unseen-family test,7,dalle2,4,Commercial,strict_unseen,83,8.3,no,no
+External unseen-family test,7,firefly-image2,5,Commercial,strict_unseen,83,8.3,no,no
+External unseen-family test,7,flux-dev,6,Commercial,strict_unseen,83,8.3,no,no
+External unseen-family test,7,flux-schnell,7,Commercial,strict_unseen,83,8.3,no,no
+External unseen-family test,7,ideogramv2,8,Commercial,strict_unseen,83,8.3,no,no
+External unseen-family test,7,imagen3,9,Commercial,strict_unseen,83,8.3,no,no
+External unseen-family test,7,midjourneyv6-1,10,Commercial,strict_unseen,83,8.3,no,no
+External unseen-family test,7,stable-cascade,11,Other,strict_unseen,83,8.3,no,no

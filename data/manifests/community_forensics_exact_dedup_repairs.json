@@ -1,0 +1,54 @@
+{
+  "repair_policy": "same_split_same_generator_or_real_source_deterministic_replacement",
+  "repairs": [
+    {
+      "canonical_generator_id": "dfgan",
+      "duplicate_sha256": "5f1f3ea93a6b670027c37ddea46531702bf0acc091e43e342e611d6951f42faf",
+      "keeper_sample_id": "cf_test_external_seen_family_aigi_30ef22af5d3a0c99",
+      "label": 1,
+      "project_split": "test_external_seen_family",
+      "quarantined_path": "/home/msai/lius0131/AGI/repostguard-lite/data/quarantine/community_forensics_duplicates/round_1/test_external_seen_family/aigi/cf_test_external_seen_family_aigi_e3acbf015a735a4b_000927.png.png",
+      "real_source": "COCO",
+      "removed_path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/aigi/cf_test_external_seen_family_aigi_e3acbf015a735a4b_000927.png.png",
+      "removed_sample_id": "cf_test_external_seen_family_aigi_e3acbf015a735a4b",
+      "repair_round": 1,
+      "replacement_row_group": 2,
+      "replacement_row_index": 17,
+      "replacement_sample_id": "cf_test_external_seen_family_aigi_6ba8608a3f13a4bf",
+      "replacement_source_file": "data/CompEval-00004-of-00413.parquet"
+    },
+    {
+      "canonical_generator_id": "dfgan",
+      "duplicate_sha256": "5f1f3ea93a6b670027c37ddea46531702bf0acc091e43e342e611d6951f42faf",
+      "keeper_sample_id": "cf_test_external_seen_family_aigi_30ef22af5d3a0c99",
+      "label": 1,
+      "project_split": "test_external_seen_family",
+      "quarantined_path": "/home/msai/lius0131/AGI/repostguard-lite/data/quarantine/community_forensics_duplicates/round_1/test_external_seen_family/aigi/cf_test_external_seen_family_aigi_f31e5c37b1e9f675_000564.png.png",
+      "real_source": "COCO",
+      "removed_path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/aigi/cf_test_external_seen_family_aigi_f31e5c37b1e9f675_000564.png.png",
+      "removed_sample_id": "cf_test_external_seen_family_aigi_f31e5c37b1e9f675",
+      "repair_round": 1,
+      "replacement_row_group": 2,
+      "replacement_row_index": 16,
+      "replacement_sample_id": "cf_test_external_seen_family_aigi_d36a34275e9684d7",
+      "replacement_source_file": "data/CompEval-00003-of-00413.parquet"
+    },
+    {
+      "canonical_generator_id": "firefly-image2",
+      "duplicate_sha256": "a4532909f3f9b8ba80af9d50e4d90bca13ad7f36bb8d7502e3d13aead9a5f459",
+      "keeper_sample_id": "cf_test_external_unseen_generator_aigi_0934ed99da7b17d1",
+      "label": 1,
+      "project_split": "test_external_unseen_generator",
+      "quarantined_path": "/home/msai/lius0131/AGI/repostguard-lite/data/quarantine/community_forensics_duplicates/round_1/test_external_unseen_generator/aigi/cf_test_external_unseen_generator_aigi_e13d59815a1827d9_00000470_0.jpg.jpg",
+      "real_source": "LAION",
+      "removed_path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/aigi/cf_test_external_unseen_generator_aigi_e13d59815a1827d9_00000470_0.jpg.jpg",
+      "removed_sample_id": "cf_test_external_unseen_generator_aigi_e13d59815a1827d9",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 13,
+      "replacement_sample_id": "cf_test_external_unseen_generator_aigi_5146d2c3974f269a",
+      "replacement_source_file": "data/CompEval-00212-of-00413.parquet"
+    }
+  ],
+  "selection_seed": 20260828
+}

@@ -1,0 +1,593 @@
+{
+  "chart_map": [
+    {
+      "family": "comparison",
+      "fields": [
+        "model",
+        "condition_group",
+        "auroc"
+      ],
+      "palette": "categorical, three condition groups",
+      "question": "Compare clean, legacy-17 mean, and new-3 mean AUROC across models.",
+      "section": "macro_finding",
+      "type": "grouped bar"
+    },
+    {
+      "family": "comparison",
+      "fields": [
+        "split",
+        "model",
+        "auroc"
+      ],
+      "palette": "categorical, five models",
+      "question": "Compare strict six-stage AUROC by split and model.",
+      "section": "strict_six_finding",
+      "type": "grouped bar"
+    },
+    {
+      "family": "comparison and ranking",
+      "fields": [
+        "model",
+        "worst_auroc"
+      ],
+      "palette": "single-root sequential",
+      "question": "Rank each model by its worst new-condition AUROC.",
+      "section": "worst_case_finding",
+      "type": "horizontal bar"
+    }
+  ],
+  "condition_count": 21,
+  "evaluation_root": "outputs/community_forensics_robustness_v2",
+  "generated_at_asia_singapore": "2026-08-29T13:39:56+08:00",
+  "headline": {
+    "best_clean_auroc": 0.731538,
+    "best_clean_model": "B2",
+    "best_new_auroc": 0.678299,
+    "best_new_model": "B2",
+    "best_six_auroc": 0.622796,
+    "best_six_model": "B2",
+    "best_worst_auroc": 0.541048,
+    "best_worst_condition": "6-stage random composition",
+    "best_worst_model": "B2",
+    "best_worst_split": "Hard DFGAN",
+    "condition_count": 21,
+    "evaluation_points": 630,
+    "model_count": 5,
+    "split_count": 6
+  },
+  "legacy_perturbation_count": 17,
+  "macro_summary": {
+    "b0": {
+      "clean_auroc": 0.5259515,
+      "clean_ba": 0.5221666666666667,
+      "four_a_auroc": 0.5214423333333333,
+      "four_b_auroc": 0.5235139999999999,
+      "legacy_mean_auroc": 0.5210509607843138,
+      "legacy_mean_ba": 0.5162009803921569,
+      "new_mean_auroc": 0.52252825,
+      "new_mean_ba": 0.5202777777777777,
+      "new_worst_auroc": 0.245224,
+      "new_worst_condition": "4-stage B edit repost",
+      "new_worst_split": "hard_hourglass",
+      "six_auroc": 0.5226284166666667,
+      "six_ba": 0.5221666666666667
+    },
+    "b1": {
+      "clean_auroc": 0.5138674166666667,
+      "clean_ba": 0.5167499999999999,
+      "four_a_auroc": 0.5169283333333333,
+      "four_b_auroc": 0.509273,
+      "legacy_mean_auroc": 0.5131798431372548,
+      "legacy_mean_ba": 0.5174901960784314,
+      "new_mean_auroc": 0.5100643333333333,
+      "new_mean_ba": 0.511888888888889,
+      "new_worst_auroc": 0.283304,
+      "new_worst_condition": "4-stage A platform repost",
+      "new_worst_split": "hard_hourglass",
+      "six_auroc": 0.5039916666666667,
+      "six_ba": 0.5025833333333333
+    },
+    "b2": {
+      "clean_auroc": 0.7315380833333333,
+      "clean_ba": 0.6116666666666667,
+      "four_a_auroc": 0.7196947499999999,
+      "four_b_auroc": 0.6924068333333334,
+      "legacy_mean_auroc": 0.7368012843137254,
+      "legacy_mean_ba": 0.5519166666666667,
+      "new_mean_auroc": 0.6782991944444445,
+      "new_mean_ba": 0.5455833333333334,
+      "new_worst_auroc": 0.541048,
+      "new_worst_condition": "6-stage random composition",
+      "new_worst_split": "hard_dfgan",
+      "six_auroc": 0.622796,
+      "six_ba": 0.54675
+    },
+    "m2": {
+      "clean_auroc": 0.570903,
+      "clean_ba": 0.55275,
+      "four_a_auroc": 0.5708844166666667,
+      "four_b_auroc": 0.552109,
+      "legacy_mean_auroc": 0.5732178088235295,
+      "legacy_mean_ba": 0.5514950980392157,
+      "new_mean_auroc": 0.5575521388888889,
+      "new_mean_ba": 0.5325,
+      "new_worst_auroc": 0.29752,
+      "new_worst_condition": "6-stage random composition",
+      "new_worst_split": "hard_hourglass",
+      "six_auroc": 0.549663,
+      "six_ba": 0.51875
+    },
+    "m3": {
+      "clean_auroc": 0.5748168333333333,
+      "clean_ba": 0.5525833333333333,
+      "four_a_auroc": 0.567819,
+      "four_b_auroc": 0.5469735,
+      "legacy_mean_auroc": 0.5716790490196079,
+      "legacy_mean_ba": 0.550186274509804,
+      "new_mean_auroc": 0.5526362777777778,
+      "new_mean_ba": 0.5321666666666667,
+      "new_worst_auroc": 0.302976,
+      "new_worst_condition": "6-stage random composition",
+      "new_worst_split": "hard_hourglass",
+      "six_auroc": 0.5431163333333333,
+      "six_ba": 0.5215
+    }
+  },
+  "matrix": "configs/community_forensics_robustness_v2.yaml",
+  "matrix_sha256": "69531f3f7111651808c99f14f89723bf631345878b1cbd0cbe0eee8531dde83c",
+  "metrics_csv": "reports/community_forensics_robustness_v2_metrics.csv",
+  "metrics_csv_sha256": "73d9ba8d12d9fb7dd21239750c1b7365eec50ac4ec1c6f3540728b36fe7129d0",
+  "model_lineage": {
+    "b0": {
+      "checkpoint_path": "outputs/community_forensics/b0/best.pt",
+      "checkpoint_sha256": "cf077cbfe1fa0ea6bb4cc2f4a70566571691c14952dd20bf9ef6e78be332520a",
+      "config_path": "outputs/community_forensics/b0/resolved_config.yaml",
+      "config_sha256": "323ffceeb459b2740c0bca916c08e7e49fa21df4032c967a43b89cdff2bafe59",
+      "parameters": {
+        "frozen": 0,
+        "total": 4008829,
+        "trainable": 4008829
+      },
+      "threshold": 0.998046875,
+      "training_job_id": "32446"
+    },
+    "b1": {
+      "checkpoint_path": "outputs/community_forensics/b1/best.pt",
+      "checkpoint_sha256": "b02a7fe98221cd6a53eadb058d10235c6730f105a13b1ffed108280bf4c424f5",
+      "config_path": "outputs/community_forensics/b1/resolved_config.yaml",
+      "config_sha256": "5157e1d8e6af4e90bd66ae66bce88e9c1cb86f3af1276cb74ab696f4d2209a00",
+      "parameters": {
+        "frozen": 0,
+        "total": 4008829,
+        "trainable": 4008829
+      },
+      "threshold": 0.9970703125,
+      "training_job_id": "32455"
+    },
+    "b2": {
+      "checkpoint_path": "outputs/community_forensics/b2/best.pt",
+      "checkpoint_sha256": "ff89953d5c0cd3781f36205adb21f4f8a3aef9619d32a55e8bfc85f62479243a",
+      "config_path": "outputs/community_forensics/b2/resolved_config.yaml",
+      "config_sha256": "3668145d6ce8b52b21772832a38212c1eef042a6eeaa22141e957fd5eeff8bd9",
+      "parameters": {
+        "frozen": 87849216,
+        "total": 87849729,
+        "trainable": 513
+      },
+      "threshold": 0.99267578125,
+      "training_job_id": "32457"
+    },
+    "m2": {
+      "checkpoint_path": "outputs/community_forensics/m2/best.pt",
+      "checkpoint_sha256": "75be44fc704b18a3fad3ab116802debdef119e72a112e5eba73a2ba38fde1685",
+      "config_path": "outputs/community_forensics/m2/resolved_config.yaml",
+      "config_sha256": "1d438eedae872d797c0f2fbd96331ef89e5e5a60d86f1b7cb07017d0faf9fd4e",
+      "parameters": {
+        "frozen": 87849216,
+        "total": 99423442,
+        "trainable": 11574226
+      },
+      "threshold": 0.9990234375,
+      "training_job_id": "32460"
+    },
+    "m3": {
+      "checkpoint_path": "outputs/community_forensics/m3/best.pt",
+      "checkpoint_sha256": "32f81545af4a41359463d88a136c3137be08feaae985ab5cf1d19c0277c55683",
+      "config_path": "outputs/community_forensics/m3/resolved_config.yaml",
+      "config_sha256": "c5a8add49629d2235035e3af04b79084160d6038c80bf06d0f204c802eaf143d",
+      "parameters": {
+        "frozen": 87849216,
+        "total": 99423744,
+        "trainable": 11574528
+      },
+      "threshold": 0.9990234375,
+      "training_job_id": "32464"
+    }
+  },
+  "new_multistage_perturbation_count": 3,
+  "report_contract": {
+    "audience": "technical",
+    "baseline": "Clean and the unchanged legacy 17-perturbation matrix.",
+    "delivery_mode": "portable_html",
+    "question": "Compare B0/B1/B2/M2/M3 on six new-data splits under legacy and new multi-stage perturbations.",
+    "required_section_mapping": {
+      "further_questions": "further_questions",
+      "key_findings_with_visual_evidence": [
+        "macro_finding",
+        "strict_six_finding",
+        "worst_case_finding"
+      ],
+      "limitations_uncertainty_and_robustness_checks": "limitations",
+      "methodology": [
+        "model_method",
+        "perturbation_method"
+      ],
+      "recommended_next_steps": "recommendations",
+      "scope_data_and_metric_definitions": "scope_and_definitions",
+      "technical_summary": "technical_summary",
+      "title": "title"
+    },
+    "success_criteria": "All 5 x 6 x 21 cells complete with frozen checkpoints, thresholds, manifests, and digests."
+  },
+  "report_job_id": "32630",
+  "schema_version": 1,
+  "split_artifacts": {
+    "b0": {
+      "exact_seen_generator": {
+        "evaluation_job_id": "32564",
+        "manifest": "data/manifests/community_forensics_val_external_exact_seen_generator.csv",
+        "manifest_sha256": "fc4bbd7d05c10f6b40b3009edd4213acd6e6cf4de5085930642353a7fc950ac3",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b0/exact_seen_generator/metrics_by_transform.csv",
+        "metrics_csv_sha256": "dfed1691c3ea56b4882b88de6f7317f93b9fffc0d0a2b89c069db12296b8bf8c",
+        "run_card": "outputs/community_forensics_robustness_v2/b0/exact_seen_generator/run_card.json",
+        "run_card_sha256": "f57eea5e6d7fc1b8de6b22afc41180d0f0e81925040f58b3e4b4816529c15601",
+        "summary": "outputs/community_forensics_robustness_v2/b0/exact_seen_generator/summary.json",
+        "summary_sha256": "061c58da1f79a792783df9bc7fb11d651e7a0a84c88d4a7b6767d10e30aa7f08"
+      },
+      "hard_dfgan": {
+        "evaluation_job_id": "32564",
+        "manifest": "data/manifests/community_forensics_val_hard_dfgan.csv",
+        "manifest_sha256": "1a60b7d517bb6d4935604778d146f4578d4e41b6469eee767b5d0aae9e9ba555",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b0/hard_dfgan/metrics_by_transform.csv",
+        "metrics_csv_sha256": "543229d76ed3ef991d144be17a05b07bac8023690510de0e46ceee0c26b15567",
+        "run_card": "outputs/community_forensics_robustness_v2/b0/hard_dfgan/run_card.json",
+        "run_card_sha256": "e228c3ae80be19a2105e94e3c885b8d3f593d322fd62ca4b991dda79e88bd40b",
+        "summary": "outputs/community_forensics_robustness_v2/b0/hard_dfgan/summary.json",
+        "summary_sha256": "ee166aa0f20cd00261ca6a69dc694cfa99ae9efdccec041105ca262037f6682e"
+      },
+      "hard_galip": {
+        "evaluation_job_id": "32564",
+        "manifest": "data/manifests/community_forensics_val_hard_galip.csv",
+        "manifest_sha256": "bf9a5b60a52931f8d125182ac406c505678740a991b1d82367d03f52cb9e96dc",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b0/hard_galip/metrics_by_transform.csv",
+        "metrics_csv_sha256": "47d72f74e3d04490cc73387e235479e21420f9cd0240e1cb78a06427f7d4fbdc",
+        "run_card": "outputs/community_forensics_robustness_v2/b0/hard_galip/run_card.json",
+        "run_card_sha256": "bb88f5a384622192b02616322c4ba59371d7cd51e5816a60a3ae60be56d1b419",
+        "summary": "outputs/community_forensics_robustness_v2/b0/hard_galip/summary.json",
+        "summary_sha256": "2879ff74b44d7a5b259b00c0a5dcbe718fbd8e5c90be8b57cffd91fcabe2cf5e"
+      },
+      "hard_hourglass": {
+        "evaluation_job_id": "32564",
+        "manifest": "data/manifests/community_forensics_val_hard_hourglass.csv",
+        "manifest_sha256": "9cad78012352a0cee48475e1128f08cbecdd5b7283fa7e2f81a55dda5f3b2a3d",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b0/hard_hourglass/metrics_by_transform.csv",
+        "metrics_csv_sha256": "be25a0c8ddf0a84f8fa86dc3ba7bfbfec0759cdd6863f10873c2b3027d7dd7a3",
+        "run_card": "outputs/community_forensics_robustness_v2/b0/hard_hourglass/run_card.json",
+        "run_card_sha256": "002e3e150d678954b86dfda58b08807b994395b82585d1b440b9b983c307b4e9",
+        "summary": "outputs/community_forensics_robustness_v2/b0/hard_hourglass/summary.json",
+        "summary_sha256": "3fce1accaa252e1aa1148666258a0e2c720729c2a1ed3165d4d6997897a7e71d"
+      },
+      "seen_family": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_test_external_seen_family.csv",
+        "manifest_sha256": "c55d0652d4d95e17bf2c10c6a8dde2bdde5a4e5ea18a05baa22def0a669d1b42",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b0/seen_family/metrics_by_transform.csv",
+        "metrics_csv_sha256": "c254a74986482600f565a0a44b70f3ffc1a26d808e709f3ff3703599cc5bc435",
+        "run_card": "outputs/community_forensics_robustness_v2/b0/seen_family/run_card.json",
+        "run_card_sha256": "97018c0587783b39b1b5d5af5d296dea046c370829166c8e32439b48d3a76af8",
+        "summary": "outputs/community_forensics_robustness_v2/b0/seen_family/summary.json",
+        "summary_sha256": "1af351ab7304873fbb26c3301436836604edae7809249e5e06f459cb37dc10f6"
+      },
+      "unseen_generator": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_test_external_unseen_generator.csv",
+        "manifest_sha256": "70434fc7b38ed2015cac67bc87897139fb202ffa13e736a5ce2f7c759833e42a",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b0/unseen_generator/metrics_by_transform.csv",
+        "metrics_csv_sha256": "6ca1deb1c3e3dd57620cdca23f8f696bb4157505c88a22b47dc7164deb38b4be",
+        "run_card": "outputs/community_forensics_robustness_v2/b0/unseen_generator/run_card.json",
+        "run_card_sha256": "aee5426bb19939410aae3c896f181e467123d5d56cb0af70c9fe224f35f85a3f",
+        "summary": "outputs/community_forensics_robustness_v2/b0/unseen_generator/summary.json",
+        "summary_sha256": "80a892fcfc066326377e95fccaef381bd0946832fc100eb54edc1398be62f438"
+      }
+    },
+    "b1": {
+      "exact_seen_generator": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_val_external_exact_seen_generator.csv",
+        "manifest_sha256": "fc4bbd7d05c10f6b40b3009edd4213acd6e6cf4de5085930642353a7fc950ac3",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b1/exact_seen_generator/metrics_by_transform.csv",
+        "metrics_csv_sha256": "7678e48684dcca14b8c7d2b323dc4abb52718f3fcbd9079277b2e487bf22b038",
+        "run_card": "outputs/community_forensics_robustness_v2/b1/exact_seen_generator/run_card.json",
+        "run_card_sha256": "a859ccddcf2b8fd216ee21cebe0f54dab0c5b3293a5aa91eaba472ecfa2a3f02",
+        "summary": "outputs/community_forensics_robustness_v2/b1/exact_seen_generator/summary.json",
+        "summary_sha256": "267f25f2c6a7b3813cc44c67d0e7f0353f4b639688e8a5660fb7526fa34109b1"
+      },
+      "hard_dfgan": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_val_hard_dfgan.csv",
+        "manifest_sha256": "1a60b7d517bb6d4935604778d146f4578d4e41b6469eee767b5d0aae9e9ba555",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b1/hard_dfgan/metrics_by_transform.csv",
+        "metrics_csv_sha256": "15d63a58063522254eec953d9d100aac896b71072c0624e921944421f0991a05",
+        "run_card": "outputs/community_forensics_robustness_v2/b1/hard_dfgan/run_card.json",
+        "run_card_sha256": "ff21109ab5c12974c65f4b9ced171a4c932ab8f0cffd800c342ff0d57b92031a",
+        "summary": "outputs/community_forensics_robustness_v2/b1/hard_dfgan/summary.json",
+        "summary_sha256": "71f9bae734db9dd21abc41da88f983af3d7b028a3b1ae7939b66fa2d2f6b7bed"
+      },
+      "hard_galip": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_val_hard_galip.csv",
+        "manifest_sha256": "bf9a5b60a52931f8d125182ac406c505678740a991b1d82367d03f52cb9e96dc",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b1/hard_galip/metrics_by_transform.csv",
+        "metrics_csv_sha256": "3cf0e2f5612151e6e5bfea001cfe3fadfc2038602581cfb684c70a81c9a6b890",
+        "run_card": "outputs/community_forensics_robustness_v2/b1/hard_galip/run_card.json",
+        "run_card_sha256": "decc5294a57c2d9073f500c89dc727495900c42c3ac074733d1736c4f0c47280",
+        "summary": "outputs/community_forensics_robustness_v2/b1/hard_galip/summary.json",
+        "summary_sha256": "c238a2b99c058d815d56bec4e2213b01d0661296f8299326a8edb6141b8db4fb"
+      },
+      "hard_hourglass": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_val_hard_hourglass.csv",
+        "manifest_sha256": "9cad78012352a0cee48475e1128f08cbecdd5b7283fa7e2f81a55dda5f3b2a3d",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b1/hard_hourglass/metrics_by_transform.csv",
+        "metrics_csv_sha256": "0ddffc21da35148f68aa2351abbdee55b2375e76189b47df152cd56f96716fe6",
+        "run_card": "outputs/community_forensics_robustness_v2/b1/hard_hourglass/run_card.json",
+        "run_card_sha256": "9229191fb4839ba4f5ac4abfab1279ccf3f252a231613537133ad95fde763946",
+        "summary": "outputs/community_forensics_robustness_v2/b1/hard_hourglass/summary.json",
+        "summary_sha256": "22b14624700ec269f9fe10ca7712a339faf20047ba5dad61dd54979336389240"
+      },
+      "seen_family": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_test_external_seen_family.csv",
+        "manifest_sha256": "c55d0652d4d95e17bf2c10c6a8dde2bdde5a4e5ea18a05baa22def0a669d1b42",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b1/seen_family/metrics_by_transform.csv",
+        "metrics_csv_sha256": "f979a8b640ff9f30b51c536fc3cfa8f3040ffc1491928e9d6ed79fa61d6434c9",
+        "run_card": "outputs/community_forensics_robustness_v2/b1/seen_family/run_card.json",
+        "run_card_sha256": "b35c2d247f2ca89e7732b4f44e451b911ca9a23f00b9a8f23e3059617097e32e",
+        "summary": "outputs/community_forensics_robustness_v2/b1/seen_family/summary.json",
+        "summary_sha256": "9105252e41b3e8bd649c5790ef3007edc3be596b72425d82bbdd6d91de9b75ee"
+      },
+      "unseen_generator": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_test_external_unseen_generator.csv",
+        "manifest_sha256": "70434fc7b38ed2015cac67bc87897139fb202ffa13e736a5ce2f7c759833e42a",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b1/unseen_generator/metrics_by_transform.csv",
+        "metrics_csv_sha256": "e7ccc8ded1ee2af100e71407d0d38d762a7a5df2bf5e99501f18ac0ae72353df",
+        "run_card": "outputs/community_forensics_robustness_v2/b1/unseen_generator/run_card.json",
+        "run_card_sha256": "ecb99c267aba3a8c62f2842128cec206d5f0b61944832ebef5fd70557e4a9679",
+        "summary": "outputs/community_forensics_robustness_v2/b1/unseen_generator/summary.json",
+        "summary_sha256": "6757119c8d94be298203ce84e1da8188c81f63c56c0bd9dedf9152721bf999ee"
+      }
+    },
+    "b2": {
+      "exact_seen_generator": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_val_external_exact_seen_generator.csv",
+        "manifest_sha256": "fc4bbd7d05c10f6b40b3009edd4213acd6e6cf4de5085930642353a7fc950ac3",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b2/exact_seen_generator/metrics_by_transform.csv",
+        "metrics_csv_sha256": "ee34447c99c359eb63ec033a5f78d2fe50aad4d74a3bf2d10857cf80c6d8e85a",
+        "run_card": "outputs/community_forensics_robustness_v2/b2/exact_seen_generator/run_card.json",
+        "run_card_sha256": "53fdc16cbe55b03b6fefd304a1cd4175513b0dfb4a5f6916b0474288bfea84f4",
+        "summary": "outputs/community_forensics_robustness_v2/b2/exact_seen_generator/summary.json",
+        "summary_sha256": "2df146bdc48c5c2fe29df2cc17a0d7f470e9bc2fb8ef9e1b7a46994d0601ba1c"
+      },
+      "hard_dfgan": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_val_hard_dfgan.csv",
+        "manifest_sha256": "1a60b7d517bb6d4935604778d146f4578d4e41b6469eee767b5d0aae9e9ba555",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b2/hard_dfgan/metrics_by_transform.csv",
+        "metrics_csv_sha256": "e28bb090c650627f92e3800dbdec50a09da411a38829bde292e10ed2cb19464e",
+        "run_card": "outputs/community_forensics_robustness_v2/b2/hard_dfgan/run_card.json",
+        "run_card_sha256": "8e4b43fdb8bedb44c27cf470da1bf570e5b4819377bb5b9620dde09c0dd369c9",
+        "summary": "outputs/community_forensics_robustness_v2/b2/hard_dfgan/summary.json",
+        "summary_sha256": "c510ad4f19c82ef019d623c3f1348a29786861e9e70bbcd738783c60e4d55328"
+      },
+      "hard_galip": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_val_hard_galip.csv",
+        "manifest_sha256": "bf9a5b60a52931f8d125182ac406c505678740a991b1d82367d03f52cb9e96dc",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b2/hard_galip/metrics_by_transform.csv",
+        "metrics_csv_sha256": "8833f2882be35b46f7a0e60e941c7f787be804a7f04dd158ecf05e87ae7b8ed2",
+        "run_card": "outputs/community_forensics_robustness_v2/b2/hard_galip/run_card.json",
+        "run_card_sha256": "ca96b337ebb451ac3cc5336ae16ca55d78e8ecb6fe7749b030893d6eb18fc5e9",
+        "summary": "outputs/community_forensics_robustness_v2/b2/hard_galip/summary.json",
+        "summary_sha256": "c87728a32772812bac5b0de648bf5daf3a44080a662c63deaa471ed3956d74aa"
+      },
+      "hard_hourglass": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_val_hard_hourglass.csv",
+        "manifest_sha256": "9cad78012352a0cee48475e1128f08cbecdd5b7283fa7e2f81a55dda5f3b2a3d",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b2/hard_hourglass/metrics_by_transform.csv",
+        "metrics_csv_sha256": "038768e0c4073ed0520fddc1c971be645a44182564318739be6c951759ec9c86",
+        "run_card": "outputs/community_forensics_robustness_v2/b2/hard_hourglass/run_card.json",
+        "run_card_sha256": "1e66d32ad04ea6170b6e4b6de1c8b5fc0146d876bf31f1f9886536439c459fe3",
+        "summary": "outputs/community_forensics_robustness_v2/b2/hard_hourglass/summary.json",
+        "summary_sha256": "7d7f01de397a3a1b00ab95bd8660628f57d1dc96f588ad8281204c1f795c7e1c"
+      },
+      "seen_family": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_test_external_seen_family.csv",
+        "manifest_sha256": "c55d0652d4d95e17bf2c10c6a8dde2bdde5a4e5ea18a05baa22def0a669d1b42",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b2/seen_family/metrics_by_transform.csv",
+        "metrics_csv_sha256": "8613dac3ecb990137a157ca667844a920799de6d925dd0b58cf9eca173149d12",
+        "run_card": "outputs/community_forensics_robustness_v2/b2/seen_family/run_card.json",
+        "run_card_sha256": "44d32552863e6cc8816a8aceac6558faa3a0b9768e7dc59302ba5e48364c54d1",
+        "summary": "outputs/community_forensics_robustness_v2/b2/seen_family/summary.json",
+        "summary_sha256": "6073d90411f576032e098ebf0746e255d9705757a9f4bf5e4c64320146ecfe35"
+      },
+      "unseen_generator": {
+        "evaluation_job_id": "32586",
+        "manifest": "data/manifests/community_forensics_test_external_unseen_generator.csv",
+        "manifest_sha256": "70434fc7b38ed2015cac67bc87897139fb202ffa13e736a5ce2f7c759833e42a",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/b2/unseen_generator/metrics_by_transform.csv",
+        "metrics_csv_sha256": "4193149afdfc6b7516883eb363c2395f37c194bf71a07ea73b39e295eb086a0a",
+        "run_card": "outputs/community_forensics_robustness_v2/b2/unseen_generator/run_card.json",
+        "run_card_sha256": "51b2eefd8bb3929ba79966808aa078133182bcffbfd0b991a5120203652f91d8",
+        "summary": "outputs/community_forensics_robustness_v2/b2/unseen_generator/summary.json",
+        "summary_sha256": "1ff9bba8e4d2a471fe227df097a6e27e8fc59dd7022f8bfefc7816ddbe595216"
+      }
+    },
+    "m2": {
+      "exact_seen_generator": {
+        "evaluation_job_id": "32565",
+        "manifest": "data/manifests/community_forensics_val_external_exact_seen_generator.csv",
+        "manifest_sha256": "fc4bbd7d05c10f6b40b3009edd4213acd6e6cf4de5085930642353a7fc950ac3",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/m2/exact_seen_generator/metrics_by_transform.csv",
+        "metrics_csv_sha256": "e2cc8f0d72193c81635687036966200433abd76e9f72f73321152bbcc798bb6c",
+        "run_card": "outputs/community_forensics_robustness_v2/m2/exact_seen_generator/run_card.json",
+        "run_card_sha256": "9ab7f9b86a44f956868b60157750cac9213a0c3b669aefe7a0cfe1ce3f3869f1",
+        "summary": "outputs/community_forensics_robustness_v2/m2/exact_seen_generator/summary.json",
+        "summary_sha256": "524d3add989d45b656fd1ec4ccff37fc03a90a44e630c37f947f5c4cfc2b28e3"
+      },
+      "hard_dfgan": {
+        "evaluation_job_id": "32565",
+        "manifest": "data/manifests/community_forensics_val_hard_dfgan.csv",
+        "manifest_sha256": "1a60b7d517bb6d4935604778d146f4578d4e41b6469eee767b5d0aae9e9ba555",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/m2/hard_dfgan/metrics_by_transform.csv",
+        "metrics_csv_sha256": "47a5cc8e490da5c1e836ef19cb7c2755c35e51a3594697c0cd21c53a3d67d9df",
+        "run_card": "outputs/community_forensics_robustness_v2/m2/hard_dfgan/run_card.json",
+        "run_card_sha256": "d3c37b85a6a2ec21fe371000be6ae7d86781348dcde7a7350ac6bafa17a3a18d",
+        "summary": "outputs/community_forensics_robustness_v2/m2/hard_dfgan/summary.json",
+        "summary_sha256": "5bc89be31d0222c02b7b577c364b3e3dd3796a97b5cec5b5e148aad39a140121"
+      },
+      "hard_galip": {
+        "evaluation_job_id": "32565",
+        "manifest": "data/manifests/community_forensics_val_hard_galip.csv",
+        "manifest_sha256": "bf9a5b60a52931f8d125182ac406c505678740a991b1d82367d03f52cb9e96dc",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/m2/hard_galip/metrics_by_transform.csv",
+        "metrics_csv_sha256": "3d29e6cc367de5f7a2853d3da5264737c35c35baaa60e0c55d80747db6cdf91f",
+        "run_card": "outputs/community_forensics_robustness_v2/m2/hard_galip/run_card.json",
+        "run_card_sha256": "ab47b7175f07c5ac1de1ad718a1c8b0db3f4bb0c6e8d5f868378720ab16c7d31",
+        "summary": "outputs/community_forensics_robustness_v2/m2/hard_galip/summary.json",
+        "summary_sha256": "6a96b92fa5e0d2da74facca4dd40e3f8f38c7f797fb726e1440aea54be451e06"
+      },
+      "hard_hourglass": {
+        "evaluation_job_id": "32565",
+        "manifest": "data/manifests/community_forensics_val_hard_hourglass.csv",
+        "manifest_sha256": "9cad78012352a0cee48475e1128f08cbecdd5b7283fa7e2f81a55dda5f3b2a3d",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/m2/hard_hourglass/metrics_by_transform.csv",
+        "metrics_csv_sha256": "3b68b5d95f06a820894b360255ec7936bc96d3fa956c0c1b488bd0b956dd820a",
+        "run_card": "outputs/community_forensics_robustness_v2/m2/hard_hourglass/run_card.json",
+        "run_card_sha256": "e9ad5f18294c97c8ad7d1bddda7dc7ae31fd379842051dbc58c85c3c751a2452",
+        "summary": "outputs/community_forensics_robustness_v2/m2/hard_hourglass/summary.json",
+        "summary_sha256": "008f2405196a21504879df10247297a27ce0b84a2d04d961cad2410fc8dba285"
+      },
+      "seen_family": {
+        "evaluation_job_id": "32565",
+        "manifest": "data/manifests/community_forensics_test_external_seen_family.csv",
+        "manifest_sha256": "c55d0652d4d95e17bf2c10c6a8dde2bdde5a4e5ea18a05baa22def0a669d1b42",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/m2/seen_family/metrics_by_transform.csv",
+        "metrics_csv_sha256": "b32d26e1239b61b83efcf93e58b4325ba65aa24c4db2e1c2d0adbd27c3317833",
+        "run_card": "outputs/community_forensics_robustness_v2/m2/seen_family/run_card.json",
+        "run_card_sha256": "f6a7d5c3277284ffa61f899c2cbf74c2125869bac913283523e61e268620ce1f",
+        "summary": "outputs/community_forensics_robustness_v2/m2/seen_family/summary.json",
+        "summary_sha256": "c1fd7196dbe5dbb2c93cc60b3789edea399c72469fb945821b43ee1606c3705a"
+      },
+      "unseen_generator": {
+        "evaluation_job_id": "32565",
+        "manifest": "data/manifests/community_forensics_test_external_unseen_generator.csv",
+        "manifest_sha256": "70434fc7b38ed2015cac67bc87897139fb202ffa13e736a5ce2f7c759833e42a",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/m2/unseen_generator/metrics_by_transform.csv",
+        "metrics_csv_sha256": "3f367e5d699bacfa40c500b1e7b3cefc92b5fb63c8e01f6c6b25e8befdc9367a",
+        "run_card": "outputs/community_forensics_robustness_v2/m2/unseen_generator/run_card.json",
+        "run_card_sha256": "3d6f0f940cf08961d23173446c4d1ec7bd1c68c6f401db078fedac9e1b8bac6e",
+        "summary": "outputs/community_forensics_robustness_v2/m2/unseen_generator/summary.json",
+        "summary_sha256": "64b0e2b92cd4cc7398e8d6ca2828753b6780a88c3edfeaa0ed569e09e1de7a8f"
+      }
+    },
+    "m3": {
+      "exact_seen_generator": {
+        "evaluation_job_id": "32587",
+        "manifest": "data/manifests/community_forensics_val_external_exact_seen_generator.csv",
+        "manifest_sha256": "fc4bbd7d05c10f6b40b3009edd4213acd6e6cf4de5085930642353a7fc950ac3",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/m3/exact_seen_generator/metrics_by_transform.csv",
+        "metrics_csv_sha256": "3c7f7e56257ce2d43daf749b361682b0be3c02d65daa28bdccdca5aca85e1d40",
+        "run_card": "outputs/community_forensics_robustness_v2/m3/exact_seen_generator/run_card.json",
+        "run_card_sha256": "8011b3385a68b1158a9b149055acf1d5f28ba9a9e168d99b64c08b3803523cda",
+        "summary": "outputs/community_forensics_robustness_v2/m3/exact_seen_generator/summary.json",
+        "summary_sha256": "65ceb3213959f5a9e7a6afdf08b8d2bd0b5f424a74c3538608883b28c107c029"
+      },
+      "hard_dfgan": {
+        "evaluation_job_id": "32587",
+        "manifest": "data/manifests/community_forensics_val_hard_dfgan.csv",
+        "manifest_sha256": "1a60b7d517bb6d4935604778d146f4578d4e41b6469eee767b5d0aae9e9ba555",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/m3/hard_dfgan/metrics_by_transform.csv",
+        "metrics_csv_sha256": "daee129d4e271ba33b33bfc46fcd4aedd212a33c1015e944a393eac414ffef4a",
+        "run_card": "outputs/community_forensics_robustness_v2/m3/hard_dfgan/run_card.json",
+        "run_card_sha256": "81059ae0cd40e98345f465768db32bb2177e298779abe210510f2237dde1ca88",
+        "summary": "outputs/community_forensics_robustness_v2/m3/hard_dfgan/summary.json",
+        "summary_sha256": "5b839f59f47061269b4853397fc28035783211700e03baf37d931aec17477ff1"
+      },
+      "hard_galip": {
+        "evaluation_job_id": "32587",
+        "manifest": "data/manifests/community_forensics_val_hard_galip.csv",
+        "manifest_sha256": "bf9a5b60a52931f8d125182ac406c505678740a991b1d82367d03f52cb9e96dc",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/m3/hard_galip/metrics_by_transform.csv",
+        "metrics_csv_sha256": "7817c83cf411e6081c2ba36dd9e4823fd276f8b6c1167a67e44ebd0ad4d113fd",
+        "run_card": "outputs/community_forensics_robustness_v2/m3/hard_galip/run_card.json",
+        "run_card_sha256": "d444427bf806a9ab1c8a0eedbeda9722ea2d22bf9c8d7bcf9780ebaa98d23c73",
+        "summary": "outputs/community_forensics_robustness_v2/m3/hard_galip/summary.json",
+        "summary_sha256": "56aa8a44a5c76e1ca051656d71aa70da70e01f5a83476933dc91f3acd353e913"
+      },
+      "hard_hourglass": {
+        "evaluation_job_id": "32587",
+        "manifest": "data/manifests/community_forensics_val_hard_hourglass.csv",
+        "manifest_sha256": "9cad78012352a0cee48475e1128f08cbecdd5b7283fa7e2f81a55dda5f3b2a3d",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/m3/hard_hourglass/metrics_by_transform.csv",
+        "metrics_csv_sha256": "0cab7a3ba5f31c9dee4d959431893a448dc33dbd849930e1d647f4edb65347d8",
+        "run_card": "outputs/community_forensics_robustness_v2/m3/hard_hourglass/run_card.json",
+        "run_card_sha256": "223aa21080b2d808e0a753509d8058bdc10938c5b87669808e76a6d58a28d69c",
+        "summary": "outputs/community_forensics_robustness_v2/m3/hard_hourglass/summary.json",
+        "summary_sha256": "dcfbc141c03251914f0d356531f171818408e8ce2d84cb06505f1c09779046fb"
+      },
+      "seen_family": {
+        "evaluation_job_id": "32587",
+        "manifest": "data/manifests/community_forensics_test_external_seen_family.csv",
+        "manifest_sha256": "c55d0652d4d95e17bf2c10c6a8dde2bdde5a4e5ea18a05baa22def0a669d1b42",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/m3/seen_family/metrics_by_transform.csv",
+        "metrics_csv_sha256": "6b9dc9ab5fe6b37b83cd011894a536a068b5bb77ebd34cfca1612ddc834c9e9c",
+        "run_card": "outputs/community_forensics_robustness_v2/m3/seen_family/run_card.json",
+        "run_card_sha256": "873218dc9a1441dea44a2566b062db14c28177449f7f9bb641a4bcd3b4bfe3ed",
+        "summary": "outputs/community_forensics_robustness_v2/m3/seen_family/summary.json",
+        "summary_sha256": "6f22b1ba14a569aa32eb68f506712e4e5ef98d81f64d3e91cfa9d24cb07a7a4a"
+      },
+      "unseen_generator": {
+        "evaluation_job_id": "32587",
+        "manifest": "data/manifests/community_forensics_test_external_unseen_generator.csv",
+        "manifest_sha256": "70434fc7b38ed2015cac67bc87897139fb202ffa13e736a5ce2f7c759833e42a",
+        "metrics_csv": "outputs/community_forensics_robustness_v2/m3/unseen_generator/metrics_by_transform.csv",
+        "metrics_csv_sha256": "5ecedbb7a08027c171ee3096e23a2c19693b5be2c8a70968d69808fa603a4f7e",
+        "run_card": "outputs/community_forensics_robustness_v2/m3/unseen_generator/run_card.json",
+        "run_card_sha256": "cd695bd0dab36ce1e1d02fcf02d7617d7881b3507cbf9a21b796ddeac75fda4d",
+        "summary": "outputs/community_forensics_robustness_v2/m3/unseen_generator/summary.json",
+        "summary_sha256": "241ae6eccf8e349b18c85495a2e9645ec2492d82538c2bd8cf809df11dda25fa"
+      }
+    }
+  },
+  "sql_snapshot_queries": {
+    "all_metrics": "SELECT * FROM all_metrics ORDER BY split, condition_index, model",
+    "headline_metrics": "SELECT * FROM headline_metrics",
+    "m3_gates": "SELECT * FROM m3_gates ORDER BY split_order, condition_index",
+    "macro_chart": "SELECT * FROM macro_chart ORDER BY condition_order, model_order",
+    "macro_detail": "SELECT * FROM macro_detail ORDER BY model_order",
+    "model_lineage": "SELECT * FROM model_lineage ORDER BY model_order",
+    "perturbation_matrix": "SELECT * FROM perturbation_matrix ORDER BY condition_index",
+    "split_definitions": "SELECT * FROM split_definitions ORDER BY split_order",
+    "split_summary": "SELECT * FROM split_summary ORDER BY split_order, model_order",
+    "strict_six_chart": "SELECT * FROM strict_six_chart ORDER BY split_order, model_order",
+    "worst_new_chart": "SELECT * FROM worst_new_chart ORDER BY worst_auroc DESC"
+  },
+  "visual_omissions": [
+    "The 630-row multi-metric detail is a sortable table because exact lookup is the goal and a single chart would obscure the evidence.",
+    "Confidence-interval visuals are omitted because bootstrap replicates were not computed in this evaluation run."
+  ]
+}

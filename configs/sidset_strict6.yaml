@@ -1,0 +1,10 @@
+# Strict composed repost test.  Every validation sample receives all six
+# perturbations.  Individual strengths are sampled deterministically from the
+# full training ranges using seed + validation sample index.
+evaluation:
+  - {name: clean, params: {}}
+  - name: strict_random_six
+    params:
+      profile: full_training_range_v1
+      seed: 20260828
+

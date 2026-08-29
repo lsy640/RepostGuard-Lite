@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "generated_at_asia_singapore": "2026-08-29T13:54:48+08:00",
+  "report_job_id": "32634",
+  "report_contract": {
+    "delivery_mode": "portable_html",
+    "audience": "technical",
+    "question": "Describe the current frozen training set and every configured validation/test set, including composition, storage, generator exposure, and leakage checks.",
+    "baseline": "Current eight frozen manifests under configs/community_forensics/base.yaml.",
+    "success_criteria": "All manifests parse; every referenced file exists; byte sizes match; only the declared shared hard-real panel overlaps across splits.",
+    "required_section_mapping": {
+      "title": "title",
+      "technical_summary": "technical_summary",
+      "key_findings_with_visual_evidence": [
+        "balance_finding",
+        "generator_finding",
+        "storage_finding",
+        "format_finding"
+      ],
+      "scope_data_and_metric_definitions": "scope_definitions",
+      "methodology": "methodology",
+      "limitations_uncertainty_and_robustness_checks": "limitations",
+      "recommended_next_steps": "recommendations",
+      "further_questions": "further_questions"
+    }
+  },
+  "headline": {
+    "manifest_count": 8,
+    "manifest_rows": 27500,
+    "unique_images": 27000,
+    "duplicate_references": 500,
+    "unique_real": 13250,
+    "unique_aigi": 13750,
+    "physical_gib": 24.51063,
+    "nominal_manifest_gib": 28.430742,
+    "unique_generators": 1021,
+    "unique_architectures": 5,
+    "unique_real_sources": 6,
+    "unique_formats": 4,
+    "shared_hard_real_images": 250,
+    "missing_paths": 0,
+    "size_mismatches": 0,
+    "unexpected_sha_overlap_groups": 0,
+    "current_tiff_files": 594,
+    "prior_tiff_valid_files": 500,
+    "prior_tiff_warning_files": 489,
+    "prior_tiff_failed_files": 0,
+    "train_generator_count": 900,
+    "internal_val_generator_count": 100,
+    "base_selection_seed": 20260828
+  },
+  "audit_details": {
+    "missing_paths": [],
+    "byte_size_mismatches": [],
+    "unexpected_sha_overlap_groups": [],
+    "unexpected_path_overlap_groups": 0,
+    "unexpected_sample_id_overlap_groups": 0,
+    "duplicate_sha_groups_total": 250,
+    "duplicate_path_groups_total": 250,
+    "duplicate_sample_id_groups_total": 250,
+    "cross_label_sha_conflicts": 0,
+    "physical_bytes": 26318088950,
+    "nominal_manifest_bytes": 30527276262,
+    "data_root": "data/raw/community_forensics",
+    "base_audit": "data/manifests/community_forensics_audit.json",
+    "validation_v2_audit": "data/manifests/community_forensics_validation_v2_audit.json",
+    "tiff_audit": "reports/community_forensics_tiff_integrity.json",
+    "tiff_audit_completed_at_utc": "2026-08-28T11:11:19.362553+00:00",
+    "current_tiff_files": 594,
+    "prior_tiff_covered_files": 500
+  },
+  "manifest_lineage": [
+    {
+      "split": "Train",
+      "split_key": "train",
+      "split_order": 0,
+      "role": "Training",
+      "manifest": "data/manifests/community_forensics_train.csv",
+      "manifest_sha256": "fdfddade1b8b",
+      "manifest_bytes": 7297541,
+      "selection_seed": "20260828",
+      "source_revision": "6c539a534c07",
+      "protocol": "Small train; the only split used for parameter fitting."
+    },
+    {
+      "split": "Internal unseen-generator val",
+      "split_key": "val_unseen_generator",
+      "split_order": 1,
+      "role": "Checkpoint validation",
+      "manifest": "data/manifests/community_forensics_val_unseen_generator.csv",
+      "manifest_sha256": "11bfa4b6d7c5",
+      "manifest_bytes": 957749,
+      "selection_seed": "20260828",
+      "source_revision": "6c539a534c07",
+      "protocol": "Small holdout; exact generators are disjoint from Small train."
+    },
+    {
+      "split": "External exact-seen val",
+      "split_key": "val_external_exact_seen_generator",
+      "split_order": 2,
+      "role": "External validation",
+      "manifest": "data/manifests/community_forensics_val_external_exact_seen_generator.csv",
+      "manifest_sha256": "fc4bbd7d05c1",
+      "manifest_bytes": 938022,
+      "selection_seed": "20260828",
+      "source_revision": "f125eabc5ac3",
+      "protocol": "AIGIBench; exact SD 1.4 identity appears in Small train."
+    },
+    {
+      "split": "Hard Hourglass val",
+      "split_key": "val_hard_hourglass",
+      "split_order": 3,
+      "role": "Hard validation",
+      "manifest": "data/manifests/community_forensics_val_hard_hourglass.csv",
+      "manifest_sha256": "9cad78012352",
+      "manifest_bytes": 220618,
+      "selection_seed": "20260828",
+      "source_revision": "7d4a74a88d2c",
+      "protocol": "Exact Hourglass identity unseen; PixDiff architecture family seen."
+    },
+    {
+      "split": "Hard DFGAN val",
+      "split_key": "val_hard_dfgan",
+      "split_order": 4,
+      "role": "Hard validation",
+      "manifest": "data/manifests/community_forensics_val_hard_dfgan.csv",
+      "manifest_sha256": "1a60b7d517bb",
+      "manifest_bytes": 209259,
+      "selection_seed": "20260828",
+      "source_revision": "7d4a74a88d2c",
+      "protocol": "Exact DFGAN identity unseen; GAN architecture family seen."
+    },
+    {
+      "split": "Hard GALIP val",
+      "split_key": "val_hard_galip",
+      "split_order": 5,
+      "role": "Hard validation",
+      "manifest": "data/manifests/community_forensics_val_hard_galip.csv",
+      "manifest_sha256": "bf9a5b60a529",
+      "manifest_bytes": 209124,
+      "selection_seed": "20260828",
+      "source_revision": "7d4a74a88d2c",
+      "protocol": "Exact GALIP identity unseen; GAN architecture family seen."
+    },
+    {
+      "split": "External seen-family test",
+      "split_key": "test_external_seen_family",
+      "split_order": 6,
+      "role": "External test",
+      "manifest": "data/manifests/community_forensics_test_external_seen_family.csv",
+      "manifest_sha256": "c55d0652d4d9",
+      "manifest_bytes": 972969,
+      "selection_seed": "20260828",
+      "source_revision": "7d4a74a88d2c",
+      "protocol": "Architecture family seen in train; every exact generator identity unseen."
+    },
+    {
+      "split": "External unseen-family test",
+      "split_key": "test_external_unseen_generator",
+      "split_order": 7,
+      "role": "External test",
+      "manifest": "data/manifests/community_forensics_test_external_unseen_generator.csv",
+      "manifest_sha256": "70434fc7b38e",
+      "manifest_bytes": 1028056,
+      "selection_seed": "20260828",
+      "source_revision": "7d4a74a88d2c",
+      "protocol": "Architecture family and exact generator identity both unseen."
+    }
+  ],
+  "sql_snapshot_queries": {
+    "headline_metrics": "SELECT * FROM headline_metrics",
+    "global_summary": "SELECT * FROM global_summary ORDER BY rows_or_images DESC",
+    "split_summary": "SELECT * FROM split_summary ORDER BY split_order",
+    "class_counts": "SELECT * FROM class_counts ORDER BY split_order, class_order",
+    "architecture_counts": "SELECT * FROM architecture_counts ORDER BY split_order, architecture_order",
+    "format_counts": "SELECT * FROM format_counts ORDER BY split_order, format_order",
+    "real_source_counts": "SELECT * FROM real_source_counts ORDER BY split_order, source_order",
+    "resolution_counts": "SELECT * FROM resolution_counts ORDER BY split_order, bin_order",
+    "generator_exposure": "SELECT * FROM generator_exposure ORDER BY split_order",
+    "generator_statistics": "SELECT * FROM generator_statistics ORDER BY split_order, generator_order",
+    "pairwise_overlap": "SELECT * FROM pairwise_overlap ORDER BY shared_sha256 DESC, left_order, right_order",
+    "integrity_checks": "SELECT * FROM integrity_checks ORDER BY check_order",
+    "build_audit": "SELECT * FROM build_audit ORDER BY audit_order",
+    "manifest_lineage": "SELECT * FROM manifest_lineage ORDER BY split_order"
+  },
+  "supporting_outputs": {
+    "split_csv": "reports/community_forensics_data_statistics.csv",
+    "generator_csv": "reports/community_forensics_generator_statistics.csv",
+    "distribution_csv": "reports/community_forensics_distribution_statistics.csv"
+  },
+  "chart_map": [
+    {
+      "section": "balance_finding",
+      "question": "Compare Real and AIGI counts across all manifests.",
+      "family": "comparison",
+      "type": "grouped bar",
+      "fields": [
+        "split",
+        "class",
+        "count"
+      ],
+      "palette": "semantic two-class"
+    },
+    {
+      "section": "generator_finding",
+      "question": "Compare AIGI architecture composition across splits.",
+      "family": "composition",
+      "type": "grouped percent bar",
+      "fields": [
+        "split",
+        "architecture",
+        "share_percent"
+      ],
+      "palette": "categorical architecture families"
+    },
+    {
+      "section": "storage_finding",
+      "question": "Rank nominal storage by split.",
+      "family": "comparison and ranking",
+      "type": "horizontal bar",
+      "fields": [
+        "split",
+        "nominal_gib",
+        "role"
+      ],
+      "palette": "categorical split roles"
+    },
+    {
+      "section": "format_finding",
+      "question": "Compare image-format composition across splits.",
+      "family": "composition",
+      "type": "grouped percent bar",
+      "fields": [
+        "split",
+        "format",
+        "share_percent"
+      ],
+      "palette": "categorical file formats"
+    }
+  ],
+  "visual_omissions": [
+    "The complete generator inventory is a table because more than one thousand categorical labels are not readable in a chart.",
+    "Pairwise overlaps are a sortable table because exact zero/nonzero audit values matter more than visual trend detection.",
+    "No confidence intervals are shown because the report is a deterministic census of frozen manifests, not a sample estimate."
+  ]
+}

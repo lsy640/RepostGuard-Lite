@@ -1,0 +1,58 @@
+# Community Forensics robustness matrix v2.
+#
+# Conditions 1-18 are byte-for-byte equivalent in meaning and order to the
+# original configs/transforms.yaml matrix: clean plus 17 perturbations.  The
+# last three conditions add two deterministic four-stage repost pipelines and
+# one deterministic-per-sample six-stage pipeline with random strengths.
+evaluation:
+  - {name: clean, params: {}}
+  - {name: jpeg, params: {quality: 90}}
+  - {name: jpeg, params: {quality: 70}}
+  - {name: jpeg, params: {quality: 50}}
+  - {name: jpeg, params: {quality: 30}}
+  - {name: gaussian_blur, params: {sigma: 0.5}}
+  - {name: gaussian_blur, params: {sigma: 1.0}}
+  - {name: gaussian_blur, params: {sigma: 2.0}}
+  - {name: resize, params: {scale: 0.5, interpolation: bicubic}}
+  - {name: resize, params: {scale: 0.25, interpolation: bilinear}}
+  - {name: gaussian_noise, params: {sigma: 0.02, seed: 20260827}}
+  - {name: gaussian_noise, params: {sigma: 0.05, seed: 20260827}}
+  - {name: gaussian_noise, params: {sigma: 0.10, seed: 20260827}}
+  - {name: color_jitter, params: {brightness: 0.8, contrast: 0.8, saturation: 0.8}}
+  - {name: color_jitter, params: {brightness: 1.2, contrast: 1.2, saturation: 1.2}}
+  - {name: center_crop, params: {ratio: 0.8}}
+  - name: combo_resize_jpeg
+    params:
+      transforms:
+        - {name: resize, params: {scale: 0.5, interpolation: bicubic}}
+        - {name: jpeg, params: {quality: 70}}
+  - name: combo_crop_jpeg
+    params:
+      transforms:
+        - {name: center_crop, params: {ratio: 0.8}}
+        - {name: jpeg, params: {quality: 50}}
+
+  # Four-stage A: structural/platform repost degradation.
+  - name: combo_four_stage_platform_repost
+    params:
+      transforms:
+        - {name: center_crop, params: {ratio: 0.85}}
+        - {name: resize, params: {scale: 0.5, interpolation: bicubic}}
+        - {name: gaussian_blur, params: {sigma: 1.0}}
+        - {name: jpeg, params: {quality: 50}}
+
+  # Four-stage B: content edit followed by resampling and recompression.
+  - name: combo_four_stage_edit_repost
+    params:
+      transforms:
+        - {name: color_jitter, params: {brightness: 1.15, contrast: 1.15, saturation: 0.85}}
+        - {name: resize, params: {scale: 0.5, interpolation: bilinear}}
+        - {name: gaussian_noise, params: {sigma: 0.05, seed: 20260829}}
+        - {name: jpeg, params: {quality: 50}}
+
+  # Six-stage: every sample receives all six perturbation families.  Strengths
+  # are sampled from the full training ranges with seed + manifest row index.
+  - name: strict_random_six
+    params:
+      profile: full_training_range_v1
+      seed: 20260829

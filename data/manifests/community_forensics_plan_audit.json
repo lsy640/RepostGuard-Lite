@@ -1,0 +1,67 @@
+{
+  "aigi_images_per_small_generator": 10,
+  "counts": {
+    "test_external_seen_family": {
+      "0": 1000,
+      "1": 1000
+    },
+    "test_external_unseen_generator": {
+      "0": 1000,
+      "1": 1000
+    },
+    "train": {
+      "0": 9000,
+      "1": 9000
+    },
+    "val_unseen_generator": {
+      "0": 1000,
+      "1": 1000
+    }
+  },
+  "external_seen_definition": "architecture_family_seen_generator_identity_unseen",
+  "external_seen_families": [
+    "GAN",
+    "LatDiff",
+    "PixDiff"
+  ],
+  "external_seen_family_generators": [
+    "decidiffusionv2",
+    "dfgan",
+    "galip",
+    "hourglass",
+    "kandinsky-2-2",
+    "kvikontent-midjourney-v6",
+    "lcm-lora-sdv15",
+    "lcm-lora-sdxl",
+    "lcm-lora-ssd1b"
+  ],
+  "external_unseen_families": [
+    "Commercial",
+    "Other"
+  ],
+  "external_unseen_generators": [
+    "dalle2",
+    "dalle3",
+    "firefly-image2",
+    "firefly-image3",
+    "flux-dev",
+    "flux-schnell",
+    "ideogramv1",
+    "ideogramv2",
+    "imagen3",
+    "midjourneyv5-2",
+    "midjourneyv6-1",
+    "stable-cascade"
+  ],
+  "generator_count": 1000,
+  "reserved_overlap_generators": [],
+  "selection_seed": 20260828,
+  "small_eval_exact_generator_intersection": 0,
+  "small_real_source_counts": {
+    "UNSPECIFIED": 10000
+  },
+  "small_real_source_limitation": "Pinned CommunityForensics-Small metadata reports real_source=N/A for all real rows; the requested FFHQ/VISION/COCO/Landscapes HQ balance cannot be verified.",
+  "small_real_source_selection": "deterministic_global_fallback_metadata_unavailable",
+  "train_generator_count": 900,
+  "validation_generator_count": 100
+}

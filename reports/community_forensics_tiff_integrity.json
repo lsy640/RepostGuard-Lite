@@ -1,0 +1,3461 @@
+{
+  "byte_size_range": [
+    7555402,
+    36774982
+  ],
+  "checks": [
+    "file_exists",
+    "byte_size_matches_sqlite",
+    "sha256_matches_sqlite",
+    "pillow_verify",
+    "all_frames_full_decode",
+    "dimensions_match_sqlite"
+  ],
+  "completed_at_utc": "2026-08-28T11:11:19.362553+00:00",
+  "data_root": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics",
+  "database": "/home/msai/lius0131/AGI/repostguard-lite/data/state/community_forensics.sqlite3",
+  "failed_files": 0,
+  "failures": [],
+  "frame_counts": {
+    "1": 500
+  },
+  "height_range": [
+    2848,
+    4928
+  ],
+  "modes": {
+    "RGB": 500
+  },
+  "tiff_rows": 500,
+  "valid_files": 500,
+  "warning_files": 489,
+  "warnings": [
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_0186743858a864c7_000001090.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_0186743858a864c7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_048b7c192f1fde51_000005181.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_048b7c192f1fde51",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_05b6aae95acfb628_000006843.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_05b6aae95acfb628",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_063e59962d65ca4f_000003076.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_063e59962d65ca4f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_0642f4754c5cefdd_000000822.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_0642f4754c5cefdd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_0686ad9bea5b6f77_000003680.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_0686ad9bea5b6f77",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_077ba2664a241b75_000007553.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_077ba2664a241b75",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_07d46534454cb64f_000002167.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_07d46534454cb64f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_0899a59987a1c8cf_000007714.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_0899a59987a1c8cf",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_099d789e20f1cd5b_000004086.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_099d789e20f1cd5b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_09ffa9983289b3ec_000006796.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_09ffa9983289b3ec",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_0abf762dedd853fd_000006865.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_0abf762dedd853fd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_0adeccd658119979_000004505.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_0adeccd658119979",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_0b9f5b127adb999f_000000506.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_0b9f5b127adb999f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_0ee0704e03f69c12_000001600.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_0ee0704e03f69c12",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_0f1569316fc03b3b_000007720.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_0f1569316fc03b3b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_1288318d46d3696e_000003071.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_1288318d46d3696e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_131a1eb57c8a88bc_000001854.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_131a1eb57c8a88bc",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_1388097ecb87b310_000001633.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_1388097ecb87b310",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_13fa8a540c6036d0_000004684.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_13fa8a540c6036d0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_14518e479a91f49c_000007570.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_14518e479a91f49c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_155e94e7ad4d11d9_000000012.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_155e94e7ad4d11d9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_179f76ecd3efd339_000000637.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_179f76ecd3efd339",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_17a0f0ae3ea7fe48_000008072.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_17a0f0ae3ea7fe48",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_1ad87f2a608daeff_000000351.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_1ad87f2a608daeff",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_1ae3b303d996cca8_000006476.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_1ae3b303d996cca8",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_1af881a606a32761_000007143.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_1af881a606a32761",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_1c7ff76e77a22a3f_000000274.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_1c7ff76e77a22a3f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_1db3f197dbd3379b_000000738.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_1db3f197dbd3379b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_1e13201e59950f25_000000992.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_1e13201e59950f25",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_1eab0faf43e8fd05_000004521.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_1eab0faf43e8fd05",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_1f83c183f856233c_000001127.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_1f83c183f856233c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_213bae629a2e4178_000008105.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_213bae629a2e4178",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_22249d941d08013d_000005895.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_22249d941d08013d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_2276e8834ac49007_000006200.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_2276e8834ac49007",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_25280c198d5581ad_000007070.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_25280c198d5581ad",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_272103d5600b3733_000003714.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_272103d5600b3733",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_282112b473a34eb3_000007542.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_282112b473a34eb3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_28402ad7ffb38aac_000007160.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_28402ad7ffb38aac",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_2a544aec7b8b88c9_000004455.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_2a544aec7b8b88c9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_2bc7eb33b280c8fa_000007232.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_2bc7eb33b280c8fa",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_2d06d76d8c8237b2_000006522.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_2d06d76d8c8237b2",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_2d8096c10c235d8f_000006640.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_2d8096c10c235d8f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_2fa2c9549353d2bd_000001269.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_2fa2c9549353d2bd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_2ff7a01f55fdf453_000006045.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_2ff7a01f55fdf453",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_2ffc0666d472f198_000007332.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_2ffc0666d472f198",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_30ace4d6e659fb6c_000008082.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_30ace4d6e659fb6c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_313c8819d4f5b8e3_000008000.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_313c8819d4f5b8e3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_33038ef9ae531934_000003952.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_33038ef9ae531934",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_3330c290acce4f59_000007421.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_3330c290acce4f59",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_33565bc544fc6b8f_000005274.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_33565bc544fc6b8f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_337f780b562b2456_000003676.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_337f780b562b2456",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_34196100323edc55_000004421.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_34196100323edc55",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_34329cff0ae9f0c9_000005599.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_34329cff0ae9f0c9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_344a78bafecd8ed6_000006673.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_344a78bafecd8ed6",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_348f282572fdd8d2_000000022.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_348f282572fdd8d2",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_3851bc1294a8ee4c_000002250.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_3851bc1294a8ee4c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_390a75f63d9d8ad8_000004079.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_390a75f63d9d8ad8",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_3a06b59ec2ee9511_000003501.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_3a06b59ec2ee9511",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_3cec611f828ba098_000002370.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_3cec611f828ba098",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_3dd6eb6548068ae8_000001960.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_3dd6eb6548068ae8",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_3f981fbb4aa18728_000006367.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_3f981fbb4aa18728",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_4064b93d05d46ebc_000000755.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_4064b93d05d46ebc",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_419eaa54863d14a8_000003098.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_419eaa54863d14a8",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_42a114830d532b1b_000002909.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_42a114830d532b1b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_44002a54a9425634_000003343.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_44002a54a9425634",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_450916f89e572a25_000006879.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_450916f89e572a25",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_460f424fda245a2d_000003865.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_460f424fda245a2d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_475a0782b059c63a_000002177.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_475a0782b059c63a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_47da1c70bee8bbe1_000000270.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_47da1c70bee8bbe1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_48490dcc31c01988_000001197.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_48490dcc31c01988",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_48ae0ec20c3806a1_000003524.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_48ae0ec20c3806a1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_48ebcca0536b8984_000001237.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_48ebcca0536b8984",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_4a9edc334f5beda1_000005087.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_4a9edc334f5beda1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_4d593e0e61f2bcf5_000001784.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_4d593e0e61f2bcf5",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_4e34f14adc47f86e_000001635.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_4e34f14adc47f86e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_4e38238d2002465e_000004502.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_4e38238d2002465e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_4eea2f9ce1d9fc99_000003798.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_4eea2f9ce1d9fc99",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_4f067ed2404f0355_000002710.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_4f067ed2404f0355",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_4f3e27c09c41381d_000003254.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_4f3e27c09c41381d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_4f92ae5478814ce6_000006770.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_4f92ae5478814ce6",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_5248a78a41075ecf_000007496.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_5248a78a41075ecf",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_5368c74e5f252a59_000000840.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_5368c74e5f252a59",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_54e41a4c633ed262_000001007.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_54e41a4c633ed262",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_5605fbcea51fd74d_000008019.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_5605fbcea51fd74d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_5645e4dc1a1ea4e1_000005068.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_5645e4dc1a1ea4e1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_5901388ac3291a8a_000003704.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_5901388ac3291a8a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_5ec371aef2d27a0a_000003773.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_5ec371aef2d27a0a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_5f9a50bcd632b3a6_000007683.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_5f9a50bcd632b3a6",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_607a6b3f461ff7dc_000000824.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_607a6b3f461ff7dc",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_63204a46611ac0f1_000003979.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_63204a46611ac0f1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_64843cc68066ee00_000003376.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_64843cc68066ee00",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_64f494d2b83e5b70_000001490.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_64f494d2b83e5b70",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_66f2d361e526e711_000005881.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_66f2d361e526e711",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_67dd62bc4e2e8fb0_000001206.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_67dd62bc4e2e8fb0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_67ee58ae11132d57_000002751.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_67ee58ae11132d57",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_69995ff1d2ac67e8_000003079.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_69995ff1d2ac67e8",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_6b90f4d2d84c8cdb_000005067.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_6b90f4d2d84c8cdb",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_6bf963bf91deb07e_000003539.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_6bf963bf91deb07e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_6c97eb7f1adb69c3_000005294.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_6c97eb7f1adb69c3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_6d05f2367d130ca4_000001772.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_6d05f2367d130ca4",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_6d8a432b42a1e184_000006469.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_6d8a432b42a1e184",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_6e20d8201329df53_000004498.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_6e20d8201329df53",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_6e2a8fab58cb5316_000005887.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_6e2a8fab58cb5316",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_6eb74cd1ef27f8cd_000006790.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_6eb74cd1ef27f8cd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_6ebdfa6ba4ee0930_000005868.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_6ebdfa6ba4ee0930",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_6f691bbf62c96647_000001131.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_6f691bbf62c96647",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_6f95ca42edee5afd_000001591.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_6f95ca42edee5afd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_6fb897abce898ee4_000000416.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_6fb897abce898ee4",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_717c6a0653811e27_000005014.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_717c6a0653811e27",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_71b1b1ac7164f541_000005105.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_71b1b1ac7164f541",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_71e677f9dc46a11e_000000072.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_71e677f9dc46a11e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_7388a987bc1d0031_000003233.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_7388a987bc1d0031",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_75abd5f261cd8cec_000008010.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_75abd5f261cd8cec",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_77138fa513267c0d_000006139.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_77138fa513267c0d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_77f49d20454bb7ac_000001392.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_77f49d20454bb7ac",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_799cedd8d3b4a1c9_000002998.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_799cedd8d3b4a1c9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_81e3def74d6201b1_000005922.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_81e3def74d6201b1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_82cef0aa692233a1_000005047.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_82cef0aa692233a1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_838534e2f20703d1_000005315.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_838534e2f20703d1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_84593b4c78022b5d_000006930.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_84593b4c78022b5d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_84ed7b0fa10e3dad_000001204.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_84ed7b0fa10e3dad",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_8501e90a84351358_000004287.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_8501e90a84351358",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_8540ab64e86ef54e_000003923.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_8540ab64e86ef54e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_85440bb8bdb80f66_000003144.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_85440bb8bdb80f66",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_858597840ba88cb9_000005407.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_858597840ba88cb9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_85ff7405a8bf7f9c_000004316.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_85ff7405a8bf7f9c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_871a1d5621b60fd7_000005646.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_871a1d5621b60fd7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_8757f4ef7f0cdbd0_000004880.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_8757f4ef7f0cdbd0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_8977478b23c20a86_000001386.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_8977478b23c20a86",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_899f546b3f2862c6_000004379.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_899f546b3f2862c6",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_8a49ba9bd4567cb9_000000286.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_8a49ba9bd4567cb9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_8bff10dfae44d1e0_000007486.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_8bff10dfae44d1e0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_8d789191469f2010_000000758.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_8d789191469f2010",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_9047100687d7edfb_000003633.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_9047100687d7edfb",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_936143c3aa442883_000001199.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_936143c3aa442883",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_94b522f04a4fcff8_000000512.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_94b522f04a4fcff8",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_9549542ab2776cb7_000003418.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_9549542ab2776cb7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_970c5391442125a9_000006969.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_970c5391442125a9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_9920c07b93a6f4a1_000004814.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_9920c07b93a6f4a1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_992ab27daacace8d_000007267.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_992ab27daacace8d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_9a06f0f9bcb5e0ee_000004807.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_9a06f0f9bcb5e0ee",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_9aad81e33b15ef2b_000002674.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_9aad81e33b15ef2b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_9ce3143804c5de6f_000006351.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_9ce3143804c5de6f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_9f779c0f6e88fec3_000002712.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_9f779c0f6e88fec3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_a12d23cbce4ce9b6_000000323.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_a12d23cbce4ce9b6",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_a17bf7739f6606e1_000006651.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_a17bf7739f6606e1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_a2386be5fcc13493_000005704.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_a2386be5fcc13493",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_a4cd28bbb9d43224_000004575.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_a4cd28bbb9d43224",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_a594a0416f36a373_000001169.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_a594a0416f36a373",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_a7377281ad31fd07_000006521.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_a7377281ad31fd07",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_a7e571208bca3e6e_000003090.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_a7e571208bca3e6e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_a8627f5281f28b0a_000001379.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_a8627f5281f28b0a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_a8ae877e684e2c02_000001601.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_a8ae877e684e2c02",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_ac102432f314bf77_000000281.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_ac102432f314bf77",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_acad764cbf29a81b_000000111.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_acad764cbf29a81b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_ad576cce09c78b2d_000006122.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_ad576cce09c78b2d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_ade8acfbca58d4f2_000002044.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_ade8acfbca58d4f2",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_ae1c67dc58b09cbb_000000990.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_ae1c67dc58b09cbb",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_ae832cba0ad4287f_000003484.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_ae832cba0ad4287f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_b0060b472975e716_000006510.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_b0060b472975e716",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_b15d62e7a0402986_000000689.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_b15d62e7a0402986",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_b1f99823c7fe1e46_000000558.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_b1f99823c7fe1e46",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_b3020f7c3e36cbcd_000001912.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_b3020f7c3e36cbcd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_b34118debd55a4eb_000001624.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_b34118debd55a4eb",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_b34748eea165cc90_000002059.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_b34748eea165cc90",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_b41d347b2464318c_000002413.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_b41d347b2464318c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_b45fbe7fef7628da_000003538.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_b45fbe7fef7628da",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_b514cec2ebbdf719_000002150.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_b514cec2ebbdf719",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_b62ccfcb8e0ab39b_000002283.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_b62ccfcb8e0ab39b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_b6eb13d41db3fb09_000007347.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_b6eb13d41db3fb09",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_b746b10f5364b0cd_000004527.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_b746b10f5364b0cd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_b888bce245509ba1_000004205.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_b888bce245509ba1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_ba7ecfe2b29f97d1_000001999.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_ba7ecfe2b29f97d1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_bac6bfd414dd97cd_000005233.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_bac6bfd414dd97cd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_bb1188c5bf4e1cf1_000000562.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_bb1188c5bf4e1cf1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_bb1270ae58ac08ba_000005234.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_bb1270ae58ac08ba",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_bb87e3557c65254a_000002375.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_bb87e3557c65254a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_bc2e22e4a9e69e96_000002727.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_bc2e22e4a9e69e96",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_bc6bd07917ef2c00_000005088.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_bc6bd07917ef2c00",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_bc9b42d786b05c25_000002996.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_bc9b42d786b05c25",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_bce2a094a9e62bb3_000003914.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_bce2a094a9e62bb3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_beb89c5ab48724c5_000007007.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_beb89c5ab48724c5",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_bf9e0f20904a74cc_000005557.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_bf9e0f20904a74cc",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_bfd5dbc47a533c7a_000000220.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_bfd5dbc47a533c7a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_c0d4021bdcd6016f_000002889.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_c0d4021bdcd6016f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_c390780f184bed50_000004805.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_c390780f184bed50",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_c468354c8dbbe4ad_000007797.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_c468354c8dbbe4ad",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_c95c0ba22fe23476_000002703.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_c95c0ba22fe23476",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_cab275544752cba9_000007651.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_cab275544752cba9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_cabe6b33d2359d9c_000007581.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_cabe6b33d2359d9c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_cb97714e43625079_000007978.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_cb97714e43625079",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_cb97a2cf0fc4b1ac_000002159.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_cb97a2cf0fc4b1ac",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_cdb0377878cbab27_000002412.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_cdb0377878cbab27",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d00efec50ab97c8c_000005958.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d00efec50ab97c8c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d04974503ea8ba68_000008037.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d04974503ea8ba68",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d0b3cf7771917a99_000003171.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d0b3cf7771917a99",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d25d9eae9f8ac064_000002247.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d25d9eae9f8ac064",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d2809c68b11d657f_000007314.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d2809c68b11d657f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d2ac60ba6c0b01cd_000000407.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d2ac60ba6c0b01cd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d2cf912caab05370_000007073.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d2cf912caab05370",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d3455a4a0f76df03_000003211.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d3455a4a0f76df03",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d4dcb112d71b3a8e_000001145.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d4dcb112d71b3a8e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d5986dc657e7780b_000007589.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d5986dc657e7780b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d5b2eabada2afc7e_000004779.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d5b2eabada2afc7e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d65d1d3bab06243a_000003638.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d65d1d3bab06243a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d74bcd9d5b147330_000004069.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d74bcd9d5b147330",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d8c971eed4979133_000008011.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d8c971eed4979133",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_d9c9e1479f5cba12_000001267.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_d9c9e1479f5cba12",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_db2459c50f42fefc_000006707.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_db2459c50f42fefc",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_dba165fcce4fb234_000006206.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_dba165fcce4fb234",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_dc56073a5bca9234_000001223.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_dc56073a5bca9234",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_dd7b4eb6e98baf55_000001915.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_dd7b4eb6e98baf55",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_dfd893f5475f529e_000001752.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_dfd893f5475f529e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_e107e459ef8373c7_000005307.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_e107e459ef8373c7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_e1a648f4cd82572c_000004275.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_e1a648f4cd82572c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_e289ae7e04cc969f_000000699.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_e289ae7e04cc969f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_e3c75f1bf4717ee5_000008133.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_e3c75f1bf4717ee5",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_e4aac8b7cff4c327_000005682.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_e4aac8b7cff4c327",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_e56814f19de93dd3_000003563.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_e56814f19de93dd3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_e5a9e6c936c29721_000003398.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_e5a9e6c936c29721",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_e62ae454793823d1_000006119.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_e62ae454793823d1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_e70399fdb7a2fe74_000007856.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_e70399fdb7a2fe74",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_e7324ba1867b8822_000003285.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_e7324ba1867b8822",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_e7aded1ea1bab712_000007081.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_e7aded1ea1bab712",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_e8474a83bdf2bff4_000006069.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_e8474a83bdf2bff4",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_eb82f0e7e7c1f4f9_000002856.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_eb82f0e7e7c1f4f9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_ec7842918620406a_000004198.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_ec7842918620406a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_ee2872fd28f44e7b_000005390.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_ee2872fd28f44e7b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_eeba7d7db2b4a128_000002518.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_eeba7d7db2b4a128",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_eeca7d89a6427b45_000005892.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_eeca7d89a6427b45",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_efb9d478ebb13ea2_000003108.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_efb9d478ebb13ea2",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_f04ae65b77babbfa_000000380.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_f04ae65b77babbfa",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_f2539a3bb84ece5e_000004225.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_f2539a3bb84ece5e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_f26e91257e22dae3_000003864.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_f26e91257e22dae3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_f2a7fce529ce6ecf_000001369.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_f2a7fce529ce6ecf",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_f30a7571cf1de3b6_000003400.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_f30a7571cf1de3b6",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_f5cbce0439534529_000001021.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_f5cbce0439534529",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_f97a3301422cdd11_000004598.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_f97a3301422cdd11",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_f9af6a2560b8c160_000007520.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_f9af6a2560b8c160",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_fa1a02c5f32fecb0_000001304.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_fa1a02c5f32fecb0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_fad82ba1a08b41ab_000004602.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_fad82ba1a08b41ab",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_fd29699e3c5fd423_000006064.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_fd29699e3c5fd423",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_fdd5e4b3f32aa739_000004558.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_fdd5e4b3f32aa739",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_seen_family/real/cf_test_external_seen_family_real_fe1b18fb9e18f3b8_000000853.tiff.tiff",
+      "sample_id": "cf_test_external_seen_family_real_fe1b18fb9e18f3b8",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_016b12cc8bc3cbd5_000006643.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_016b12cc8bc3cbd5",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_033b65f7c57f9e69_000003502.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_033b65f7c57f9e69",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_040af4454afbbf9d_000002830.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_040af4454afbbf9d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_04c7f9b7af7d60dd_000006566.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_04c7f9b7af7d60dd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_0540e12b101a36c2_000008091.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_0540e12b101a36c2",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_0624911fa2ed8d11_000006592.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_0624911fa2ed8d11",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_0729f7e0410d995a_000004156.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_0729f7e0410d995a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_076447f8f574ba39_000001303.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_076447f8f574ba39",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_09d0db52c0279234_000004918.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_09d0db52c0279234",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_0ab7f7f47ec0adf8_000002240.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_0ab7f7f47ec0adf8",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_0c7f956a292e6ab2_000001314.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_0c7f956a292e6ab2",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_0d809590f5cbf2e1_000001929.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_0d809590f5cbf2e1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_0e59169348e737eb_000004623.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_0e59169348e737eb",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_115d6a5c4f7a3295_000001789.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_115d6a5c4f7a3295",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_11e0185762ffcb0a_000006410.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_11e0185762ffcb0a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_1249ed870d263d26_000001011.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_1249ed870d263d26",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_127bbe8efcbbaacc_000000813.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_127bbe8efcbbaacc",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_1514993cb713fa69_000000929.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_1514993cb713fa69",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_165ba1871983e1cc_000001684.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_165ba1871983e1cc",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_16c70fa23287b88d_000007629.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_16c70fa23287b88d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_1810d452f5bbf79c_000007559.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_1810d452f5bbf79c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_1817d708fddbfd7e_000006309.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_1817d708fddbfd7e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_19129cdc62aa426e_000006507.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_19129cdc62aa426e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_1a96b9714288240e_000001406.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_1a96b9714288240e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_1c20def89ec2f48b_000004150.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_1c20def89ec2f48b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_1d406753db824809_000002654.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_1d406753db824809",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_1e655f0d836b4f51_000003324.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_1e655f0d836b4f51",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_20f68b3a56045150_000007354.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_20f68b3a56045150",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_220730273e7ef5b7_000003815.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_220730273e7ef5b7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_222a473e0e458644_000007688.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_222a473e0e458644",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_23a70fbda9cc12ad_000002042.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_23a70fbda9cc12ad",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_2431dca2fa69b28f_000003710.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_2431dca2fa69b28f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_2473366af38eac88_000002397.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_2473366af38eac88",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_24f1ab6110ea1d09_000003572.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_24f1ab6110ea1d09",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_26bef424a370f34f_000003469.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_26bef424a370f34f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_27f7b697225f8fc7_000002127.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_27f7b697225f8fc7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_2ae7dc61806aa46f_000001370.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_2ae7dc61806aa46f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_2e5f7078571f7b7f_000001496.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_2e5f7078571f7b7f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_2ef500ab4c90ed2b_000002569.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_2ef500ab4c90ed2b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_2f893b01e843e6e9_000003740.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_2f893b01e843e6e9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_31780c7bc8ee2233_000004780.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_31780c7bc8ee2233",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_31d2605286733a88_000003975.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_31d2605286733a88",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_332654b9697c1467_000000557.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_332654b9697c1467",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_33a0494757ba5353_000006392.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_33a0494757ba5353",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_34549f6a343fb5e6_000003249.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_34549f6a343fb5e6",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_3686def8bd1bfcfb_000004533.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_3686def8bd1bfcfb",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_371439680ec28937_000000928.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_371439680ec28937",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_398b8ca39f9cb566_000001373.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_398b8ca39f9cb566",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_3adefa371e77aa0c_000002849.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_3adefa371e77aa0c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_3bc01970f8016173_000000238.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_3bc01970f8016173",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_3bdc5557c3c774ec_000006311.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_3bdc5557c3c774ec",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_3cb1ad6778a9e1a8_000006710.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_3cb1ad6778a9e1a8",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_3fbb6fd8ff5482f3_000001140.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_3fbb6fd8ff5482f3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_404230afba9fbafa_000000603.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_404230afba9fbafa",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_416bc13b58c9807c_000001009.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_416bc13b58c9807c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_42fd673c29a1b2c9_000000624.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_42fd673c29a1b2c9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_43231b731d0156ba_000002733.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_43231b731d0156ba",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_43e282525875d80d_000002714.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_43e282525875d80d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_44874b94efb477b6_000001870.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_44874b94efb477b6",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_44a2eaa3c7e18ca6_000004385.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_44a2eaa3c7e18ca6",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_44a3e8dd32ad1aa8_000000385.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_44a3e8dd32ad1aa8",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_4586b70d362fefa5_000003163.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_4586b70d362fefa5",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_4a98e95e2bc84bf5_000006074.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_4a98e95e2bc84bf5",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_4b3889c635f2ed1a_000003518.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_4b3889c635f2ed1a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_4cd5db6b3b133d4f_000001110.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_4cd5db6b3b133d4f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_4ec849c19220ac9e_000000223.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_4ec849c19220ac9e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_4eceddece993a9c0_000007990.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_4eceddece993a9c0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_50309993b20b595a_000004547.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_50309993b20b595a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_50a950a5b3255bda_000005144.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_50a950a5b3255bda",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_52a2ea0317cc87e3_000006603.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_52a2ea0317cc87e3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_54e70b3abc59e2b3_000000995.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_54e70b3abc59e2b3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_552af9dbc9447b4a_000001330.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_552af9dbc9447b4a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_56a87e576527667f_000004678.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_56a87e576527667f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_57825dc9960c16b4_000003429.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_57825dc9960c16b4",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_59f05c3590442aae_000001665.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_59f05c3590442aae",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_5ace762f7d10de86_000007897.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_5ace762f7d10de86",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_5beba71d5152c7eb_000000517.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_5beba71d5152c7eb",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_5e12bbbaa0d42c7d_000000593.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_5e12bbbaa0d42c7d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_5e7e584655b6e618_000007517.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_5e7e584655b6e618",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_627de94bdbccb382_000000432.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_627de94bdbccb382",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_62959427304a963b_000000496.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_62959427304a963b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_629abb49d62c1268_000000090.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_629abb49d62c1268",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_645becc70c8bb5a2_000002186.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_645becc70c8bb5a2",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_696dc388d2c8da49_000001922.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_696dc388d2c8da49",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_6b11844fa3e07c9a_000004734.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_6b11844fa3e07c9a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_6c02665aecd56f1a_000003828.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_6c02665aecd56f1a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_6ef0d6af565319c3_000003593.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_6ef0d6af565319c3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_7026d5691e5b9ac2_000003406.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_7026d5691e5b9ac2",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_706bb2520a0f05d3_000006545.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_706bb2520a0f05d3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_706c2376728cb3ba_000002795.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_706c2376728cb3ba",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_70c0eae2ee1aa455_000001877.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_70c0eae2ee1aa455",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_7235eb4914afd0ef_000003775.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_7235eb4914afd0ef",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_72a6d64ac82cb180_000006779.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_72a6d64ac82cb180",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_72a7ac5d1444a8b7_000008116.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_72a7ac5d1444a8b7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_731a45d196e7ed54_000005670.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_731a45d196e7ed54",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_7434af97970de00b_000001762.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_7434af97970de00b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_753d8bbdaaa30c57_000002666.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_753d8bbdaaa30c57",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_759788dbce6d26f1_000000867.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_759788dbce6d26f1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_761c007de14ee578_000001876.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_761c007de14ee578",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_764bcb0aefecbe3f_000007338.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_764bcb0aefecbe3f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_77c3ab3eea8bfd8c_000005785.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_77c3ab3eea8bfd8c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_78e8fcb800ec6fe2_000008065.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_78e8fcb800ec6fe2",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_79f5ed6e776fb712_000001737.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_79f5ed6e776fb712",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_7b14497eaa5781c7_000007327.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_7b14497eaa5781c7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_7f1be6f21c32addd_000007685.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_7f1be6f21c32addd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_80ad543847eaad51_000005719.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_80ad543847eaad51",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_810aef5313c29529_000000740.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_810aef5313c29529",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_81c303e691106667_000001696.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_81c303e691106667",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_824ffa0a35ab4b74_000007563.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_824ffa0a35ab4b74",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_82c6182877ff119b_000005229.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_82c6182877ff119b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_82d0342aebcbcba9_000001612.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_82d0342aebcbcba9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_830c6bc6b70daeda_000002368.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_830c6bc6b70daeda",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_83520b8d977da6a0_000007167.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_83520b8d977da6a0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_877a1397e58eed10_000006548.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_877a1397e58eed10",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_880f6d17370afd44_000001598.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_880f6d17370afd44",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_88d9e5b4bb3e75fb_000005520.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_88d9e5b4bb3e75fb",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_88e4c3c5901da07d_000003651.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_88e4c3c5901da07d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_88f94faa31a29367_000005509.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_88f94faa31a29367",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_89eab36e1fe39f0a_000006600.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_89eab36e1fe39f0a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_8a58f9bce8bf3d3b_000007611.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_8a58f9bce8bf3d3b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_8b93f5cb11472ee0_000006054.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_8b93f5cb11472ee0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_8beb22f0764cf85e_000007767.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_8beb22f0764cf85e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_8c1a7a9097383892_000003172.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_8c1a7a9097383892",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_8f48624df0f4560b_000005576.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_8f48624df0f4560b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_8f6e7f886e0a59d8_000004133.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_8f6e7f886e0a59d8",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_90786d931cd9896b_000007800.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_90786d931cd9896b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_90d2971939b7299a_000003311.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_90d2971939b7299a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_916a55b7e5901a89_000001760.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_916a55b7e5901a89",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_91a15f7b634b904a_000004793.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_91a15f7b634b904a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_91bde42f4f74707f_000003891.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_91bde42f4f74707f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_931be48a745109a6_000004321.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_931be48a745109a6",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_93f030f6c7dcc934_000005512.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_93f030f6c7dcc934",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9578cd4bb27f9133_000004592.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9578cd4bb27f9133",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9678fb7a923562af_000004451.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9678fb7a923562af",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_974815e20c48d353_000007903.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_974815e20c48d353",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_994c50200796d33a_000002607.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_994c50200796d33a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_997dfa23393bfe8a_000001027.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_997dfa23393bfe8a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_99ede5b1d3591db4_000001575.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_99ede5b1d3591db4",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9a4006992bdbfc2d_000006213.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9a4006992bdbfc2d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9b2f08c96efd2a63_000007860.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9b2f08c96efd2a63",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9b8fa6bd08440fd7_000001372.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9b8fa6bd08440fd7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9bac30944ec99ec3_000007059.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9bac30944ec99ec3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9c862405cf626e29_000006730.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9c862405cf626e29",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9d158eb9fa9e75e9_000003543.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9d158eb9fa9e75e9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9dd44f77f77f92e0_000001724.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9dd44f77f77f92e0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9dd6d1283b7ea1a0_000004123.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9dd6d1283b7ea1a0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9e4d60daea030b2e_000004539.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9e4d60daea030b2e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9ec0c6181d25367e_000000027.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9ec0c6181d25367e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9fbdd8e60be47231_000007438.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9fbdd8e60be47231",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_9ff8d6efa5a290ce_000007037.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_9ff8d6efa5a290ce",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_a182215744db2e7e_000000236.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_a182215744db2e7e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_a32e00fe093ea821_000005338.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_a32e00fe093ea821",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_a3b543bbd67d46fe_000001990.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_a3b543bbd67d46fe",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_a58421a84604fb52_000006273.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_a58421a84604fb52",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_a712ad2a96712a1a_000005816.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_a712ad2a96712a1a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_a7335e49c73630bd_000004151.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_a7335e49c73630bd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_a7d328c863fac01a_000003628.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_a7d328c863fac01a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_a815f46421495c29_000002290.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_a815f46421495c29",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_a95718b724636435_000002798.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_a95718b724636435",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_a985842b2948f8a7_000003771.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_a985842b2948f8a7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_a9c6631b6c34f3ad_000003384.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_a9c6631b6c34f3ad",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_aad76037f099dcb1_000001037.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_aad76037f099dcb1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_ab006ba79673aa04_000002435.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_ab006ba79673aa04",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_abe700f8aee23072_000001903.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_abe700f8aee23072",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_acf2b6b7f349700c_000006106.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_acf2b6b7f349700c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_af8e9c41e85641b4_000002052.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_af8e9c41e85641b4",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_b06618627af8fd52_000004762.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_b06618627af8fd52",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_b2357234320c85a5_000005399.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_b2357234320c85a5",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_b3ac7c3ded5fa92d_000000362.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_b3ac7c3ded5fa92d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_b78dd3b9a9a41aff_000006871.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_b78dd3b9a9a41aff",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_b87126ea7ae685d9_000004560.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_b87126ea7ae685d9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_b87b513c829cba20_000002499.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_b87b513c829cba20",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_b939a223b936a341_000004259.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_b939a223b936a341",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_b9460caca917b959_000004791.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_b9460caca917b959",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_b9d6562fe47c3aa0_000004242.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_b9d6562fe47c3aa0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_bc1cb76ea274bc2b_000000052.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_bc1cb76ea274bc2b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_be534260672b54ce_000001241.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_be534260672b54ce",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_bfb60da18ac31cf7_000001866.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_bfb60da18ac31cf7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_bfcc76b971ef62e0_000005332.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_bfcc76b971ef62e0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_c055aa5c67babb71_000003370.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_c055aa5c67babb71",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_c1595882ea1a7a91_000000961.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_c1595882ea1a7a91",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_c167dc7ce1c8fd4d_000000325.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_c167dc7ce1c8fd4d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_c355603ce60f9403_000004147.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_c355603ce60f9403",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_c508f2edad233486_000001441.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_c508f2edad233486",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_c60cf54f02e8bdca_000005749.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_c60cf54f02e8bdca",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_c82f06aa1e02315e_000004199.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_c82f06aa1e02315e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_c86073d764850340_000002739.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_c86073d764850340",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_ca4a29692d3282e7_000001728.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_ca4a29692d3282e7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_ca6a64b4dcc88045_000005394.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_ca6a64b4dcc88045",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_cb6406b833b79664_000002624.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_cb6406b833b79664",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_cc30db003d343515_000005560.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_cc30db003d343515",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_cc42c110bfa63d8e_000001901.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_cc42c110bfa63d8e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_cc54df1f038eb60f_000002204.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_cc54df1f038eb60f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_ccb9d5ee14b7aebd_000007214.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_ccb9d5ee14b7aebd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_ccf99eed517636bf_000007321.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_ccf99eed517636bf",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_cd5788cf4bcd6e1f_000005136.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_cd5788cf4bcd6e1f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_cdc0931ded444ca5_000003804.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_cdc0931ded444ca5",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_ce1ae86d1efc2c1d_000000369.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_ce1ae86d1efc2c1d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_ce426264f22c1d17_000002852.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_ce426264f22c1d17",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_cedaa1cde2fe79a7_000006180.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_cedaa1cde2fe79a7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_cf94703b31e51915_000002193.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_cf94703b31e51915",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_d115f36a41141edd_000001889.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_d115f36a41141edd",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_d17a880d87fcfdf0_000002330.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_d17a880d87fcfdf0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_d23af00f7a4bdae0_000002842.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_d23af00f7a4bdae0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_d30c5ccb7f3b55f7_000007094.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_d30c5ccb7f3b55f7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_d3df9fc9c81938f6_000004290.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_d3df9fc9c81938f6",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_d3f8e65a1a95de0f_000007211.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_d3f8e65a1a95de0f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_d7de19ed26c26df7_000007112.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_d7de19ed26c26df7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_d80dd9335cb3ae01_000005063.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_d80dd9335cb3ae01",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_d8482c9341724019_000003580.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_d8482c9341724019",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_d8ac6f1a61bc45c3_000001664.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_d8ac6f1a61bc45c3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_d938983e0c4419a9_000005240.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_d938983e0c4419a9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_d9c8b9d328f9cea3_000003059.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_d9c8b9d328f9cea3",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_d9d80e1bf8c20ea0_000006862.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_d9d80e1bf8c20ea0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_dbb90492ba941177_000008071.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_dbb90492ba941177",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_dfdc263792bda83d_000002698.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_dfdc263792bda83d",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_e1af6b519bedf378_000003082.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_e1af6b519bedf378",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_e3c5ab0ccdab1eb5_000002643.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_e3c5ab0ccdab1eb5",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_e417c9df0fc30b1e_000007118.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_e417c9df0fc30b1e",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_e46d8a21bbdaba00_000001552.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_e46d8a21bbdaba00",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_e6c0d724d12e85a6_000007153.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_e6c0d724d12e85a6",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_e700597e51d04e18_000001230.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_e700597e51d04e18",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_e7057618a55631c9_000000473.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_e7057618a55631c9",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_e72a034fc5d829a6_000006701.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_e72a034fc5d829a6",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_e8b1bfae658881e5_000007119.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_e8b1bfae658881e5",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_e8cba33801280f30_000005921.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_e8cba33801280f30",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_e8ddadf6049146a5_000002532.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_e8ddadf6049146a5",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_eb5c6b1755669100_000002068.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_eb5c6b1755669100",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_ec1a09da00e657b1_000005465.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_ec1a09da00e657b1",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_ecad9876d1752aae_000005452.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_ecad9876d1752aae",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_ee50c0f7a171cac0_000003164.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_ee50c0f7a171cac0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_efb898aa49701fe4_000003990.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_efb898aa49701fe4",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_f228be1a242ad561_000005731.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_f228be1a242ad561",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_f3000bf33f7c769c_000002071.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_f3000bf33f7c769c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_f4f08f0c4e4bf87a_000003191.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_f4f08f0c4e4bf87a",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_f5e6e4a932e27b04_000005950.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_f5e6e4a932e27b04",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_f7b91ef2345aceb0_000000668.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_f7b91ef2345aceb0",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_fac84da576b849ba_000007177.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_fac84da576b849ba",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_fbe2d98286baa64b_000004638.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_fbe2d98286baa64b",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_fd3eda14bec0e96f_000002640.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_fd3eda14bec0e96f",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_fdd6c1253513ffca_000006927.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_fdd6c1253513ffca",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_fded3a4c724f6f5c_000004868.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_fded3a4c724f6f5c",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_ff0707da2caa6114_000003810.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_ff0707da2caa6114",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    },
+    {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/test_external_unseen_generator/real/cf_test_external_unseen_generator_real_ffe05077d03c44f7_000006752.tiff.tiff",
+      "sample_id": "cf_test_external_unseen_generator_real_ffe05077d03c44f7",
+      "warnings": [
+        "Truncated File Read"
+      ]
+    }
+  ],
+  "width_range": [
+    2000,
+    4928
+  ]
+}

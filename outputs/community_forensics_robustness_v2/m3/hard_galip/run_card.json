@@ -1,0 +1,41 @@
+{
+  "checkpoint_path": "/home/msai/lius0131/AGI/repostguard-lite/outputs/community_forensics/m3/best.pt",
+  "checkpoint_sha256": "32f81545af4a41359463d88a136c3137be08feaae985ab5cf1d19c0277c55683",
+  "config_path": "/home/msai/lius0131/AGI/repostguard-lite/outputs/community_forensics/m3/resolved_config.yaml",
+  "config_sha256": "c5a8add49629d2235035e3af04b79084160d6038c80bf06d0f204c802eaf143d",
+  "cuda_runtime": "12.1",
+  "device": "NVIDIA A40",
+  "evaluation_matrix_path": "/home/msai/lius0131/AGI/repostguard-lite/configs/community_forensics_robustness_v2.yaml",
+  "evaluation_matrix_sha256": "69531f3f7111651808c99f14f89723bf631345878b1cbd0cbe0eee8531dde83c",
+  "evaluation_overrides": {
+    "threshold": 0.9990234375,
+    "val_manifest": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_val_hard_galip.csv"
+  },
+  "experiment": "m3",
+  "hostname": "TC2N01",
+  "output_directory": "/home/msai/lius0131/AGI/repostguard-lite/outputs/community_forensics_robustness_v2/m3/hard_galip",
+  "parameters": {
+    "frozen": 87849216,
+    "total": 99423744,
+    "trainable": 11574528
+  },
+  "platform": "Linux-5.14.0-503.14.1.el9_5.x86_64-x86_64-with-glibc2.34",
+  "python": "3.11.16",
+  "slurm_job_id": "32587",
+  "summary": {
+    "clean_auroc": 0.408256,
+    "clean_balanced_accuracy": 0.412,
+    "conditions": 21,
+    "delta_auroc": -0.010204000000000046,
+    "experiment": "m3",
+    "robust_mean_auroc": 0.41846000000000005,
+    "robust_mean_balanced_accuracy": 0.42289999999999994,
+    "robust_worst_auroc": 0.36148800000000003,
+    "robust_worst_transform": "center_crop__ratio=0.8",
+    "threshold_from_clean_validation": 0.9990234375
+  },
+  "torch": "2.5.1",
+  "torchvision": "0.20.1",
+  "train_manifest_sha256": "fdfddade1b8b400183ec03aaa912f203f5fb1edc28bad6e92709372a4340dc55",
+  "val_manifest_sha256": "bf9a5b60a52931f8d125182ac406c505678740a991b1d82367d03f52cb9e96dc"
+}

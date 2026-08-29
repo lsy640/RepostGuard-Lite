@@ -1,0 +1,5 @@
+experiment,job_id,total_parameters,trainable_parameters,wall_time,clean_auroc,clean_balanced_accuracy,robust_mean_auroc,robust_mean_balanced_accuracy,robust_worst_auroc,robust_worst_transform,delta_auroc
+b0,32247_0,4008829,4008829,00:01:49,0.994536,0.970500,0.863812,0.744824,0.544228,gaussian_blur_sigma_2.0,0.130724
+b1,32247_1,4008829,4008829,00:01:35,0.992871,0.957000,0.972997,0.904265,0.912019,resize_bilinear_scale_0.25,0.019874
+b2,32249_2,87849729,513,00:01:29,0.973779,0.922000,0.920242,0.769265,0.768837,resize_bilinear_scale_0.25,0.053537
+m2,32249_3,99423442,11574226,00:03:29,0.990369,0.954500,0.964127,0.898559,0.897059,resize_bilinear_scale_0.25,0.026241

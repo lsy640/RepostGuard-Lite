@@ -1,0 +1,558 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "为何严格未见生成器反而更容易检测",
+    "description": "Community Forensics 外部测试切片 AUROC 差异诊断",
+    "generatedAt": "2026-08-28T18:26:31Z",
+    "sources": [
+      {
+        "id": "diagnostic",
+        "label": "External split diagnostic",
+        "path": "reports/community_forensics_external_split_diagnostic.json",
+        "query": {
+          "sql": "SELECT cohort, model, label, generator_id, architecture, score\nFROM community_forensics_clean_external_predictions\nWHERE transform = 'clean'\n  AND cohort IN ('seen_family', 'unseen_generator');",
+          "query": "python scripts/diagnose_external_split_auroc.py --project-root . --output reports/community_forensics_external_split_diagnostic.json --bootstrap-replicates 1000",
+          "description": "Join frozen manifests to clean external predictions, reproduce AUROC, decompose generator and architecture slices, and bootstrap the cross-cohort difference.",
+          "engine": "Python on SLURM compute node",
+          "id": "slurm-32469",
+          "executed_at": "2026-08-28T18:23:00Z",
+          "language": "bash",
+          "filters": [
+            "Only clean external predictions",
+            "1,000 real and 1,000 AIGI images per cohort",
+            "Bootstrap resampling is independent and stratified by cohort and label"
+          ],
+          "metric_definitions": [
+            "AUROC is the probability that a randomly selected AIGI image is scored above a randomly selected real image within the same cohort.",
+            "Difference is unseen-generator AUROC minus seen-family AUROC."
+          ],
+          "tables_used": [
+            "data/manifests/community_forensics_test_external_seen_family.csv",
+            "data/manifests/community_forensics_test_external_unseen_generator.csv",
+            "outputs/community_forensics/{b0,b1,b2,m2,m3}/test_external_{seen_family,unseen_generator}/predictions.jsonl"
+          ]
+        }
+      },
+      {
+        "id": "audit",
+        "label": "Community Forensics frozen dataset audit",
+        "path": "data/manifests/community_forensics_audit.json",
+        "query": {
+          "description": "Frozen split definition, generator lists, source revisions, duplicate audit, and materialized image counts.",
+          "engine": "Project audit artifact",
+          "language": "json",
+          "filters": [
+            "Selection seed 20260828",
+            "Exact and pHash cross-split duplicate checks passed"
+          ],
+          "tables_used": [
+            "data/manifests/community_forensics_audit.json"
+          ]
+        }
+      }
+    ],
+    "charts": [
+      {
+        "id": "external_auroc_chart",
+        "title": "External AUROC by model and cohort",
+        "subtitle": "Clean evaluation; each cohort contains 1,000 real and 1,000 AIGI images",
+        "intent": "comparison",
+        "question": "Is the seen-family cohort easier than the strict unseen-generator cohort for each model?",
+        "rationale": "Grouped bars preserve the paired model comparison and make the consistently higher unseen-generator AUROC immediately visible.",
+        "comparisonContext": {
+          "baseline": "Seen-family cohort",
+          "denominator": "1,000 real and 1,000 AIGI images per cohort",
+          "grain": "Model by external cohort",
+          "normalization": "AUROC computed separately within each cohort",
+          "semanticFamily": "External model discrimination",
+          "unit": "AUROC"
+        },
+        "type": "bar",
+        "dataset": "model_comparison_long",
+        "sourceId": "diagnostic",
+        "encodings": {
+          "x": {
+            "field": "model",
+            "type": "nominal",
+            "label": "Model"
+          },
+          "y": {
+            "field": "auroc",
+            "type": "quantitative",
+            "format": "number",
+            "label": "AUROC"
+          },
+          "color": {
+            "field": "cohort",
+            "type": "nominal",
+            "label": "External cohort"
+          },
+          "tooltip": [
+            {
+              "field": "difference",
+              "type": "quantitative",
+              "format": "number",
+              "label": "Unseen minus seen"
+            },
+            {
+              "field": "n_per_label",
+              "type": "quantitative",
+              "format": "number",
+              "label": "Images per label"
+            }
+          ]
+        },
+        "valueFormat": "number",
+        "layout": "full",
+        "labels": {
+          "values": "all"
+        },
+        "legend": {
+          "position": "bottom",
+          "sort": "spec",
+          "title": "External cohort"
+        },
+        "palette": {
+          "kind": "categorical",
+          "name": "blue-orange"
+        },
+        "settings": {
+          "groupMode": "grouped",
+          "showValues": true,
+          "sort": "none"
+        },
+        "surface": {
+          "surface": "explorer",
+          "interactiveLegend": true,
+          "showControls": true,
+          "viewMode": "both"
+        }
+      },
+      {
+        "id": "architecture_mix_chart",
+        "title": "AIGI architecture composition by external cohort",
+        "subtitle": "Exactly 1,000 AIGI images per cohort; architecture labels come from the frozen manifests",
+        "intent": "composition",
+        "question": "How different is the AIGI architecture mix between the two external cohorts?",
+        "rationale": "A stacked bar exposes that cohort identity is confounded with architecture mix, which directly limits a novelty-only interpretation.",
+        "comparisonContext": {
+          "denominator": "1,000 AIGI images per cohort",
+          "grain": "External cohort by architecture",
+          "normalization": "Raw image counts with equal cohort totals",
+          "semanticFamily": "AIGI architecture composition",
+          "unit": "images"
+        },
+        "type": "stackedBar",
+        "dataset": "architecture_composition_long",
+        "sourceId": "diagnostic",
+        "encodings": {
+          "x": {
+            "field": "cohort",
+            "type": "nominal",
+            "label": "External cohort"
+          },
+          "y": {
+            "field": "image_count",
+            "type": "quantitative",
+            "format": "number",
+            "label": "AIGI images"
+          },
+          "color": {
+            "field": "architecture",
+            "type": "nominal",
+            "label": "Architecture"
+          },
+          "tooltip": [
+            {
+              "field": "generator_count",
+              "type": "quantitative",
+              "format": "number",
+              "label": "Generators in cohort"
+            },
+            {
+              "field": "median_megapixels",
+              "type": "quantitative",
+              "format": "number",
+              "label": "Median AIGI MP"
+            }
+          ]
+        },
+        "valueFormat": "number",
+        "unit": "images",
+        "layout": "full",
+        "labels": {
+          "values": "all"
+        },
+        "legend": {
+          "position": "bottom",
+          "sort": "spec",
+          "title": "Architecture"
+        },
+        "palette": {
+          "kind": "categorical",
+          "name": "architecture"
+        },
+        "settings": {
+          "groupMode": "stacked",
+          "showValues": true,
+          "sort": "none"
+        },
+        "surface": {
+          "surface": "explorer",
+          "interactiveLegend": true,
+          "showControls": true,
+          "viewMode": "both"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "model_comparison_table",
+        "title": "External AUROC comparison with bootstrap interval",
+        "subtitle": "Difference is strict unseen-generator minus seen-family; 1,000 stratified bootstrap replicates",
+        "dataset": "model_comparison",
+        "defaultSort": {
+          "field": "model",
+          "direction": "asc"
+        },
+        "density": "spacious",
+        "sourceId": "diagnostic",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "model",
+            "label": "Model",
+            "type": "text"
+          },
+          {
+            "field": "seen_family_auroc",
+            "label": "Seen-family AUROC",
+            "format": "number"
+          },
+          {
+            "field": "unseen_generator_auroc",
+            "label": "Unseen-generator AUROC",
+            "format": "number"
+          },
+          {
+            "field": "difference",
+            "label": "Difference",
+            "format": "number",
+            "movement": true
+          },
+          {
+            "field": "ci95_low",
+            "label": "95% CI low",
+            "format": "number"
+          },
+          {
+            "field": "ci95_high",
+            "label": "95% CI high",
+            "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "m3_generator_table",
+        "title": "M3 AUROC by AIGI generator",
+        "subtitle": "Each generator is compared with all 1,000 real images from its own external cohort",
+        "dataset": "m3_generators",
+        "defaultSort": {
+          "field": "auroc_vs_cohort_real",
+          "direction": "asc"
+        },
+        "density": "dense",
+        "sourceId": "diagnostic",
+        "layout": "full",
+        "columns": [
+          {
+            "field": "cohort",
+            "label": "Cohort",
+            "type": "text"
+          },
+          {
+            "field": "generator_id",
+            "label": "Generator",
+            "type": "text"
+          },
+          {
+            "field": "architecture",
+            "label": "Architecture",
+            "type": "text"
+          },
+          {
+            "field": "n_aigi",
+            "label": "AIGI n",
+            "format": "number"
+          },
+          {
+            "field": "auroc_vs_cohort_real",
+            "label": "AUROC",
+            "format": "number"
+          },
+          {
+            "field": "aigi_score_mean",
+            "label": "Mean AIGI score",
+            "format": "number"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# 为何严格未见生成器反而更容易检测"
+      },
+      {
+        "id": "technical_summary",
+        "type": "markdown",
+        "sourceId": "diagnostic",
+        "body": "## 结论：这里的难度由生成器与数据构成决定，而不是由 seen/unseen 名称决定\n\n**先纠正现象：Seen-family AUROC 并没有更高。** B0、B1、M2、M3 的 strict unseen-generator AUROC 分别高出 0.1750、0.1644、0.1810、0.1790；这些差异的 95% bootstrap 区间均不含 0。B2 只高 0.0018，区间为 [-0.0292, 0.0316]，可视为无显著差异。\n\n最强解释是**正类构成差异**：Seen-family 混入模型难以识别的 GAN 和像素扩散生成器，而 strict unseen-generator 几乎全部是当前商业生成器。AUROC 衡量的是排序可分性，不会因为生成器名称或架构家族在训练中出现过就自动提高。"
+      },
+      {
+        "id": "finding_model_consistency",
+        "type": "markdown",
+        "sourceId": "diagnostic",
+        "body": "## 四个模型一致表明 strict unseen-generator 更容易\n\nB0、B1、M2、M3 的差值都约为 0.16–0.18，方向一致；只有冻结语义骨干的 B2 没有清晰差异。图中比较的是同一模型在两个独立、各 2,000 张图像的 clean 外部切片上的 AUROC。"
+      },
+      {
+        "id": "external_auroc_chart_block",
+        "type": "chart",
+        "chartId": "external_auroc_chart",
+        "layout": "full"
+      },
+      {
+        "id": "model_comparison_table_block",
+        "type": "table",
+        "tableId": "model_comparison_table",
+        "layout": "full"
+      },
+      {
+        "id": "finding_architecture_mix",
+        "type": "markdown",
+        "sourceId": "diagnostic",
+        "body": "## 两个切片的架构构成完全不同，novelty 与 architecture 被混杂\n\nSeen-family 的 1,000 张 AIGI 由 667 张 LatDiff、222 张 GAN 和 111 张 PixDiff 构成；strict unseen-generator 则由 917 张 Commercial 和 83 张 Other 构成。换言之，测试不是在相同架构、格式、分辨率和内容条件下只改变生成器是否见过，因此不能把 AUROC 差异解释成纯粹的生成器新颖度效应。"
+      },
+      {
+        "id": "architecture_mix_chart_block",
+        "type": "chart",
+        "chartId": "architecture_mix_chart",
+        "layout": "full"
+      },
+      {
+        "id": "finding_hard_generators",
+        "type": "markdown",
+        "sourceId": "diagnostic",
+        "body": "## Seen-family 被少数困难生成器显著拉低\n\n以 M3 为例，Seen-family 中 PixDiff/Hourglass 的 AUROC 为 0.4476，GAN 汇总 AUROC 为 0.5606；相反，strict unseen-generator 的 Commercial 汇总 AUROC 为 0.8772。DALL-E 3、Midjourney V6.1 和 Firefly Image 3 等生成器分别达到约 0.9476、0.9160、0.9159。生成器级表明，商业模型虽然身份未见，但留下的可分特征对当前检测器更明显。"
+      },
+      {
+        "id": "m3_generator_table_block",
+        "type": "table",
+        "tableId": "m3_generator_table",
+        "layout": "full"
+      },
+      {
+        "id": "scope_definitions",
+        "type": "markdown",
+        "sourceId": "diagnostic",
+        "body": "## 指标与测试范围\n\n每个切片均包含 1,000 张真实图像和 1,000 张 AIGI 图像。AUROC 是在同一切片内随机抽取一张 AIGI 与一张真实图像时，前者得分更高的概率；它与固定分类阈值无关。两组真实图像都按 COCO、FFHQ、LAION、RAISE 各 250 张平衡。M3 的真实图像平均得分在两个切片中接近（0.9772 对 0.9786），但 AIGI 平均得分由 0.9928 上升到 0.9989，因此差距主要来自正类，而非真实图像来源比例。"
+      },
+      {
+        "id": "split_identity_definition",
+        "type": "markdown",
+        "sourceId": "audit",
+        "body": "## Seen-family 并不等于训练见过相同生成器\n\n冻结审计将该切片定义为 `architecture_family_seen_generator_identity_unseen`。由于 Small 与 Eval 的精确生成器身份没有可用交集，Seen-family 只表示 GAN、LatDiff、PixDiff 这些大类在训练中出现过；其中 9 个 Eval 生成器的精确身份仍未见。Strict unseen-generator 包含 12 个精确未见生成器，并且其 Commercial/Other 架构也未出现在训练架构集合中。"
+      },
+      {
+        "id": "methodology",
+        "type": "markdown",
+        "sourceId": "diagnostic",
+        "body": "## 诊断方法\n\n标准 CSV 解析器读取冻结 manifest，并按 `sample_id` 与五个模型的 clean predictions 一一连接；标签、行数和样本唯一性均检查。每个 AUROC 从预测重新计算，并与原始 summary 精确一致。差值区间来自两个切片、两个标签内分别进行的 1,000 次有放回分层 bootstrap。生成器 AUROC 使用该生成器的 AIGI 样本与其所在切片全部 1,000 张真实图像比较。"
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "sourceId": "diagnostic",
+        "body": "## 限制：当前证据支持构成驱动，但不能证明单一因果机制\n\n架构、模型年代、提示来源、分辨率和格式同时变化：Seen-family AIGI 中位分辨率为 0.262 MP 且全部为 PNG；strict unseen-generator 中位分辨率为 1.049 MP，包含 16.7% JPEG，并有 91.7% 的 AIGI 关联 LAION 提示来源。以上因素可能共同改变频域、压缩和语义特征。当前结果是描述性诊断，不能把差异唯一归因于“商业生成器更容易”或某一种格式伪影。"
+      },
+      {
+        "id": "recommended_next_steps",
+        "type": "markdown",
+        "body": "## 下一步：用匹配实验分离生成器新颖度与数据构成\n\n- 在架构、提示来源、分辨率、格式和真实负类完全匹配后重新比较 seen/unseen。\n- 同时报告 pooled AUROC 与 generator-macro AUROC，避免 1,000 张图像的混合比例掩盖困难生成器。\n- 将 Hourglass、DFGAN、GALIP 作为困难切片单独监控。\n- 若要测试“精确训练见过的生成器”，需要引入 Small/Eval 之间存在精确生成器交集的新来源，不能继续把 family-seen 当作 exact-seen。"
+      },
+      {
+        "id": "further_questions",
+        "type": "markdown",
+        "body": "## 尚待回答的问题\n\n- 在统一重编码为相同 JPEG 质量和相同输入分辨率后，0.16–0.18 的差距还能保留多少？\n- 按生成器宏平均后，M2 与 M3 的排序是否仍稳定？\n- 将真实负类固定为同一批图像时，正类构成能解释多少 AUROC 差异？"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-28T18:26:31Z",
+    "status": "ready",
+    "datasets": {
+      "model_comparison": [
+        {
+          "model_order": 1,
+          "model": "B0",
+          "seen_family_auroc": 0.6160495,
+          "unseen_generator_auroc": 0.79104,
+          "difference": 0.1749905,
+          "ci95_low": 0.1455592,
+          "ci95_high": 0.2052769,
+          "n_real_per_cohort": 1000,
+          "n_aigi_per_cohort": 1000
+        },
+        {
+          "model_order": 2,
+          "model": "B1",
+          "seen_family_auroc": 0.5950965,
+          "unseen_generator_auroc": 0.7594545,
+          "difference": 0.164358,
+          "ci95_low": 0.1284916,
+          "ci95_high": 0.1964663,
+          "n_real_per_cohort": 1000,
+          "n_aigi_per_cohort": 1000
+        },
+        {
+          "model_order": 3,
+          "model": "B2",
+          "seen_family_auroc": 0.720943,
+          "unseen_generator_auroc": 0.722783,
+          "difference": 0.00184,
+          "ci95_low": -0.0292408,
+          "ci95_high": 0.0316279,
+          "n_real_per_cohort": 1000,
+          "n_aigi_per_cohort": 1000
+        },
+        {
+          "model_order": 4,
+          "model": "M2",
+          "seen_family_auroc": 0.6753945,
+          "unseen_generator_auroc": 0.856435,
+          "difference": 0.1810405,
+          "ci95_low": 0.1532714,
+          "ci95_high": 0.2079061,
+          "n_real_per_cohort": 1000,
+          "n_aigi_per_cohort": 1000
+        },
+        {
+          "model_order": 5,
+          "model": "M3",
+          "seen_family_auroc": 0.6840475,
+          "unseen_generator_auroc": 0.863066,
+          "difference": 0.1790185,
+          "ci95_low": 0.1524454,
+          "ci95_high": 0.2049449,
+          "n_real_per_cohort": 1000,
+          "n_aigi_per_cohort": 1000
+        }
+      ],
+      "model_comparison_long": [
+        {"model_order":1,"model":"B0","cohort":"Seen-family","auroc":0.6160495,"difference":0.1749905,"n_per_label":1000},
+        {"model_order":1,"model":"B0","cohort":"Strict unseen-generator","auroc":0.79104,"difference":0.1749905,"n_per_label":1000},
+        {"model_order":2,"model":"B1","cohort":"Seen-family","auroc":0.5950965,"difference":0.164358,"n_per_label":1000},
+        {"model_order":2,"model":"B1","cohort":"Strict unseen-generator","auroc":0.7594545,"difference":0.164358,"n_per_label":1000},
+        {"model_order":3,"model":"B2","cohort":"Seen-family","auroc":0.720943,"difference":0.00184,"n_per_label":1000},
+        {"model_order":3,"model":"B2","cohort":"Strict unseen-generator","auroc":0.722783,"difference":0.00184,"n_per_label":1000},
+        {"model_order":4,"model":"M2","cohort":"Seen-family","auroc":0.6753945,"difference":0.1810405,"n_per_label":1000},
+        {"model_order":4,"model":"M2","cohort":"Strict unseen-generator","auroc":0.856435,"difference":0.1810405,"n_per_label":1000},
+        {"model_order":5,"model":"M3","cohort":"Seen-family","auroc":0.6840475,"difference":0.1790185,"n_per_label":1000},
+        {"model_order":5,"model":"M3","cohort":"Strict unseen-generator","auroc":0.863066,"difference":0.1790185,"n_per_label":1000}
+      ],
+      "architecture_composition": [
+        {
+          "cohort": "Seen-family",
+          "gan": 222,
+          "latent_diffusion": 667,
+          "pixel_diffusion": 111,
+          "commercial": 0,
+          "other": 0,
+          "total_aigi": 1000,
+          "generator_count": 9,
+          "median_megapixels": 0.262144
+        },
+        {
+          "cohort": "Strict unseen-generator",
+          "gan": 0,
+          "latent_diffusion": 0,
+          "pixel_diffusion": 0,
+          "commercial": 917,
+          "other": 83,
+          "total_aigi": 1000,
+          "generator_count": 12,
+          "median_megapixels": 1.048576
+        }
+      ],
+      "architecture_composition_long": [
+        {"cohort":"Seen-family","architecture":"GAN","image_count":222,"generator_count":9,"median_megapixels":0.262144},
+        {"cohort":"Seen-family","architecture":"LatDiff","image_count":667,"generator_count":9,"median_megapixels":0.262144},
+        {"cohort":"Seen-family","architecture":"PixDiff","image_count":111,"generator_count":9,"median_megapixels":0.262144},
+        {"cohort":"Seen-family","architecture":"Commercial","image_count":0,"generator_count":9,"median_megapixels":0.262144},
+        {"cohort":"Seen-family","architecture":"Other","image_count":0,"generator_count":9,"median_megapixels":0.262144},
+        {"cohort":"Strict unseen-generator","architecture":"GAN","image_count":0,"generator_count":12,"median_megapixels":1.048576},
+        {"cohort":"Strict unseen-generator","architecture":"LatDiff","image_count":0,"generator_count":12,"median_megapixels":1.048576},
+        {"cohort":"Strict unseen-generator","architecture":"PixDiff","image_count":0,"generator_count":12,"median_megapixels":1.048576},
+        {"cohort":"Strict unseen-generator","architecture":"Commercial","image_count":917,"generator_count":12,"median_megapixels":1.048576},
+        {"cohort":"Strict unseen-generator","architecture":"Other","image_count":83,"generator_count":12,"median_megapixels":1.048576}
+      ],
+      "m3_generators": [
+        {"cohort":"Seen-family","generator_id":"hourglass","architecture":"PixDiff","n_aigi":111,"auroc_vs_cohort_real":0.4475811,"aigi_score_mean":0.9639992},
+        {"cohort":"Seen-family","generator_id":"dfgan","architecture":"GAN","n_aigi":111,"auroc_vs_cohort_real":0.5387883,"aigi_score_mean":0.9934192},
+        {"cohort":"Seen-family","generator_id":"galip","architecture":"GAN","n_aigi":111,"auroc_vs_cohort_real":0.5823604,"aigi_score_mean":0.9915673},
+        {"cohort":"Seen-family","generator_id":"kvikontent-midjourney-v6","architecture":"LatDiff","n_aigi":111,"auroc_vs_cohort_real":0.6881757,"aigi_score_mean":0.9950512},
+        {"cohort":"Seen-family","generator_id":"lcm-lora-sdxl","architecture":"LatDiff","n_aigi":111,"auroc_vs_cohort_real":0.7361847,"aigi_score_mean":0.9977389},
+        {"cohort":"Seen-family","generator_id":"kandinsky-2-2","architecture":"LatDiff","n_aigi":111,"auroc_vs_cohort_real":0.7573108,"aigi_score_mean":0.9979545},
+        {"cohort":"Seen-family","generator_id":"decidiffusionv2","architecture":"LatDiff","n_aigi":111,"auroc_vs_cohort_real":0.7697207,"aigi_score_mean":0.9976994},
+        {"cohort":"Seen-family","generator_id":"lcm-lora-ssd1b","architecture":"LatDiff","n_aigi":111,"auroc_vs_cohort_real":0.8073559,"aigi_score_mean":0.998236},
+        {"cohort":"Seen-family","generator_id":"lcm-lora-sdv15","architecture":"LatDiff","n_aigi":112,"auroc_vs_cohort_real":0.8276563,"aigi_score_mean":0.999054},
+        {"cohort":"Strict unseen-generator","generator_id":"stable-cascade","architecture":"Other","n_aigi":83,"auroc_vs_cohort_real":0.7073133,"aigi_score_mean":0.9963702},
+        {"cohort":"Strict unseen-generator","generator_id":"dalle2","architecture":"Commercial","n_aigi":83,"auroc_vs_cohort_real":0.8178373,"aigi_score_mean":0.9981881},
+        {"cohort":"Strict unseen-generator","generator_id":"ideogramv2","architecture":"Commercial","n_aigi":83,"auroc_vs_cohort_real":0.821994,"aigi_score_mean":0.9985528},
+        {"cohort":"Strict unseen-generator","generator_id":"firefly-image2","architecture":"Commercial","n_aigi":83,"auroc_vs_cohort_real":0.8257771,"aigi_score_mean":0.9977998},
+        {"cohort":"Strict unseen-generator","generator_id":"imagen3","architecture":"Commercial","n_aigi":83,"auroc_vs_cohort_real":0.8630964,"aigi_score_mean":0.999147},
+        {"cohort":"Strict unseen-generator","generator_id":"flux-dev","architecture":"Commercial","n_aigi":83,"auroc_vs_cohort_real":0.8714819,"aigi_score_mean":0.9992411},
+        {"cohort":"Strict unseen-generator","generator_id":"midjourneyv5-2","architecture":"Commercial","n_aigi":84,"auroc_vs_cohort_real":0.8746429,"aigi_score_mean":0.9993257},
+        {"cohort":"Strict unseen-generator","generator_id":"flux-schnell","architecture":"Commercial","n_aigi":83,"auroc_vs_cohort_real":0.894753,"aigi_score_mean":0.9994235},
+        {"cohort":"Strict unseen-generator","generator_id":"ideogramv1","architecture":"Commercial","n_aigi":84,"auroc_vs_cohort_real":0.8981607,"aigi_score_mean":0.9995815},
+        {"cohort":"Strict unseen-generator","generator_id":"firefly-image3","architecture":"Commercial","n_aigi":84,"auroc_vs_cohort_real":0.9159345,"aigi_score_mean":0.9995757},
+        {"cohort":"Strict unseen-generator","generator_id":"midjourneyv6-1","architecture":"Commercial","n_aigi":83,"auroc_vs_cohort_real":0.9159578,"aigi_score_mean":0.9996117},
+        {"cohort":"Strict unseen-generator","generator_id":"dalle3","architecture":"Commercial","n_aigi":84,"auroc_vs_cohort_real":0.947625,"aigi_score_mean":0.9998721}
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "diagnostic",
+      "label": "External split diagnostic",
+      "path": "reports/community_forensics_external_split_diagnostic.json",
+      "query": {
+        "sql": "SELECT cohort, model, label, generator_id, architecture, score\nFROM community_forensics_clean_external_predictions\nWHERE transform = 'clean'\n  AND cohort IN ('seen_family', 'unseen_generator');",
+        "query": "python scripts/diagnose_external_split_auroc.py --project-root . --output reports/community_forensics_external_split_diagnostic.json --bootstrap-replicates 1000",
+        "description": "Reproduced AUROC and cohort decomposition from frozen manifests and clean prediction records.",
+        "engine": "Python on SLURM compute node",
+        "id": "slurm-32469",
+        "executed_at": "2026-08-28T18:23:00Z",
+        "language": "bash",
+        "filters": ["Clean external predictions only"],
+        "metric_definitions": ["AUROC is computed within each external cohort."],
+        "tables_used": ["reports/community_forensics_external_split_diagnostic.json"]
+      }
+    },
+    {
+      "id": "audit",
+      "label": "Community Forensics frozen dataset audit",
+      "path": "data/manifests/community_forensics_audit.json",
+      "query": {
+        "description": "Frozen split definition and generator exposure audit.",
+        "engine": "Project audit artifact",
+        "language": "json",
+        "tables_used": ["data/manifests/community_forensics_audit.json"]
+      }
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "phash_hamming_threshold": 4,
+  "repair_policy": "preserve_train_then_validation_deterministic_same_identity_replacement",
+  "repairs": [
+    {
+      "canonical_generator_id": "swarna123/dog-was",
+      "conflicts": [
+        {
+          "distance": 4,
+          "other_sample_id": "cf_train_aigi_83fd7e262f281d5c",
+          "other_split": "train",
+          "sample_id": "cf_val_unseen_generator_aigi_1a47b344b9339cf3",
+          "split": "val_unseen_generator"
+        },
+        {
+          "distance": 4,
+          "other_sample_id": "cf_train_aigi_13fac8b9adfa1f5c",
+          "other_split": "train",
+          "sample_id": "cf_val_unseen_generator_aigi_1a47b344b9339cf3",
+          "split": "val_unseen_generator"
+        },
+        {
+          "distance": 4,
+          "other_sample_id": "cf_train_aigi_6a03e2be6f32a9c6",
+          "other_split": "train",
+          "sample_id": "cf_val_unseen_generator_aigi_1a47b344b9339cf3",
+          "split": "val_unseen_generator"
+        }
+      ],
+      "label": 1,
+      "project_split": "val_unseen_generator",
+      "quarantined_path": "/home/msai/lius0131/AGI/repostguard-lite/data/quarantine/community_forensics_phash/round_1/val_unseen_generator/aigi/cf_val_unseen_generator_aigi_1a47b344b9339cf3_00000267.png.png",
+      "real_source": "LAION",
+      "removed_path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/val_unseen_generator/aigi/cf_val_unseen_generator_aigi_1a47b344b9339cf3_00000267.png.png",
+      "removed_phash": "a9c0c2a18b4ffa76",
+      "removed_sample_id": "cf_val_unseen_generator_aigi_1a47b344b9339cf3",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 39,
+      "replacement_sample_id": "cf_val_unseen_generator_aigi_c0bb4606a8bedd38",
+      "replacement_source_file": "data/HFCF_small_34.parquet"
+    },
+    {
+      "canonical_generator_id": "umar2003/my-pet-cat",
+      "conflicts": [
+        {
+          "distance": 4,
+          "other_sample_id": "cf_train_aigi_675c4ba51248911c",
+          "other_split": "train",
+          "sample_id": "cf_val_unseen_generator_aigi_32e79b1813672719",
+          "split": "val_unseen_generator"
+        },
+        {
+          "distance": 4,
+          "other_sample_id": "cf_train_aigi_9251e549621088eb",
+          "other_split": "train",
+          "sample_id": "cf_val_unseen_generator_aigi_32e79b1813672719",
+          "split": "val_unseen_generator"
+        }
+      ],
+      "label": 1,
+      "project_split": "val_unseen_generator",
+      "quarantined_path": "/home/msai/lius0131/AGI/repostguard-lite/data/quarantine/community_forensics_phash/round_1/val_unseen_generator/aigi/cf_val_unseen_generator_aigi_32e79b1813672719_00000297.png.png",
+      "real_source": "LAION",
+      "removed_path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/val_unseen_generator/aigi/cf_val_unseen_generator_aigi_32e79b1813672719_00000297.png.png",
+      "removed_phash": "83e058016b47fbf6",
+      "removed_sample_id": "cf_val_unseen_generator_aigi_32e79b1813672719",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 2153,
+      "replacement_sample_id": "cf_val_unseen_generator_aigi_7755c46307a4a569",
+      "replacement_source_file": "data/HFCF_small_28.parquet"
+    },
+    {
+      "canonical_generator_id": "vraddhi123/my-pet-dog",
+      "conflicts": [
+        {
+          "distance": 0,
+          "other_sample_id": "cf_train_aigi_5f3b6c0fae2dea06",
+          "other_split": "train",
+          "sample_id": "cf_val_unseen_generator_aigi_66f38dd61ace712e",
+          "split": "val_unseen_generator"
+        },
+        {
+          "distance": 0,
+          "other_sample_id": "cf_train_aigi_958ee800808914bb",
+          "other_split": "train",
+          "sample_id": "cf_val_unseen_generator_aigi_66f38dd61ace712e",
+          "split": "val_unseen_generator"
+        },
+        {
+          "distance": 4,
+          "other_sample_id": "cf_train_aigi_83fd7e262f281d5c",
+          "other_split": "train",
+          "sample_id": "cf_val_unseen_generator_aigi_66f38dd61ace712e",
+          "split": "val_unseen_generator"
+        },
+        {
+          "distance": 4,
+          "other_sample_id": "cf_train_aigi_13fac8b9adfa1f5c",
+          "other_split": "train",
+          "sample_id": "cf_val_unseen_generator_aigi_66f38dd61ace712e",
+          "split": "val_unseen_generator"
+        }
+      ],
+      "label": 1,
+      "project_split": "val_unseen_generator",
+      "quarantined_path": "/home/msai/lius0131/AGI/repostguard-lite/data/quarantine/community_forensics_phash/round_1/val_unseen_generator/aigi/cf_val_unseen_generator_aigi_66f38dd61ace712e_00000109.png.png",
+      "real_source": "LAION",
+      "removed_path": "/home/msai/lius0131/AGI/repostguard-lite/data/raw/community_forensics/val_unseen_generator/aigi/cf_val_unseen_generator_aigi_66f38dd61ace712e_00000109.png.png",
+      "removed_phash": "a9e0d8818b47fa76",
+      "removed_sample_id": "cf_val_unseen_generator_aigi_66f38dd61ace712e",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 2379,
+      "replacement_sample_id": "cf_val_unseen_generator_aigi_f5ee50c249d453d2",
+      "replacement_source_file": "data/HFCF_small_16.parquet"
+    }
+  ],
+  "selection_seed": 20260828
+}

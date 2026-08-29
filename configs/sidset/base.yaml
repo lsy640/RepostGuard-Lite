@@ -1,0 +1,11 @@
+base: ../base.yaml
+
+data:
+  root: data/raw/sid_set
+  train_manifest: data/manifests/sidset_train.csv
+  val_manifest: data/manifests/sidset_validation.csv
+  format_debias:
+    enabled: true
+    train_qualities: [70, 80, 90, 95]
+    eval_quality: 90
+    jpeg_subsampling: 2

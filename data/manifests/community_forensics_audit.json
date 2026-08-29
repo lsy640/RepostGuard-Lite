@@ -1,0 +1,99 @@
+{
+  "completed_at_utc": "2026-08-28T17:27:23.303603+00:00",
+  "counts": {
+    "test_external_seen_family": {
+      "0": 1000,
+      "1": 1000
+    },
+    "test_external_unseen_generator": {
+      "0": 1000,
+      "1": 1000
+    },
+    "train": {
+      "0": 9000,
+      "1": 9000
+    },
+    "val_unseen_generator": {
+      "0": 1000,
+      "1": 1000
+    }
+  },
+  "cross_split_phash_near_duplicate_count": 0,
+  "datasets": {
+    "eval": {
+      "dataset_id": "OwensLab/CommunityForensics-Eval",
+      "dataset_key": "eval",
+      "parquet_bytes": 206224324595,
+      "parquet_files": 413,
+      "revision": "7d4a74a88d2cac93b513c0853bf92c260eaceea0"
+    },
+    "small": {
+      "dataset_id": "OwensLab/CommunityForensics-Small",
+      "dataset_key": "small",
+      "parquet_bytes": 259701750410,
+      "parquet_files": 186,
+      "revision": "6c539a534c07917307c381f5af4053c6091b5278"
+    }
+  },
+  "exact_duplicate_count": 0,
+  "external_seen_definition": "architecture_family_seen_generator_identity_unseen",
+  "external_seen_families": [
+    "GAN",
+    "LatDiff",
+    "PixDiff"
+  ],
+  "external_seen_family_generators": [
+    "decidiffusionv2",
+    "dfgan",
+    "galip",
+    "hourglass",
+    "kandinsky-2-2",
+    "kvikontent-midjourney-v6",
+    "lcm-lora-sdv15",
+    "lcm-lora-sdxl",
+    "lcm-lora-ssd1b"
+  ],
+  "external_unseen_generators": [
+    "dalle2",
+    "dalle3",
+    "firefly-image2",
+    "firefly-image3",
+    "flux-dev",
+    "flux-schnell",
+    "ideogramv1",
+    "ideogramv2",
+    "imagen3",
+    "midjourneyv5-2",
+    "midjourneyv6-1",
+    "stable-cascade"
+  ],
+  "license": "CC-BY-NC-SA-4.0",
+  "manifests": {
+    "test_external_seen_family": {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_test_external_seen_family.csv",
+      "sha256": "c55d0652d4d95e17bf2c10c6a8dde2bdde5a4e5ea18a05baa22def0a669d1b42"
+    },
+    "test_external_unseen_generator": {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_test_external_unseen_generator.csv",
+      "sha256": "70434fc7b38ed2015cac67bc87897139fb202ffa13e736a5ce2f7c759833e42a"
+    },
+    "train": {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_train.csv",
+      "sha256": "fdfddade1b8b400183ec03aaa912f203f5fb1edc28bad6e92709372a4340dc55"
+    },
+    "val_unseen_generator": {
+      "path": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_val_unseen_generator.csv",
+      "sha256": "11bfa4b6d7c538ce0a3d774c3f2902ac11ffc7dbe513de354f87fbaad1d6b6ba"
+    }
+  },
+  "materialized_bytes": 23419473481,
+  "materialized_images": 24000,
+  "phash_hamming_threshold": 4,
+  "reserved_hash_manifest": null,
+  "reserved_set_dedup_verified": false,
+  "reserved_set_limitation": "No COCO val2017/DALL-E Advanced reserved hash manifest was available; official split/source constraints were enforced, but reserved-image hash overlap could not be verified.",
+  "selection_plan_sha256": "b7818aa4c27d9c7d35ae2910dea54b1d8eb111c5c5e00b8578eebae3c80788b4",
+  "selection_seed": 20260828,
+  "train_generators": 900,
+  "validation_generators": 100
+}

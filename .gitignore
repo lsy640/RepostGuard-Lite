@@ -1,0 +1,52 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Local environments and editor/runtime state.
+.env
+.env.*
+!.env.example
+.venv/
+.vscode/
+.idea/
+.ipynb_checkpoints/
+.DS_Store
+
+# Downloaded, materialized, cached, quarantined, and mutable dataset state.
+# Frozen manifests and their JSON audits remain versioned for reproducibility.
+data/raw/
+data/cache/
+data/state/
+data/quarantine/
+data/**/*.parquet
+data/**/*.arrow
+data/**/*.zip
+data/**/*.tar
+data/**/*.tar.gz
+
+# Model weights and checkpoints.
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+checkpoints/
+checkpoint/
+weights/
+
+# Per-image prediction dumps are large derived data. Compact metrics, summaries,
+# run cards, resolved configs, completion markers, and reports remain versioned.
+**/predictions.jsonl
+
+# Cluster logs are environment-specific and can contain local paths/job details.
+logs/
+slurm-*.out
+slurm-*.err
+
+# Credentials and private keys must never enter the repository.
+*.pem
+*.key
+id_rsa*
+id_ed25519*

@@ -1,0 +1,9 @@
+base: m2.yaml
+
+model:
+  experiment: m3
+  quality_gate:
+    hidden_dim: 32
+
+output:
+  directory: outputs/sidset/m3

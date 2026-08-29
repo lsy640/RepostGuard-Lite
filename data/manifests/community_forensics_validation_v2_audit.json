@@ -1,0 +1,373 @@
+{
+  "completed_at_utc": "2026-08-28T20:18:10.201585+00:00",
+  "counts": {
+    "exact_real": 1000,
+    "exact_sd14": 1000,
+    "hard_dfgan": 250,
+    "hard_galip": 250,
+    "hard_hourglass": 250,
+    "hard_real_panel": 250
+  },
+  "exact_seen": {
+    "canonical_generator_id": "compvis/stable-diffusion-v1-4",
+    "dataset_id": "TheKernel01/AIGIBench",
+    "identity_basis": "AIGIBench declares SD14 as Stable Diffusion 1.4; Small train contains CompVis/stable-diffusion-v1-4",
+    "manifest": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_val_external_exact_seen_generator.csv",
+    "manifest_sha256": "fc4bbd7d05c10f6b40b3009edd4213acd6e6cf4de5085930642353a7fc950ac3",
+    "source_generator_label": "SD14",
+    "source_revision": "f125eabc5ac34a4729d74adc1aa1214540f91947"
+  },
+  "frozen_external_protocol_audit": {
+    "seen_family": {
+      "architectures": [
+        "GAN",
+        "LatDiff",
+        "PixDiff"
+      ],
+      "definition": "train-seen architecture family and exact identity absent from Small train and validation",
+      "generators": [
+        "decidiffusionv2",
+        "dfgan",
+        "galip",
+        "hourglass",
+        "kandinsky-2-2",
+        "kvikontent-midjourney-v6",
+        "lcm-lora-sdv15",
+        "lcm-lora-sdxl",
+        "lcm-lora-ssd1b"
+      ]
+    },
+    "unseen_generator": {
+      "architectures": [
+        "Commercial",
+        "Other"
+      ],
+      "definition": "architecture family and exact identity both absent from Small train and validation",
+      "generators": [
+        "dalle2",
+        "dalle3",
+        "firefly-image2",
+        "firefly-image3",
+        "flux-dev",
+        "flux-schnell",
+        "ideogramv1",
+        "ideogramv2",
+        "imagen3",
+        "midjourneyv5-2",
+        "midjourneyv6-1",
+        "stable-cascade"
+      ]
+    }
+  },
+  "hard_slices": {
+    "dfgan": {
+      "aigi": 250,
+      "manifest": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_val_hard_dfgan.csv",
+      "manifest_sha256": "1a60b7d517bb6d4935604778d146f4578d4e41b6469eee767b5d0aae9e9ba555",
+      "shared_real_panel": 250
+    },
+    "galip": {
+      "aigi": 250,
+      "manifest": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_val_hard_galip.csv",
+      "manifest_sha256": "bf9a5b60a52931f8d125182ac406c505678740a991b1d82367d03f52cb9e96dc",
+      "shared_real_panel": 250
+    },
+    "hourglass": {
+      "aigi": 250,
+      "manifest": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_val_hard_hourglass.csv",
+      "manifest_sha256": "9cad78012352a0cee48475e1128f08cbecdd5b7283fa7e2f81a55dda5f3b2a3d",
+      "shared_real_panel": 250
+    }
+  },
+  "materialized_bytes": 2898615469,
+  "materialized_images": 3000,
+  "phash_hamming_threshold": 4,
+  "preserved_external_manifest_sha256": {
+    "community_forensics_test_external_seen_family.csv": "c55d0652d4d95e17bf2c10c6a8dde2bdde5a4e5ea18a05baa22def0a669d1b42",
+    "community_forensics_test_external_unseen_generator.csv": "70434fc7b38ed2015cac67bc87897139fb202ffa13e736a5ce2f7c759833e42a"
+  },
+  "protocol": {
+    "exact_seen_generator": "same exact generator identity as Small train, different source dataset",
+    "seen_family": "train-seen architecture family, exact generator identity absent from Small train and validation",
+    "unseen_generator": "architecture family and exact generator identity both absent from Small train and validation"
+  },
+  "rejected_candidate_count": 25,
+  "rejected_candidates": [
+    {
+      "phash": "c7e5c9891e163633",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 3,
+      "row_index": 1,
+      "sample_id": "cfv2_hard_dfgan_019ee5da2646c17b",
+      "selection_group": "hard_dfgan",
+      "sha256": "916606360f93de27ba5df64cb92161aa4aabf499b8a7d3fb1887a1ce6b8e150f",
+      "source_file": "data/CompEval-00004-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "c7c0ba7a94a1c56b",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 4,
+      "row_index": 5,
+      "sample_id": "cfv2_hard_dfgan_0306d142e022df62",
+      "selection_group": "hard_dfgan",
+      "sha256": "589429c6357047f981a36851e07384ad69e6342c495100894b610d022429b88c",
+      "source_file": "data/CompEval-00007-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "951b193336a66c6d",
+      "rejection_reason": "phash_overlap_with_base_or_validation_v2_at_distance_le_4",
+      "row_group": 0,
+      "row_index": 15,
+      "sample_id": "cfv2_hard_dfgan_0d618385a080bf83",
+      "selection_group": "hard_dfgan",
+      "sha256": "c017efd8e1b5f6c6e13d144880715f4076e2fcc990eb446081ee34b07288f22c",
+      "source_file": "data/CompEval-00006-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "e4ec5b9b98969294",
+      "rejection_reason": "phash_overlap_with_base_or_validation_v2_at_distance_le_4",
+      "row_group": 1,
+      "row_index": 1,
+      "sample_id": "cfv2_hard_dfgan_36a5cfe66470059e",
+      "selection_group": "hard_dfgan",
+      "sha256": "de8a82f291418fb17b6ac9ad3d986a18a1ec096b5eceeace70be3c720d9fbcda",
+      "source_file": "data/CompEval-00005-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "db70c2ad6d992332",
+      "rejection_reason": "phash_overlap_with_base_or_validation_v2_at_distance_le_4",
+      "row_group": 0,
+      "row_index": 22,
+      "sample_id": "cfv2_hard_dfgan_36b897f6d49e90e1",
+      "selection_group": "hard_dfgan",
+      "sha256": "212342b2f4a92a03a5e2cec521b86df1667404e0a39ebd4d7519fcdfd5dde9b7",
+      "source_file": "data/CompEval-00006-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "c1234296cbde07cf",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 0,
+      "row_index": 0,
+      "sample_id": "cfv2_hard_dfgan_3a344862eab2cb8f",
+      "selection_group": "hard_dfgan",
+      "sha256": "9086cc49bf4e24bdf983277e65435abb8dc245eb9c88248c8b3c5382eed34d47",
+      "source_file": "data/CompEval-00006-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "ededb79292d24340",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 4,
+      "row_index": 22,
+      "sample_id": "cfv2_hard_dfgan_3ff23d8922436e31",
+      "selection_group": "hard_dfgan",
+      "sha256": "87b662ebede2b0838e6c910d7ac15946a3ed89bf224fe684f30192eefe3b9f87",
+      "source_file": "data/CompEval-00001-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "961460df3f78c48e",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 4,
+      "row_index": 19,
+      "sample_id": "cfv2_hard_dfgan_4e2e68880302d0be",
+      "selection_group": "hard_dfgan",
+      "sha256": "6d14959b6a34edf88b440d15f352f5eeebb7089d8df385c5119d6f9945f91d22",
+      "source_file": "data/CompEval-00007-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "d9acd95ae5492649",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 1,
+      "row_index": 14,
+      "sample_id": "cfv2_hard_dfgan_5070f45b4fbf508a",
+      "selection_group": "hard_dfgan",
+      "sha256": "41b4a8ff3d49c778267898571f80671229284b73e0ce6a503538030c5b1a2a62",
+      "source_file": "data/CompEval-00004-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "c7a37be8ac045393",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 2,
+      "row_index": 12,
+      "sample_id": "cfv2_hard_dfgan_50725f0eac619e0d",
+      "selection_group": "hard_dfgan",
+      "sha256": "851f4f34f417528e79cf375bc2a6bc3b9fb1676da63b2e2c9471645d9b548191",
+      "source_file": "data/CompEval-00006-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "be9ca971684accd4",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 3,
+      "row_index": 15,
+      "sample_id": "cfv2_hard_dfgan_5df2237e1b826832",
+      "selection_group": "hard_dfgan",
+      "sha256": "40be9b68f212f8b87c4346c27a95257b10d33d51bb471e63f7d8dd6d5f782d36",
+      "source_file": "data/CompEval-00003-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "d18156921b9f2dcb",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 3,
+      "row_index": 21,
+      "sample_id": "cfv2_hard_dfgan_6f0363e01e1b9611",
+      "selection_group": "hard_dfgan",
+      "sha256": "1f9b5999ff8b5a4e7fbb0bb808250911526ca308353057568e145b33451ec488",
+      "source_file": "data/CompEval-00003-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "9317e66c4b4b6945",
+      "rejection_reason": "phash_overlap_with_base_or_validation_v2_at_distance_le_4",
+      "row_group": 3,
+      "row_index": 21,
+      "sample_id": "cfv2_hard_dfgan_84842da5da388cf3",
+      "selection_group": "hard_dfgan",
+      "sha256": "711d6691aebcaca227c8b03680b24483910f82768df4afa28a7858dfbbade033",
+      "source_file": "data/CompEval-00004-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "ec807bdb91c42c2f",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 1,
+      "row_index": 12,
+      "sample_id": "cfv2_hard_dfgan_8bb8c0e669e9b76f",
+      "selection_group": "hard_dfgan",
+      "sha256": "c8531b9ac4fd1f5b9198ec9dc1109c9c8cd2fb7f482ed980afb78c01757b32e5",
+      "source_file": "data/CompEval-00004-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "d6e5c9c99a163625",
+      "rejection_reason": "phash_overlap_with_base_or_validation_v2_at_distance_le_4",
+      "row_group": 0,
+      "row_index": 17,
+      "sample_id": "cfv2_hard_dfgan_9315996cf7f4c7d3",
+      "selection_group": "hard_dfgan",
+      "sha256": "81c3f99f85e5eb943a7974d474c5a27968eee941bb7135e6c94dcc8b557b837e",
+      "source_file": "data/CompEval-00006-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "d9acd95ae5492649",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 2,
+      "row_index": 14,
+      "sample_id": "cfv2_hard_dfgan_95884db5c5593074",
+      "selection_group": "hard_dfgan",
+      "sha256": "41b4a8ff3d49c778267898571f80671229284b73e0ce6a503538030c5b1a2a62",
+      "source_file": "data/CompEval-00006-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "f3847c9271a65b58",
+      "rejection_reason": "phash_overlap_with_base_or_validation_v2_at_distance_le_4",
+      "row_group": 4,
+      "row_index": 3,
+      "sample_id": "cfv2_hard_dfgan_a2056cf1d7fe68ab",
+      "selection_group": "hard_dfgan",
+      "sha256": "8b772b70ecae22d193db05c3a6cbfc1e516d13f64b0b80eebe70c4f28e8b9d6c",
+      "source_file": "data/CompEval-00003-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "9b1b4664a6d6e64c",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 0,
+      "row_index": 7,
+      "sample_id": "cfv2_hard_dfgan_a3b71f210edef5a4",
+      "selection_group": "hard_dfgan",
+      "sha256": "5f1f3ea93a6b670027c37ddea46531702bf0acc091e43e342e611d6951f42faf",
+      "source_file": "data/CompEval-00003-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "929212939a9bcbcf",
+      "rejection_reason": "phash_overlap_with_base_or_validation_v2_at_distance_le_4",
+      "row_group": 2,
+      "row_index": 21,
+      "sample_id": "cfv2_hard_dfgan_c0b9ee088a4d96f9",
+      "selection_group": "hard_dfgan",
+      "sha256": "51f8e47e779975ba6963345cb6a01700722631d03b806c54414c7fe933bba0dd",
+      "source_file": "data/CompEval-00006-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "e5ac569392a65996",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 2,
+      "row_index": 10,
+      "sample_id": "cfv2_hard_dfgan_e2edd3d2ac244113",
+      "selection_group": "hard_dfgan",
+      "sha256": "915a8bde7e50cb2b4ef67b655eaf73f100f6b0ea82ffc4be4c2209af24c4ee8f",
+      "source_file": "data/CompEval-00006-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "c1234296cbde07cf",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 4,
+      "row_index": 16,
+      "sample_id": "cfv2_hard_dfgan_ec7d09ffa0bcfae3",
+      "selection_group": "hard_dfgan",
+      "sha256": "9086cc49bf4e24bdf983277e65435abb8dc245eb9c88248c8b3c5382eed34d47",
+      "source_file": "data/CompEval-00007-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "e4ec5b9b98969390",
+      "rejection_reason": "phash_overlap_with_base_or_validation_v2_at_distance_le_4",
+      "row_group": 0,
+      "row_index": 14,
+      "sample_id": "cfv2_hard_dfgan_fcb98a6116b63c10",
+      "selection_group": "hard_dfgan",
+      "sha256": "37d396f80b11ffa9d2af73f51e3bac7f3e2cd79f6087ed02ec7a6b5c7b3ba8ab",
+      "source_file": "data/CompEval-00003-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "e63199ce99ce898c",
+      "rejection_reason": "phash_overlap_with_base_or_validation_v2_at_distance_le_4",
+      "row_group": 4,
+      "row_index": 12,
+      "sample_id": "cfv2_hard_real_panel_5bd451fef3f8865a",
+      "selection_group": "hard_real_panel",
+      "sha256": "6894d76bf55871f509a6923c2f2416a041b84986cc69305ba5161b42bb1f8b21",
+      "source_file": "data/CompEval-00336-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "bc6bc3903d8f9264",
+      "rejection_reason": "sha256_overlap_with_base_or_validation_v2",
+      "row_group": 3,
+      "row_index": 17,
+      "sample_id": "cfv2_hard_real_panel_6955d7b81d20a9fc",
+      "selection_group": "hard_real_panel",
+      "sha256": "717569c2767d7fd76c0f39394afcd41693a4cbebdf7a0dad330509b6a4078550",
+      "source_file": "data/CompEval-00199-of-00413.parquet",
+      "source_key": "eval"
+    },
+    {
+      "phash": "8ea854de65969b25",
+      "rejection_reason": "phash_overlap_with_base_or_validation_v2_at_distance_le_4",
+      "row_group": 1,
+      "row_index": 15,
+      "sample_id": "cfv2_hard_real_panel_9e89b12e10f92a70",
+      "selection_group": "hard_real_panel",
+      "sha256": "7f86b147bc817c78e3048dbdde75cf6f4bb6a7475660d9069a0d460bb42fc91c",
+      "source_file": "data/CompEval-00161-of-00413.parquet",
+      "source_key": "eval"
+    }
+  ],
+  "selection_seed": 20260828
+}

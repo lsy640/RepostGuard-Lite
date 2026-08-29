@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "generated_at_asia_singapore": "2026-08-29T15:15:17+08:00",
+  "slurm_job_id": "32652",
+  "scope": {
+    "included": [
+      "community_forensics_train.csv label=1",
+      "community_forensics_test_external_seen_family.csv label=1",
+      "community_forensics_test_external_unseen_generator.csv label=1"
+    ],
+    "excluded": "Real images and all validation manifests, because exact generator identity applies to AIGI and the request names train/test."
+  },
+  "train_generator_sampling": {
+    "selection_seed": 20260829,
+    "train_generator_limit": 69,
+    "rare_family_threshold": 5,
+    "available_by_architecture": {
+      "GAN": 2,
+      "LatDiff": 897,
+      "PixDiff": 1
+    },
+    "selected_by_architecture": {
+      "GAN": 2,
+      "LatDiff": 66,
+      "PixDiff": 1
+    },
+    "selection_rule": "Keep all generators in architecture families with <=5 generators; allocate remaining slots proportionally and rank generators by SHA256(seed:canonical_generator_id)."
+  },
+  "selection_rule": "For each retained (project_split, canonical_generator_id), choose minimum (sha256, sample_id).",
+  "counts": {
+    "train": 69,
+    "seen_family": 9,
+    "unseen_family": 12,
+    "total": 90
+  },
+  "checks": {
+    "expected_generator_counts_match": true,
+    "unique_generator_ids": 90,
+    "unique_sample_ids": 90,
+    "missing_selected_files": 0,
+    "byte_size_mismatches": 0
+  },
+  "manifests": {
+    "train": {
+      "path": "data/manifests/community_forensics_train.csv",
+      "sha256": "fdfddade1b8b400183ec03aaa912f203f5fb1edc28bad6e92709372a4340dc55"
+    },
+    "test_external_seen_family": {
+      "path": "data/manifests/community_forensics_test_external_seen_family.csv",
+      "sha256": "c55d0652d4d95e17bf2c10c6a8dde2bdde5a4e5ea18a05baa22def0a669d1b42"
+    },
+    "test_external_unseen_generator": {
+      "path": "data/manifests/community_forensics_test_external_unseen_generator.csv",
+      "sha256": "70434fc7b38ed2015cac67bc87897139fb202ffa13e736a5ce2f7c759833e42a"
+    }
+  },
+  "outputs": {
+    "master": {
+      "path": "reports/community_forensics_exact_generators_atlas.jpg",
+      "bytes": 4051171,
+      "sha256": "2f7b85b26955c64715bbac1caaea382ad3936b260e0a239bcc9a0c68802b6439",
+      "width": 3394,
+      "height": 4413
+    },
+    "train": {
+      "path": "reports/community_forensics_train_exact_generators_atlas.jpg",
+      "bytes": 2738203,
+      "sha256": "1fd00b025f568b03965884d4aa66c9e595ca77cb87482b616342c6403962001c",
+      "width": 3372,
+      "height": 2593
+    },
+    "test": {
+      "path": "reports/community_forensics_test_exact_generators_atlas.jpg",
+      "bytes": 1111348,
+      "sha256": "9cd895d1ddaa68421bfad12794548fef3c0fcefba1ef2e825fab86865c9dcfde",
+      "width": 3394,
+      "height": 1542
+    },
+    "index": {
+      "path": "reports/community_forensics_exact_generators_atlas_index.csv",
+      "bytes": 45604,
+      "sha256": "376ba4a76d05cd957d478b3670977dd498c668f82cfa5fc63fa216444e0b6fbf"
+    }
+  }
+}
