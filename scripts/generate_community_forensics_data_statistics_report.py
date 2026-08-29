@@ -1618,26 +1618,26 @@ def _parse_args() -> argparse.Namespace:
         "--data-root", default="data/raw/community_forensics"
     )
     parser.add_argument(
-        "--tiff-audit", default="reports/community_forensics_tiff_integrity.json"
+        "--tiff-audit", default="reports/data_statistics/community_forensics_tiff_integrity.json"
     )
     parser.add_argument(
-        "--split-csv", default="reports/community_forensics_data_statistics.csv"
+        "--split-csv", default="reports/data_statistics/community_forensics_data_statistics.csv"
     )
     parser.add_argument(
         "--generator-csv",
-        default="reports/community_forensics_generator_statistics.csv",
+        default="reports/data_statistics/community_forensics_generator_statistics.csv",
     )
     parser.add_argument(
         "--distribution-csv",
-        default="reports/community_forensics_distribution_statistics.csv",
+        default="reports/data_statistics/community_forensics_distribution_statistics.csv",
     )
     parser.add_argument(
         "--artifact-json",
-        default="reports/community_forensics_data_statistics_artifact.json",
+        default="reports/data_statistics/community_forensics_data_statistics_artifact.json",
     )
     parser.add_argument(
         "--audit-json",
-        default="reports/community_forensics_data_statistics_notes.json",
+        default="reports/data_statistics/community_forensics_data_statistics_notes.json",
     )
     return parser.parse_args()
 

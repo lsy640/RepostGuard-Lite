@@ -35,7 +35,7 @@
 - reserved sets 未使用。
 - 训练—验证精确图像重叠为 0。
 
-数据审计记录：[sidset_subset_audit.json](../data/manifests/sidset_subset_audit.json)。
+数据审计记录：[sidset_subset_audit.json](../../data/manifests/sidset_subset_audit.json)。
 
 ### 2.2 原始格式偏差
 
@@ -62,9 +62,9 @@
 
 配置和实现：
 
-- [SID-Set 基础配置](../configs/sidset/base.yaml)
-- [dataset.py](../src/repostguard/data/dataset.py)
-- [transforms.py](../src/repostguard/data/transforms.py)
+- [SID-Set 基础配置](../../configs/sidset/base.yaml)
+- [dataset.py](../../src/repostguard/data/dataset.py)
+- [transforms.py](../../src/repostguard/data/transforms.py)
 
 该策略可以削弱直接的 PNG/JPEG 格式捷径，但不能证明源文件中已有的历史压缩或生成器痕迹已经被彻底清除。
 
@@ -80,7 +80,7 @@
 | M2 | 冻结 CLIP 语义分支 + 法证分支 + 融合头 | 99,423,442 | 11,574,226 | 87,849,216 | CLIP 预训练，法证分支随机初始化 |
 | M3 | M2 + 质量感知双分支门控 | 99,423,744 | 11,574,528 | 87,849,216 | 与 M2 相同，门控随机初始化 |
 
-模型实现：[detectors.py](../src/repostguard/models/detectors.py)。
+模型实现：[detectors.py](../../src/repostguard/models/detectors.py)。
 
 ### 3.2 B0：clean CNN 基线
 
@@ -159,7 +159,7 @@ B2 不使用额外鲁棒增强，只使用共同格式去偏。它主要测试�
 8. 加入高频/低频 patch 类型 embedding；
 9. 通过 attention pooling 获得 256 维法证特征。
 
-法证分支实现：[forensic.py](../src/repostguard/models/forensic.py)。
+法证分支实现：[forensic.py](../../src/repostguard/models/forensic.py)。
 
 #### 特征融合
 
@@ -198,7 +198,7 @@ M3 保留完整 M2 架构，在两个分支融合前增加一个 302 参数的�
 
 门控最后一层初始化为零，因此初始 softmax 权重为 `0.5/0.5`。模型将其乘以 2，使两个分支的初始缩放均为 1，与 M2 的初始融合形式一致。
 
-质量特征不会直接进入最终分类器，只通过调整两个分支的权重间接影响预测。实现见 [quality_gate.py](../src/repostguard/models/quality_gate.py)。
+质量特征不会直接进入最终分类器，只通过调整两个分支的权重间接影响预测。实现见 [quality_gate.py](../../src/repostguard/models/quality_gate.py)。
 
 ## 4. 训练方法
 
@@ -227,7 +227,7 @@ SID-Set 五组模型**不是从 CIFAKE 检测器 checkpoint 继续训练**：
 - 每个 epoch 后在 clean validation 上计算 AUROC
 - `best.pt` 按 clean validation AUROC 选择
 
-基础配置：[base.yaml](../configs/base.yaml)。
+基础配置：[base.yaml](../../configs/base.yaml)。
 
 ### 4.3 各模型超参数和完成状态
 
@@ -243,11 +243,11 @@ M3 训练期间出现两次 AMP gradient overflow。训练器正确跳过对应 
 
 各模型配置：
 
-- [B0](../configs/sidset/b0.yaml)
-- [B1](../configs/sidset/b1.yaml)
-- [B2](../configs/sidset/b2.yaml)
-- [M2](../configs/sidset/m2.yaml)
-- [M3](../configs/sidset/m3.yaml)
+- [B0](../../configs/sidset/b0.yaml)
+- [B1](../../configs/sidset/b1.yaml)
+- [B2](../../configs/sidset/b2.yaml)
+- [M2](../../configs/sidset/m2.yaml)
+- [M3](../../configs/sidset/m3.yaml)
 
 ### 4.4 损失函数
 
@@ -266,7 +266,7 @@ $$
 - symmetric Bernoulli KL 约束 clean/扰动预测概率一致；
 - cosine loss 约束 clean/扰动融合特征一致。
 
-实现见 [losses.py](../src/repostguard/losses.py)。
+实现见 [losses.py](../../src/repostguard/losses.py)。
 
 ## 5. 测试方法
 
@@ -301,7 +301,7 @@ RGB → 224×224 bicubic → JPEG quality 90
 | 组合扰动 | resize 0.5 + JPEG 70 |
 | 组合扰动 | crop 0.8 + JPEG 50 |
 
-完整评测矩阵：[transforms.yaml](../configs/transforms.yaml)。
+完整评测矩阵：[transforms.yaml](../../configs/transforms.yaml)。
 
 ### 5.3 阈值和指标
 
@@ -329,11 +329,11 @@ RGB → 224×224 bicubic → JPEG quality 90
 
 结果文件：
 
-- [B0 summary](../outputs/sidset/b0/summary.json)
-- [B1 summary](../outputs/sidset/b1/summary.json)
-- [B2 summary](../outputs/sidset/b2/summary.json)
-- [M2 summary](../outputs/sidset/m2/summary.json)
-- [M3 summary](../outputs/sidset/m3/summary.json)
+- [B0 summary](../../outputs/sidset/b0/summary.json)
+- [B1 summary](../../outputs/sidset/b1/summary.json)
+- [B2 summary](../../outputs/sidset/b2/summary.json)
+- [M2 summary](../../outputs/sidset/m2/summary.json)
+- [M3 summary](../../outputs/sidset/m3/summary.json)
 
 ## 7. 各扰动条件 AUROC 对比
 
@@ -362,11 +362,11 @@ B1 在 18 个条件中的 14 个取得最高 AUROC；B0 在 clean、JPEG 90 和�
 
 各模型完整逐条件指标：
 
-- [B0 metrics](../outputs/sidset/b0/metrics_by_transform.csv)
-- [B1 metrics](../outputs/sidset/b1/metrics_by_transform.csv)
-- [B2 metrics](../outputs/sidset/b2/metrics_by_transform.csv)
-- [M2 metrics](../outputs/sidset/m2/metrics_by_transform.csv)
-- [M3 metrics](../outputs/sidset/m3/metrics_by_transform.csv)
+- [B0 metrics](../../outputs/sidset/b0/metrics_by_transform.csv)
+- [B1 metrics](../../outputs/sidset/b1/metrics_by_transform.csv)
+- [B2 metrics](../../outputs/sidset/b2/metrics_by_transform.csv)
+- [M2 metrics](../../outputs/sidset/m2/metrics_by_transform.csv)
+- [M3 metrics](../../outputs/sidset/m3/metrics_by_transform.csv)
 
 ## 8. 严格六重随机组合扰动测试
 
@@ -407,10 +407,10 @@ B1 在 18 个条件中的 14 个取得最高 AUROC；B0 在 clean、JPEG 90 和�
 
 实现和配置：
 
-- [strict6 评测矩阵](../configs/sidset_strict6.yaml)
-- [六重扰动实现](../src/repostguard/data/transforms.py)
-- [独立评测输出支持](../src/repostguard/evaluate.py)
-- [SLURM 评测脚本](../scripts/slurm/evaluate_sidset_strict6.sbatch)
+- [strict6 评测矩阵](../../configs/sidset_strict6.yaml)
+- [六重扰动实现](../../src/repostguard/data/transforms.py)
+- [独立评测输出支持](../../src/repostguard/evaluate.py)
+- [SLURM 评测脚本](../../scripts/slurm/evaluate_sidset_strict6.sbatch)
 
 评测 Job `32356` 于 2026-08-28 在单张 NVIDIA A40 上完成，状态为 `COMPLETED`、退出码为 0，用时 7 分 18 秒。B0→B1→B2→M2→M3 在同一作业中顺序评测，没有重新训练或修改任何 checkpoint。
 
@@ -436,11 +436,11 @@ B1 在 18 个条件中的 14 个取得最高 AUROC；B0 在 clean、JPEG 90 和�
 
 完整结果：
 
-- [B0 strict6 summary](../outputs/sidset_strict6/b0/summary.json) / [metrics](../outputs/sidset_strict6/b0/metrics_by_transform.csv) / [run card](../outputs/sidset_strict6/b0/run_card.json)
-- [B1 strict6 summary](../outputs/sidset_strict6/b1/summary.json) / [metrics](../outputs/sidset_strict6/b1/metrics_by_transform.csv) / [run card](../outputs/sidset_strict6/b1/run_card.json)
-- [B2 strict6 summary](../outputs/sidset_strict6/b2/summary.json) / [metrics](../outputs/sidset_strict6/b2/metrics_by_transform.csv) / [run card](../outputs/sidset_strict6/b2/run_card.json)
-- [M2 strict6 summary](../outputs/sidset_strict6/m2/summary.json) / [metrics](../outputs/sidset_strict6/m2/metrics_by_transform.csv) / [run card](../outputs/sidset_strict6/m2/run_card.json)
-- [M3 strict6 summary](../outputs/sidset_strict6/m3/summary.json) / [metrics](../outputs/sidset_strict6/m3/metrics_by_transform.csv) / [run card](../outputs/sidset_strict6/m3/run_card.json)
+- [B0 strict6 summary](../../outputs/sidset_strict6/b0/summary.json) / [metrics](../../outputs/sidset_strict6/b0/metrics_by_transform.csv) / [run card](../../outputs/sidset_strict6/b0/run_card.json)
+- [B1 strict6 summary](../../outputs/sidset_strict6/b1/summary.json) / [metrics](../../outputs/sidset_strict6/b1/metrics_by_transform.csv) / [run card](../../outputs/sidset_strict6/b1/run_card.json)
+- [B2 strict6 summary](../../outputs/sidset_strict6/b2/summary.json) / [metrics](../../outputs/sidset_strict6/b2/metrics_by_transform.csv) / [run card](../../outputs/sidset_strict6/b2/run_card.json)
+- [M2 strict6 summary](../../outputs/sidset_strict6/m2/summary.json) / [metrics](../../outputs/sidset_strict6/m2/metrics_by_transform.csv) / [run card](../../outputs/sidset_strict6/m2/run_card.json)
+- [M3 strict6 summary](../../outputs/sidset_strict6/m3/summary.json) / [metrics](../../outputs/sidset_strict6/m3/metrics_by_transform.csv) / [run card](../../outputs/sidset_strict6/m3/run_card.json)
 
 ### 8.3 结果排序和解释
 
@@ -559,7 +559,7 @@ M3 的六个输入统计量在设计上是无标签的图像质量特征，但�
 
 严重模糊和降采样下，M3 反而提高了法证分支权重。这不一定是错误行为，但与“低层证据受损时更多依赖语义分支”的原始直觉不完全一致，需要通过消融实验进一步解释。
 
-完整审计：[quality_gate_audit.json](../outputs/sidset/m3/quality_gate_audit.json)。
+完整审计：[quality_gate_audit.json](../../outputs/sidset/m3/quality_gate_audit.json)。
 
 ## 11. 当前模型定位
 

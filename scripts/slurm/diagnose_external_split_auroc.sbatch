@@ -23,9 +23,9 @@ set -u
 
 export PYTHONUNBUFFERED=1
 export OMP_NUM_THREADS="$SLURM_CPUS_PER_TASK"
-mkdir -p logs reports
+mkdir -p logs reports/evaluations/external_split
 
 python scripts/diagnose_external_split_auroc.py \
     --project-root "$PROJECT_ROOT" \
-    --output reports/community_forensics_external_split_diagnostic.json \
+    --output reports/evaluations/external_split/community_forensics_external_split_diagnostic.json \
     --bootstrap-replicates 1000

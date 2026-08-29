@@ -64,7 +64,7 @@
     "data_root": "data/raw/community_forensics",
     "base_audit": "data/manifests/community_forensics_audit.json",
     "validation_v2_audit": "data/manifests/community_forensics_validation_v2_audit.json",
-    "tiff_audit": "reports/community_forensics_tiff_integrity.json",
+    "tiff_audit": "reports/data_statistics/community_forensics_tiff_integrity.json",
     "tiff_audit_completed_at_utc": "2026-08-28T11:11:19.362553+00:00",
     "current_tiff_files": 594,
     "prior_tiff_covered_files": 500
@@ -184,9 +184,9 @@
     "manifest_lineage": "SELECT * FROM manifest_lineage ORDER BY split_order"
   },
   "supporting_outputs": {
-    "split_csv": "reports/community_forensics_data_statistics.csv",
-    "generator_csv": "reports/community_forensics_generator_statistics.csv",
-    "distribution_csv": "reports/community_forensics_distribution_statistics.csv"
+    "split_csv": "reports/data_statistics/community_forensics_data_statistics.csv",
+    "generator_csv": "reports/data_statistics/community_forensics_generator_statistics.csv",
+    "distribution_csv": "reports/data_statistics/community_forensics_distribution_statistics.csv"
   },
   "chart_map": [
     {

@@ -135,7 +135,7 @@
   },
   "matrix": "configs/community_forensics_robustness_v2.yaml",
   "matrix_sha256": "69531f3f7111651808c99f14f89723bf631345878b1cbd0cbe0eee8531dde83c",
-  "metrics_csv": "reports/community_forensics_robustness_v2_metrics.csv",
+  "metrics_csv": "reports/evaluations/robustness_v2/community_forensics_robustness_v2_metrics.csv",
   "metrics_csv_sha256": "73d9ba8d12d9fb7dd21239750c1b7365eec50ac4ec1c6f3540728b36fe7129d0",
   "model_lineage": {
     "b0": {

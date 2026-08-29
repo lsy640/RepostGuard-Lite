@@ -162,7 +162,7 @@ def main() -> None:
     parser.add_argument("--database", default="data/state/community_forensics.sqlite3")
     parser.add_argument("--data-root", default="data/raw/community_forensics")
     parser.add_argument(
-        "--report", default="reports/community_forensics_tiff_integrity.json"
+        "--report", default="reports/data_statistics/community_forensics_tiff_integrity.json"
     )
     arguments = parser.parse_args()
     raise SystemExit(

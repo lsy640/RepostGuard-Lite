@@ -1228,15 +1228,15 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--metrics-csv",
-        default="reports/community_forensics_robustness_v2_metrics.csv",
+        default="reports/evaluations/robustness_v2/community_forensics_robustness_v2_metrics.csv",
     )
     parser.add_argument(
         "--artifact-json",
-        default="reports/community_forensics_robustness_v2_report_artifact.json",
+        default="reports/evaluations/robustness_v2/community_forensics_robustness_v2_report_artifact.json",
     )
     parser.add_argument(
         "--audit-json",
-        default="reports/community_forensics_robustness_v2_report_notes.json",
+        default="reports/evaluations/robustness_v2/community_forensics_robustness_v2_report_notes.json",
     )
     return parser.parse_args()
 

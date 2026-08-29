@@ -56,28 +56,28 @@
   },
   "outputs": {
     "master": {
-      "path": "reports/community_forensics_exact_generators_atlas.jpg",
+      "path": "reports/atlases/community_forensics_exact_generators_atlas.jpg",
       "bytes": 4051171,
       "sha256": "2f7b85b26955c64715bbac1caaea382ad3936b260e0a239bcc9a0c68802b6439",
       "width": 3394,
       "height": 4413
     },
     "train": {
-      "path": "reports/community_forensics_train_exact_generators_atlas.jpg",
+      "path": "reports/atlases/community_forensics_train_exact_generators_atlas.jpg",
       "bytes": 2738203,
       "sha256": "1fd00b025f568b03965884d4aa66c9e595ca77cb87482b616342c6403962001c",
       "width": 3372,
       "height": 2593
     },
     "test": {
-      "path": "reports/community_forensics_test_exact_generators_atlas.jpg",
+      "path": "reports/atlases/community_forensics_test_exact_generators_atlas.jpg",
       "bytes": 1111348,
       "sha256": "9cd895d1ddaa68421bfad12794548fef3c0fcefba1ef2e825fab86865c9dcfde",
       "width": 3394,
       "height": 1542
     },
     "index": {
-      "path": "reports/community_forensics_exact_generators_atlas_index.csv",
+      "path": "reports/atlases/community_forensics_exact_generators_atlas_index.csv",
       "bytes": 45604,
       "sha256": "376ba4a76d05cd957d478b3670977dd498c668f82cfa5fc63fa216444e0b6fbf"
     }

@@ -13,11 +13,11 @@ set -euo pipefail
 
 PROJECT_ROOT=/home/msai/lius0131/AGI/repostguard-lite
 ENV_PREFIX=/home/msai/lius0131/.conda/envs/repostguard
-MASTER=reports/community_forensics_exact_generators_atlas.jpg
-TRAIN=reports/community_forensics_train_exact_generators_atlas.jpg
-TEST=reports/community_forensics_test_exact_generators_atlas.jpg
-INDEX=reports/community_forensics_exact_generators_atlas_index.csv
-AUDIT=reports/community_forensics_exact_generators_atlas_audit.json
+MASTER=reports/atlases/community_forensics_exact_generators_atlas.jpg
+TRAIN=reports/atlases/community_forensics_train_exact_generators_atlas.jpg
+TEST=reports/atlases/community_forensics_test_exact_generators_atlas.jpg
+INDEX=reports/atlases/community_forensics_exact_generators_atlas_index.csv
+AUDIT=reports/atlases/community_forensics_exact_generators_atlas_audit.json
 
 cd "$PROJECT_ROOT"
 module load anaconda
@@ -28,7 +28,7 @@ set -u
 
 export PYTHONUNBUFFERED=1
 export OMP_NUM_THREADS="$SLURM_CPUS_PER_TASK"
-mkdir -p logs reports
+mkdir -p logs reports/atlases
 
 test -s data/raw/community_forensics/COMPLETE
 test -s data/raw/community_forensics/VALIDATION_V2_COMPLETE

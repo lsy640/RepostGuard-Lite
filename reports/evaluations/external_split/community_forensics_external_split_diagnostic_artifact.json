@@ -10,10 +10,10 @@
       {
         "id": "diagnostic",
         "label": "External split diagnostic",
-        "path": "reports/community_forensics_external_split_diagnostic.json",
+        "path": "reports/evaluations/external_split/community_forensics_external_split_diagnostic.json",
         "query": {
           "sql": "SELECT cohort, model, label, generator_id, architecture, score\nFROM community_forensics_clean_external_predictions\nWHERE transform = 'clean'\n  AND cohort IN ('seen_family', 'unseen_generator');",
-          "query": "python scripts/diagnose_external_split_auroc.py --project-root . --output reports/community_forensics_external_split_diagnostic.json --bootstrap-replicates 1000",
+          "query": "python scripts/diagnose_external_split_auroc.py --project-root . --output reports/evaluations/external_split/community_forensics_external_split_diagnostic.json --bootstrap-replicates 1000",
           "description": "Join frozen manifests to clean external predictions, reproduce AUROC, decompose generator and architecture slices, and bootstrap the cross-cohort difference.",
           "engine": "Python on SLURM compute node",
           "id": "slurm-32469",
@@ -529,10 +529,10 @@
     {
       "id": "diagnostic",
       "label": "External split diagnostic",
-      "path": "reports/community_forensics_external_split_diagnostic.json",
+      "path": "reports/evaluations/external_split/community_forensics_external_split_diagnostic.json",
       "query": {
         "sql": "SELECT cohort, model, label, generator_id, architecture, score\nFROM community_forensics_clean_external_predictions\nWHERE transform = 'clean'\n  AND cohort IN ('seen_family', 'unseen_generator');",
-        "query": "python scripts/diagnose_external_split_auroc.py --project-root . --output reports/community_forensics_external_split_diagnostic.json --bootstrap-replicates 1000",
+        "query": "python scripts/diagnose_external_split_auroc.py --project-root . --output reports/evaluations/external_split/community_forensics_external_split_diagnostic.json --bootstrap-replicates 1000",
         "description": "Reproduced AUROC and cohort decomposition from frozen manifests and clean prediction records.",
         "engine": "Python on SLURM compute node",
         "id": "slurm-32469",
@@ -540,7 +540,7 @@
         "language": "bash",
         "filters": ["Clean external predictions only"],
         "metric_definitions": ["AUROC is computed within each external cohort."],
-        "tables_used": ["reports/community_forensics_external_split_diagnostic.json"]
+        "tables_used": ["reports/evaluations/external_split/community_forensics_external_split_diagnostic.json"]
       }
     },
     {

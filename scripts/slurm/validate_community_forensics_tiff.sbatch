@@ -23,9 +23,9 @@ set -u
 
 export PYTHONUNBUFFERED=1
 export OMP_NUM_THREADS="$SLURM_CPUS_PER_TASK"
-mkdir -p logs reports
+mkdir -p logs reports/data_statistics
 
 python scripts/validate_community_forensics_tiff.py \
     --database data/state/community_forensics.sqlite3 \
     --data-root data/raw/community_forensics \
-    --report reports/community_forensics_tiff_integrity.json
+    --report reports/data_statistics/community_forensics_tiff_integrity.json

@@ -118,7 +118,7 @@ def main() -> None:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("reports/community_forensics_external_split_diagnostic.json"),
+        default=Path("reports/evaluations/external_split/community_forensics_external_split_diagnostic.json"),
     )
     parser.add_argument("--bootstrap-replicates", type=int, default=1000)
     args = parser.parse_args()

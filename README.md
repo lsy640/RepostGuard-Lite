@@ -1,7 +1,38 @@
-# RepostGuard-Lite pilot
+# RepostGuard-Lite
 
-This repository implements the initial experiments defined in
-`../AIGC图像鲁棒性检测项目可行性方案.md`:
+This repository implements the AIGC image robustness experiments defined in
+`../AIGC图像鲁棒性检测项目可行性方案.md`. The current primary training and
+evaluation track is the frozen Community Forensics dataset; CIFAKE and SID-Set
+are retained as historical prototype lineages only.
+
+## Current status and consolidated summary
+
+The canonical project summary is
+[`reports/summaries/COMMUNITY_FORENSICS_PROJECT_SUMMARY.md`](reports/summaries/COMMUNITY_FORENSICS_PROJECT_SUMMARY.md).
+The complete report directory map and regeneration entry points are listed in
+[`reports/README.md`](reports/README.md).
+It documents the model architectures, training lineage, all eight frozen data
+manifests, format debiasing, internal checkpoint selection, six external
+slices, 21 clean/perturbation conditions, fixed-threshold metrics,
+stage-by-stage improvements, limitations, and artifact locations.
+
+Current headline results on the balanced 2,000-image strict unseen-generator
+test are:
+
+- **M3** is the best fixed-threshold detector: clean Accuracy 79.30%, F1
+  80.12%, AIGI Recall 83.40%, AUROC 0.8631 and AP 0.8206. Across the 20
+  perturbations it retains 76.90% mean Accuracy and 71.05% worst Accuracy.
+- **M2** is slightly more conservative, with 77.93% clean Precision and 77.20%
+  Real Specificity.
+- **B2** has the strongest cross-slice ranking: 0.7315 clean macro-AUROC across
+  exact-seen, three hard generators, seen-family/exact-unseen and strict
+  unseen-generator. Its frozen operating threshold has low AIGI recall, so this
+  AUROC advantage does not make it the best current fixed-threshold detector.
+- Hourglass, DFGAN and GALIP expose a material M2/M3 generalization gap; current
+  aggregate strict-unseen performance must not be treated as universal unseen-
+  generator performance.
+
+The five evaluated models are:
 
 - **B0**: pretrained EfficientNet-B0, clean-only training.
 - **B1**: the same EfficientNet-B0 with class-symmetric JPEG, blur, resize,
@@ -13,13 +44,14 @@ This repository implements the initial experiments defined in
   semantic and forensic features using blur, blockiness, noise, effective
   resolution and dynamic-range proxies.
 
-The completed initial run uses a deterministic 10,000-image CIFAKE training
+The historical initial run used a deterministic 10,000-image CIFAKE training
 subset and a 2,000-image official-test validation subset (balanced by class).
-CIFAKE remains a pipeline/pilot dataset only. A second, higher-resolution
-SID-Set track uses 10,000 real + 10,000 fully synthetic official-training
+CIFAKE remains pipeline/pilot evidence only. A second, higher-resolution
+SID-Set track used 10,000 real + 10,000 fully synthetic official-training
 images and 2,000 real + 2,000 fully synthetic official-validation images.
 SID-Set's tampered class is deliberately excluded from this binary whole-image
-generation task.
+generation task. Their raw data and trained checkpoints have been removed to
+free storage; the reproducibility scripts, configs and historical reports remain.
 
 ## Data contract
 
@@ -33,7 +65,7 @@ sample_id,path,label,split,source_dataset,generator_id
 AIGC/FAKE and `label=0` means authentic/REAL. Dataset code never uses file or
 directory names as model inputs.
 
-## Cluster workflow
+## Historical CIFAKE cluster workflow
 
 All Python commands run through SLURM. From the TC2 Head Node:
 
@@ -55,10 +87,10 @@ time, so the reusable training script requests 16 GB and one hour. The current
 QoS permits only one GPU per user, so array tasks execute sequentially even
 though two submitted jobs are allowed.
 
-## Prepare and run SID-Set
+## Historical SID-Set workflow (not currently materialized)
 
-The public SID-Set repository is about 140 GB, so this project streams and
-materialises only the requested 24,000 images. The downloader records the
+The public SID-Set repository is about 140 GB. The historical builder streamed
+and materialised only the requested 24,000 images. The downloader records the
 resolved Hugging Face revision, original image IDs, SHA-256 hashes, dimensions,
 formats, class counts, and exact train/validation overlap. It is deterministic
 and resumable; an interrupted job can be submitted again without discarding
@@ -78,9 +110,10 @@ sbatch --array=4 scripts/slurm/train_and_eval_sidset.sbatch
 Array indices 0--4 map to B0, B1, B2, M2, and M3. SID-Set manifests and the audit are
 written to `data/manifests/sidset_train.csv`,
 `data/manifests/sidset_validation.csv`, and
-`data/manifests/sidset_subset_audit.json`. The original CIFAKE configs and
-outputs are preserved; SID-Set uses `configs/sidset/` and
-`outputs/sidset/<experiment>/`.
+`data/manifests/sidset_subset_audit.json`. The CIFAKE and SID-Set configs and
+scripts remain for reproducibility, but their raw subsets and trained output
+directories are no longer present. Re-running this workflow will download or
+materialise SID-Set again and retrain the models.
 
 ### SID-Set format debiasing
 
@@ -205,7 +238,7 @@ scattering a small subset across hundreds of redundant Parquet reads.
 The current training split, checkpoint-selection validation split, four
 external/hard validation slices, and two external test splits are summarized in
 the self-contained report
-`reports/COMMUNITY_FORENSICS_DATA_STATISTICS.html`.  It distinguishes manifest
+`reports/data_statistics/COMMUNITY_FORENSICS_DATA_STATISTICS.html`.  It distinguishes manifest
 references from unique physical images because the three hard slices reuse one
 250-image real panel.  The report includes class balance, exact-generator and
 architecture-family exposure, real sources, formats, resolution and storage,
@@ -213,11 +246,11 @@ all 28 pairwise split-overlap checks, manifest lineage, and build-audit counts.
 
 Supporting machine-readable outputs are:
 
-- `reports/community_forensics_data_statistics.csv`: one row per split;
-- `reports/community_forensics_generator_statistics.csv`: complete exact-generator inventory;
-- `reports/community_forensics_distribution_statistics.csv`: class, architecture, format, real-source, and resolution distributions;
-- `reports/community_forensics_data_statistics_notes.json`: report contract, audit details, and SQL/chart lineage;
-- `reports/community_forensics_data_statistics_artifact.json`: canonical portable-report artifact.
+- `reports/data_statistics/community_forensics_data_statistics.csv`: one row per split;
+- `reports/data_statistics/community_forensics_generator_statistics.csv`: complete exact-generator inventory;
+- `reports/data_statistics/community_forensics_distribution_statistics.csv`: class, architecture, format, real-source, and resolution distributions;
+- `reports/data_statistics/community_forensics_data_statistics_notes.json`: report contract, audit details, and SQL/chart lineage;
+- `reports/data_statistics/community_forensics_data_statistics_artifact.json`: canonical portable-report artifact.
 
 Regenerate and validate the package on a Compute Node with:
 
@@ -226,7 +259,7 @@ sbatch scripts/slurm/report_community_forensics_data_statistics.sbatch
 ```
 
 An annotated exact-generator sample atlas is available at
-`reports/community_forensics_exact_generators_atlas.jpg`.  It contains one
+`reports/atlases/community_forensics_exact_generators_atlas.jpg`.  It contains one
 deterministically selected AIGI representative for 69 training generators and
 all 21 external-test generators.  The compact training sample keeps every
 generator from rare architecture families (at most five generators) and fills
@@ -240,19 +273,19 @@ and real images are intentionally excluded from this visualization.
 sbatch scripts/slurm/build_community_forensics_exact_generator_atlas.sbatch
 ```
 
-## Reproduce one experiment
+## Reproduce one current experiment
 
 Inside an allocated SLURM job, after activating `repostguard`:
 
 ```bash
-python -m repostguard.train --config configs/b1.yaml
+python -m repostguard.train --config configs/community_forensics/b1.yaml
 python -m repostguard.evaluate \
-  --config configs/b1.yaml \
-  --checkpoint outputs/b1/best.pt
+  --config configs/community_forensics/b1.yaml \
+  --checkpoint outputs/community_forensics/b1/best.pt
 
 python -m repostguard.infer \
-  --config configs/m2.yaml \
-  --checkpoint outputs/m2/best.pt \
+  --config configs/community_forensics/m2.yaml \
+  --checkpoint outputs/community_forensics/m2/best.pt \
   --input-dir ./images \
   --output ./predictions.json \
   --diagnostics ./diagnostics.json
@@ -301,15 +334,41 @@ threshold. Evaluation loads the immutable `resolved_config.yaml` stored beside
 each checkpoint, then applies manifest/matrix/threshold overrides only after the
 checkpoint digest has been validated. The report job writes a self-contained,
 validated HTML report at
-`reports/COMMUNITY_FORENSICS_B0_B1_B2_M2_M3_ROBUSTNESS_V2.html`, plus the
+`reports/evaluations/robustness_v2/COMMUNITY_FORENSICS_B0_B1_B2_M2_M3_ROBUSTNESS_V2.html`, plus the
 canonical report artifact JSON, a complete machine-readable CSV, audit notes,
 and a portable-delivery verification receipt.
+
+### Unseen-generator detailed accuracy report
+
+The frozen B0/B1/B2/M2/M3 predictions on the balanced 2,000-image strict
+unseen-generator test split are analyzed in
+`reports/evaluations/unseen_generator/COMMUNITY_FORENSICS_UNSEEN_GENERATOR_ACCURACY.html`. In addition to
+ROC curves and AUROC, the report includes precision-recall curves, Accuracy,
+Precision, AIGI Recall, Real Specificity, NPV, F1/Macro-F1, Balanced Accuracy,
+MCC, AP, FPR/FNR, Brier, ECE-15, low-FPR TPR, confusion counts, stratified
+bootstrap intervals, all 21 clean/perturbed conditions, exact-generator recall,
+and real-source specificity. Per-model thresholds remain frozen from the
+internal Small clean validation split.
+
+Supporting machine-readable outputs are:
+
+- `reports/evaluations/unseen_generator/community_forensics_unseen_generator_clean_metrics.csv`;
+- `reports/evaluations/unseen_generator/community_forensics_unseen_generator_all_metrics.csv`;
+- `reports/evaluations/unseen_generator/community_forensics_unseen_generator_slice_metrics.csv`;
+- `reports/evaluations/unseen_generator/community_forensics_unseen_generator_accuracy_notes.json`;
+- `reports/evaluations/unseen_generator/community_forensics_unseen_generator_accuracy_artifact.json`.
+
+Regenerate the metrics and portable report on a Compute Node with:
+
+```bash
+sbatch scripts/slurm/report_community_forensics_unseen_accuracy.sbatch
+```
 
 ## Scope and caveats
 
 The forensic filters are a deterministic 30-kernel **SRM-inspired** high-pass
 bank, not the proprietary/bit-exact filter implementation from another codebase.
 M2 uses DCT energy to select high- and low-frequency patches and shares one
-ResNet-18 over RGB, high-pass residual and NPR channels. The COCO val2017 and
-DALL-E Advanced reserved demonstration sets are not downloaded or referenced by
-this pilot.
+ResNet-18 over RGB, high-pass residual and NPR channels. The reserved COCO
+val2017/DALL-E Advanced hash manifest was not supplied, so official source rules
+were enforced but reserved-image hash exclusion has not been verified.

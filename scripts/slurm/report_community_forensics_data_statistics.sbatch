@@ -16,13 +16,13 @@ ENV_PREFIX=/home/msai/lius0131/.conda/envs/repostguard
 PLUGIN_ROOT=/home/msai/lius0131/.codex/plugins/cache/openai-curated-remote/data-analytics/0.2.8-13ceeea1f599
 NODE_BIN=/home/msai/lius0131/.cursor-server/bin/linux-x64/6b2afae0257df2bb5e1835f15165dc2f0de056b0/node
 DELIVERY_SCRIPT="$PLUGIN_ROOT/skills/build-report/scripts/deliver_portable_artifact.mjs"
-REPORT_HTML=reports/COMMUNITY_FORENSICS_DATA_STATISTICS.html
-ARTIFACT_JSON=reports/community_forensics_data_statistics_artifact.json
-AUDIT_JSON=reports/community_forensics_data_statistics_notes.json
-SPLIT_CSV=reports/community_forensics_data_statistics.csv
-GENERATOR_CSV=reports/community_forensics_generator_statistics.csv
-DISTRIBUTION_CSV=reports/community_forensics_distribution_statistics.csv
-DELIVERY_RECEIPT=reports/community_forensics_data_statistics_delivery_receipt.log
+REPORT_HTML=reports/data_statistics/COMMUNITY_FORENSICS_DATA_STATISTICS.html
+ARTIFACT_JSON=reports/data_statistics/community_forensics_data_statistics_artifact.json
+AUDIT_JSON=reports/data_statistics/community_forensics_data_statistics_notes.json
+SPLIT_CSV=reports/data_statistics/community_forensics_data_statistics.csv
+GENERATOR_CSV=reports/data_statistics/community_forensics_generator_statistics.csv
+DISTRIBUTION_CSV=reports/data_statistics/community_forensics_distribution_statistics.csv
+DELIVERY_RECEIPT=reports/data_statistics/community_forensics_data_statistics_delivery_receipt.log
 
 cd "$PROJECT_ROOT"
 module load anaconda
@@ -33,15 +33,15 @@ set -u
 
 export PYTHONUNBUFFERED=1
 export OMP_NUM_THREADS="$SLURM_CPUS_PER_TASK"
-mkdir -p logs reports
+mkdir -p logs reports/data_statistics
 
 test -s data/raw/community_forensics/COMPLETE
 test -s data/raw/community_forensics/VALIDATION_V2_COMPLETE
-test -s reports/community_forensics_tiff_integrity.json
+test -s reports/data_statistics/community_forensics_tiff_integrity.json
 
 python scripts/generate_community_forensics_data_statistics_report.py \
     --data-root data/raw/community_forensics \
-    --tiff-audit reports/community_forensics_tiff_integrity.json \
+    --tiff-audit reports/data_statistics/community_forensics_tiff_integrity.json \
     --split-csv "$SPLIT_CSV" \
     --generator-csv "$GENERATOR_CSV" \
     --distribution-csv "$DISTRIBUTION_CSV" \
@@ -60,7 +60,7 @@ test -s "$DELIVERY_SCRIPT"
 "$NODE_BIN" "$DELIVERY_SCRIPT" \
     --input "$PROJECT_ROOT/$ARTIFACT_JSON" \
     --output "$PROJECT_ROOT/$REPORT_HTML" \
-    --screenshot "$PROJECT_ROOT/reports/community_forensics_data_statistics_delivery_failure.png" \
+    --screenshot "$PROJECT_ROOT/reports/data_statistics/community_forensics_data_statistics_delivery_failure.png" \
     | tee "$PROJECT_ROOT/$DELIVERY_RECEIPT"
 
 cd "$PROJECT_ROOT"

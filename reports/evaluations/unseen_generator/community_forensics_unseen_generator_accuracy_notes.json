@@ -1,0 +1,134 @@
+{
+  "bootstrap_replicates": 1000,
+  "bootstrap_seed": 20260829,
+  "chart_map": [
+    {
+      "chart": "clean_metric_chart",
+      "question": "Compare fixed-threshold clean classification metrics.",
+      "type": "grouped bar"
+    },
+    {
+      "chart": "roc_chart",
+      "question": "Compare TPR across FPR operating points.",
+      "type": "line"
+    },
+    {
+      "chart": "pr_chart",
+      "question": "Compare AIGI precision-recall tradeoffs.",
+      "type": "line"
+    },
+    {
+      "chart": "robustness_chart",
+      "question": "Compare clean, perturbation mean, and worst accuracy.",
+      "type": "grouped bar"
+    },
+    {
+      "chart": "generator_recall_chart",
+      "question": "Locate exact-generator recall failures.",
+      "type": "grouped bar"
+    }
+  ],
+  "dataset_rows": {
+    "clean_metric_chart": 25,
+    "clean_metrics": 5,
+    "condition_matrix": 21,
+    "condition_metrics": 105,
+    "generator_recall": 60,
+    "headline": 1,
+    "metric_definitions": 16,
+    "model_lineage": 5,
+    "pr_curve": 1206,
+    "real_specificity": 20,
+    "robustness_chart": 15,
+    "robustness_summary": 5,
+    "roc_curve": 1206
+  },
+  "generated_at_asia_singapore": "2026-08-29T17:45:10+08:00",
+  "input_artifacts": {
+    "b0": {
+      "checkpoint_sha256": "cf077cbfe1fa0ea6bb4cc2f4a70566571691c14952dd20bf9ef6e78be332520a",
+      "evaluation_job": "32586",
+      "metrics_csv": "outputs/community_forensics_robustness_v2/b0/unseen_generator/metrics_by_transform.csv",
+      "metrics_csv_sha256": "6ca1deb1c3e3dd57620cdca23f8f696bb4157505c88a22b47dc7164deb38b4be",
+      "predictions_jsonl": "outputs/community_forensics_robustness_v2/b0/unseen_generator/predictions.jsonl",
+      "predictions_jsonl_sha256": "dfd95b2fe0104522b552854c2ce6f606c62260a950ce82534e6d11b751e9fde8",
+      "run_card_sha256": "aee5426bb19939410aae3c896f181e467123d5d56cb0af70c9fe224f35f85a3f",
+      "summary_sha256": "80a892fcfc066326377e95fccaef381bd0946832fc100eb54edc1398be62f438"
+    },
+    "b1": {
+      "checkpoint_sha256": "b02a7fe98221cd6a53eadb058d10235c6730f105a13b1ffed108280bf4c424f5",
+      "evaluation_job": "32586",
+      "metrics_csv": "outputs/community_forensics_robustness_v2/b1/unseen_generator/metrics_by_transform.csv",
+      "metrics_csv_sha256": "e7ccc8ded1ee2af100e71407d0d38d762a7a5df2bf5e99501f18ac0ae72353df",
+      "predictions_jsonl": "outputs/community_forensics_robustness_v2/b1/unseen_generator/predictions.jsonl",
+      "predictions_jsonl_sha256": "bdd2c0cc062222e6ca7858327540f4a09382cc178f55070dc601fe6fba3464f5",
+      "run_card_sha256": "ecb99c267aba3a8c62f2842128cec206d5f0b61944832ebef5fd70557e4a9679",
+      "summary_sha256": "6757119c8d94be298203ce84e1da8188c81f63c56c0bd9dedf9152721bf999ee"
+    },
+    "b2": {
+      "checkpoint_sha256": "ff89953d5c0cd3781f36205adb21f4f8a3aef9619d32a55e8bfc85f62479243a",
+      "evaluation_job": "32586",
+      "metrics_csv": "outputs/community_forensics_robustness_v2/b2/unseen_generator/metrics_by_transform.csv",
+      "metrics_csv_sha256": "4193149afdfc6b7516883eb363c2395f37c194bf71a07ea73b39e295eb086a0a",
+      "predictions_jsonl": "outputs/community_forensics_robustness_v2/b2/unseen_generator/predictions.jsonl",
+      "predictions_jsonl_sha256": "03b9c968f74215663f673b6aafba01bc027cd4ee765be135795812fa01cd427a",
+      "run_card_sha256": "51b2eefd8bb3929ba79966808aa078133182bcffbfd0b991a5120203652f91d8",
+      "summary_sha256": "1ff9bba8e4d2a471fe227df097a6e27e8fc59dd7022f8bfefc7816ddbe595216"
+    },
+    "m2": {
+      "checkpoint_sha256": "75be44fc704b18a3fad3ab116802debdef119e72a112e5eba73a2ba38fde1685",
+      "evaluation_job": "32565",
+      "metrics_csv": "outputs/community_forensics_robustness_v2/m2/unseen_generator/metrics_by_transform.csv",
+      "metrics_csv_sha256": "3f367e5d699bacfa40c500b1e7b3cefc92b5fb63c8e01f6c6b25e8befdc9367a",
+      "predictions_jsonl": "outputs/community_forensics_robustness_v2/m2/unseen_generator/predictions.jsonl",
+      "predictions_jsonl_sha256": "c69d56bfe7f9cbcec761bc572dccc1dcd40b650595c7ceca4471aae87e886e33",
+      "run_card_sha256": "3d6f0f940cf08961d23173446c4d1ec7bd1c68c6f401db078fedac9e1b8bac6e",
+      "summary_sha256": "64b0e2b92cd4cc7398e8d6ca2828753b6780a88c3edfeaa0ed569e09e1de7a8f"
+    },
+    "m3": {
+      "checkpoint_sha256": "32f81545af4a41359463d88a136c3137be08feaae985ab5cf1d19c0277c55683",
+      "evaluation_job": "32587",
+      "metrics_csv": "outputs/community_forensics_robustness_v2/m3/unseen_generator/metrics_by_transform.csv",
+      "metrics_csv_sha256": "5ecedbb7a08027c171ee3096e23a2c19693b5be2c8a70968d69808fa603a4f7e",
+      "predictions_jsonl": "outputs/community_forensics_robustness_v2/m3/unseen_generator/predictions.jsonl",
+      "predictions_jsonl_sha256": "d45cdb9c6a49e4631a0e27fc96a43e4930b722f204293663061d63eff2e55f94",
+      "run_card_sha256": "cd695bd0dab36ce1e1d02fcf02d7617d7881b3507cbf9a21b796ddeac75fda4d",
+      "summary_sha256": "241ae6eccf8e349b18c85495a2e9645ec2492d82538c2bd8cf809df11dda25fa"
+    }
+  },
+  "manifest": "data/manifests/community_forensics_test_external_unseen_generator.csv",
+  "manifest_sha256": "70434fc7b38ed2015cac67bc87897139fb202ffa13e736a5ce2f7c759833e42a",
+  "matrix": "configs/community_forensics_robustness_v2.yaml",
+  "matrix_sha256": "69531f3f7111651808c99f14f89723bf631345878b1cbd0cbe0eee8531dde83c",
+  "output_files": {
+    "artifact_json": "reports/evaluations/unseen_generator/community_forensics_unseen_generator_accuracy_artifact.json",
+    "clean_metrics_csv": "reports/evaluations/unseen_generator/community_forensics_unseen_generator_clean_metrics.csv",
+    "metrics_csv": "reports/evaluations/unseen_generator/community_forensics_unseen_generator_all_metrics.csv",
+    "slice_metrics_csv": "reports/evaluations/unseen_generator/community_forensics_unseen_generator_slice_metrics.csv"
+  },
+  "report_contract": {
+    "audience": "technical",
+    "delivery_mode": "portable_html",
+    "positive_class": "AIGI (label=1)",
+    "scope": "Frozen Community Forensics test_external_unseen_generator predictions only",
+    "threshold_policy": "Per-model threshold frozen from internal Small clean validation; no test retuning",
+    "uncertainty": "1000 stratified bootstrap replicates for clean metrics"
+  },
+  "report_job_id": "32677",
+  "schema_version": 1,
+  "sql_snapshot_queries": {
+    "clean_metric_chart": "SELECT * FROM clean_metric_chart ORDER BY metric_order, model_order",
+    "clean_metrics": "SELECT * FROM clean_metrics ORDER BY model_order",
+    "condition_matrix": "SELECT * FROM condition_matrix ORDER BY condition_index",
+    "condition_metrics": "SELECT * FROM condition_metrics ORDER BY model_order, condition_index",
+    "generator_recall": "SELECT * FROM generator_recall ORDER BY generator, model_order",
+    "headline": "SELECT * FROM headline",
+    "metric_definitions": "SELECT * FROM metric_definitions ORDER BY metric",
+    "model_lineage": "SELECT * FROM model_lineage ORDER BY model_order",
+    "pr_curve": "SELECT * FROM pr_curve ORDER BY model_order, point_order",
+    "real_specificity": "SELECT * FROM real_specificity ORDER BY real_source, model_order",
+    "robustness_chart": "SELECT * FROM robustness_chart ORDER BY group_order, model_order",
+    "robustness_summary": "SELECT * FROM robustness_summary ORDER BY model_order",
+    "roc_curve": "SELECT * FROM roc_curve ORDER BY model_order, point_order"
+  }
+}

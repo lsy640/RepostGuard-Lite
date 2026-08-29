@@ -40,10 +40,10 @@ if [[ ! -x "$NODE_BIN" ]]; then
 fi
 
 cd "$PROJECT_ROOT"
-mkdir -p logs reports
+mkdir -p logs reports/evaluations/external_split
 
 "$NODE_BIN" --version
 echo "Report builder: $REPORT_BUILDER"
 "$NODE_BIN" "$REPORT_BUILDER" \
-    --input reports/community_forensics_external_split_diagnostic_artifact.json \
-    --output reports/community_forensics_external_split_diagnostic.html
+    --input reports/evaluations/external_split/community_forensics_external_split_diagnostic_artifact.json \
+    --output reports/evaluations/external_split/community_forensics_external_split_diagnostic.html

@@ -670,23 +670,23 @@ def _parse_args() -> argparse.Namespace:
         "--font", default="/usr/share/fonts/dejavu-sans-fonts/DejaVuSans.ttf"
     )
     parser.add_argument(
-        "--output", default="reports/community_forensics_exact_generators_atlas.jpg"
+        "--output", default="reports/atlases/community_forensics_exact_generators_atlas.jpg"
     )
     parser.add_argument(
         "--train-output",
-        default="reports/community_forensics_train_exact_generators_atlas.jpg",
+        default="reports/atlases/community_forensics_train_exact_generators_atlas.jpg",
     )
     parser.add_argument(
         "--test-output",
-        default="reports/community_forensics_test_exact_generators_atlas.jpg",
+        default="reports/atlases/community_forensics_test_exact_generators_atlas.jpg",
     )
     parser.add_argument(
         "--index-csv",
-        default="reports/community_forensics_exact_generators_atlas_index.csv",
+        default="reports/atlases/community_forensics_exact_generators_atlas_index.csv",
     )
     parser.add_argument(
         "--audit-json",
-        default="reports/community_forensics_exact_generators_atlas_audit.json",
+        default="reports/atlases/community_forensics_exact_generators_atlas_audit.json",
     )
     parser.add_argument("--quality", type=int, default=92)
     parser.add_argument("--train-generator-limit", type=int, default=69)
