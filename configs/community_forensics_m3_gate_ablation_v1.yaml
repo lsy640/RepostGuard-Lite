@@ -1,0 +1,30 @@
+protocol_id: community_forensics_train_v3_m3_gate_ablation_v1
+model:
+  config: outputs/community_forensics_v3/m3/resolved_config.yaml
+  checkpoint: outputs/community_forensics_v3/m3/best.pt
+  training_complete: outputs/community_forensics_v3/m3/DONE
+  threshold_summary: outputs/community_forensics_v3/m3/summary.json
+dataset:
+  manifest: data/manifests/community_forensics_test_external_unseen_generator_v3_expanded.csv
+  role: strict_unseen_test
+  expected_rows: 4000
+  expected_real: 2000
+  expected_aigi: 2000
+evaluation:
+  matrix: configs/community_forensics_robustness_v2.yaml
+  expected_conditions: 21
+  reference_metrics: outputs/community_forensics_v3_robustness_v2/m3/unseen_generator_expanded/metrics_by_transform.csv
+  modes:
+    - learned
+    - fixed_equal
+    - fixed_clean_mean
+    - shuffled
+  fixed_clean_mean_source: label_free_mean_of_learned_clean_gates_on_selected_manifest
+  shuffle_seed: 20260830
+  reconciliation_tolerance: 1.0e-6
+bootstrap:
+  conditions: [0, 18, 19, 20]
+  replicates: 1000
+  seed: 20260830
+output:
+  directory: outputs/community_forensics_v3_m3_gate_ablation_v1

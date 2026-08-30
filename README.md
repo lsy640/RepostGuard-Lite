@@ -1,401 +1,256 @@
-# RepostGuard-Lite
+# RepostGuard-Lite 本地图片推理
 
-This repository implements the AIGC image robustness experiments defined in
-`../AIGC图像鲁棒性检测项目可行性方案.md`. The current primary training and
-evaluation track is the frozen Community Forensics dataset; CIFAKE and SID-Set
-are retained as historical prototype lineages only.
+RepostGuard-Lite 用于判断图片由 AIGC 生成的可能性。当前本地推理程序接收一个图片目录，递归读取其中的图片，并为每张可读取图片输出一个 0 到 1 之间的置信度：
 
-## Current status and consolidated summary
+- image_path：相对于输入目录的图片路径；
+- pred：图片为 AIGC 生成内容的概率，越接近 1 表示模型越倾向于判定为 AIGC。
 
-The canonical project summary is
-[`reports/summaries/COMMUNITY_FORENSICS_PROJECT_SUMMARY.md`](reports/summaries/COMMUNITY_FORENSICS_PROJECT_SUMMARY.md).
-The complete report directory map and regeneration entry points are listed in
-[`reports/README.md`](reports/README.md).
-It documents the model architectures, training lineage, the protocol-v1 data
-and results, format debiasing, internal checkpoint selection, external slices,
-21 clean/perturbation conditions, fixed-threshold metrics,
-stage-by-stage improvements, limitations, and artifact locations.
+输出是标准 JSON 文件：
 
-The metrics below are **protocol-v1 historical results** from checkpoints trained
-before the seen-family cohort was promoted into training. They remain valid for
-that frozen lineage, but are not results for the new train-v2 protocol. On the
-balanced 2,000-image strict unseen-generator test:
+~~~json
+[
+  {
+    "image_path": "example.jpg",
+    "pred": 0.9342
+  },
+  {
+    "image_path": "subdir/image.png",
+    "pred": 0.1276
+  }
+]
+~~~
 
-- **M3** is the best fixed-threshold detector: clean Accuracy 79.30%, F1
-  80.12%, AIGI Recall 83.40%, AUROC 0.8631 and AP 0.8206. Across the 20
-  perturbations it retains 76.90% mean Accuracy and 71.05% worst Accuracy.
-- **M2** is slightly more conservative, with 77.93% clean Precision and 77.20%
-  Real Specificity.
-- **B2** had the strongest cross-slice ranking: 0.7315 clean macro-AUROC across
-  exact-seen, three hard generators, seen-family/exact-unseen and strict
-  unseen-generator. Its frozen operating threshold has low AIGI recall, so this
-  AUROC advantage does not make it the best current fixed-threshold detector.
-- Hourglass, DFGAN and GALIP exposed a material M2/M3 generalization gap; the v1
-  aggregate strict-unseen performance must not be treated as universal unseen-
-  generator performance.
+## 支持的模型
 
-The five evaluated models are:
+推理入口支持项目中的 B0、B1、B2、M2 和 M3 模型：
 
-- **B0**: pretrained EfficientNet-B0, clean-only training.
-- **B1**: the same EfficientNet-B0 with class-symmetric JPEG, blur, resize,
-  Gaussian-noise, colour-jitter, and centre-crop augmentation.
-- **B2**: frozen OpenCLIP image tower with a trainable linear detector.
-- **M2**: frozen OpenCLIP plus a trainable DCT-ranked, SRM-inspired/NPR
-  ResNet-18 forensic branch and paired clean/degraded consistency losses.
-- **M3**: M2 plus a label-agnostic quality-aware gate that dynamically weights
-  semantic and forensic features using blur, blockiness, noise, effective
-  resolution and dynamic-range proxies.
+| 模型 | 主要结构 |
+|---|---|
+| B0 | EfficientNet-B0，Clean-only 训练 |
+| B1 | EfficientNet-B0，加入鲁棒性数据增强 |
+| B2 | 冻结 OpenCLIP 图像编码器和线性分类头 |
+| M2 | OpenCLIP 语义分支与频域/残差取证分支 |
+| M3 | M2 双分支与质量感知动态门控 |
 
-The historical initial run used a deterministic 10,000-image CIFAKE training
-subset and a 2,000-image official-test validation subset (balanced by class).
-CIFAKE remains pipeline/pilot evidence only. A second, higher-resolution
-SID-Set track used 10,000 real + 10,000 fully synthetic official-training
-images and 2,000 real + 2,000 fully synthetic official-validation images.
-SID-Set's tampered class is deliberately excluded from this binary whole-image
-generation task. Their raw data and trained checkpoints have been removed to
-free storage; the reproducibility scripts, configs and historical reports remain.
+推荐使用当前 train-v3 M3 模型进行本地推理。运行时必须同时提供：
 
-## Data contract
+~~~text
+<MODEL_DIR>/
+├── best.pt
+└── resolved_config.yaml
+~~~
 
-Manifests are CSV files with these required columns:
+resolved_config.yaml 必须是训练该 checkpoint 时保存的原始解析配置。程序会校验配置摘要；如果配置被修改或与 checkpoint 不匹配，推理会拒绝运行。
 
-```text
-sample_id,path,label,split,source_dataset,generator_id
-```
+模型权重通常不会提交到代码仓库。请通过安全方式将 checkpoint 和对应配置复制到本机，不要把访问令牌或其他密钥写入配置文件。
 
-`path` is relative to `data.root` in each experiment config. `label=1` means
-AIGC/FAKE and `label=0` means authentic/REAL. Dataset code never uses file or
-directory names as model inputs.
+## 系统要求
 
-## Historical CIFAKE cluster workflow
+- Python 3.10 或更高版本，推荐 Python 3.11；
+- 64 位 Windows、macOS 或 Linux；
+- CPU 推理适用于所有三种系统；
+- Windows/Linux 可使用 NVIDIA CUDA；
+- macOS 当前命令行接口使用 CPU，尚未开放 MPS 设备选项；
+- M2/M3 首次构建 OpenCLIP 主干时可能需要网络下载相应的预训练权重缓存。
 
-All Python commands run through SLURM. From the TC2 Head Node:
+下列命令均应在项目根目录执行。
 
-```bash
-cd /home/msai/lius0131/AGI/repostguard-lite
-sbatch scripts/slurm/setup_and_prepare.sbatch
-sbatch --dependency=afterok:<SETUP_JOB_ID> --array=0-1 \
-  scripts/slurm/train_and_eval_pilot.sbatch
-# TC2 normal currently limits submitted jobs to two; after the first batch ends:
-sbatch --array=2-3 scripts/slurm/train_and_eval_pilot.sbatch
-```
+## Windows 安装
 
-The array indices map to `B0`, `B1`, `B2`, and `M2`. Logs are written under
-`logs/`; checkpoints, metrics, predictions and run cards are written beneath
-`outputs/<experiment>/`.
+以下命令适用于 PowerShell，并且不要求激活虚拟环境：
 
-The pilot observed a 12.22 GB maximum resident set and a 3:29 maximum wall
-time, so the reusable training script requests 16 GB and one hour. The current
-QoS permits only one GPU per user, so array tasks execute sequentially even
-though two submitted jobs are allowed.
+~~~powershell
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+.\.venv\Scripts\python.exe -m pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu
+.\.venv\Scripts\python.exe -m pip install -e .
+~~~
 
-## Historical SID-Set workflow (not currently materialized)
+如需使用支持 CUDA 12.1 的 NVIDIA GPU，将 PyTorch 安装命令替换为：
 
-The public SID-Set repository is about 140 GB. The historical builder streamed
-and materialised only the requested 24,000 images. The downloader records the
-resolved Hugging Face revision, original image IDs, SHA-256 hashes, dimensions,
-formats, class counts, and exact train/validation overlap. It is deterministic
-and resumable; an interrupted job can be submitted again without discarding
-completed images.
+~~~powershell
+.\.venv\Scripts\python.exe -m pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121
+~~~
 
-```bash
-cd /home/msai/lius0131/AGI/repostguard-lite
-sbatch scripts/slurm/prepare_sidset.sbatch
+## macOS 安装
 
-# After preparation succeeds, submit at most two array elements at once under
-# the current normal QoS. Only one GPU task can run at a time.
-sbatch --array=0-1 scripts/slurm/train_and_eval_sidset.sbatch
-sbatch --array=2-3 scripts/slurm/train_and_eval_sidset.sbatch
-sbatch --array=4 scripts/slurm/train_and_eval_sidset.sbatch
-```
+Intel Mac 和 Apple Silicon Mac 均可使用以下方式安装：
 
-Array indices 0--4 map to B0, B1, B2, M2, and M3. SID-Set manifests and the audit are
-written to `data/manifests/sidset_train.csv`,
-`data/manifests/sidset_validation.csv`, and
-`data/manifests/sidset_subset_audit.json`. The CIFAKE and SID-Set configs and
-scripts remain for reproducibility, but their raw subsets and trained output
-directories are no longer present. Re-running this workflow will download or
-materialise SID-Set again and retrain the models.
+~~~bash
+python3.11 -m venv .venv
+. .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -e .
+~~~
 
-### SID-Set format debiasing
+当前推理参数只支持 cpu 或 cuda，因此 macOS 请使用 --device cpu。
 
-SID-Set's real subset is stored almost entirely as JPEG/MPO while its fully
-synthetic subset is PNG, creating a severe label-format shortcut. SID-Set
-configs therefore apply mandatory **on-the-fly** format equalisation during
-image reading; no duplicate dataset is written:
+## Linux 安装
 
-1. decode the source and discard container metadata;
-2. bicubic-resize every class to 224x224, disrupting the original JPEG block
-   grid;
-3. JPEG-roundtrip every class with the same settings;
-4. during training, sample quality from 70/80/90/95 independently of label;
-5. during validation, use fixed quality 90 for deterministic metrics;
-6. apply B1/M2 robustness augmentation only after this common format path.
+CPU 版本：
 
-The original CIFAKE configs keep this feature disabled, preserving the pilot's
-reproducibility. Equalisation materially reduces the shortcut but cannot prove
-that every trace of an image's prior compression history has been removed, so
-source-format-stratified error analysis remains necessary.
+~~~bash
+python3.11 -m venv .venv
+. .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cpu
+python -m pip install -e .
+~~~
 
-## Community Forensics train-v2 track
+支持 CUDA 12.1 的 NVIDIA GPU 版本：
 
-The materialized source pool follows
-`../Community_Forensics训练与测试集构建方案.md` and pins the public
-CommunityForensics-Small and CommunityForensics-Eval repositories to resolved
-revisions.  It scans only Parquet metadata columns first, freezes a deterministic
-selection plan, and materialises 24,000 base images. Protocol v2 does not copy or
-redownload images: it promotes every row from the former 2,000-image
-`test_external_seen_family` cohort into a new training manifest.
+~~~bash
+python3.11 -m venv .venv
+. .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121
+python -m pip install -e .
+~~~
 
-```text
-train_v2:                        10,000 real + 10,000 AIGI
-val_unseen_generator:             1,000 real +  1,000 AIGI
-test_external_unseen_generator:   1,000 real +  1,000 AIGI
-```
+## 执行目录推理
 
-The original manifests remain immutable for lineage. The active training manifest
-is `data/manifests/community_forensics_train_v2.csv`; its 20,000 rows contain the
-original 18,000-image Small train plus all 1,000 Real and 1,000 AIGI images from
-the former seen-family test. Promoted rows retain their source paths and sample
-IDs, but their `split`, `project_split`, and training exposure fields are changed
-in the derived manifest. File and directory names are never model inputs.
+程序会递归扫描输入目录，并按相对路径排序输出结果。
 
-`test_external_seen_family` is retired and forbidden for all future model
-evaluation. Its nine exact generators are now train-seen. The remaining strict
-unseen-generator test keeps both its 12 exact identities and its Commercial/Other
-architecture families disjoint from train-v2.
+### Windows CPU
 
-The builder stores SHA-256, a 64-bit perceptual hash,
-source locators, revisions and a complete audit in `data/manifests/`.  SQLite state
-under `data/state/` makes metadata scanning and image materialisation resumable.
-Exact duplicate hashes discovered after materialisation are repaired before the
-final manifest is frozen by deterministic replacement within the same split and
-the same generator (or real source).  Replaced files are moved to
-`data/quarantine/community_forensics_duplicates/`, and the complete lineage is
-recorded in `community_forensics_exact_dedup_repairs.json`.
-Cross-split pHash conflicts are repaired similarly, preserving train before
-validation and external splits and recording every replacement in
-`community_forensics_phash_repairs.json`.
-The pinned Small revision reports `real_source=N/A` for every real row, so its
-10,000 real images are selected globally and deterministically from the official
-train split with `real_source=UNSPECIFIED`; the audit records that the requested
-four-source Small balance cannot be verified.  Eval retains its explicit
-RAISE/COCO/FFHQ/LAION balance.
+~~~powershell
+.\.venv\Scripts\python.exe -m repostguard.infer --config "C:\path\to\model\resolved_config.yaml" --checkpoint "C:\path\to\model\best.pt" --input-dir "C:\path\to\images" --output "C:\path\to\results\predictions.json" --diagnostics "C:\path\to\results\diagnostics.json" --batch-size 16 --device cpu
+~~~
 
-```bash
-sbatch scripts/slurm/validate_community_forensics.sbatch
-sbatch --dependency=afterok:<CHECK_JOB_ID> \
-  --export=NONE,CF_PREP_RESTART_COUNT=0 \
-  scripts/slurm/prepare_community_forensics.sbatch
-```
+### Windows NVIDIA GPU
 
-After data construction and audit succeed, the preparation script starts a
-single-job chain for B0, B1, B2, M2 and M3.  Each model has a separate train and
-evaluation phase.  Model selection uses `val_unseen_generator`; the clean
-validation threshold is then frozen for the diagnostic slices and strict-unseen
-test. New training outputs are isolated under
-`outputs/community_forensics_v2/<experiment>/`; existing protocol-v1 checkpoints
-under `outputs/community_forensics/<experiment>/` are not resumed or overwritten.
+~~~powershell
+.\.venv\Scripts\python.exe -m repostguard.infer --config "C:\path\to\model\resolved_config.yaml" --checkpoint "C:\path\to\model\best.pt" --input-dir "C:\path\to\images" --output "C:\path\to\results\predictions.json" --diagnostics "C:\path\to\results\diagnostics.json" --batch-size 32 --device cuda
+~~~
 
-Build and audit the derived manifests before training:
+### macOS CPU
 
-```bash
-sbatch scripts/slurm/prepare_community_forensics_train_v2.sbatch
-```
-
-The job writes `community_forensics_train_v2.csv`, three relabelled hard-slice
-manifests, `community_forensics_train_v2_audit.json`, and the atomic
-`TRAIN_V2_COMPLETE` marker. It verifies 10,000/10,000 class balance, unique
-sample/path/SHA/source locators, all materialized paths and sizes, and continued
-strict-unseen generator/family disjointness.
-
-If a COCO val2017/DALL-E Advanced reserved-image hash manifest is available, pass
-it to the original corpus builder with `--reserved-hash-manifest`. The derived
-train-v2 builder reuses that frozen audit. Without such a manifest, the audit
-records that official split/source constraints were enforced but reserved-image
-hash overlap could not be verified.
-
-### Community Forensics validation-v2 extension
-
-The validation-v2 extension originally added a true exact-seen cohort and three
-exact-unseen hard slices without rewriting the frozen base manifests. It pins
-[`TheKernel01/AIGIBench`](https://huggingface.co/datasets/TheKernel01/AIGIBench)
-at revision `f125eabc5ac34a4729d74adc1aa1214540f91947`.  The dataset card identifies
-its `SD14` class as Stable Diffusion 1.4; Small train independently contains the
-exact model identity `CompVis/stable-diffusion-v1-4`.  The canonical mapping is
-therefore explicit and source-backed rather than inferred from a broad family.
-
-```text
-val_external_exact_seen_generator: 1,000 ImageNet real + 1,000 SD14 AIGI
-val_hard_hourglass:                   250 shared Eval real + 250 Hourglass AIGI
-val_hard_dfgan:                       250 shared Eval real + 250 DFGAN AIGI
-val_hard_galip:                       250 shared Eval real + 250 GALIP AIGI
-```
-
-The three hard manifests share one fixed 250-image real reference panel so their
-generator-specific AUROCs are directly comparable. Their AIGI rows and real
-panel were selected from Eval locators unused by the frozen external tests.
-SHA-256 and pHash checks forbid image overlap with every frozen base manifest.
-Under train-v2, other Hourglass/DFGAN/GALIP images are now part of training, so
-the three hard slices are relabelled as **exact-seen hard validation** while
-remaining image-disjoint. The original Small `val_unseen_generator` remains the
-checkpoint-selection endpoint.
-
-Build the extension before starting the model chain:
-
-```bash
-sbatch scripts/slurm/prepare_community_forensics_validation_v2.sbatch
-sbatch --dependency=afterok:<VALIDATION_V2_JOB_ID> \
-  scripts/slurm/prepare_community_forensics_train_v2.sbatch
-```
-
-The job is resumable through
-`data/state/community_forensics_validation_v2.sqlite3`, caps new materialized
-data at 8 GiB, and writes `VALIDATION_V2_COMPLETE` only after all manifests and
-the audit have been atomically finalized.  Seeded selection ranks remote
-row-groups before rows so the chosen images remain deterministic without
-scattering a small subset across hundreds of redundant Parquet reads.
-
-### Community Forensics data statistics report
-
-The existing self-contained report at
-`reports/data_statistics/COMMUNITY_FORENSICS_DATA_STATISTICS.html` is the
-protocol-v1 snapshot and remains unchanged as historical evidence. After the
-train-v2 manifest is built, the current report job writes the seven-active-
-manifest snapshot under `reports/data_statistics/train_v2/`. It distinguishes manifest
-references from unique physical images because the three hard slices reuse one
-250-image real panel.  The report includes class balance, exact-generator and
-architecture-family exposure, real sources, formats, resolution and storage,
-all 21 active pairwise split-overlap checks, manifest lineage, and build-audit counts.
-
-Supporting machine-readable outputs are:
-
-- `reports/data_statistics/train_v2/community_forensics_data_statistics.csv`;
-- `reports/data_statistics/train_v2/community_forensics_generator_statistics.csv`;
-- `reports/data_statistics/train_v2/community_forensics_distribution_statistics.csv`;
-- `reports/data_statistics/train_v2/community_forensics_data_statistics_notes.json`;
-- `reports/data_statistics/train_v2/community_forensics_data_statistics_artifact.json`.
-
-Regenerate and validate the package on a Compute Node with:
-
-```bash
-sbatch scripts/slurm/report_community_forensics_data_statistics.sbatch
-```
-
-The existing atlas under `reports/atlases/` is the protocol-v1 snapshot. The
-current atlas job writes train-v2 outputs under `reports/atlases/train_v2/` and
-contains one deterministically selected AIGI representative for 78 training
-generators and all 12 strict-unseen test generators. The compact training sample keeps every
-generator from rare architecture families (at most five generators) and fills
-the remaining slots proportionally with a fixed hash rank.  Separate train/test
-atlases and the complete tile-to-manifest mapping are stored alongside it as
-`community_forensics_{train,test}_exact_generators_atlas.jpg` and
-`community_forensics_exact_generators_atlas_index.csv`.  Validation manifests
-and real images are intentionally excluded from this visualization.
-
-```bash
-sbatch scripts/slurm/build_community_forensics_exact_generator_atlas.sbatch
-```
-
-## Reproduce one current experiment
-
-Inside an allocated SLURM job, after activating `repostguard`:
-
-```bash
-python -m repostguard.train --config configs/community_forensics/b1.yaml
-python -m repostguard.evaluate \
-  --config configs/community_forensics/b1.yaml \
-  --checkpoint outputs/community_forensics_v2/b1/best.pt
-
+~~~bash
 python -m repostguard.infer \
-  --config configs/community_forensics/m2.yaml \
-  --checkpoint outputs/community_forensics_v2/m2/best.pt \
-  --input-dir ./images \
-  --output ./predictions.json \
-  --diagnostics ./diagnostics.json
-```
+  --config "/path/to/model/resolved_config.yaml" \
+  --checkpoint "/path/to/model/best.pt" \
+  --input-dir "/path/to/images" \
+  --output "/path/to/results/predictions.json" \
+  --diagnostics "/path/to/results/diagnostics.json" \
+  --batch-size 16 \
+  --device cpu
+~~~
 
-Training checkpoints are atomically replaced and contain model, optimizer,
-scheduler, AMP scaler, epoch/global step, best metric, RNG state and the full
-resolved config. `SIGUSR1` requests a safe-boundary checkpoint and clean exit.
+### Linux CPU
 
-## Outputs
+~~~bash
+python -m repostguard.infer \
+  --config "/path/to/model/resolved_config.yaml" \
+  --checkpoint "/path/to/model/best.pt" \
+  --input-dir "/path/to/images" \
+  --output "/path/to/results/predictions.json" \
+  --diagnostics "/path/to/results/diagnostics.json" \
+  --batch-size 16 \
+  --device cpu
+~~~
 
-Evaluation writes:
+### Linux NVIDIA GPU
 
-- `metrics_by_transform.csv`: clean plus the fixed robustness matrix;
-- `summary.json`: clean/robust mean/worst metrics and AUROC drop;
-- `predictions.jsonl`: per-image probabilities and transform metadata;
-- `run_card.json`: config and checkpoint hashes, environment and parameter count.
+~~~bash
+python -m repostguard.infer \
+  --config "/path/to/model/resolved_config.yaml" \
+  --checkpoint "/path/to/model/best.pt" \
+  --input-dir "/path/to/images" \
+  --output "/path/to/results/predictions.json" \
+  --diagnostics "/path/to/results/diagnostics.json" \
+  --batch-size 32 \
+  --device cuda
+~~~
 
-The threshold is selected from clean validation predictions by maximising
-balanced accuracy, then held fixed for every transformed condition.
+如果显存或内存不足，请先将 --batch-size 降到 8、4 或 1。
 
-### Community Forensics robustness matrix v2
+## 命令行参数
 
-`configs/community_forensics_robustness_v2.yaml` preserves the original clean
-plus 17 perturbation conditions and appends three stricter composed conditions:
+| 参数 | 是否必需 | 说明 |
+|---|---|---|
+| --config | 是 | 与 checkpoint 匹配的 resolved_config.yaml |
+| --checkpoint | 是 | 模型 checkpoint 文件 |
+| --input-dir | 是 | 待检测图片目录，会递归扫描子目录 |
+| --output | 是 | 预测 JSON 输出路径 |
+| --diagnostics | 否 | 诊断 JSON 路径，默认 diagnostics.json |
+| --batch-size | 否 | 推理 batch size，默认 32 |
+| --device | 否 | cpu 或 cuda，默认 cuda |
 
-- four-stage platform repost: center crop, resize, Gaussian blur, JPEG;
-- four-stage edit repost: color jitter, resize, Gaussian noise, JPEG;
-- six-stage random composition: crop, resize, color jitter, blur, noise and
-  JPEG, with deterministic per-sample strengths from the full training ranges.
+安装完成后也可以使用等价的控制台入口：
 
-Future train-v2 B0/B1/B2/M2/M3 checkpoints are evaluated on five active
-slices: external exact-seen-generator, exact-seen hard Hourglass, exact-seen
-hard DFGAN, exact-seen hard GALIP, and strict unseen-generator. The retired
-seen-family manifest is not present in the evaluation script.
+~~~bash
+repostguard-infer --config <CONFIG> --checkpoint <CHECKPOINT> --input-dir <IMAGE_DIR> --output predictions.json --diagnostics diagnostics.json --device cpu
+~~~
 
-The normal QoS admits only two submitted jobs, so run two ordinary jobs rather
-than a five-task array:
+## 输入图片
 
-```bash
-sbatch --export=NONE,CF_MODEL_INDICES=0:1:2 scripts/slurm/evaluate_community_forensics_robustness_v2.sbatch
-sbatch --export=NONE,CF_MODEL_INDICES=3:4 scripts/slurm/evaluate_community_forensics_robustness_v2.sbatch
-```
+当前支持以下扩展名：
 
-Each model uses the probability threshold selected from the internal
-Small clean validation split. The external splits never select their own
-threshold. Evaluation loads the immutable `resolved_config.yaml` stored beside
-each checkpoint, then applies manifest/matrix/threshold overrides only after the
-checkpoint digest has been validated. Outputs are isolated under
-`outputs/community_forensics_v2_robustness_v2/`. The existing
-`reports/evaluations/robustness_v2/` package remains the protocol-v1 report;
-future train-v2 reports are written under
-`reports/evaluations/robustness_v2_train_v2/`.
+~~~text
+.jpg .jpeg .png .webp .bmp .gif .tif .tiff
+~~~
 
-### Unseen-generator detailed accuracy report
+- 输入目录会递归扫描；
+- GIF 只读取第一帧；
+- 所有图片都会转换为 RGB；
+- 如果训练配置启用了格式去偏，推理时会自动采用对应的统一尺寸、JPEG 质量和色度采样设置；
+- 损坏或无法解码的图片不会终止整批推理，而会记录在 diagnostics.json 中；
+- 如果目录中不存在任何受支持图片，程序会返回错误。
 
-The existing package under `reports/evaluations/unseen_generator/` analyzes
-protocol-v1 checkpoints. Future train-v2 predictions on the same balanced
-2,000-image strict unseen-generator test are written under
-`reports/evaluations/unseen_generator_train_v2/`. In addition to
-ROC curves and AUROC, the report includes precision-recall curves, Accuracy,
-Precision, AIGI Recall, Real Specificity, NPV, F1/Macro-F1, Balanced Accuracy,
-MCC, AP, FPR/FNR, Brier, ECE-15, low-FPR TPR, confusion counts, stratified
-bootstrap intervals, all 21 clean/perturbed conditions, exact-generator recall,
-and real-source specificity. Per-model thresholds remain frozen from the
-internal Small clean validation split.
+## 输出说明
 
-Supporting machine-readable outputs are:
+predictions.json 是 JSON 数组，每条成功推理的图片只包含：
 
-- `reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_clean_metrics.csv`;
-- `reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_all_metrics.csv`;
-- `reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_slice_metrics.csv`;
-- `reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_accuracy_notes.json`;
-- `reports/evaluations/unseen_generator_train_v2/community_forensics_unseen_generator_accuracy_artifact.json`.
+~~~json
+{
+  "image_path": "relative/path/image.jpg",
+  "pred": 0.812345
+}
+~~~
 
-Regenerate the metrics and portable report on a Compute Node with:
+pred 是模型输出 logit 经过 sigmoid 后的概率，不是已经应用阈值的二分类标签。本程序不会利用待推理图片重新选择阈值。
 
-```bash
-sbatch scripts/slurm/report_community_forensics_unseen_accuracy.sbatch
-```
+diagnostics.json 包含：
 
-## Scope and caveats
+- checkpoint SHA256；
+- 配置摘要；
+- 推理设备；
+- 模型参数量；
+- 成功处理的图片数；
+- 无法读取图片的路径和错误；
+- 推理阶段实际使用的格式去偏设置。
 
-The forensic filters are a deterministic 30-kernel **SRM-inspired** high-pass
-bank, not the proprietary/bit-exact filter implementation from another codebase.
-M2 uses DCT energy to select high- and low-frequency patches and shares one
-ResNet-18 over RGB, high-pass residual and NPR channels. The reserved COCO
-val2017/DALL-E Advanced hash manifest was not supplied, so official source rules
-were enforced but reserved-image hash exclusion has not been verified.
+两个 JSON 文件均采用临时文件写入后原子替换，避免留下半写入结果。
+
+## 常见问题
+
+### Checkpoint and inference config digests differ
+
+checkpoint 与配置不匹配。请使用训练时保存在 checkpoint 同目录下的 resolved_config.yaml，不要改用另一个模型或实验版本的配置。
+
+### CUDA requested but unavailable
+
+当前环境没有可用 CUDA，或安装了 CPU 版本的 PyTorch。可以改用 --device cpu，或者在 Windows/Linux 上安装与本机驱动兼容的 CUDA PyTorch wheel。
+
+### No supported images under
+
+输入路径为空、路径填写错误，或者目录内没有受支持扩展名的图片。
+
+### 推理速度慢或内存不足
+
+M2/M3 的双分支结构明显重于 B0/B1。降低 --batch-size；没有 NVIDIA GPU 时使用 CPU 会更慢，但输出结构和概率语义保持不变。
+
+## 代码位置
+
+- 推理入口：src/repostguard/infer.py
+- 模型构建：src/repostguard/models/detectors.py
+- 图片预处理：src/repostguard/data/transforms.py
+- checkpoint 完整性检查：src/repostguard/checkpoint.py
+- 输出结构测试：tests/test_inference_schema.py
+
+## 使用限制
+
+- pred 是模型置信度，不代表经过现实部署校准后的绝对概率；
+- 不同图片来源、生成器和后处理方式可能改变模型表现；
+- 在真实业务中应使用独立校准集冻结阈值，不能使用待检测数据选择阈值；
+- 批量测试结果不应在缺少人工复核和数据来源分析时作为唯一判定依据。

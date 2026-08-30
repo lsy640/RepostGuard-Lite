@@ -1,0 +1,12 @@
+{
+  "clean_auroc": 0.811379,
+  "clean_balanced_accuracy": 0.737,
+  "conditions": 21,
+  "delta_auroc": 0.011238600000000099,
+  "experiment": "b2",
+  "robust_mean_auroc": 0.8001403999999999,
+  "robust_mean_balanced_accuracy": 0.6216500000000001,
+  "robust_worst_auroc": 0.751698,
+  "robust_worst_transform": "strict_random_six__profile=full_training_range_v1",
+  "threshold_from_clean_validation": 0.9921875
+}

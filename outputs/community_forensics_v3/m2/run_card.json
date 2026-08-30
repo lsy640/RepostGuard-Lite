@@ -1,0 +1,38 @@
+{
+  "checkpoint_path": "/home/msai/lius0131/AGI/repostguard-lite/outputs/community_forensics_v3/m2/best.pt",
+  "checkpoint_sha256": "468d3a58603fdf8dfe1b234a24fd8e52a99c6e4881e921bef6bb0cea64bbac34",
+  "config_path": "/home/msai/lius0131/AGI/repostguard-lite/configs/community_forensics_v3/m2.yaml",
+  "config_sha256": "f0bf20ef8d5d193967d9588759b2bd2aa0b6a778741635ca5bdaddf40ef035d4",
+  "cuda_runtime": "12.1",
+  "device": "NVIDIA L40S",
+  "evaluation_matrix_path": "/home/msai/lius0131/AGI/repostguard-lite/configs/transforms.yaml",
+  "evaluation_matrix_sha256": "ff8b2c24739a833b2c6a970d1c2e64ee14f25af8554bd2f3f7d8aa589a4acbea",
+  "evaluation_overrides": {},
+  "experiment": "m2",
+  "hostname": "TC2N08",
+  "output_directory": "/home/msai/lius0131/AGI/repostguard-lite/outputs/community_forensics_v3/m2",
+  "parameters": {
+    "frozen": 87849216,
+    "total": 99423442,
+    "trainable": 11574226
+  },
+  "platform": "Linux-5.14.0-503.14.1.el9_5.x86_64-x86_64-with-glibc2.34",
+  "python": "3.11.16",
+  "slurm_job_id": "32865",
+  "summary": {
+    "clean_auroc": 0.978116,
+    "clean_balanced_accuracy": 0.929,
+    "conditions": 18,
+    "delta_auroc": 0.008921617647058788,
+    "experiment": "m2",
+    "robust_mean_auroc": 0.9691943823529412,
+    "robust_mean_balanced_accuracy": 0.9073823529411764,
+    "robust_worst_auroc": 0.9582854999999999,
+    "robust_worst_transform": "resize__interpolation=bilinear_scale=0.25",
+    "threshold_from_clean_validation": 0.99658203125
+  },
+  "torch": "2.5.1",
+  "torchvision": "0.20.1",
+  "train_manifest_sha256": "fc0a7ab732faeb604ed1e77281fada715d7cffb353974a4985820548d871d9d6",
+  "val_manifest_sha256": "11bfa4b6d7c538ce0a3d774c3f2902ac11ffc7dbe513de354f87fbaad1d6b6ba"
+}

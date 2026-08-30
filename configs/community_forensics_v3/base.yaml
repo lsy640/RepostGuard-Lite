@@ -1,0 +1,18 @@
+base: ../community_forensics/base.yaml
+
+seed: 20260830
+
+data:
+  # Protocol v3 preserves train-v2 and adds 4,000 previously unused Small rows:
+  # 1,000 GAN AIGI, 1,000 PixDiff AIGI, and two matched 1,000-real quotas.
+  train_manifest: data/manifests/community_forensics_train_v3.csv
+  external_tests:
+    unseen_generator_expanded: data/manifests/community_forensics_test_external_unseen_generator_v3_expanded.csv
+  generator_protocol:
+    train_v3_additions: 1000 GAN and 1000 PixDiff AIGI covering all 12 and 3 exact Small generators
+    real_counterparts: 1000 GAN-matched and 1000 PixDiff-matched real images; Small real-source metadata is N/A
+    exact_seen_generator: exact identity seen in train-v3, disjoint evaluation images
+    hard_generators: Hourglass, DFGAN, and GALIP remain exact-seen from train-v2 promotion
+    unseen_generator: architecture family and exact identity both unseen
+    unseen_generator_expanded: frozen 2k strict-unseen base plus 1k AIGI and 1k source-balanced real additions
+    retired_seen_family_test: promoted into train-v2 and forbidden for future evaluation

@@ -1,0 +1,615 @@
+{
+  "phash_hamming_threshold": 4,
+  "repair_policy": "same_exact_generator_or_real_source_replacement_blacklisting_all_prior_attempts_and_leaving_a_conflicting_eval_row_group",
+  "repairs": [
+    {
+      "addition_group": "aigi_commercial",
+      "canonical_generator_id": "firefly-image2",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_aigi_commercial_d3afb7a173e0737a",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cf_test_external_unseen_generator_aigi_0934ed99da7b17d1"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_1/test_external_unseen_v3_additions/aigi/cf_external_unseen_v3_aigi_commercial_d3afb7a173e0737a_00000470_0.jpg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/aigi/cf_external_unseen_v3_aigi_commercial_d3afb7a173e0737a_00000470_0.jpg.jpg",
+      "removed_phash": "95ce169cd91ac959",
+      "removed_sample_id": "cf_external_unseen_v3_aigi_commercial_d3afb7a173e0737a",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 22,
+      "replacement_sample_id": "cf_external_unseen_v3_aigi_commercial_92acb85f6402eede",
+      "replacement_source_file": "data/CompEval-00064-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_49a819f15c129fdf",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_1/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_49a819f15c129fdf_00048088.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_49a819f15c129fdf_00048088.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_49a819f15c129fdf",
+      "repair_round": 1,
+      "replacement_row_group": 2,
+      "replacement_row_index": 9,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_4392fd47a9ff3877",
+      "replacement_source_file": "data/CompEval-00349-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        },
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+          "distance": 0,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_external_unseen_v3_real_laion_49a819f15c129fdf"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_1/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 13,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_cea01f722d178e02",
+      "replacement_source_file": "data/CompEval-00036-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        },
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+          "distance": 0,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_external_unseen_v3_real_laion_49a819f15c129fdf"
+        },
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+          "distance": 0,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_1/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "repair_round": 1,
+      "replacement_row_group": 3,
+      "replacement_row_index": 16,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_b2de0d0d20935663",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        },
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_b2de0d0d20935663",
+          "distance": 0,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_external_unseen_v3_real_laion_49a819f15c129fdf"
+        },
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_b2de0d0d20935663",
+          "distance": 0,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e"
+        },
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_b2de0d0d20935663",
+          "distance": 0,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_1/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_b2de0d0d20935663_00031617.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_b2de0d0d20935663_00031617.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_b2de0d0d20935663",
+      "repair_round": 1,
+      "replacement_row_group": 1,
+      "replacement_row_index": 21,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_a408813f41cfc357",
+      "replacement_source_file": "data/CompEval-00173-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_raise",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_raise_2a45c0aa6a63dc50",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cf_test_external_seen_family_real_d25d9eae9f8ac064"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_1/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_raise_2a45c0aa6a63dc50_000003177.tiff.tiff",
+      "real_source": "RAISE",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_raise_2a45c0aa6a63dc50_000003177.tiff.tiff",
+      "removed_phash": "9c4b46d38dc7da82",
+      "removed_sample_id": "cf_external_unseen_v3_real_raise_2a45c0aa6a63dc50",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 16,
+      "replacement_sample_id": "cf_external_unseen_v3_real_raise_fd893367692bfc94",
+      "replacement_source_file": "data/CompEval-00165-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_2/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "repair_round": 2,
+      "replacement_row_group": 3,
+      "replacement_row_index": 20,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_3/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "repair_round": 3,
+      "replacement_row_group": 3,
+      "replacement_row_index": 16,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_4/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "repair_round": 4,
+      "replacement_row_group": 3,
+      "replacement_row_index": 20,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_5/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "repair_round": 5,
+      "replacement_row_group": 3,
+      "replacement_row_index": 16,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_6/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "repair_round": 6,
+      "replacement_row_group": 3,
+      "replacement_row_index": 20,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_7/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "repair_round": 7,
+      "replacement_row_group": 3,
+      "replacement_row_index": 16,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_8/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "repair_round": 8,
+      "replacement_row_group": 3,
+      "replacement_row_index": 20,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_9/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "repair_round": 9,
+      "replacement_row_group": 3,
+      "replacement_row_index": 16,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_10/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "repair_round": 10,
+      "replacement_row_group": 3,
+      "replacement_row_index": 20,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_11/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "repair_round": 11,
+      "replacement_row_group": 3,
+      "replacement_row_index": 16,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_12/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "repair_round": 12,
+      "replacement_row_group": 3,
+      "replacement_row_index": 20,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_13/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "repair_round": 13,
+      "replacement_row_group": 3,
+      "replacement_row_index": 16,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_14/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "repair_round": 14,
+      "replacement_row_group": 3,
+      "replacement_row_index": 20,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_15/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "repair_round": 15,
+      "replacement_row_group": 3,
+      "replacement_row_index": 16,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_16/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "repair_round": 16,
+      "replacement_row_group": 3,
+      "replacement_row_index": 20,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_17/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "repair_round": 17,
+      "replacement_row_group": 3,
+      "replacement_row_index": 16,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_18/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "repair_round": 18,
+      "replacement_row_group": 3,
+      "replacement_row_index": 20,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_19/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "repair_round": 19,
+      "replacement_row_group": 3,
+      "replacement_row_index": 16,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_20/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_6e31bdd5c004c93e_00002959.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_6e31bdd5c004c93e",
+      "repair_round": 20,
+      "replacement_row_group": 3,
+      "replacement_row_index": 20,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "replacement_source_file": "data/CompEval-00213-of-00413.parquet"
+    },
+    {
+      "addition_group": "real_laion",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cfv2_hard_real_panel_a6e0f8a911b866e3"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_external_unseen_v3_phash/round_1/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "real_source": "LAION",
+      "removed_path": "data/raw/community_forensics/test_external_unseen_v3_additions/real/cf_external_unseen_v3_real_laion_91a2f6d0f19e5678_00049111.jpeg.jpg",
+      "removed_phash": "bc6bc3903d8f9264",
+      "removed_sample_id": "cf_external_unseen_v3_real_laion_91a2f6d0f19e5678",
+      "repair_round": 1,
+      "replacement_row_group": 1,
+      "replacement_row_index": 3,
+      "replacement_sample_id": "cf_external_unseen_v3_real_laion_b4959cec8b404287",
+      "replacement_source_file": "data/CompEval-00292-of-00413.parquet"
+    }
+  ],
+  "selection_seed": 20260830
+}

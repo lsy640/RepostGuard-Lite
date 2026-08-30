@@ -1,0 +1,415 @@
+{
+  "phash_hamming_threshold": 4,
+  "repair_policy": "replace_later_addition_conflicts_with_same_group_and_exact_generator_candidates_preferring_the_same_parquet_row_group",
+  "repairs": [
+    {
+      "addition_group": "gan_aigi",
+      "canonical_generator_id": "stylegan2-ada",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_38f69a7652ac606f",
+          "distance": 2,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_0f32d45def96fe32"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_gan_aigi_38f69a7652ac606f_010040.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_gan_aigi_38f69a7652ac606f_010040.png.png",
+      "removed_phash": "9b3c34e4666386da",
+      "removed_sample_id": "cf_train_v3_gan_aigi_38f69a7652ac606f",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 1146,
+      "replacement_sample_id": "cf_train_v3_gan_aigi_41ff5a03ec44702a",
+      "replacement_source_file": "data/HFCF_small_74.parquet"
+    },
+    {
+      "addition_group": "gan_aigi",
+      "canonical_generator_id": "stylegan2-ada",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_587c20ceb02c192b",
+          "distance": 2,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_38f69a7652ac606f"
+        },
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_587c20ceb02c192b",
+          "distance": 2,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_0f32d45def96fe32"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_gan_aigi_587c20ceb02c192b_000022.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_gan_aigi_587c20ceb02c192b_000022.png.png",
+      "removed_phash": "8b3c34e46663c6da",
+      "removed_sample_id": "cf_train_v3_gan_aigi_587c20ceb02c192b",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 878,
+      "replacement_sample_id": "cf_train_v3_gan_aigi_1b3beed3bc775b19",
+      "replacement_source_file": "data/HFCF_small_74.parquet"
+    },
+    {
+      "addition_group": "gan_aigi",
+      "canonical_generator_id": "stylegan2",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_6eab88b52f4da8ca",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_5634ad65a382167b"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_gan_aigi_6eab88b52f4da8ca_006576.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_gan_aigi_6eab88b52f4da8ca_006576.png.png",
+      "removed_phash": "ce6834e5354792da",
+      "removed_sample_id": "cf_train_v3_gan_aigi_6eab88b52f4da8ca",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 402,
+      "replacement_sample_id": "cf_train_v3_gan_aigi_3f594d54ef7250d6",
+      "replacement_source_file": "data/HFCF_small_69.parquet"
+    },
+    {
+      "addition_group": "gan_aigi",
+      "canonical_generator_id": "stylegan3",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_754a290e0cfa409e",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_2aa348e8f036aa36"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_gan_aigi_754a290e0cfa409e_002937.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_gan_aigi_754a290e0cfa409e_002937.png.png",
+      "removed_phash": "9e496dc27d22d299",
+      "removed_sample_id": "cf_train_v3_gan_aigi_754a290e0cfa409e",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 2774,
+      "replacement_sample_id": "cf_train_v3_gan_aigi_1ea8d5324eb7fd70",
+      "replacement_source_file": "data/HFCF_small_66.parquet"
+    },
+    {
+      "addition_group": "gan_aigi",
+      "canonical_generator_id": "stylegan2",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_81916e9269ee1b52",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_5634ad65a382167b"
+        },
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_81916e9269ee1b52",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_6eab88b52f4da8ca"
+        },
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_81916e9269ee1b52",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_414a49454cfb86b9"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_gan_aigi_81916e9269ee1b52_008124.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_gan_aigi_81916e9269ee1b52_008124.png.png",
+      "removed_phash": "ce7834e1354393da",
+      "removed_sample_id": "cf_train_v3_gan_aigi_81916e9269ee1b52",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 1227,
+      "replacement_sample_id": "cf_train_v3_gan_aigi_2ca7de18d1e903ae",
+      "replacement_source_file": "data/HFCF_small_69.parquet"
+    },
+    {
+      "addition_group": "gan_aigi",
+      "canonical_generator_id": "stylegan2-ada",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_a542002f4215b1f8",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_587c20ceb02c192b"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_gan_aigi_a542002f4215b1f8_009832.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_gan_aigi_a542002f4215b1f8_009832.png.png",
+      "removed_phash": "ca3c34646667c6da",
+      "removed_sample_id": "cf_train_v3_gan_aigi_a542002f4215b1f8",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 1627,
+      "replacement_sample_id": "cf_train_v3_gan_aigi_ffa6a84bd3887e5a",
+      "replacement_source_file": "data/HFCF_small_74.parquet"
+    },
+    {
+      "addition_group": "gan_aigi",
+      "canonical_generator_id": "stylegan2",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_ba772bbc38992bf5",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_5634ad65a382167b"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_gan_aigi_ba772bbc38992bf5_001791.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_gan_aigi_ba772bbc38992bf5_001791.png.png",
+      "removed_phash": "de6924e1354b92da",
+      "removed_sample_id": "cf_train_v3_gan_aigi_ba772bbc38992bf5",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 1194,
+      "replacement_sample_id": "cf_train_v3_gan_aigi_75a7c4abd18a128b",
+      "replacement_source_file": "data/HFCF_small_69.parquet"
+    },
+    {
+      "addition_group": "gan_aigi",
+      "canonical_generator_id": "stylegan2",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_ce08b934bbde4fab",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_5634ad65a382167b"
+        },
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_ce08b934bbde4fab",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_6eab88b52f4da8ca"
+        },
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_ce08b934bbde4fab",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_81916e9269ee1b52"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_gan_aigi_ce08b934bbde4fab_023360.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_gan_aigi_ce08b934bbde4fab_023360.png.png",
+      "removed_phash": "8f6834e5354393da",
+      "removed_sample_id": "cf_train_v3_gan_aigi_ce08b934bbde4fab",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 2526,
+      "replacement_sample_id": "cf_train_v3_gan_aigi_7a0c874300df9e59",
+      "replacement_source_file": "data/HFCF_small_69.parquet"
+    },
+    {
+      "addition_group": "gan_aigi",
+      "canonical_generator_id": "stylegan3",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_e9a974415c3686b2",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_a3d4ad8a3089c084"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_gan_aigi_e9a974415c3686b2_002685.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_gan_aigi_e9a974415c3686b2_002685.png.png",
+      "removed_phash": "ca1869c2fd22d3dc",
+      "removed_sample_id": "cf_train_v3_gan_aigi_e9a974415c3686b2",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 2178,
+      "replacement_sample_id": "cf_train_v3_gan_aigi_2df9be5b4f95e9e7",
+      "replacement_source_file": "data/HFCF_small_66.parquet"
+    },
+    {
+      "addition_group": "gan_aigi",
+      "canonical_generator_id": "stylegan2",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_ec967dfeb0cc94fa",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_0e15189fa32da8d4"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_gan_aigi_ec967dfeb0cc94fa_012405.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_gan_aigi_ec967dfeb0cc94fa_012405.png.png",
+      "removed_phash": "9e6b34e1a54392da",
+      "removed_sample_id": "cf_train_v3_gan_aigi_ec967dfeb0cc94fa",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 1595,
+      "replacement_sample_id": "cf_train_v3_gan_aigi_99d5beb130fc7a2c",
+      "replacement_source_file": "data/HFCF_small_69.parquet"
+    },
+    {
+      "addition_group": "gan_aigi",
+      "canonical_generator_id": "stylegan2",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_fa0afbbffd7786f1",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_70802983ac01b242"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_gan_aigi_fa0afbbffd7786f1_026242.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_gan_aigi_fa0afbbffd7786f1_026242.png.png",
+      "removed_phash": "8f2d74f4710392da",
+      "removed_sample_id": "cf_train_v3_gan_aigi_fa0afbbffd7786f1",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 2784,
+      "replacement_sample_id": "cf_train_v3_gan_aigi_901e21961f84861b",
+      "replacement_source_file": "data/HFCF_small_69.parquet"
+    },
+    {
+      "addition_group": "gan_aigi",
+      "canonical_generator_id": "stylegan2-ada",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_gan_aigi_fad61a499b2233ad",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_gan_aigi_587c20ceb02c192b"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_gan_aigi_fad61a499b2233ad_006631.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_gan_aigi_fad61a499b2233ad_006631.png.png",
+      "removed_phash": "cb3c34a47663c6ca",
+      "removed_sample_id": "cf_train_v3_gan_aigi_fad61a499b2233ad",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 1467,
+      "replacement_sample_id": "cf_train_v3_gan_aigi_702a98f47c25d0ac",
+      "replacement_source_file": "data/HFCF_small_74.parquet"
+    },
+    {
+      "addition_group": "gan_matched_real",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_gan_matched_real_019170b169c43674",
+          "distance": 4,
+          "other_cohort": "frozen",
+          "other_sample_id": "cf_train_real_24937b5ee9ddfeba"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/real/cf_train_v3_gan_matched_real_019170b169c43674_000000167028.jpg.jpg",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/real/cf_train_v3_gan_matched_real_019170b169c43674_000000167028.jpg.jpg",
+      "removed_phash": "c873ae7c1f80e551",
+      "removed_sample_id": "cf_train_v3_gan_matched_real_019170b169c43674",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 1294,
+      "replacement_sample_id": "cf_train_v3_gan_matched_real_c09407c8ad123cb6",
+      "replacement_source_file": "data/HFCF_small_131.parquet"
+    },
+    {
+      "addition_group": "pixdiff_aigi",
+      "canonical_generator_id": "deepfloyd",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_pixdiff_aigi_3ac36fc10620a250",
+          "distance": 0,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_pixdiff_aigi_03f7dcfb752c4fd7"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_pixdiff_aigi_3ac36fc10620a250_004766.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_pixdiff_aigi_3ac36fc10620a250_004766.png.png",
+      "removed_phash": "a619d1a7bcfcc111",
+      "removed_sample_id": "cf_train_v3_pixdiff_aigi_3ac36fc10620a250",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 1390,
+      "replacement_sample_id": "cf_train_v3_pixdiff_aigi_0c20f00e00e4d05e",
+      "replacement_source_file": "data/HFCF_small_83.parquet"
+    },
+    {
+      "addition_group": "pixdiff_aigi",
+      "canonical_generator_id": "deepfloyd",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_pixdiff_aigi_c73bd31fdae1aa6f",
+          "distance": 0,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_pixdiff_aigi_57e6c7f3b0bd2887"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_pixdiff_aigi_c73bd31fdae1aa6f_001111.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_pixdiff_aigi_c73bd31fdae1aa6f_001111.png.png",
+      "removed_phash": "94ec4b13c3ccba1b",
+      "removed_sample_id": "cf_train_v3_pixdiff_aigi_c73bd31fdae1aa6f",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 1623,
+      "replacement_sample_id": "cf_train_v3_pixdiff_aigi_ea7fe463e644e722",
+      "replacement_source_file": "data/HFCF_small_83.parquet"
+    },
+    {
+      "addition_group": "pixdiff_aigi",
+      "canonical_generator_id": "deepfloyd",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_pixdiff_aigi_cbf0ad6ee79fe016",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_pixdiff_aigi_772d5876d7d4a186"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_pixdiff_aigi_cbf0ad6ee79fe016_004328.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_pixdiff_aigi_cbf0ad6ee79fe016_004328.png.png",
+      "removed_phash": "c7946fd4105390df",
+      "removed_sample_id": "cf_train_v3_pixdiff_aigi_cbf0ad6ee79fe016",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 1503,
+      "replacement_sample_id": "cf_train_v3_pixdiff_aigi_2ccae375092a5d31",
+      "replacement_source_file": "data/HFCF_small_83.parquet"
+    },
+    {
+      "addition_group": "pixdiff_aigi",
+      "canonical_generator_id": "deepfloyd",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_pixdiff_aigi_e552732302d1c260",
+          "distance": 4,
+          "other_cohort": "addition",
+          "other_sample_id": "cf_train_v3_pixdiff_aigi_83a95751753e74fd"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/aigi/cf_train_v3_pixdiff_aigi_e552732302d1c260_005979.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/aigi/cf_train_v3_pixdiff_aigi_e552732302d1c260_005979.png.png",
+      "removed_phash": "dcb54ba14ba64396",
+      "removed_sample_id": "cf_train_v3_pixdiff_aigi_e552732302d1c260",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 1275,
+      "replacement_sample_id": "cf_train_v3_pixdiff_aigi_f52be1deb95b4fe2",
+      "replacement_source_file": "data/HFCF_small_83.parquet"
+    },
+    {
+      "addition_group": "pixdiff_matched_real",
+      "canonical_generator_id": "",
+      "conflicts": [
+        {
+          "addition_sample_id": "cf_train_v3_pixdiff_matched_real_1137d2afbd445049",
+          "distance": 0,
+          "other_cohort": "frozen",
+          "other_sample_id": "cf_train_real_080cffb8370f9f97"
+        }
+      ],
+      "quarantined_path": "data/quarantine/community_forensics_train_v3_phash/round_1/train_v3_additions/real/cf_train_v3_pixdiff_matched_real_1137d2afbd445049_0023698.png.png",
+      "removed_path": "data/raw/community_forensics/train_v3_additions/real/cf_train_v3_pixdiff_matched_real_1137d2afbd445049_0023698.png.png",
+      "removed_phash": "cfb185a738e84b1a",
+      "removed_sample_id": "cf_train_v3_pixdiff_matched_real_1137d2afbd445049",
+      "repair_round": 1,
+      "replacement_row_group": 0,
+      "replacement_row_index": 2174,
+      "replacement_sample_id": "cf_train_v3_pixdiff_matched_real_c76f1f9386e7f03f",
+      "replacement_source_file": "data/HFCF_small_160.parquet"
+    }
+  ],
+  "selection_seed": 20260830
+}

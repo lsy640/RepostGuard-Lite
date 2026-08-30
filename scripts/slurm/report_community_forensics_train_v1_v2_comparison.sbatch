@@ -73,10 +73,13 @@ test -s "$REPORT_ROOT/community_forensics_strict_unseen_all_metrics.csv"
 test -s "$REPORT_ROOT/community_forensics_strict_unseen_clean_metrics.csv"
 test -s "$REPORT_ROOT/community_forensics_strict_unseen_generator_metrics.csv"
 test -s "$REPORT_ROOT/community_forensics_strict_unseen_real_source_metrics.csv"
-jq -e '.manifest.charts | length >= 10' "$ARTIFACT_JSON" >/dev/null
-jq -e '.manifest.tables | length >= 13' "$ARTIFACT_JSON" >/dev/null
+test -s "$REPORT_ROOT/community_forensics_m3_unseen_generator_roc_metrics.csv"
+jq -e '.manifest.charts | length >= 11' "$ARTIFACT_JSON" >/dev/null
+jq -e '.manifest.tables | length >= 16' "$ARTIFACT_JSON" >/dev/null
 jq -e '.snapshot.datasets.condition_metrics | length == 105' "$ARTIFACT_JSON" >/dev/null
 jq -e '.snapshot.datasets.clean_metrics | length == 5' "$ARTIFACT_JSON" >/dev/null
+jq -e '.snapshot.datasets.m3_generator_roc_detail | length == 36' "$ARTIFACT_JSON" >/dev/null
+jq -e '.snapshot.datasets.m3_generator_roc_wide | length == 12' "$ARTIFACT_JSON" >/dev/null
 
 test -x "$NODE_BIN"
 test -s "$DELIVERY_SCRIPT"
@@ -95,6 +98,8 @@ grep -q 'Community Forensics train-v1 / train-v2' "$REPORT_HTML"
 grep -q 'Strict unseen-generator' "$REPORT_HTML"
 grep -q 'roc_chart' "$REPORT_HTML"
 grep -q 'strict_multistage_chart' "$REPORT_HTML"
+grep -q 'm3_generator_roc_chart' "$REPORT_HTML"
+grep -q 'M3 标识' "$REPORT_HTML"
 grep -q '"ok":true' "$DELIVERY_RECEIPT"
 grep -Eq '"verification":"(passed|structural_only)"' "$DELIVERY_RECEIPT"
 sha256sum \
@@ -103,4 +108,5 @@ sha256sum \
     "$AUDIT_JSON" \
     "$REPORT_ROOT/community_forensics_train_v1_v2_split_comparison.csv" \
     "$REPORT_ROOT/community_forensics_strict_unseen_all_metrics.csv" \
-    "$REPORT_ROOT/community_forensics_strict_unseen_clean_metrics.csv"
+    "$REPORT_ROOT/community_forensics_strict_unseen_clean_metrics.csv" \
+    "$REPORT_ROOT/community_forensics_m3_unseen_generator_roc_metrics.csv"

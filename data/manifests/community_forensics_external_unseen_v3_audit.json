@@ -1,0 +1,85 @@
+{
+  "additions": {
+    "architecture_counts": {
+      "Commercial": 917,
+      "Other": 83
+    },
+    "class_counts": {
+      "aigi": 1000,
+      "real": 1000
+    },
+    "exact_generator_count": 12,
+    "exact_generator_counts": {
+      "dalle2": 83,
+      "dalle3": 83,
+      "firefly-image2": 83,
+      "firefly-image3": 84,
+      "flux-dev": 83,
+      "flux-schnell": 83,
+      "ideogramv1": 83,
+      "ideogramv2": 83,
+      "imagen3": 84,
+      "midjourneyv5-2": 84,
+      "midjourneyv6-1": 84,
+      "stable-cascade": 83
+    },
+    "manifest": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_external_unseen_v3_additions.csv",
+    "manifest_sha256": "d5b662c1d67443c017b62bd133b61c78a615c68933d351fda01a10fee86c0e90",
+    "materialized_bytes": 7031865364,
+    "real_source_counts": {
+      "COCO": 250,
+      "FFHQ": 250,
+      "LAION": 250,
+      "RAISE": 250
+    },
+    "rows": 2000
+  },
+  "base": {
+    "class_counts": {
+      "aigi": 1000,
+      "real": 1000
+    },
+    "manifest": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_test_external_unseen_generator.csv",
+    "manifest_sha256": "70434fc7b38ed2015cac67bc87897139fb202ffa13e736a5ce2f7c759833e42a",
+    "rows": 2000
+  },
+  "completed_at_utc": "2026-08-30T04:09:02.098914+00:00",
+  "diversity_limit": "The pinned Eval revision contains exactly 12 Commercial/Other exact generators (11 Commercial and one Other); all were already present in the frozen test and all remain represented after expansion.",
+  "integrity": {
+    "all_frozen_manifest_addition_identity_overlap": {
+      "path": 0,
+      "sample_id": 0,
+      "sha256": 0,
+      "source_locator": 0
+    },
+    "all_materialized_paths_verified": true,
+    "phash_hamming_threshold": 4,
+    "phash_near_duplicate_count": 0
+  },
+  "output": {
+    "architecture_counts": {
+      "Commercial": 1834,
+      "Other": 166
+    },
+    "class_counts": {
+      "aigi": 2000,
+      "real": 2000
+    },
+    "manifest": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_test_external_unseen_generator_v3_expanded.csv",
+    "manifest_sha256": "59ca2e4ca966dac9fa4fb55281153f93e5becdd3e25da83bc2dff3fad36126cd",
+    "real_source_counts": {
+      "COCO": 500,
+      "FFHQ": 500,
+      "LAION": 500,
+      "RAISE": 500
+    },
+    "rows": 4000
+  },
+  "protocol_id": "community_forensics_external_unseen_v3_expanded",
+  "selection_seed": 20260830,
+  "source": {
+    "dataset_id": "OwensLab/CommunityForensics-Eval",
+    "license": "CC-BY-NC-SA-4.0",
+    "revision": "7d4a74a88d2cac93b513c0853bf92c260eaceea0"
+  }
+}

@@ -4,6 +4,7 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 import os
 import sqlite3
 from datetime import datetime
@@ -56,6 +57,13 @@ SPLITS = (
     ),
 )
 SPLIT_TITLES = {key: title for key, title, _, _ in SPLITS}
+REPORT_TITLE = "Community Forensics B0/B1/B2/M2/M3 新数据集鲁棒性评测"
+REPORT_DESCRIPTION = "冻结五个模型，在五个生成器暴露切片和21个 clean/扰动条件上的技术评测。"
+SCOPE_BODY = (
+    "Exact-seen 表示训练集与外部验证来源存在精确生成器身份交集；"
+    "Unseen-generator 表示生成器大类和精确身份均未见。Hourglass、DFGAN、GALIP 作为困难切片单列。"
+    "每个 manifest 均为 Real/AIGI 平衡；AUROC 与阈值无关，BA、Recall、Specificity 使用内部 clean validation 冻结阈值。"
+)
 CONDITION_LABELS = (
     "Clean",
     "JPEG Q90",
@@ -152,6 +160,26 @@ def _metric(row: dict[str, str], key: str) -> float:
     return float(row[key])
 
 
+def _classification_metrics(row: dict[str, str]) -> dict[str, float | int]:
+    tn = int(row["tn"])
+    fp = int(row["fp"])
+    fn = int(row["fn"])
+    tp = int(row["tp"])
+    total = tn + fp + fn + tp
+    denominator = math.sqrt((tp + fp) * (tp + fn) * (tn + fp) * (tn + fn))
+    return {
+        "tn": tn,
+        "fp": fp,
+        "fn": fn,
+        "tp": tp,
+        "accuracy": (tp + tn) / total if total else 0.0,
+        "precision": tp / (tp + fp) if tp + fp else 0.0,
+        "npv": tn / (tn + fn) if tn + fn else 0.0,
+        "f1": 2 * tp / (2 * tp + fp + fn) if 2 * tp + fp + fn else 0.0,
+        "mcc": ((tp * tn) - (fp * fn)) / denominator if denominator else 0.0,
+    }
+
+
 def _fmt(value: float | None, digits: int = 4) -> str:
     if value is None:
         return "N/A"
@@ -233,9 +261,6 @@ def _load_and_verify(
                 "slurm_job_id"
             ],
         }
-        if not (evaluation_root / model / "COMPLETE").is_file():
-            raise RuntimeError(f"Missing model completion marker: {model}")
-
         for split_key, _, manifest_path, _ in SPLITS:
             output = evaluation_root / model / split_key
             if not (output / "COMPLETE").is_file():
@@ -293,9 +318,18 @@ def _split_summary(rows: list[dict[str, str]]) -> dict[str, Any]:
     new = rows[18:21]
     worst_legacy = min(legacy, key=lambda row: _metric(row, "auroc"))
     worst_new = min(new, key=lambda row: _metric(row, "auroc"))
+    clean_classification = _classification_metrics(rows[0])
+    six_classification = _classification_metrics(rows[20])
     return {
         "clean_auroc": _metric(rows[0], "auroc"),
         "clean_ba": _metric(rows[0], "balanced_accuracy"),
+        "clean_accuracy": clean_classification["accuracy"],
+        "clean_precision": clean_classification["precision"],
+        "clean_recall": _metric(rows[0], "aigc_recall"),
+        "clean_specificity": _metric(rows[0], "real_specificity"),
+        "clean_f1": clean_classification["f1"],
+        "clean_mcc": clean_classification["mcc"],
+        "clean_ap": _metric(rows[0], "average_precision"),
         "legacy_mean_auroc": fmean(_metric(row, "auroc") for row in legacy),
         "legacy_mean_ba": fmean(_metric(row, "balanced_accuracy") for row in legacy),
         "legacy_worst_auroc": _metric(worst_legacy, "auroc"),
@@ -308,6 +342,9 @@ def _split_summary(rows: list[dict[str, str]]) -> dict[str, Any]:
         "six_ba": _metric(rows[20], "balanced_accuracy"),
         "six_recall": _metric(rows[20], "aigc_recall"),
         "six_specificity": _metric(rows[20], "real_specificity"),
+        "six_accuracy": six_classification["accuracy"],
+        "six_precision": six_classification["precision"],
+        "six_f1": six_classification["f1"],
         "new_mean_auroc": fmean(_metric(row, "auroc") for row in new),
         "new_mean_ba": fmean(_metric(row, "balanced_accuracy") for row in new),
         "new_worst_auroc": _metric(worst_new, "auroc"),
@@ -497,6 +534,13 @@ def _report_datasets(
                 "model_order": model_order,
                 "clean_auroc": item["clean_auroc"],
                 "clean_balanced_accuracy": item["clean_ba"],
+                "clean_accuracy": item["clean_accuracy"],
+                "clean_precision": item["clean_precision"],
+                "clean_recall": item["clean_recall"],
+                "clean_specificity": item["clean_specificity"],
+                "clean_f1": item["clean_f1"],
+                "clean_mcc": item["clean_mcc"],
+                "clean_average_precision": item["clean_ap"],
                 "legacy_17_mean_auroc": item["legacy_mean_auroc"],
                 "legacy_17_worst_auroc": item["legacy_worst_auroc"],
                 "four_stage_a_auroc": item["four_a_auroc"],
@@ -504,8 +548,11 @@ def _report_datasets(
                 "six_stage_auroc": item["six_auroc"],
                 "new_3_mean_auroc": item["new_mean_auroc"],
                 "six_stage_balanced_accuracy": item["six_ba"],
+                "six_stage_accuracy": item["six_accuracy"],
+                "six_stage_precision": item["six_precision"],
                 "six_stage_recall": item["six_recall"],
                 "six_stage_specificity": item["six_specificity"],
+                "six_stage_f1": item["six_f1"],
             }))
             strict_six_chart.append({
                 "split": title,
@@ -568,6 +615,7 @@ def _report_datasets(
     )
     all_metrics: list[dict[str, Any]] = []
     for row in _flatten_metrics(metrics):
+        derived = _classification_metrics(row)
         all_metrics.append({
             "model": str(row["model"]).upper(),
             "split": row["split_title"],
@@ -578,6 +626,15 @@ def _report_datasets(
                 field: int(row[field]) if field == "n" else round(float(row[field]), 6)
                 for field in numeric_fields
             },
+            "accuracy": round(float(derived["accuracy"]), 6),
+            "precision": round(float(derived["precision"]), 6),
+            "npv": round(float(derived["npv"]), 6),
+            "f1": round(float(derived["f1"]), 6),
+            "mcc": round(float(derived["mcc"]), 6),
+            "tn": int(derived["tn"]),
+            "fp": int(derived["fp"]),
+            "fn": int(derived["fn"]),
+            "tp": int(derived["tp"]),
         })
 
     staged = {
@@ -644,7 +701,7 @@ def _build_artifact(
     headline: dict[str, Any],
     generated_at: str,
 ) -> dict[str, Any]:
-    title = "Community Forensics B0/B1/B2/M2/M3 新数据集鲁棒性评测"
+    title = REPORT_TITLE
     source_ids = {dataset: f"{dataset}_sql" for dataset in queries}
     sources = [_source(dataset, query, generated_at) for dataset, query in queries.items()]
     best_new = headline["best_new_model"]
@@ -677,8 +734,8 @@ def _build_artifact(
     charts = [
         {
             "id": "macro_auroc_chart",
-            "title": "跨五切片的模型 AUROC 对比",
-            "subtitle": "Clean、原17种扰动均值和新增三组多阶段均值；五个切片等权。",
+            "title": f"跨{len(SPLITS)}切片的模型 AUROC 对比",
+            "subtitle": f"Clean、原17种扰动均值和新增三组多阶段均值；{len(SPLITS)}个切片等权。",
             "type": "bar",
             "intent": "comparison",
             "question": "各模型在 clean、原扰动和新增多阶段扰动上的宏平均 AUROC 如何比较？",
@@ -707,8 +764,8 @@ def _build_artifact(
             "subtitle": "每张图依次执行六类操作，强度由固定种子逐样本抽取。",
             "type": "bar",
             "intent": "comparison",
-            "question": "六阶段共同扰动下，模型在六个生成器暴露切片上的 AUROC 如何变化？",
-            "rationale": "六个离散切片和五个模型构成适合分组柱状图的类别比较。",
+            "question": f"六阶段共同扰动下，模型在{len(SPLITS)}个生成器暴露切片上的 AUROC 如何变化？",
+            "rationale": f"{len(SPLITS)}个离散切片和五个模型构成适合分组柱状图的类别比较。",
             "comparisonContext": {"unit": "AUROC", "grain": "model by validation split", "baseline": "same frozen checkpoint and threshold"},
             "dataset": "strict_six_chart",
             "sourceId": source_ids["strict_six_chart"],
@@ -736,7 +793,7 @@ def _build_artifact(
             "intent": "comparison",
             "question": "哪个模型在新增多阶段扰动的全局最坏情况下保持最高 AUROC？",
             "rationale": "五个模型的单一最坏值适合按值排序的水平柱状图。",
-            "comparisonContext": {"unit": "AUROC", "grain": "minimum per model", "baseline": "18 new-condition split cells per model"},
+            "comparisonContext": {"unit": "AUROC", "grain": "minimum per model", "baseline": f"{len(SPLITS) * 3} new-condition split cells per model"},
             "dataset": "worst_new_chart",
             "sourceId": source_ids["worst_new_chart"],
             "encodings": {
@@ -758,7 +815,7 @@ def _build_artifact(
         {
             "id": "macro_detail_table",
             "title": "跨切片总体指标",
-            "subtitle": "每个切片先独立汇总，再对五个切片等权平均。",
+            "subtitle": f"每个切片先独立汇总，再对{len(SPLITS)}个切片等权平均。",
             "dataset": "macro_detail",
             "sourceId": source_ids["macro_detail"],
             "defaultSort": {"field": "new_3_mean_auroc", "direction": "desc"},
@@ -830,7 +887,7 @@ def _build_artifact(
         {
             "id": "split_summary_table",
             "title": "模型 × 切片汇总",
-            "subtitle": "30个模型-切片组合；包含 clean、原17均值与三个新增多阶段条件。",
+            "subtitle": f"{len(MODELS) * len(SPLITS)}个模型-切片组合；包含 clean、原17均值与三个新增多阶段条件。",
             "dataset": "split_summary",
             "sourceId": source_ids["split_summary"],
             "defaultSort": {"field": "new_3_mean_auroc", "direction": "desc"},
@@ -839,6 +896,13 @@ def _build_artifact(
                 ("split", "切片", None),
                 ("model", "模型", None),
                 ("clean_auroc", "Clean AUC", "number"),
+                ("clean_average_precision", "Clean AP", "number"),
+                ("clean_accuracy", "Clean Accuracy", "number"),
+                ("clean_precision", "Clean Precision", "number"),
+                ("clean_recall", "Clean Recall", "number"),
+                ("clean_specificity", "Clean Specificity", "number"),
+                ("clean_f1", "Clean F1", "number"),
+                ("clean_mcc", "Clean MCC", "number"),
                 ("clean_balanced_accuracy", "Clean BA", "number"),
                 ("legacy_17_mean_auroc", "原17 AUC", "number"),
                 ("legacy_17_worst_auroc", "原17最坏", "number"),
@@ -847,8 +911,11 @@ def _build_artifact(
                 ("six_stage_auroc", "六阶段", "number"),
                 ("new_3_mean_auroc", "新增三组均值", "number"),
                 ("six_stage_balanced_accuracy", "六阶段 BA", "number"),
+                ("six_stage_accuracy", "六阶段 Accuracy", "number"),
+                ("six_stage_precision", "六阶段 Precision", "number"),
                 ("six_stage_recall", "六阶段 Recall", "number"),
                 ("six_stage_specificity", "六阶段 Specificity", "number"),
+                ("six_stage_f1", "六阶段 F1", "number"),
             ),
         },
         {
@@ -867,8 +934,8 @@ def _build_artifact(
         },
         {
             "id": "all_metrics_table",
-            "title": "完整630条评测记录",
-            "subtitle": "5模型 × 6切片 × 21条件；用于逐条件精确查阅。",
+            "title": f"完整{len(MODELS) * len(SPLITS) * len(CONDITION_LABELS)}条评测记录",
+            "subtitle": f"{len(MODELS)}模型 × {len(SPLITS)}切片 × {len(CONDITION_LABELS)}条件；用于逐条件精确查阅。",
             "dataset": "all_metrics",
             "sourceId": source_ids["all_metrics"],
             "defaultSort": {"field": "auroc", "direction": "asc"},
@@ -882,6 +949,11 @@ def _build_artifact(
                 ("n", "N", "number"),
                 ("auroc", "AUROC", "number"),
                 ("average_precision", "AP", "number"),
+                ("accuracy", "Accuracy", "number"),
+                ("precision", "Precision", "number"),
+                ("npv", "NPV", "number"),
+                ("f1", "F1", "number"),
+                ("mcc", "MCC", "number"),
                 ("balanced_accuracy", "BA", "number"),
                 ("macro_f1", "Macro-F1", "number"),
                 ("aigc_recall", "AIGI Recall", "number"),
@@ -891,6 +963,10 @@ def _build_artifact(
                 ("ece_15", "ECE-15", "number"),
                 ("tpr_at_fpr_1pct", "TPR@1%FPR", "number"),
                 ("tpr_at_fpr_5pct", "TPR@5%FPR", "number"),
+                ("tn", "TN", "number"),
+                ("fp", "FP", "number"),
+                ("fn", "FN", "number"),
+                ("tp", "TP", "number"),
                 ("threshold", "冻结阈值", "number"),
             ),
         },
@@ -923,7 +999,7 @@ def _build_artifact(
                 "## 多阶段扰动改变了模型间的相对稳健性\n\n"
                 f"五切片等权汇总后，新增三组多阶段条件由 **{best_new}** 取得最高均值。"
                 f"新增三组相对原17扰动的 AUROC 差值依次为：{macro_deltas}。"
-                "下图用于比较整体形态，随后的表保留精确数值；宏平均避免2000张切片完全支配500张困难切片。"
+                "下图用于比较整体形态，随后的表保留精确数值；宏平均避免大样本切片完全支配较小困难切片。"
             ),
         },
         {"id": "macro_chart_block", "type": "chart", "chartId": "macro_auroc_chart", "layout": "full"},
@@ -934,7 +1010,7 @@ def _build_artifact(
             "sourceId": source_ids["strict_six_chart"],
             "body": (
                 "## 六阶段共同扰动是最直接的部署压力测试\n\n"
-                f"跨五切片宏平均，六阶段条件由 **{best_six}** 取得最高 AUROC "
+                f"跨{len(SPLITS)}切片宏平均，六阶段条件由 **{best_six}** 取得最高 AUROC "
                 f"{_fmt(headline['best_six_auroc'])}。图中同时保留切片维度，便于识别模型优势是否只来自某一生成器暴露类型；"
                 "固定阈值下的 BA、Recall 与 Specificity 可在悬浮信息和后续明细表中审计。"
             ),
@@ -946,7 +1022,7 @@ def _build_artifact(
             "sourceId": source_ids["worst_new_chart"],
             "body": (
                 "## 最坏点比较用于约束平均数掩盖的风险\n\n"
-                f"按每个模型在18个新增多阶段切片单元中的最低 AUROC 排名，**{best_worst}** "
+                f"按每个模型在{len(SPLITS) * 3}个新增多阶段切片单元中的最低 AUROC 排名，**{best_worst}** "
                 f"仍以 {_fmt(headline['best_worst_auroc'])} 居首。该指标是保守描述，不等同于具有置信保证的下界。"
             ),
         },
@@ -956,10 +1032,8 @@ def _build_artifact(
             "type": "markdown",
             "sourceId": source_ids["split_definitions"],
             "body": (
-                "## 五个切片把精确生成器暴露与生成器大类暴露分开\n\n"
-                "Exact-seen 表示 Small 训练集与外部验证来源存在精确生成器身份交集；Seen-family 表示大类已见但精确生成器完全未见；"
-                "Unseen-generator 表示生成器大类和精确身份均未见。Hourglass、DFGAN、GALIP 作为困难切片单列。"
-                "每个 manifest 均为 Real/AIGI 平衡；AUROC 与阈值无关，BA、Recall、Specificity 使用原 Small clean validation 冻结阈值。"
+                f"## {len(SPLITS)}个切片把精确生成器暴露与生成器大类暴露分开\n\n"
+                + SCOPE_BODY
             ),
         },
         {"id": "split_definition_block", "type": "table", "tableId": "split_definition_table", "layout": "full"},
@@ -992,7 +1066,7 @@ def _build_artifact(
             "sourceId": source_ids["split_summary"],
             "body": (
                 "## 分切片结果揭示生成器域差异，不能只看总体平均\n\n"
-                "下表保留30个模型-切片组合的 clean、原17项均值、两组四阶段、六阶段以及固定阈值指标。"
+                f"下表保留{len(MODELS) * len(SPLITS)}个模型-切片组合的 clean、原17项均值、两组四阶段、六阶段以及固定阈值指标。"
                 "Hourglass、DFGAN、GALIP 共用同一真实图面板，便于描述精确生成器变化，但三组 AUROC 并非统计独立。"
             ),
         },
@@ -1013,8 +1087,8 @@ def _build_artifact(
             "type": "markdown",
             "sourceId": source_ids["all_metrics"],
             "body": (
-                "## 完整630条记录保留逐条件审计路径\n\n"
-                "该表覆盖5模型 × 6切片 × 21条件，默认从最低 AUROC 排序以优先暴露失败模式。"
+                f"## 完整{len(MODELS) * len(SPLITS) * len(CONDITION_LABELS)}条记录保留逐条件审计路径\n\n"
+                f"该表覆盖{len(MODELS)}模型 × {len(SPLITS)}切片 × {len(CONDITION_LABELS)}条件，默认从最低 AUROC 排序以优先暴露失败模式。"
                 "它适合精确查阅，不以密集图形替代，因为多指标和长条件名在同一图中会降低可读性。"
             ),
         },
@@ -1062,7 +1136,7 @@ def _build_artifact(
             "version": 1,
             "surface": "report",
             "title": title,
-            "description": "冻结五个模型，在六个生成器暴露切片和21个 clean/扰动条件上的技术评测。",
+            "description": REPORT_DESCRIPTION,
             "generatedAt": generated_at,
             "cards": cards,
             "charts": charts,
@@ -1173,7 +1247,7 @@ def generate(arguments: argparse.Namespace) -> None:
             },
         ],
         "visual_omissions": [
-            "The 630-row multi-metric detail is a sortable table because exact lookup is the goal and a single chart would obscure the evidence.",
+            f"The {len(MODELS) * len(SPLITS) * len(CONDITION_LABELS)}-row multi-metric detail is a sortable table because exact lookup is the goal and a single chart would obscure the evidence.",
             "Confidence-interval visuals are omitted because bootstrap replicates were not computed in this evaluation run.",
         ],
     }

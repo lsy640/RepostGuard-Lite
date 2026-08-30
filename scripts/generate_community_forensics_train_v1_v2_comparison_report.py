@@ -5,12 +5,15 @@ import csv
 import hashlib
 import json
 import os
+from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
 from statistics import fmean
 from types import SimpleNamespace
 from typing import Any
 from zoneinfo import ZoneInfo
+
+import numpy as np
 
 import generate_community_forensics_unseen_accuracy_report as unseen
 
@@ -298,6 +301,134 @@ def _comparison_datasets(arguments: argparse.Namespace) -> tuple[dict[str, list[
     return datasets, audit
 
 
+def _m3_generator_roc_datasets(arguments: argparse.Namespace) -> dict[str, list[dict[str, Any]]]:
+    manifest_rows = _read_csv(arguments.unseen_manifest)
+    manifest_by_id = {row["sample_id"]: row for row in manifest_rows}
+    if len(manifest_by_id) != 2000:
+        raise RuntimeError("M3 generator ROC analysis requires 2,000 unique manifest rows")
+    real_ids = [row["sample_id"] for row in manifest_rows if int(row["label"]) == 0]
+    generator_ids: dict[str, list[str]] = defaultdict(list)
+    for row in manifest_rows:
+        if int(row["label"]) == 1:
+            generator_ids[row["canonical_generator_id"]].append(row["sample_id"])
+    if len(real_ids) != 1000 or len(generator_ids) != 12:
+        raise RuntimeError("Expected 1,000 Real images and 12 exact unseen generators")
+
+    output = Path(arguments.v2_evaluation_root) / "m3" / "unseen_generator"
+    metrics_rows = _read_csv(output / "metrics_by_transform.csv")
+    predictions = unseen._read_jsonl(output / "predictions.jsonl")
+    grouped: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
+    for row in predictions:
+        transform = str(row["transform"])
+        sample_id = str(row["sample_id"])
+        if sample_id in grouped[transform]:
+            raise RuntimeError(f"Duplicate M3 prediction: {transform}/{sample_id}")
+        grouped[transform][sample_id] = row
+    threshold = float(_read_json(Path(arguments.v2_source_root) / "m3" / "summary.json")["threshold_from_clean_validation"])
+    targets = (
+        (0, "Clean"),
+        (18, "4-stage A platform repost"),
+        (19, "4-stage B edit repost"),
+    )
+    detail: list[dict[str, Any]] = []
+    generators = sorted(generator_ids)
+    for condition_order, (condition_index, condition) in enumerate(targets):
+        transform = metrics_rows[condition_index]["transform"]
+        row_by_id = grouped.get(transform, {})
+        if set(row_by_id) != set(manifest_by_id):
+            raise RuntimeError(f"M3 prediction identity mismatch for {condition}")
+        real_scores = np.asarray([float(row_by_id[sample_id]["pred"]) for sample_id in real_ids], dtype=np.float64)
+        for generator_order, generator in enumerate(generators):
+            positive_ids = generator_ids[generator]
+            positive_scores = np.asarray(
+                [float(row_by_id[sample_id]["pred"]) for sample_id in positive_ids],
+                dtype=np.float64,
+            )
+            labels = np.concatenate((
+                np.zeros(real_scores.size, dtype=np.int64),
+                np.ones(positive_scores.size, dtype=np.int64),
+            ))
+            scores = np.concatenate((real_scores, positive_scores))
+            computed = unseen._metrics(labels, scores, threshold)
+            detail.append({
+                "model": "M3",
+                "generator": generator,
+                "generator_order": generator_order,
+                "condition": condition,
+                "condition_order": condition_order,
+                "n_real": int(real_scores.size),
+                "n_aigi": int(positive_scores.size),
+                "threshold": round(threshold, 8),
+                "auroc": round(float(computed["auroc"]), 8),
+                "average_precision": round(float(computed["average_precision"]), 8),
+                "accuracy": round(float(computed["accuracy"]), 8),
+                "balanced_accuracy": round(float(computed["balanced_accuracy"]), 8),
+                "aigi_recall": round(float(computed["recall"]), 8),
+                "real_specificity": round(float(computed["specificity"]), 8),
+                "false_positive_rate": round(float(computed["false_positive_rate"]), 8),
+                "tpr_at_fpr_1pct": round(float(computed["tpr_at_fpr_1pct"]), 8),
+                "tpr_at_fpr_5pct": round(float(computed["tpr_at_fpr_5pct"]), 8),
+                "tn": int(computed["tn"]),
+                "fp": int(computed["fp"]),
+                "fn": int(computed["fn"]),
+                "tp": int(computed["tp"]),
+                "mean_real_score": round(float(real_scores.mean()), 8),
+                "mean_aigi_score": round(float(positive_scores.mean()), 8),
+            })
+
+    by_key = {(row["generator"], row["condition"]): row for row in detail}
+    wide: list[dict[str, Any]] = []
+    for generator_order, generator in enumerate(generators):
+        clean = by_key[(generator, targets[0][1])]
+        four_a = by_key[(generator, targets[1][1])]
+        four_b = by_key[(generator, targets[2][1])]
+        wide.append({
+            "model": "M3",
+            "generator": generator,
+            "generator_order": generator_order,
+            "n_aigi": clean["n_aigi"],
+            "clean_auroc": clean["auroc"],
+            "four_stage_a_auroc": four_a["auroc"],
+            "four_stage_a_delta": round(four_a["auroc"] - clean["auroc"], 8),
+            "four_stage_b_auroc": four_b["auroc"],
+            "four_stage_b_delta": round(four_b["auroc"] - clean["auroc"], 8),
+            "clean_recall": clean["aigi_recall"],
+            "four_stage_a_recall": four_a["aigi_recall"],
+            "four_stage_b_recall": four_b["aigi_recall"],
+        })
+
+    condition_means = {
+        condition: fmean(row["auroc"] for row in detail if row["condition"] == condition)
+        for _, condition in targets
+    }
+    condition_worst = {
+        condition: min(
+            (row for row in detail if row["condition"] == condition),
+            key=lambda row: row["auroc"],
+        )
+        for _, condition in targets
+    }
+    headline = [{
+        "model": "M3",
+        "generator_count": len(generators),
+        "real_reference_count": len(real_ids),
+        "clean_mean_auroc": round(condition_means[targets[0][1]], 8),
+        "four_stage_a_mean_auroc": round(condition_means[targets[1][1]], 8),
+        "four_stage_b_mean_auroc": round(condition_means[targets[2][1]], 8),
+        "clean_worst_generator": condition_worst[targets[0][1]]["generator"],
+        "clean_worst_auroc": condition_worst[targets[0][1]]["auroc"],
+        "four_stage_a_worst_generator": condition_worst[targets[1][1]]["generator"],
+        "four_stage_a_worst_auroc": condition_worst[targets[1][1]]["auroc"],
+        "four_stage_b_worst_generator": condition_worst[targets[2][1]]["generator"],
+        "four_stage_b_worst_auroc": condition_worst[targets[2][1]]["auroc"],
+    }]
+    return {
+        "m3_generator_roc_headline": headline,
+        "m3_generator_roc_detail": detail,
+        "m3_generator_roc_wide": wide,
+    }
+
+
 def _columns(*values: tuple[str, str, str | None]) -> list[dict[str, Any]]:
     columns: list[dict[str, Any]] = []
     for field, label, format_name in values:
@@ -416,6 +547,36 @@ def _comparison_charts(source_ids: dict[str, str]) -> list[dict[str, Any]]:
             "valueFormat": "percent",
             **common,
         },
+        {
+            "id": "m3_generator_roc_chart",
+            "title": "[M3] 12 个未见精确生成器的 AUROC 对比",
+            "subtitle": "每个生成器的 AIGI 与同一组 1,000 张 Real 比较；AUROC 为 ROC 曲线的标量汇总。",
+            "type": "bar",
+            "intent": "comparison",
+            "question": "M3 在 Clean、4-stage A 和 4-stage B 下对各精确生成器的 ROC 排序能力如何变化？",
+            "rationale": "12 个离散生成器与三个同尺度 AUROC 条件适合分组柱状图；36 条完整 ROC 曲线会过度拥挤。",
+            "comparisonContext": {
+                "unit": "AUROC",
+                "grain": "exact generator by condition",
+                "negative_reference": "the same 1,000 strict-unseen Real images",
+            },
+            "dataset": "m3_generator_roc_detail",
+            "sourceId": source_ids["m3_generator_roc_detail"],
+            "encodings": {
+                "x": {"field": "generator", "type": "nominal", "label": "Exact unseen generator"},
+                "y": {"field": "auroc", "type": "quantitative", "label": "AUROC", "format": "percent"},
+                "color": {"field": "condition", "type": "nominal", "label": "Condition"},
+                "tooltip": [
+                    {"field": "model", "type": "nominal", "label": "Model"},
+                    {"field": "n_aigi", "type": "quantitative", "label": "AIGI N", "format": "number"},
+                    {"field": "n_real", "type": "quantitative", "label": "Real N", "format": "number"},
+                    {"field": "auroc", "type": "quantitative", "label": "AUROC", "format": "percent"},
+                    {"field": "aigi_recall", "type": "quantitative", "label": "Frozen-threshold recall", "format": "percent"},
+                ],
+            },
+            "valueFormat": "percent",
+            **common,
+        },
     ]
 
 
@@ -490,6 +651,49 @@ def _comparison_tables(source_ids: dict[str, str]) -> list[dict[str, Any]]:
                 ("delta_balanced_accuracy", "BA Δ", "percent"),
             ),
         },
+        {
+            "id": "m3_generator_roc_wide_table",
+            "title": "[M3] 12 个精确生成器 AUROC 与 Recall 摘要",
+            "subtitle": "三种条件使用相同的 1,000 张 Real 负类；Δ 相对各生成器 Clean AUROC。",
+            "dataset": "m3_generator_roc_wide",
+            "sourceId": source_ids["m3_generator_roc_wide"],
+            "defaultSort": {"field": "clean_auroc", "direction": "asc"},
+            "columns": _columns(
+                ("model", "模型", None), ("generator", "精确生成器", None),
+                ("n_aigi", "AIGI N", "number"),
+                ("clean_auroc", "Clean AUROC", "percent"),
+                ("four_stage_a_auroc", "4-stage A AUROC", "percent"),
+                ("four_stage_a_delta", "A Δ", "percent"),
+                ("four_stage_b_auroc", "4-stage B AUROC", "percent"),
+                ("four_stage_b_delta", "B Δ", "percent"),
+                ("clean_recall", "Clean Recall", "percent"),
+                ("four_stage_a_recall", "A Recall", "percent"),
+                ("four_stage_b_recall", "B Recall", "percent"),
+            ),
+        },
+        {
+            "id": "m3_generator_roc_detail_table",
+            "title": "[M3] 36 条生成器 × 条件 ROC 与固定阈值明细",
+            "subtitle": "AUROC/AP 为排序指标；Accuracy、BA、Recall、Specificity 和混淆矩阵使用冻结阈值。",
+            "dataset": "m3_generator_roc_detail",
+            "sourceId": source_ids["m3_generator_roc_detail"],
+            "defaultSort": {"field": "auroc", "direction": "asc"},
+            "density": "dense",
+            "columns": _columns(
+                ("model", "模型", None), ("generator", "精确生成器", None),
+                ("condition", "条件", None), ("n_aigi", "AIGI N", "number"),
+                ("n_real", "Real N", "number"), ("auroc", "AUROC", "percent"),
+                ("average_precision", "AP", "percent"), ("accuracy", "Accuracy", "percent"),
+                ("balanced_accuracy", "BA", "percent"), ("aigi_recall", "Recall", "percent"),
+                ("real_specificity", "Specificity", "percent"),
+                ("tpr_at_fpr_1pct", "TPR@1%FPR", "percent"),
+                ("tpr_at_fpr_5pct", "TPR@5%FPR", "percent"),
+                ("tn", "TN", "number"), ("fp", "FP", "number"),
+                ("fn", "FN", "number"), ("tp", "TP", "number"),
+                ("mean_real_score", "Mean Real score", "number"),
+                ("mean_aigi_score", "Mean AIGI score", "number"),
+            ),
+        },
     ]
 
 
@@ -505,7 +709,8 @@ def generate(arguments: argparse.Namespace) -> None:
     )
     strict_datasets, strict_audit = unseen._load_and_compute(strict_arguments)
     comparison_datasets, comparison_audit = _comparison_datasets(arguments)
-    staged = {**comparison_datasets, **strict_datasets}
+    m3_generator_datasets = _m3_generator_roc_datasets(arguments)
+    staged = {**comparison_datasets, **m3_generator_datasets, **strict_datasets}
     queries = {
         "comparison_headline": "SELECT * FROM comparison_headline",
         "training_summary": "SELECT * FROM training_summary ORDER BY metric",
@@ -517,6 +722,9 @@ def generate(arguments: argparse.Namespace) -> None:
         "split_delta_chart": "SELECT * FROM split_delta_chart ORDER BY split_order, model_order",
         "strict_multistage_comparison": "SELECT * FROM strict_multistage_comparison ORDER BY condition_order, model_order",
         "strict_multistage_chart": "SELECT * FROM strict_multistage_chart ORDER BY series_order, model_order",
+        "m3_generator_roc_headline": "SELECT * FROM m3_generator_roc_headline",
+        "m3_generator_roc_detail": "SELECT * FROM m3_generator_roc_detail ORDER BY generator_order, condition_order",
+        "m3_generator_roc_wide": "SELECT * FROM m3_generator_roc_wide ORDER BY generator_order",
         "headline": "SELECT * FROM headline",
         "clean_metrics": "SELECT * FROM clean_metrics ORDER BY model_order",
         "clean_metric_chart": "SELECT * FROM clean_metric_chart ORDER BY metric_order, model_order",
@@ -565,7 +773,30 @@ def generate(arguments: argparse.Namespace) -> None:
             "metrics": [{"label": "train-v2 图片数", "field": "train_v2_images", "format": "number"}],
         },
     ]
-    artifact["manifest"]["cards"].extend(comparison_cards)
+    m3_generator_cards = [
+        {
+            "id": "m3_generator_clean_auc_card",
+            "description": "12 个精确生成器等权平均；共同 Real 参照面板。",
+            "dataset": "m3_generator_roc_headline",
+            "sourceId": source_ids["m3_generator_roc_headline"],
+            "metrics": [{"label": "M3 Clean mean AUROC", "field": "clean_mean_auroc", "format": "percent"}],
+        },
+        {
+            "id": "m3_generator_four_a_auc_card",
+            "description": "12 个精确生成器等权平均。",
+            "dataset": "m3_generator_roc_headline",
+            "sourceId": source_ids["m3_generator_roc_headline"],
+            "metrics": [{"label": "M3 4-stage A mean AUROC", "field": "four_stage_a_mean_auroc", "format": "percent"}],
+        },
+        {
+            "id": "m3_generator_four_b_auc_card",
+            "description": "12 个精确生成器等权平均。",
+            "dataset": "m3_generator_roc_headline",
+            "sourceId": source_ids["m3_generator_roc_headline"],
+            "metrics": [{"label": "M3 4-stage B mean AUROC", "field": "four_stage_b_mean_auroc", "format": "percent"}],
+        },
+    ]
+    artifact["manifest"]["cards"].extend(comparison_cards + m3_generator_cards)
 
     markdown = Path(arguments.markdown).read_text(encoding="utf-8")
     if not markdown.startswith("# Community Forensics train-v1 / train-v2"):
@@ -632,6 +863,26 @@ def generate(arguments: argparse.Namespace) -> None:
         {"id": "strict_multistage_chart_block", "type": "chart", "chartId": "strict_multistage_chart", "layout": "full"},
         {"id": "strict_multistage_comparison_table_block", "type": "table", "tableId": "strict_multistage_comparison_table", "layout": "full"},
         {
+            "id": "m3_generator_roc_intro",
+            "type": "markdown",
+            "sourceId": source_ids["m3_generator_roc_headline"],
+            "body": (
+                "## M3 标识：12 个未见精确生成器的 Clean 与四阶段 ROC 对比\n\n"
+                "**模型标识：M3。** 对每个精确生成器，将其 83–84 张 AIGI 作为正类，并使用相同的 1,000 张 "
+                "strict-unseen Real 作为负类，分别计算 Clean、4-stage A platform repost 和 4-stage B edit repost。"
+                "图中展示 AUROC（ROC 曲线下面积），避免同时绘制 36 条 ROC 曲线造成遮挡；下方两张表保留 AP、"
+                "冻结阈值 Recall/Specificity、TPR@1%/5%FPR、混淆矩阵和平均得分等详细数据。"
+            ),
+        },
+        {
+            "id": "m3_generator_roc_cards",
+            "type": "metric-strip",
+            "cardIds": ["m3_generator_clean_auc_card", "m3_generator_four_a_auc_card", "m3_generator_four_b_auc_card"],
+        },
+        {"id": "m3_generator_roc_chart_block", "type": "chart", "chartId": "m3_generator_roc_chart", "layout": "full"},
+        {"id": "m3_generator_roc_wide_table_block", "type": "table", "tableId": "m3_generator_roc_wide_table", "layout": "full"},
+        {"id": "m3_generator_roc_detail_table_block", "type": "table", "tableId": "m3_generator_roc_detail_table", "layout": "full"},
+        {
             "id": "markdown_source",
             "type": "markdown",
             "sourceId": source_ids["model_macro_comparison"],
@@ -652,9 +903,22 @@ def generate(arguments: argparse.Namespace) -> None:
     artifact["manifest"]["blocks"] = comparison_blocks + original_blocks
 
     comparison_source_names = set(comparison_datasets)
+    m3_generator_source_names = set(m3_generator_datasets)
     for source in artifact["sources"]:
         dataset = source["id"].removesuffix("_sql")
-        if dataset in comparison_source_names:
+        if dataset in m3_generator_source_names:
+            source["query"]["description"] = (
+                "Executed over frozen M3 strict-unseen predictions, with each exact "
+                "generator's AIGI images compared against the same 1,000 Real images."
+            )
+            source["query"]["filters"] = [
+                "model = M3",
+                "conditions = clean, four-stage A, four-stage B",
+                "positive class = one exact unseen generator",
+                "negative class = all 1,000 strict-unseen Real images",
+                "threshold frozen from internal Small clean validation",
+            ]
+        elif dataset in comparison_source_names:
             source["query"]["description"] = (
                 "Executed over reviewed train-v1/train-v2 manifests and aligned frozen "
                 "21-condition evaluation summaries."
@@ -670,6 +934,7 @@ def generate(arguments: argparse.Namespace) -> None:
     unseen._write_csv(arguments.strict_clean_metrics_csv, snapshot["clean_metrics"])
     unseen._write_csv(arguments.strict_generator_csv, snapshot["generator_recall"])
     unseen._write_csv(arguments.strict_real_source_csv, snapshot["real_specificity"])
+    unseen._write_csv(arguments.m3_generator_roc_csv, snapshot["m3_generator_roc_detail"])
     _atomic_text(arguments.artifact_json, json.dumps(artifact, ensure_ascii=False, indent=2) + "\n")
     audit = {
         "schema_version": 1,
@@ -691,6 +956,7 @@ def generate(arguments: argparse.Namespace) -> None:
             "strict_clean_metrics_csv": str(arguments.strict_clean_metrics_csv),
             "strict_generator_csv": str(arguments.strict_generator_csv),
             "strict_real_source_csv": str(arguments.strict_real_source_csv),
+            "m3_generator_roc_csv": str(arguments.m3_generator_roc_csv),
         },
     }
     _atomic_text(arguments.audit_json, json.dumps(audit, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
@@ -723,6 +989,7 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--strict-clean-metrics-csv", default="reports/evaluations/train_v1_v2_comparison/community_forensics_strict_unseen_clean_metrics.csv")
     parser.add_argument("--strict-generator-csv", default="reports/evaluations/train_v1_v2_comparison/community_forensics_strict_unseen_generator_metrics.csv")
     parser.add_argument("--strict-real-source-csv", default="reports/evaluations/train_v1_v2_comparison/community_forensics_strict_unseen_real_source_metrics.csv")
+    parser.add_argument("--m3-generator-roc-csv", default="reports/evaluations/train_v1_v2_comparison/community_forensics_m3_unseen_generator_roc_metrics.csv")
     return parser.parse_args()
 
 

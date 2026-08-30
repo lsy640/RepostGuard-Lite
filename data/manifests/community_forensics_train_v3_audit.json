@@ -1,0 +1,117 @@
+{
+  "additions": {
+    "class_counts": {
+      "aigi": 2000,
+      "real": 2000
+    },
+    "exact_generator_counts": {
+      "GAN": 12,
+      "PixDiff": 3
+    },
+    "exact_generators": {
+      "GAN": [
+        "biggan",
+        "cips",
+        "gansformer",
+        "gigagan",
+        "progan",
+        "projectedgan",
+        "stylegan2",
+        "stylegan2-ada",
+        "stylegan3",
+        "styleganxl",
+        "stylesanxl",
+        "styleswin"
+      ],
+      "PixDiff": [
+        "deepfloyd",
+        "glide",
+        "guideddiffusion"
+      ]
+    },
+    "group_counts": {
+      "gan_aigi": 1000,
+      "gan_matched_real": 1000,
+      "pixdiff_aigi": 1000,
+      "pixdiff_matched_real": 1000
+    },
+    "manifest": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_train_v3_additions.csv",
+    "manifest_sha256": "fec5097fd1a3a5488851caddf729bf3470916024d0dcf5533efddb20280ae2bd",
+    "materialized_bytes": 1703324237,
+    "per_generator_contribution_range": {
+      "GAN": {
+        "maximum": 84,
+        "minimum": 83
+      },
+      "PixDiff": {
+        "maximum": 334,
+        "minimum": 333
+      }
+    },
+    "rows": 4000
+  },
+  "base": {
+    "class_counts": {
+      "aigi": 10000,
+      "real": 10000
+    },
+    "manifest": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_train_v2.csv",
+    "manifest_sha256": "493749f51f552aa0a5235253f8c072b018a0f8250f02c94082aecdd98005ecd7",
+    "rows": 20000
+  },
+  "completed_at_utc": "2026-08-30T02:58:05.198398+00:00",
+  "evaluation_policy": {
+    "external_seen_family_remains_retired": true,
+    "strict_unseen_architectures": [
+      "Commercial",
+      "Other"
+    ],
+    "strict_unseen_generator_manifest": "data/manifests/community_forensics_test_external_unseen_generator.csv"
+  },
+  "integrity": {
+    "all_frozen_manifest_addition_identity_overlap": {
+      "path": 0,
+      "sample_id": 0,
+      "sha256": 0,
+      "source_locator": 0
+    },
+    "all_materialized_paths_verified": true,
+    "base_addition_identity_overlap": {
+      "path": 0,
+      "sample_id": 0,
+      "sha256": 0,
+      "source_locator": 0
+    },
+    "phash_hamming_threshold": 4,
+    "phash_near_duplicate_count": 0,
+    "state_integrity": "ok"
+  },
+  "output": {
+    "class_counts": {
+      "aigi": 12000,
+      "real": 12000
+    },
+    "manifest": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_train_v3.csv",
+    "manifest_sha256": "fc0a7ab732faeb604ed1e77281fada715d7cffb353974a4985820548d871d9d6",
+    "rows": 24000
+  },
+  "protocol_id": "community_forensics_train_v3_small_gan_pixdiff_expansion",
+  "real_balance": {
+    "distinct_source_shards": {
+      "gan_matched_real": 1,
+      "pixdiff_matched_real": 1
+    },
+    "implemented_proxy": "Two deterministic 1000-image counterpart quotas, each drawn from a distinct deterministic Parquet row group to avoid pretending that unavailable source-type labels exist.",
+    "metadata_observation": "Pinned CommunityForensics-Small marks all real rows as architecture=Real, subset=Real, real_source=N/A. No factual real-source type can be assigned.",
+    "requested_pairing": {
+      "GAN counterpart": 1000,
+      "PixDiff counterpart": 1000
+    }
+  },
+  "selection_seed": 20260830,
+  "source": {
+    "dataset_id": "OwensLab/CommunityForensics-Small",
+    "license": "CC-BY-NC-SA-4.0",
+    "revision": "6c539a534c07917307c381f5af4053c6091b5278"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "bootstrap_replicates": 1000,
   "bootstrap_seed": 20260830,
-  "chart_count": 10,
+  "chart_count": 11,
   "comparison": {
     "condition_count": 21,
     "model_count": 5,
@@ -21,6 +21,9 @@
     "condition_metrics": 105,
     "generator_recall": 60,
     "headline": 1,
+    "m3_generator_roc_detail": 36,
+    "m3_generator_roc_headline": 1,
+    "m3_generator_roc_wide": 12,
     "macro_protocol_chart": 20,
     "metric_definitions": 16,
     "model_lineage": 5,
@@ -38,18 +41,19 @@
     "training_class_chart": 4,
     "training_summary": 4
   },
-  "generated_at_asia_singapore": "2026-08-30T01:06:41+08:00",
+  "generated_at_asia_singapore": "2026-08-30T01:26:31+08:00",
   "markdown": "reports/summaries/COMMUNITY_FORENSICS_TRAIN_V1_V2_COMPARISON.md",
   "markdown_sha256": "56a076828d5c3a25651cbfb86cb377530295322635314bb6a0381cf2a0393798",
   "output_files": {
     "artifact_json": "reports/evaluations/train_v1_v2_comparison/community_forensics_train_v1_v2_artifact.json",
     "comparison_csv": "reports/evaluations/train_v1_v2_comparison/community_forensics_train_v1_v2_split_comparison.csv",
+    "m3_generator_roc_csv": "reports/evaluations/train_v1_v2_comparison/community_forensics_m3_unseen_generator_roc_metrics.csv",
     "strict_all_metrics_csv": "reports/evaluations/train_v1_v2_comparison/community_forensics_strict_unseen_all_metrics.csv",
     "strict_clean_metrics_csv": "reports/evaluations/train_v1_v2_comparison/community_forensics_strict_unseen_clean_metrics.csv",
     "strict_generator_csv": "reports/evaluations/train_v1_v2_comparison/community_forensics_strict_unseen_generator_metrics.csv",
     "strict_real_source_csv": "reports/evaluations/train_v1_v2_comparison/community_forensics_strict_unseen_real_source_metrics.csv"
   },
-  "report_job_id": "32781",
+  "report_job_id": "32787",
   "schema_version": 1,
   "strict_unseen": {
     "bootstrap_replicates": 1000,
@@ -111,5 +115,5 @@
     "matrix": "configs/community_forensics_robustness_v2.yaml",
     "matrix_sha256": "69531f3f7111651808c99f14f89723bf631345878b1cbd0cbe0eee8531dde83c"
   },
-  "table_count": 14
+  "table_count": 16
 }

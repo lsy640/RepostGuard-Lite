@@ -1,0 +1,53 @@
+{
+  "artifacts": {
+    "bootstrap": "paired_bootstrap_key_conditions.csv",
+    "metrics": "metrics_by_mode_and_transform.csv",
+    "predictions": "predictions_by_mode.jsonl",
+    "summary": "summary.json"
+  },
+  "bootstrap": {
+    "conditions": [
+      0,
+      18,
+      19,
+      20
+    ],
+    "replicates": 1000,
+    "seed": 20260830
+  },
+  "checkpoint": "/home/msai/lius0131/AGI/repostguard-lite/outputs/community_forensics_v3/m3/best.pt",
+  "checkpoint_sha256": "c83f70641a9c8d7f6808e794cfc8c28c0e478feeca7506e489c772a512115b2f",
+  "cuda_runtime": "12.1",
+  "device": "NVIDIA L40S",
+  "fixed_clean_semantic_fraction": 0.588310182094574,
+  "hostname": "TC2N08",
+  "manifest": "/home/msai/lius0131/AGI/repostguard-lite/data/manifests/community_forensics_test_external_unseen_generator_v3_expanded.csv",
+  "manifest_sha256": "59ca2e4ca966dac9fa4fb55281153f93e5becdd3e25da83bc2dff3fad36126cd",
+  "matrix": "/home/msai/lius0131/AGI/repostguard-lite/configs/community_forensics_robustness_v2.yaml",
+  "matrix_sha256": "69531f3f7111651808c99f14f89723bf631345878b1cbd0cbe0eee8531dde83c",
+  "mode_definitions": {
+    "fixed_clean_mean": "constant label-free mean learned gate from the clean selected manifest",
+    "fixed_equal": "constant fractions 0.5/0.5; branch scales 1.0/1.0",
+    "learned": "checkpoint learned per-sample gate",
+    "shuffled": "learned gate vectors globally permuted across all 4,000 samples with a deterministic per-condition seed"
+  },
+  "model_config": "/home/msai/lius0131/AGI/repostguard-lite/outputs/community_forensics_v3/m3/resolved_config.yaml",
+  "model_config_sha256": "1173f7dd3908656f8fda4a292470880b3487c33f04bff466c0a57929e88aaed2",
+  "parameters": {
+    "frozen": 87849216,
+    "total": 99423744,
+    "trainable": 11574528
+  },
+  "platform": "Linux-5.14.0-503.14.1.el9_5.x86_64-x86_64-with-glibc2.34",
+  "protocol_config": "/home/msai/lius0131/AGI/repostguard-lite/configs/community_forensics_m3_gate_ablation_v1.yaml",
+  "protocol_config_sha256": "e691b5b3abcacaca5836d4b28ed8025a8e69bb7ca20cdf316288c035fd7aff20",
+  "protocol_id": "community_forensics_train_v3_m3_gate_ablation_v1",
+  "python": "3.11.16",
+  "shuffle_seed": 20260830,
+  "slurm_job_id": "32943",
+  "threshold": 0.9970703125,
+  "threshold_summary": "/home/msai/lius0131/AGI/repostguard-lite/outputs/community_forensics_v3/m3/summary.json",
+  "torch": "2.5.1",
+  "torchvision": "0.20.1",
+  "training_complete": "/home/msai/lius0131/AGI/repostguard-lite/outputs/community_forensics_v3/m3/DONE"
+}

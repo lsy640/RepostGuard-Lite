@@ -1,0 +1,12 @@
+base: base.yaml
+
+model:
+  experiment: b2
+
+train:
+  batch_size: 96
+  learning_rate: 0.001
+  weight_decay: 0.00001
+
+output:
+  directory: outputs/community_forensics_v3/b2

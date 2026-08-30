@@ -159,10 +159,34 @@ class RepostGuardM3(RepostGuardM2):
         gate_config = config["quality_gate"]
         self.quality_gate = QualityAwareGate(hidden_dim=int(gate_config["hidden_dim"]))
 
-    def forward(self, images: torch.Tensor) -> dict[str, torch.Tensor]:
+    def extract_branch_features(self, images: torch.Tensor) -> dict[str, torch.Tensor]:
+        """Extract M3 branches and learned gates without applying fusion.
+
+        Keeping extraction separate lets evaluation reuse identical branch features for
+        counterfactual gate ablations without changing the ordinary forward path.
+        """
         semantic = self.semantic_projection(self.semantic(images))
         forensic, forensic_diagnostics = self.forensic(images)
         gate_fractions, quality_features = self.quality_gate(images)
+        return {
+            "semantic_features": semantic,
+            "forensic_features": forensic,
+            "gate_fractions": gate_fractions,
+            "quality_features": quality_features,
+            **forensic_diagnostics,
+        }
+
+    def fuse_branch_features(
+        self,
+        semantic: torch.Tensor,
+        forensic: torch.Tensor,
+        gate_fractions: torch.Tensor,
+    ) -> dict[str, torch.Tensor]:
+        """Apply supplied semantic/forensic fractions through the trained M3 head."""
+        if gate_fractions.ndim != 2 or gate_fractions.shape[1] != 2:
+            raise ValueError("gate_fractions must have shape [batch, 2]")
+        if semantic.shape[0] != forensic.shape[0] or semantic.shape[0] != gate_fractions.shape[0]:
+            raise ValueError("semantic, forensic, and gate batches must align")
         branch_scales = 2.0 * gate_fractions
         fused = self.fusion(
             torch.cat(
@@ -173,14 +197,18 @@ class RepostGuardM3(RepostGuardM2):
                 dim=1,
             )
         )
+        return {"logits": self.classifier(fused).squeeze(1), "features": fused}
+
+    def forward(self, images: torch.Tensor) -> dict[str, torch.Tensor]:
+        branches = self.extract_branch_features(images)
+        fused_output = self.fuse_branch_features(
+            branches["semantic_features"],
+            branches["forensic_features"],
+            branches["gate_fractions"],
+        )
         return {
-            "logits": self.classifier(fused).squeeze(1),
-            "features": fused,
-            "semantic_features": semantic,
-            "forensic_features": forensic,
-            "gate_fractions": gate_fractions,
-            "quality_features": quality_features,
-            **forensic_diagnostics,
+            **fused_output,
+            **branches,
         }
 
 

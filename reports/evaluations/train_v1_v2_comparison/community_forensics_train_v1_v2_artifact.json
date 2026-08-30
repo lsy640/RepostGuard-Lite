@@ -5,7 +5,7 @@
     "surface": "report",
     "title": "Community Forensics train-v1 / train-v2 对比与 Strict unseen 详细评测",
     "description": "Train-v1/train-v2 dataset and five-split robustness comparison, plus full strict unseen-generator classification, ROC/PR, perturbation and slice metrics.",
-    "generatedAt": "2026-08-30T01:06:41+08:00",
+    "generatedAt": "2026-08-30T01:26:31+08:00",
     "blocks": [
       {
         "id": "title",
@@ -97,6 +97,39 @@
         "id": "strict_multistage_comparison_table_block",
         "type": "table",
         "tableId": "strict_multistage_comparison_table",
+        "layout": "full"
+      },
+      {
+        "id": "m3_generator_roc_intro",
+        "type": "markdown",
+        "sourceId": "m3_generator_roc_headline_sql",
+        "body": "## M3 标识：12 个未见精确生成器的 Clean 与四阶段 ROC 对比\n\n**模型标识：M3。** 对每个精确生成器，将其 83–84 张 AIGI 作为正类，并使用相同的 1,000 张 strict-unseen Real 作为负类，分别计算 Clean、4-stage A platform repost 和 4-stage B edit repost。图中展示 AUROC（ROC 曲线下面积），避免同时绘制 36 条 ROC 曲线造成遮挡；下方两张表保留 AP、冻结阈值 Recall/Specificity、TPR@1%/5%FPR、混淆矩阵和平均得分等详细数据。"
+      },
+      {
+        "id": "m3_generator_roc_cards",
+        "type": "metric-strip",
+        "cardIds": [
+          "m3_generator_clean_auc_card",
+          "m3_generator_four_a_auc_card",
+          "m3_generator_four_b_auc_card"
+        ]
+      },
+      {
+        "id": "m3_generator_roc_chart_block",
+        "type": "chart",
+        "chartId": "m3_generator_roc_chart",
+        "layout": "full"
+      },
+      {
+        "id": "m3_generator_roc_wide_table_block",
+        "type": "table",
+        "tableId": "m3_generator_roc_wide_table",
+        "layout": "full"
+      },
+      {
+        "id": "m3_generator_roc_detail_table_block",
+        "type": "table",
+        "tableId": "m3_generator_roc_detail_table",
         "layout": "full"
       },
       {
@@ -382,6 +415,45 @@
             "label": "train-v2 图片数",
             "field": "train_v2_images",
             "format": "number"
+          }
+        ]
+      },
+      {
+        "id": "m3_generator_clean_auc_card",
+        "description": "12 个精确生成器等权平均；共同 Real 参照面板。",
+        "dataset": "m3_generator_roc_headline",
+        "sourceId": "m3_generator_roc_headline_sql",
+        "metrics": [
+          {
+            "label": "M3 Clean mean AUROC",
+            "field": "clean_mean_auroc",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "m3_generator_four_a_auc_card",
+        "description": "12 个精确生成器等权平均。",
+        "dataset": "m3_generator_roc_headline",
+        "sourceId": "m3_generator_roc_headline_sql",
+        "metrics": [
+          {
+            "label": "M3 4-stage A mean AUROC",
+            "field": "four_stage_a_mean_auroc",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "m3_generator_four_b_auc_card",
+        "description": "12 个精确生成器等权平均。",
+        "dataset": "m3_generator_roc_headline",
+        "sourceId": "m3_generator_roc_headline_sql",
+        "metrics": [
+          {
+            "label": "M3 4-stage B mean AUROC",
+            "field": "four_stage_b_mean_auroc",
+            "format": "percent"
           }
         ]
       }
@@ -969,6 +1041,83 @@
               "field": "auroc",
               "type": "quantitative",
               "label": "AUROC",
+              "format": "percent"
+            }
+          ]
+        },
+        "valueFormat": "percent",
+        "palette": {
+          "kind": "categorical"
+        },
+        "legend": {
+          "position": "bottom",
+          "interactive": true
+        },
+        "labels": {
+          "values": "none"
+        },
+        "layout": "full"
+      },
+      {
+        "id": "m3_generator_roc_chart",
+        "title": "[M3] 12 个未见精确生成器的 AUROC 对比",
+        "subtitle": "每个生成器的 AIGI 与同一组 1,000 张 Real 比较；AUROC 为 ROC 曲线的标量汇总。",
+        "type": "bar",
+        "intent": "comparison",
+        "question": "M3 在 Clean、4-stage A 和 4-stage B 下对各精确生成器的 ROC 排序能力如何变化？",
+        "rationale": "12 个离散生成器与三个同尺度 AUROC 条件适合分组柱状图；36 条完整 ROC 曲线会过度拥挤。",
+        "comparisonContext": {
+          "unit": "AUROC",
+          "grain": "exact generator by condition",
+          "negative_reference": "the same 1,000 strict-unseen Real images"
+        },
+        "dataset": "m3_generator_roc_detail",
+        "sourceId": "m3_generator_roc_detail_sql",
+        "encodings": {
+          "x": {
+            "field": "generator",
+            "type": "nominal",
+            "label": "Exact unseen generator"
+          },
+          "y": {
+            "field": "auroc",
+            "type": "quantitative",
+            "label": "AUROC",
+            "format": "percent"
+          },
+          "color": {
+            "field": "condition",
+            "type": "nominal",
+            "label": "Condition"
+          },
+          "tooltip": [
+            {
+              "field": "model",
+              "type": "nominal",
+              "label": "Model"
+            },
+            {
+              "field": "n_aigi",
+              "type": "quantitative",
+              "label": "AIGI N",
+              "format": "number"
+            },
+            {
+              "field": "n_real",
+              "type": "quantitative",
+              "label": "Real N",
+              "format": "number"
+            },
+            {
+              "field": "auroc",
+              "type": "quantitative",
+              "label": "AUROC",
+              "format": "percent"
+            },
+            {
+              "field": "aigi_recall",
+              "type": "quantitative",
+              "label": "Frozen-threshold recall",
               "format": "percent"
             }
           ]
@@ -1798,6 +1947,178 @@
             "format": "percent"
           }
         ]
+      },
+      {
+        "id": "m3_generator_roc_wide_table",
+        "title": "[M3] 12 个精确生成器 AUROC 与 Recall 摘要",
+        "subtitle": "三种条件使用相同的 1,000 张 Real 负类；Δ 相对各生成器 Clean AUROC。",
+        "dataset": "m3_generator_roc_wide",
+        "sourceId": "m3_generator_roc_wide_sql",
+        "defaultSort": {
+          "field": "clean_auroc",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "model",
+            "label": "模型"
+          },
+          {
+            "field": "generator",
+            "label": "精确生成器"
+          },
+          {
+            "field": "n_aigi",
+            "label": "AIGI N",
+            "format": "number"
+          },
+          {
+            "field": "clean_auroc",
+            "label": "Clean AUROC",
+            "format": "percent"
+          },
+          {
+            "field": "four_stage_a_auroc",
+            "label": "4-stage A AUROC",
+            "format": "percent"
+          },
+          {
+            "field": "four_stage_a_delta",
+            "label": "A Δ",
+            "format": "percent"
+          },
+          {
+            "field": "four_stage_b_auroc",
+            "label": "4-stage B AUROC",
+            "format": "percent"
+          },
+          {
+            "field": "four_stage_b_delta",
+            "label": "B Δ",
+            "format": "percent"
+          },
+          {
+            "field": "clean_recall",
+            "label": "Clean Recall",
+            "format": "percent"
+          },
+          {
+            "field": "four_stage_a_recall",
+            "label": "A Recall",
+            "format": "percent"
+          },
+          {
+            "field": "four_stage_b_recall",
+            "label": "B Recall",
+            "format": "percent"
+          }
+        ]
+      },
+      {
+        "id": "m3_generator_roc_detail_table",
+        "title": "[M3] 36 条生成器 × 条件 ROC 与固定阈值明细",
+        "subtitle": "AUROC/AP 为排序指标；Accuracy、BA、Recall、Specificity 和混淆矩阵使用冻结阈值。",
+        "dataset": "m3_generator_roc_detail",
+        "sourceId": "m3_generator_roc_detail_sql",
+        "defaultSort": {
+          "field": "auroc",
+          "direction": "asc"
+        },
+        "density": "dense",
+        "columns": [
+          {
+            "field": "model",
+            "label": "模型"
+          },
+          {
+            "field": "generator",
+            "label": "精确生成器"
+          },
+          {
+            "field": "condition",
+            "label": "条件"
+          },
+          {
+            "field": "n_aigi",
+            "label": "AIGI N",
+            "format": "number"
+          },
+          {
+            "field": "n_real",
+            "label": "Real N",
+            "format": "number"
+          },
+          {
+            "field": "auroc",
+            "label": "AUROC",
+            "format": "percent"
+          },
+          {
+            "field": "average_precision",
+            "label": "AP",
+            "format": "percent"
+          },
+          {
+            "field": "accuracy",
+            "label": "Accuracy",
+            "format": "percent"
+          },
+          {
+            "field": "balanced_accuracy",
+            "label": "BA",
+            "format": "percent"
+          },
+          {
+            "field": "aigi_recall",
+            "label": "Recall",
+            "format": "percent"
+          },
+          {
+            "field": "real_specificity",
+            "label": "Specificity",
+            "format": "percent"
+          },
+          {
+            "field": "tpr_at_fpr_1pct",
+            "label": "TPR@1%FPR",
+            "format": "percent"
+          },
+          {
+            "field": "tpr_at_fpr_5pct",
+            "label": "TPR@5%FPR",
+            "format": "percent"
+          },
+          {
+            "field": "tn",
+            "label": "TN",
+            "format": "number"
+          },
+          {
+            "field": "fp",
+            "label": "FP",
+            "format": "number"
+          },
+          {
+            "field": "fn",
+            "label": "FN",
+            "format": "number"
+          },
+          {
+            "field": "tp",
+            "label": "TP",
+            "format": "number"
+          },
+          {
+            "field": "mean_real_score",
+            "label": "Mean Real score",
+            "format": "number"
+          },
+          {
+            "field": "mean_aigi_score",
+            "label": "Mean AIGI score",
+            "format": "number"
+          }
+        ]
       }
     ],
     "sources": [
@@ -1840,6 +2161,18 @@
       {
         "id": "strict_multistage_chart_sql",
         "label": "Reviewed strict multistage chart snapshot"
+      },
+      {
+        "id": "m3_generator_roc_headline_sql",
+        "label": "Reviewed m3 generator roc headline snapshot"
+      },
+      {
+        "id": "m3_generator_roc_detail_sql",
+        "label": "Reviewed m3 generator roc detail snapshot"
+      },
+      {
+        "id": "m3_generator_roc_wide_sql",
+        "label": "Reviewed m3 generator roc wide snapshot"
       },
       {
         "id": "headline_sql",
@@ -1898,7 +2231,7 @@
   "snapshot": {
     "version": 1,
     "status": "ready",
-    "generatedAt": "2026-08-30T01:06:41+08:00",
+    "generatedAt": "2026-08-30T01:26:31+08:00",
     "datasets": {
       "comparison_headline": [
         {
@@ -3160,6 +3493,1094 @@
           "series": "train-v2 · Random six-stage",
           "series_order": 5,
           "auroc": 0.83278
+        }
+      ],
+      "m3_generator_roc_headline": [
+        {
+          "model": "M3",
+          "generator_count": 12,
+          "real_reference_count": 1000,
+          "clean_mean_auroc": 0.92774224,
+          "four_stage_a_mean_auroc": 0.90857567,
+          "four_stage_b_mean_auroc": 0.87310274,
+          "clean_worst_generator": "stable-cascade",
+          "clean_worst_auroc": 0.85750602,
+          "four_stage_a_worst_generator": "stable-cascade",
+          "four_stage_a_worst_auroc": 0.80554217,
+          "four_stage_b_worst_generator": "stable-cascade",
+          "four_stage_b_worst_auroc": 0.7666506
+        }
+      ],
+      "m3_generator_roc_detail": [
+        {
+          "model": "M3",
+          "generator": "dalle2",
+          "generator_order": 0,
+          "condition": "Clean",
+          "condition_order": 0,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.86820482,
+          "average_precision": 0.29855442,
+          "accuracy": 0.79870729,
+          "balanced_accuracy": 0.81918675,
+          "aigi_recall": 0.84337349,
+          "real_specificity": 0.795,
+          "false_positive_rate": 0.205,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.19277108,
+          "tn": 795,
+          "fp": 205,
+          "fn": 13,
+          "tp": 70,
+          "mean_real_score": 0.88718896,
+          "mean_aigi_score": 0.99361705
+        },
+        {
+          "model": "M3",
+          "generator": "dalle2",
+          "generator_order": 0,
+          "condition": "4-stage A platform repost",
+          "condition_order": 1,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.85581325,
+          "average_precision": 0.26319776,
+          "accuracy": 0.77562327,
+          "balanced_accuracy": 0.80116265,
+          "aigi_recall": 0.8313253,
+          "real_specificity": 0.771,
+          "false_positive_rate": 0.229,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.13253012,
+          "tn": 771,
+          "fp": 229,
+          "fn": 14,
+          "tp": 69,
+          "mean_real_score": 0.94692676,
+          "mean_aigi_score": 0.99685264
+        },
+        {
+          "model": "M3",
+          "generator": "dalle2",
+          "generator_order": 0,
+          "condition": "4-stage B edit repost",
+          "condition_order": 2,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.8531988,
+          "average_precision": 0.25688229,
+          "accuracy": 0.8033241,
+          "balanced_accuracy": 0.77749398,
+          "aigi_recall": 0.74698795,
+          "real_specificity": 0.808,
+          "false_positive_rate": 0.192,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.03614458,
+          "tn": 808,
+          "fp": 192,
+          "fn": 21,
+          "tp": 62,
+          "mean_real_score": 0.9322793,
+          "mean_aigi_score": 0.99540545
+        },
+        {
+          "model": "M3",
+          "generator": "dalle3",
+          "generator_order": 1,
+          "condition": "Clean",
+          "condition_order": 0,
+          "n_real": 1000,
+          "n_aigi": 84,
+          "threshold": 0.99707031,
+          "auroc": 0.97522619,
+          "average_precision": 0.69773346,
+          "accuracy": 0.8099631,
+          "balanced_accuracy": 0.89154762,
+          "aigi_recall": 0.98809524,
+          "real_specificity": 0.795,
+          "false_positive_rate": 0.205,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.83333333,
+          "tn": 795,
+          "fp": 205,
+          "fn": 1,
+          "tp": 83,
+          "mean_real_score": 0.88718896,
+          "mean_aigi_score": 0.99983724
+        },
+        {
+          "model": "M3",
+          "generator": "dalle3",
+          "generator_order": 1,
+          "condition": "4-stage A platform repost",
+          "condition_order": 1,
+          "n_real": 1000,
+          "n_aigi": 84,
+          "threshold": 0.99707031,
+          "auroc": 0.96199405,
+          "average_precision": 0.67251534,
+          "accuracy": 0.78690037,
+          "balanced_accuracy": 0.87359524,
+          "aigi_recall": 0.97619048,
+          "real_specificity": 0.771,
+          "false_positive_rate": 0.229,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.75,
+          "tn": 771,
+          "fp": 229,
+          "fn": 2,
+          "tp": 82,
+          "mean_real_score": 0.94692676,
+          "mean_aigi_score": 0.99963379
+        },
+        {
+          "model": "M3",
+          "generator": "dalle3",
+          "generator_order": 1,
+          "condition": "4-stage B edit repost",
+          "condition_order": 2,
+          "n_real": 1000,
+          "n_aigi": 84,
+          "threshold": 0.99707031,
+          "auroc": 0.93110119,
+          "average_precision": 0.54577923,
+          "accuracy": 0.81457565,
+          "balanced_accuracy": 0.85042857,
+          "aigi_recall": 0.89285714,
+          "real_specificity": 0.808,
+          "false_positive_rate": 0.192,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.41666667,
+          "tn": 808,
+          "fp": 192,
+          "fn": 9,
+          "tp": 75,
+          "mean_real_score": 0.9322793,
+          "mean_aigi_score": 0.99780855
+        },
+        {
+          "model": "M3",
+          "generator": "firefly-image2",
+          "generator_order": 2,
+          "condition": "Clean",
+          "condition_order": 0,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.91395181,
+          "average_precision": 0.5044112,
+          "accuracy": 0.80055402,
+          "balanced_accuracy": 0.83123494,
+          "aigi_recall": 0.86746988,
+          "real_specificity": 0.795,
+          "false_positive_rate": 0.205,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.54216867,
+          "tn": 795,
+          "fp": 205,
+          "fn": 11,
+          "tp": 72,
+          "mean_real_score": 0.88718896,
+          "mean_aigi_score": 0.99615258
+        },
+        {
+          "model": "M3",
+          "generator": "firefly-image2",
+          "generator_order": 2,
+          "condition": "4-stage A platform repost",
+          "condition_order": 1,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.90343373,
+          "average_precision": 0.47595251,
+          "accuracy": 0.77746999,
+          "balanced_accuracy": 0.81321084,
+          "aigi_recall": 0.85542169,
+          "real_specificity": 0.771,
+          "false_positive_rate": 0.229,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.45783133,
+          "tn": 771,
+          "fp": 229,
+          "fn": 12,
+          "tp": 71,
+          "mean_real_score": 0.94692676,
+          "mean_aigi_score": 0.99649379
+        },
+        {
+          "model": "M3",
+          "generator": "firefly-image2",
+          "generator_order": 2,
+          "condition": "4-stage B edit repost",
+          "condition_order": 2,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.88293976,
+          "average_precision": 0.42557135,
+          "accuracy": 0.80701754,
+          "balanced_accuracy": 0.80159036,
+          "aigi_recall": 0.79518072,
+          "real_specificity": 0.808,
+          "false_positive_rate": 0.192,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.31325301,
+          "tn": 808,
+          "fp": 192,
+          "fn": 17,
+          "tp": 66,
+          "mean_real_score": 0.9322793,
+          "mean_aigi_score": 0.99530544
+        },
+        {
+          "model": "M3",
+          "generator": "firefly-image3",
+          "generator_order": 3,
+          "condition": "Clean",
+          "condition_order": 0,
+          "n_real": 1000,
+          "n_aigi": 84,
+          "threshold": 0.99707031,
+          "auroc": 0.95829762,
+          "average_precision": 0.63228471,
+          "accuracy": 0.80811808,
+          "balanced_accuracy": 0.87964286,
+          "aigi_recall": 0.96428571,
+          "real_specificity": 0.795,
+          "false_positive_rate": 0.205,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.71428571,
+          "tn": 795,
+          "fp": 205,
+          "fn": 3,
+          "tp": 81,
+          "mean_real_score": 0.88718896,
+          "mean_aigi_score": 0.99869792
+        },
+        {
+          "model": "M3",
+          "generator": "firefly-image3",
+          "generator_order": 3,
+          "condition": "4-stage A platform repost",
+          "condition_order": 1,
+          "n_real": 1000,
+          "n_aigi": 84,
+          "threshold": 0.99707031,
+          "auroc": 0.94458929,
+          "average_precision": 0.56201322,
+          "accuracy": 0.78597786,
+          "balanced_accuracy": 0.86764286,
+          "aigi_recall": 0.96428571,
+          "real_specificity": 0.771,
+          "false_positive_rate": 0.229,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.54761905,
+          "tn": 771,
+          "fp": 229,
+          "fn": 3,
+          "tp": 81,
+          "mean_real_score": 0.94692676,
+          "mean_aigi_score": 0.99912807
+        },
+        {
+          "model": "M3",
+          "generator": "firefly-image3",
+          "generator_order": 3,
+          "condition": "4-stage B edit repost",
+          "condition_order": 2,
+          "n_real": 1000,
+          "n_aigi": 84,
+          "threshold": 0.99707031,
+          "auroc": 0.91422024,
+          "average_precision": 0.47989713,
+          "accuracy": 0.81180812,
+          "balanced_accuracy": 0.83257143,
+          "aigi_recall": 0.85714286,
+          "real_specificity": 0.808,
+          "false_positive_rate": 0.192,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.35714286,
+          "tn": 808,
+          "fp": 192,
+          "fn": 12,
+          "tp": 72,
+          "mean_real_score": 0.9322793,
+          "mean_aigi_score": 0.99748303
+        },
+        {
+          "model": "M3",
+          "generator": "flux-dev",
+          "generator_order": 4,
+          "condition": "Clean",
+          "condition_order": 0,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.91763855,
+          "average_precision": 0.44475042,
+          "accuracy": 0.80147738,
+          "balanced_accuracy": 0.83725904,
+          "aigi_recall": 0.87951807,
+          "real_specificity": 0.795,
+          "false_positive_rate": 0.205,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.40963855,
+          "tn": 795,
+          "fp": 205,
+          "fn": 10,
+          "tp": 73,
+          "mean_real_score": 0.88718896,
+          "mean_aigi_score": 0.99833514
+        },
+        {
+          "model": "M3",
+          "generator": "flux-dev",
+          "generator_order": 4,
+          "condition": "4-stage A platform repost",
+          "condition_order": 1,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.89238554,
+          "average_precision": 0.3583181,
+          "accuracy": 0.77839335,
+          "balanced_accuracy": 0.81923494,
+          "aigi_recall": 0.86746988,
+          "real_specificity": 0.771,
+          "false_positive_rate": 0.229,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.27710843,
+          "tn": 771,
+          "fp": 229,
+          "fn": 11,
+          "tp": 72,
+          "mean_real_score": 0.94692676,
+          "mean_aigi_score": 0.99840573
+        },
+        {
+          "model": "M3",
+          "generator": "flux-dev",
+          "generator_order": 4,
+          "condition": "4-stage B edit repost",
+          "condition_order": 2,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.86807229,
+          "average_precision": 0.31445425,
+          "accuracy": 0.8079409,
+          "balanced_accuracy": 0.80761446,
+          "aigi_recall": 0.80722892,
+          "real_specificity": 0.808,
+          "false_positive_rate": 0.192,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.1686747,
+          "tn": 808,
+          "fp": 192,
+          "fn": 16,
+          "tp": 67,
+          "mean_real_score": 0.9322793,
+          "mean_aigi_score": 0.99598786
+        },
+        {
+          "model": "M3",
+          "generator": "flux-schnell",
+          "generator_order": 5,
+          "condition": "Clean",
+          "condition_order": 0,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.93933133,
+          "average_precision": 0.51795825,
+          "accuracy": 0.80609418,
+          "balanced_accuracy": 0.86737952,
+          "aigi_recall": 0.93975904,
+          "real_specificity": 0.795,
+          "false_positive_rate": 0.205,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.51807229,
+          "tn": 795,
+          "fp": 205,
+          "fn": 5,
+          "tp": 78,
+          "mean_real_score": 0.88718896,
+          "mean_aigi_score": 0.99875871
+        },
+        {
+          "model": "M3",
+          "generator": "flux-schnell",
+          "generator_order": 5,
+          "condition": "4-stage A platform repost",
+          "condition_order": 1,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.91350602,
+          "average_precision": 0.40401844,
+          "accuracy": 0.7820868,
+          "balanced_accuracy": 0.84333133,
+          "aigi_recall": 0.91566265,
+          "real_specificity": 0.771,
+          "false_positive_rate": 0.229,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.30120482,
+          "tn": 771,
+          "fp": 229,
+          "fn": 7,
+          "tp": 76,
+          "mean_real_score": 0.94692676,
+          "mean_aigi_score": 0.99881165
+        },
+        {
+          "model": "M3",
+          "generator": "flux-schnell",
+          "generator_order": 5,
+          "condition": "4-stage B edit repost",
+          "condition_order": 2,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.86898795,
+          "average_precision": 0.31905936,
+          "accuracy": 0.80147738,
+          "balanced_accuracy": 0.76544578,
+          "aigi_recall": 0.72289157,
+          "real_specificity": 0.808,
+          "false_positive_rate": 0.192,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.13253012,
+          "tn": 808,
+          "fp": 192,
+          "fn": 23,
+          "tp": 60,
+          "mean_real_score": 0.9322793,
+          "mean_aigi_score": 0.99558782
+        },
+        {
+          "model": "M3",
+          "generator": "ideogramv1",
+          "generator_order": 6,
+          "condition": "Clean",
+          "condition_order": 0,
+          "n_real": 1000,
+          "n_aigi": 84,
+          "threshold": 0.99707031,
+          "auroc": 0.94904167,
+          "average_precision": 0.56716891,
+          "accuracy": 0.80811808,
+          "balanced_accuracy": 0.87964286,
+          "aigi_recall": 0.96428571,
+          "real_specificity": 0.795,
+          "false_positive_rate": 0.205,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.60714286,
+          "tn": 795,
+          "fp": 205,
+          "fn": 3,
+          "tp": 81,
+          "mean_real_score": 0.88718896,
+          "mean_aigi_score": 0.99937221
+        },
+        {
+          "model": "M3",
+          "generator": "ideogramv1",
+          "generator_order": 6,
+          "condition": "4-stage A platform repost",
+          "condition_order": 1,
+          "n_real": 1000,
+          "n_aigi": 84,
+          "threshold": 0.99707031,
+          "auroc": 0.93890476,
+          "average_precision": 0.51396764,
+          "accuracy": 0.78597786,
+          "balanced_accuracy": 0.86764286,
+          "aigi_recall": 0.96428571,
+          "real_specificity": 0.771,
+          "false_positive_rate": 0.229,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.46428571,
+          "tn": 771,
+          "fp": 229,
+          "fn": 3,
+          "tp": 81,
+          "mean_real_score": 0.94692676,
+          "mean_aigi_score": 0.9992327
+        },
+        {
+          "model": "M3",
+          "generator": "ideogramv1",
+          "generator_order": 6,
+          "condition": "4-stage B edit repost",
+          "condition_order": 2,
+          "n_real": 1000,
+          "n_aigi": 84,
+          "threshold": 0.99707031,
+          "auroc": 0.8945119,
+          "average_precision": 0.38949222,
+          "accuracy": 0.80811808,
+          "balanced_accuracy": 0.8087619,
+          "aigi_recall": 0.80952381,
+          "real_specificity": 0.808,
+          "false_positive_rate": 0.192,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.25,
+          "tn": 808,
+          "fp": 192,
+          "fn": 16,
+          "tp": 68,
+          "mean_real_score": 0.9322793,
+          "mean_aigi_score": 0.99775623
+        },
+        {
+          "model": "M3",
+          "generator": "ideogramv2",
+          "generator_order": 7,
+          "condition": "Clean",
+          "condition_order": 0,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.9166988,
+          "average_precision": 0.39887847,
+          "accuracy": 0.80240074,
+          "balanced_accuracy": 0.84328313,
+          "aigi_recall": 0.89156627,
+          "real_specificity": 0.795,
+          "false_positive_rate": 0.205,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.30120482,
+          "tn": 795,
+          "fp": 205,
+          "fn": 9,
+          "tp": 74,
+          "mean_real_score": 0.88718896,
+          "mean_aigi_score": 0.99839985
+        },
+        {
+          "model": "M3",
+          "generator": "ideogramv2",
+          "generator_order": 7,
+          "condition": "4-stage A platform repost",
+          "condition_order": 1,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.90521084,
+          "average_precision": 0.34777315,
+          "accuracy": 0.7820868,
+          "balanced_accuracy": 0.84333133,
+          "aigi_recall": 0.91566265,
+          "real_specificity": 0.771,
+          "false_positive_rate": 0.229,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.19277108,
+          "tn": 771,
+          "fp": 229,
+          "fn": 7,
+          "tp": 76,
+          "mean_real_score": 0.94692676,
+          "mean_aigi_score": 0.99872929
+        },
+        {
+          "model": "M3",
+          "generator": "ideogramv2",
+          "generator_order": 7,
+          "condition": "4-stage B edit repost",
+          "condition_order": 2,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.84691566,
+          "average_precision": 0.23587432,
+          "accuracy": 0.79778393,
+          "balanced_accuracy": 0.7413494,
+          "aigi_recall": 0.6746988,
+          "real_specificity": 0.808,
+          "false_positive_rate": 0.192,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.02409639,
+          "tn": 808,
+          "fp": 192,
+          "fn": 27,
+          "tp": 56,
+          "mean_real_score": 0.9322793,
+          "mean_aigi_score": 0.9960761
+        },
+        {
+          "model": "M3",
+          "generator": "imagen3",
+          "generator_order": 8,
+          "condition": "Clean",
+          "condition_order": 0,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.93351807,
+          "average_precision": 0.46890899,
+          "accuracy": 0.80609418,
+          "balanced_accuracy": 0.86737952,
+          "aigi_recall": 0.93975904,
+          "real_specificity": 0.795,
+          "false_positive_rate": 0.205,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.42168675,
+          "tn": 795,
+          "fp": 205,
+          "fn": 5,
+          "tp": 78,
+          "mean_real_score": 0.88718896,
+          "mean_aigi_score": 0.99901755
+        },
+        {
+          "model": "M3",
+          "generator": "imagen3",
+          "generator_order": 8,
+          "condition": "4-stage A platform repost",
+          "condition_order": 1,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.91207229,
+          "average_precision": 0.38583375,
+          "accuracy": 0.7820868,
+          "balanced_accuracy": 0.84333133,
+          "aigi_recall": 0.91566265,
+          "real_specificity": 0.771,
+          "false_positive_rate": 0.229,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.25301205,
+          "tn": 771,
+          "fp": 229,
+          "fn": 7,
+          "tp": 76,
+          "mean_real_score": 0.94692676,
+          "mean_aigi_score": 0.99874694
+        },
+        {
+          "model": "M3",
+          "generator": "imagen3",
+          "generator_order": 8,
+          "condition": "4-stage B edit repost",
+          "condition_order": 2,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.86116867,
+          "average_precision": 0.31468848,
+          "accuracy": 0.80517082,
+          "balanced_accuracy": 0.78954217,
+          "aigi_recall": 0.77108434,
+          "real_specificity": 0.808,
+          "false_positive_rate": 0.192,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.14457831,
+          "tn": 808,
+          "fp": 192,
+          "fn": 19,
+          "tp": 64,
+          "mean_real_score": 0.9322793,
+          "mean_aigi_score": 0.99459949
+        },
+        {
+          "model": "M3",
+          "generator": "midjourneyv5-2",
+          "generator_order": 9,
+          "condition": "Clean",
+          "condition_order": 0,
+          "n_real": 1000,
+          "n_aigi": 84,
+          "threshold": 0.99707031,
+          "auroc": 0.94666667,
+          "average_precision": 0.55357453,
+          "accuracy": 0.80627306,
+          "balanced_accuracy": 0.8677381,
+          "aigi_recall": 0.94047619,
+          "real_specificity": 0.795,
+          "false_positive_rate": 0.205,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.57142857,
+          "tn": 795,
+          "fp": 205,
+          "fn": 5,
+          "tp": 79,
+          "mean_real_score": 0.88718896,
+          "mean_aigi_score": 0.99912226
+        },
+        {
+          "model": "M3",
+          "generator": "midjourneyv5-2",
+          "generator_order": 9,
+          "condition": "4-stage A platform repost",
+          "condition_order": 1,
+          "n_real": 1000,
+          "n_aigi": 84,
+          "threshold": 0.99707031,
+          "auroc": 0.92514286,
+          "average_precision": 0.45947741,
+          "accuracy": 0.78505535,
+          "balanced_accuracy": 0.86169048,
+          "aigi_recall": 0.95238095,
+          "real_specificity": 0.771,
+          "false_positive_rate": 0.229,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.39285714,
+          "tn": 771,
+          "fp": 229,
+          "fn": 4,
+          "tp": 80,
+          "mean_real_score": 0.94692676,
+          "mean_aigi_score": 0.99902344
+        },
+        {
+          "model": "M3",
+          "generator": "midjourneyv5-2",
+          "generator_order": 9,
+          "condition": "4-stage B edit repost",
+          "condition_order": 2,
+          "n_real": 1000,
+          "n_aigi": 84,
+          "threshold": 0.99707031,
+          "auroc": 0.88033333,
+          "average_precision": 0.32135047,
+          "accuracy": 0.80350554,
+          "balanced_accuracy": 0.779,
+          "aigi_recall": 0.75,
+          "real_specificity": 0.808,
+          "false_positive_rate": 0.192,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.13095238,
+          "tn": 808,
+          "fp": 192,
+          "fn": 21,
+          "tp": 63,
+          "mean_real_score": 0.9322793,
+          "mean_aigi_score": 0.99739002
+        },
+        {
+          "model": "M3",
+          "generator": "midjourneyv6-1",
+          "generator_order": 10,
+          "condition": "Clean",
+          "condition_order": 0,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.9568253,
+          "average_precision": 0.59140496,
+          "accuracy": 0.80886427,
+          "balanced_accuracy": 0.88545181,
+          "aigi_recall": 0.97590361,
+          "real_specificity": 0.795,
+          "false_positive_rate": 0.205,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.65060241,
+          "tn": 795,
+          "fp": 205,
+          "fn": 2,
+          "tp": 81,
+          "mean_real_score": 0.88718896,
+          "mean_aigi_score": 0.99957643
+        },
+        {
+          "model": "M3",
+          "generator": "midjourneyv6-1",
+          "generator_order": 10,
+          "condition": "4-stage A platform repost",
+          "condition_order": 1,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.94431325,
+          "average_precision": 0.50657848,
+          "accuracy": 0.7867036,
+          "balanced_accuracy": 0.87345181,
+          "aigi_recall": 0.97590361,
+          "real_specificity": 0.771,
+          "false_positive_rate": 0.229,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.44578313,
+          "tn": 771,
+          "fp": 229,
+          "fn": 2,
+          "tp": 81,
+          "mean_real_score": 0.94692676,
+          "mean_aigi_score": 0.99948819
+        },
+        {
+          "model": "M3",
+          "generator": "midjourneyv6-1",
+          "generator_order": 10,
+          "condition": "4-stage B edit repost",
+          "condition_order": 2,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.90913253,
+          "average_precision": 0.40687629,
+          "accuracy": 0.80978763,
+          "balanced_accuracy": 0.81966265,
+          "aigi_recall": 0.8313253,
+          "real_specificity": 0.808,
+          "false_positive_rate": 0.192,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.24096386,
+          "tn": 808,
+          "fp": 192,
+          "fn": 14,
+          "tp": 69,
+          "mean_real_score": 0.9322793,
+          "mean_aigi_score": 0.99818806
+        },
+        {
+          "model": "M3",
+          "generator": "stable-cascade",
+          "generator_order": 11,
+          "condition": "Clean",
+          "condition_order": 0,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.85750602,
+          "average_precision": 0.32075992,
+          "accuracy": 0.78947368,
+          "balanced_accuracy": 0.75894578,
+          "aigi_recall": 0.72289157,
+          "real_specificity": 0.795,
+          "false_positive_rate": 0.205,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.27710843,
+          "tn": 795,
+          "fp": 205,
+          "fn": 23,
+          "tp": 60,
+          "mean_real_score": 0.88718896,
+          "mean_aigi_score": 0.9946995
+        },
+        {
+          "model": "M3",
+          "generator": "stable-cascade",
+          "generator_order": 11,
+          "condition": "4-stage A platform repost",
+          "condition_order": 1,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.80554217,
+          "average_precision": 0.22320109,
+          "accuracy": 0.76269621,
+          "balanced_accuracy": 0.7168253,
+          "aigi_recall": 0.6626506,
+          "real_specificity": 0.771,
+          "false_positive_rate": 0.229,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.14457831,
+          "tn": 771,
+          "fp": 229,
+          "fn": 28,
+          "tp": 55,
+          "mean_real_score": 0.94692676,
+          "mean_aigi_score": 0.99460537
+        },
+        {
+          "model": "M3",
+          "generator": "stable-cascade",
+          "generator_order": 11,
+          "condition": "4-stage B edit repost",
+          "condition_order": 2,
+          "n_real": 1000,
+          "n_aigi": 83,
+          "threshold": 0.99707031,
+          "auroc": 0.7666506,
+          "average_precision": 0.17549099,
+          "accuracy": 0.78578024,
+          "balanced_accuracy": 0.66303614,
+          "aigi_recall": 0.51807229,
+          "real_specificity": 0.808,
+          "false_positive_rate": 0.192,
+          "tpr_at_fpr_1pct": 0.0,
+          "tpr_at_fpr_5pct": 0.06024096,
+          "tn": 808,
+          "fp": 192,
+          "fn": 40,
+          "tp": 43,
+          "mean_real_score": 0.9322793,
+          "mean_aigi_score": 0.98866952
+        }
+      ],
+      "m3_generator_roc_wide": [
+        {
+          "model": "M3",
+          "generator": "dalle2",
+          "generator_order": 0,
+          "n_aigi": 83,
+          "clean_auroc": 0.86820482,
+          "four_stage_a_auroc": 0.85581325,
+          "four_stage_a_delta": -0.01239157,
+          "four_stage_b_auroc": 0.8531988,
+          "four_stage_b_delta": -0.01500602,
+          "clean_recall": 0.84337349,
+          "four_stage_a_recall": 0.8313253,
+          "four_stage_b_recall": 0.74698795
+        },
+        {
+          "model": "M3",
+          "generator": "dalle3",
+          "generator_order": 1,
+          "n_aigi": 84,
+          "clean_auroc": 0.97522619,
+          "four_stage_a_auroc": 0.96199405,
+          "four_stage_a_delta": -0.01323214,
+          "four_stage_b_auroc": 0.93110119,
+          "four_stage_b_delta": -0.044125,
+          "clean_recall": 0.98809524,
+          "four_stage_a_recall": 0.97619048,
+          "four_stage_b_recall": 0.89285714
+        },
+        {
+          "model": "M3",
+          "generator": "firefly-image2",
+          "generator_order": 2,
+          "n_aigi": 83,
+          "clean_auroc": 0.91395181,
+          "four_stage_a_auroc": 0.90343373,
+          "four_stage_a_delta": -0.01051808,
+          "four_stage_b_auroc": 0.88293976,
+          "four_stage_b_delta": -0.03101205,
+          "clean_recall": 0.86746988,
+          "four_stage_a_recall": 0.85542169,
+          "four_stage_b_recall": 0.79518072
+        },
+        {
+          "model": "M3",
+          "generator": "firefly-image3",
+          "generator_order": 3,
+          "n_aigi": 84,
+          "clean_auroc": 0.95829762,
+          "four_stage_a_auroc": 0.94458929,
+          "four_stage_a_delta": -0.01370833,
+          "four_stage_b_auroc": 0.91422024,
+          "four_stage_b_delta": -0.04407738,
+          "clean_recall": 0.96428571,
+          "four_stage_a_recall": 0.96428571,
+          "four_stage_b_recall": 0.85714286
+        },
+        {
+          "model": "M3",
+          "generator": "flux-dev",
+          "generator_order": 4,
+          "n_aigi": 83,
+          "clean_auroc": 0.91763855,
+          "four_stage_a_auroc": 0.89238554,
+          "four_stage_a_delta": -0.02525301,
+          "four_stage_b_auroc": 0.86807229,
+          "four_stage_b_delta": -0.04956626,
+          "clean_recall": 0.87951807,
+          "four_stage_a_recall": 0.86746988,
+          "four_stage_b_recall": 0.80722892
+        },
+        {
+          "model": "M3",
+          "generator": "flux-schnell",
+          "generator_order": 5,
+          "n_aigi": 83,
+          "clean_auroc": 0.93933133,
+          "four_stage_a_auroc": 0.91350602,
+          "four_stage_a_delta": -0.02582531,
+          "four_stage_b_auroc": 0.86898795,
+          "four_stage_b_delta": -0.07034338,
+          "clean_recall": 0.93975904,
+          "four_stage_a_recall": 0.91566265,
+          "four_stage_b_recall": 0.72289157
+        },
+        {
+          "model": "M3",
+          "generator": "ideogramv1",
+          "generator_order": 6,
+          "n_aigi": 84,
+          "clean_auroc": 0.94904167,
+          "four_stage_a_auroc": 0.93890476,
+          "four_stage_a_delta": -0.01013691,
+          "four_stage_b_auroc": 0.8945119,
+          "four_stage_b_delta": -0.05452977,
+          "clean_recall": 0.96428571,
+          "four_stage_a_recall": 0.96428571,
+          "four_stage_b_recall": 0.80952381
+        },
+        {
+          "model": "M3",
+          "generator": "ideogramv2",
+          "generator_order": 7,
+          "n_aigi": 83,
+          "clean_auroc": 0.9166988,
+          "four_stage_a_auroc": 0.90521084,
+          "four_stage_a_delta": -0.01148796,
+          "four_stage_b_auroc": 0.84691566,
+          "four_stage_b_delta": -0.06978314,
+          "clean_recall": 0.89156627,
+          "four_stage_a_recall": 0.91566265,
+          "four_stage_b_recall": 0.6746988
+        },
+        {
+          "model": "M3",
+          "generator": "imagen3",
+          "generator_order": 8,
+          "n_aigi": 83,
+          "clean_auroc": 0.93351807,
+          "four_stage_a_auroc": 0.91207229,
+          "four_stage_a_delta": -0.02144578,
+          "four_stage_b_auroc": 0.86116867,
+          "four_stage_b_delta": -0.0723494,
+          "clean_recall": 0.93975904,
+          "four_stage_a_recall": 0.91566265,
+          "four_stage_b_recall": 0.77108434
+        },
+        {
+          "model": "M3",
+          "generator": "midjourneyv5-2",
+          "generator_order": 9,
+          "n_aigi": 84,
+          "clean_auroc": 0.94666667,
+          "four_stage_a_auroc": 0.92514286,
+          "four_stage_a_delta": -0.02152381,
+          "four_stage_b_auroc": 0.88033333,
+          "four_stage_b_delta": -0.06633334,
+          "clean_recall": 0.94047619,
+          "four_stage_a_recall": 0.95238095,
+          "four_stage_b_recall": 0.75
+        },
+        {
+          "model": "M3",
+          "generator": "midjourneyv6-1",
+          "generator_order": 10,
+          "n_aigi": 83,
+          "clean_auroc": 0.9568253,
+          "four_stage_a_auroc": 0.94431325,
+          "four_stage_a_delta": -0.01251205,
+          "four_stage_b_auroc": 0.90913253,
+          "four_stage_b_delta": -0.04769277,
+          "clean_recall": 0.97590361,
+          "four_stage_a_recall": 0.97590361,
+          "four_stage_b_recall": 0.8313253
+        },
+        {
+          "model": "M3",
+          "generator": "stable-cascade",
+          "generator_order": 11,
+          "n_aigi": 83,
+          "clean_auroc": 0.85750602,
+          "four_stage_a_auroc": 0.80554217,
+          "four_stage_a_delta": -0.05196385,
+          "four_stage_b_auroc": 0.7666506,
+          "four_stage_b_delta": -0.09085542,
+          "clean_recall": 0.72289157,
+          "four_stage_a_recall": 0.6626506,
+          "four_stage_b_recall": 0.51807229
         }
       ],
       "headline": [
@@ -30031,7 +31452,7 @@
         "language": "sql",
         "sql": "SELECT * FROM comparison_headline",
         "description": "Executed over reviewed train-v1/train-v2 manifests and aligned frozen 21-condition evaluation summaries.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "comparison_headline"
         ],
@@ -30050,7 +31471,7 @@
         "language": "sql",
         "sql": "SELECT * FROM training_summary ORDER BY metric",
         "description": "Executed over reviewed train-v1/train-v2 manifests and aligned frozen 21-condition evaluation summaries.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "training_summary"
         ],
@@ -30069,7 +31490,7 @@
         "language": "sql",
         "sql": "SELECT * FROM training_class_chart ORDER BY protocol, class_order",
         "description": "Executed over reviewed train-v1/train-v2 manifests and aligned frozen 21-condition evaluation summaries.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "training_class_chart"
         ],
@@ -30088,7 +31509,7 @@
         "language": "sql",
         "sql": "SELECT * FROM training_architecture_chart ORDER BY architecture_order, protocol",
         "description": "Executed over reviewed train-v1/train-v2 manifests and aligned frozen 21-condition evaluation summaries.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "training_architecture_chart"
         ],
@@ -30107,7 +31528,7 @@
         "language": "sql",
         "sql": "SELECT * FROM model_macro_comparison ORDER BY model_order",
         "description": "Executed over reviewed train-v1/train-v2 manifests and aligned frozen 21-condition evaluation summaries.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "model_macro_comparison"
         ],
@@ -30126,7 +31547,7 @@
         "language": "sql",
         "sql": "SELECT * FROM macro_protocol_chart ORDER BY series_order, model_order",
         "description": "Executed over reviewed train-v1/train-v2 manifests and aligned frozen 21-condition evaluation summaries.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "macro_protocol_chart"
         ],
@@ -30145,7 +31566,7 @@
         "language": "sql",
         "sql": "SELECT * FROM split_comparison ORDER BY split_order, model_order",
         "description": "Executed over reviewed train-v1/train-v2 manifests and aligned frozen 21-condition evaluation summaries.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "split_comparison"
         ],
@@ -30164,7 +31585,7 @@
         "language": "sql",
         "sql": "SELECT * FROM split_delta_chart ORDER BY split_order, model_order",
         "description": "Executed over reviewed train-v1/train-v2 manifests and aligned frozen 21-condition evaluation summaries.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "split_delta_chart"
         ],
@@ -30183,7 +31604,7 @@
         "language": "sql",
         "sql": "SELECT * FROM strict_multistage_comparison ORDER BY condition_order, model_order",
         "description": "Executed over reviewed train-v1/train-v2 manifests and aligned frozen 21-condition evaluation summaries.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "strict_multistage_comparison"
         ],
@@ -30202,7 +31623,7 @@
         "language": "sql",
         "sql": "SELECT * FROM strict_multistage_chart ORDER BY series_order, model_order",
         "description": "Executed over reviewed train-v1/train-v2 manifests and aligned frozen 21-condition evaluation summaries.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "strict_multistage_chart"
         ],
@@ -30214,6 +31635,69 @@
       }
     },
     {
+      "id": "m3_generator_roc_headline_sql",
+      "label": "Reviewed m3 generator roc headline snapshot",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "SELECT * FROM m3_generator_roc_headline",
+        "description": "Executed over frozen M3 strict-unseen predictions, with each exact generator's AIGI images compared against the same 1,000 Real images.",
+        "executed_at": "2026-08-30T01:26:31+08:00",
+        "tables_used": [
+          "m3_generator_roc_headline"
+        ],
+        "filters": [
+          "model = M3",
+          "conditions = clean, four-stage A, four-stage B",
+          "positive class = one exact unseen generator",
+          "negative class = all 1,000 strict-unseen Real images",
+          "threshold frozen from internal Small clean validation"
+        ]
+      }
+    },
+    {
+      "id": "m3_generator_roc_detail_sql",
+      "label": "Reviewed m3 generator roc detail snapshot",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "SELECT * FROM m3_generator_roc_detail ORDER BY generator_order, condition_order",
+        "description": "Executed over frozen M3 strict-unseen predictions, with each exact generator's AIGI images compared against the same 1,000 Real images.",
+        "executed_at": "2026-08-30T01:26:31+08:00",
+        "tables_used": [
+          "m3_generator_roc_detail"
+        ],
+        "filters": [
+          "model = M3",
+          "conditions = clean, four-stage A, four-stage B",
+          "positive class = one exact unseen generator",
+          "negative class = all 1,000 strict-unseen Real images",
+          "threshold frozen from internal Small clean validation"
+        ]
+      }
+    },
+    {
+      "id": "m3_generator_roc_wide_sql",
+      "label": "Reviewed m3 generator roc wide snapshot",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "SELECT * FROM m3_generator_roc_wide ORDER BY generator_order",
+        "description": "Executed over frozen M3 strict-unseen predictions, with each exact generator's AIGI images compared against the same 1,000 Real images.",
+        "executed_at": "2026-08-30T01:26:31+08:00",
+        "tables_used": [
+          "m3_generator_roc_wide"
+        ],
+        "filters": [
+          "model = M3",
+          "conditions = clean, four-stage A, four-stage B",
+          "positive class = one exact unseen generator",
+          "negative class = all 1,000 strict-unseen Real images",
+          "threshold frozen from internal Small clean validation"
+        ]
+      }
+    },
+    {
       "id": "headline_sql",
       "label": "Reviewed headline snapshot",
       "query": {
@@ -30221,7 +31705,7 @@
         "language": "sql",
         "sql": "SELECT * FROM headline",
         "description": "Executed over reviewed rows after manifest identity, label, threshold, lineage, cardinality, probability-range, and published-metric reconciliation checks.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "headline"
         ],
@@ -30240,7 +31724,7 @@
         "language": "sql",
         "sql": "SELECT * FROM clean_metrics ORDER BY model_order",
         "description": "Executed over reviewed rows after manifest identity, label, threshold, lineage, cardinality, probability-range, and published-metric reconciliation checks.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "clean_metrics"
         ],
@@ -30259,7 +31743,7 @@
         "language": "sql",
         "sql": "SELECT * FROM clean_metric_chart ORDER BY metric_order, model_order",
         "description": "Executed over reviewed rows after manifest identity, label, threshold, lineage, cardinality, probability-range, and published-metric reconciliation checks.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "clean_metric_chart"
         ],
@@ -30278,7 +31762,7 @@
         "language": "sql",
         "sql": "SELECT * FROM roc_curve ORDER BY model_order, point_order",
         "description": "Executed over reviewed rows after manifest identity, label, threshold, lineage, cardinality, probability-range, and published-metric reconciliation checks.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "roc_curve"
         ],
@@ -30297,7 +31781,7 @@
         "language": "sql",
         "sql": "SELECT * FROM pr_curve ORDER BY model_order, point_order",
         "description": "Executed over reviewed rows after manifest identity, label, threshold, lineage, cardinality, probability-range, and published-metric reconciliation checks.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "pr_curve"
         ],
@@ -30316,7 +31800,7 @@
         "language": "sql",
         "sql": "SELECT * FROM robustness_summary ORDER BY model_order",
         "description": "Executed over reviewed rows after manifest identity, label, threshold, lineage, cardinality, probability-range, and published-metric reconciliation checks.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "robustness_summary"
         ],
@@ -30335,7 +31819,7 @@
         "language": "sql",
         "sql": "SELECT * FROM robustness_chart ORDER BY group_order, model_order",
         "description": "Executed over reviewed rows after manifest identity, label, threshold, lineage, cardinality, probability-range, and published-metric reconciliation checks.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "robustness_chart"
         ],
@@ -30354,7 +31838,7 @@
         "language": "sql",
         "sql": "SELECT * FROM condition_metrics ORDER BY model_order, condition_index",
         "description": "Executed over reviewed rows after manifest identity, label, threshold, lineage, cardinality, probability-range, and published-metric reconciliation checks.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "condition_metrics"
         ],
@@ -30373,7 +31857,7 @@
         "language": "sql",
         "sql": "SELECT * FROM generator_recall ORDER BY generator, model_order",
         "description": "Executed over reviewed rows after manifest identity, label, threshold, lineage, cardinality, probability-range, and published-metric reconciliation checks.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "generator_recall"
         ],
@@ -30392,7 +31876,7 @@
         "language": "sql",
         "sql": "SELECT * FROM real_specificity ORDER BY real_source, model_order",
         "description": "Executed over reviewed rows after manifest identity, label, threshold, lineage, cardinality, probability-range, and published-metric reconciliation checks.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "real_specificity"
         ],
@@ -30411,7 +31895,7 @@
         "language": "sql",
         "sql": "SELECT * FROM condition_matrix ORDER BY condition_index",
         "description": "Executed over reviewed rows after manifest identity, label, threshold, lineage, cardinality, probability-range, and published-metric reconciliation checks.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "condition_matrix"
         ],
@@ -30430,7 +31914,7 @@
         "language": "sql",
         "sql": "SELECT * FROM metric_definitions ORDER BY metric",
         "description": "Executed over reviewed rows after manifest identity, label, threshold, lineage, cardinality, probability-range, and published-metric reconciliation checks.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "metric_definitions"
         ],
@@ -30449,7 +31933,7 @@
         "language": "sql",
         "sql": "SELECT * FROM model_lineage ORDER BY model_order",
         "description": "Executed over reviewed rows after manifest identity, label, threshold, lineage, cardinality, probability-range, and published-metric reconciliation checks.",
-        "executed_at": "2026-08-30T01:06:41+08:00",
+        "executed_at": "2026-08-30T01:26:31+08:00",
         "tables_used": [
           "model_lineage"
         ],

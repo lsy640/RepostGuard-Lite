@@ -39,6 +39,7 @@ weights/
 # Per-image prediction dumps are large derived data. Compact metrics, summaries,
 # run cards, resolved configs, completion markers, and reports remain versioned.
 **/predictions.jsonl
+**/predictions_by_mode.jsonl
 
 # Cluster logs are environment-specific and can contain local paths/job details.
 logs/
