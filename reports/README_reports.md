@@ -1,11 +1,12 @@
 # Reports 文件清单与审计索引
 
-本文件是 RepostGuard-Lite 的完整报告目录。审计快照日期为 **2026-08-31**，范围为 [reports/](./) 下的全部 **73 个文件、14 个目录**，文件逻辑大小约 **19 MiB**。本次仅做静态文件、结构、链接和血缘核验，没有重新训练、推理或计算评测指标。
+本文件是 RepostGuard-Lite 的完整报告目录。审计快照日期为 **2026-08-31**，范围为 [reports/](./) 下的全部 **75 个文件、15 个目录**，文件逻辑大小约 **20 MiB**。本次仅做静态文件、结构、链接和血缘核验，没有重新训练、推理或计算评测指标。
 
 ## 建议阅读顺序
 
 | 目的 | 首选入口 | 协议状态 |
 |---|---|---|
+| 查看 M2/M3 共享编码器、静态融合与质量条件门控架构 | [M2/M3 模型架构 SVG](assets/model_architecture/repostguard_m2_m3_architecture.svg) | 当前支持产物 |
 | 快速查看当前 train-v3 鲁棒性 | [Robustness Evaluation Summary](summaries/COMMUNITY_FORENSICS_V3_ROBUSTNESS_EVALUATION_SUMMARY.md) | 当前 |
 | 查看代表性 FP/FN 与部署权衡 | [Error Analysis Note](summaries/COMMUNITY_FORENSICS_V3_ERROR_ANALYSIS_NOTE.md) | 当前 |
 | 查看五模型、五切片、21 条件完整结果 | [train-v3 完整评测 Markdown](summaries/COMMUNITY_FORENSICS_V3_EVALUATION_REPORT.md) / [便携 HTML](summaries/COMMUNITY_FORENSICS_V3_EVALUATION_REPORT.html) | 当前 |
@@ -17,12 +18,12 @@
 
 | 检查项 | 结果 |
 |---|---|
-| 文件覆盖 | 本索引逐项列出 73/73 个文件；不是只列主报告 |
-| 类型分布 | 22 CSV、16 JSON、10 Markdown、10 JPEG、7 HTML、6 LOG、1 SVG、1 TSV |
+| 文件覆盖 | 本索引逐项列出 75/75 个文件；不是只列主报告 |
+| 类型分布 | 22 CSV、16 JSON、10 Markdown、10 JPEG、7 HTML、6 LOG、2 SVG、1 PNG、1 TSV |
 | JSON | 16/16 可由 jq 解析 |
 | HTML | 7/7 非空且含标题；其中 6 份有交付回执 |
 | 交付回执 | 6/6 显示 validation/package passed；浏览器验证均为 structural_only，因为 browser_unavailable |
-| 图片 | 3 张 atlas JPEG、7 张错误案例缩略图均可识别；SVG 通过 XML 结构检查 |
+| 图片 | 3 张 atlas JPEG、7 张错误案例缩略图和 1 张架构 PNG 均可识别；2 个 SVG 均通过 XML 结构检查 |
 | 错误案例血缘 | 7/7 缩略图与 [TSV 血缘清单](assets/error_analysis/error_analysis_examples.tsv) 中 SHA-256 一致 |
 | 文件卫生 | 无空文件、无小于 100 B 的异常文件、无符号链接、无字节级完全重复文件 |
 | Markdown 链接 | 当前主报告与本索引的本地链接可解析；历史 SID-Set 报告仍有 27 个指向已清理产物的失效链接 |
@@ -49,7 +50,7 @@
 
 | 文件 | 用途 | 状态与审计 |
 |---|---|---|
-| [README_reports.md](README_reports.md) | 本目录完整索引 | 当前；覆盖 73 个文件 |
+| [README_reports.md](README_reports.md) | 本目录完整索引 | 当前；覆盖 75 个文件 |
 
 ### assets/error_analysis
 
@@ -63,6 +64,13 @@
 | [fn_d_dalle2.jpg](assets/error_analysis/fn_d_dalle2.jpg) | FN-D，DALL·E 2 风景图缩略图 | 当前 Error Analysis 资产 |
 | [fn_s_stable_cascade.jpg](assets/error_analysis/fn_s_stable_cascade.jpg) | FN-S，Stable Cascade 海面云层图缩略图 | 当前 Error Analysis 资产 |
 | [fn_i_imagen3.jpg](assets/error_analysis/fn_i_imagen3.jpg) | FN-I，Imagen 3 瀑布城市图缩略图 | 当前 Error Analysis 资产 |
+
+### assets/model_architecture
+
+| 文件 | 用途 | 状态与审计 |
+|---|---|---|
+| [repostguard_m2_m3_architecture.svg](assets/model_architecture/repostguard_m2_m3_architecture.svg) | README 使用的 M2/M3 联合架构图；展示共享语义—取证编码器、M2 静态融合、M3 质量条件门控及配对鲁棒性训练 | **当前模型架构主图**；内嵌输入示例图，XML 结构有效 |
+| [repostguard_m2_m3_architecture.png](assets/model_architecture/repostguard_m2_m3_architecture.png) | 联合架构图的 3200×1760 PNG 预览与兼容性导出 | 当前支持产物；PNG 可识别，尺寸已核对 |
 
 ### summaries
 
