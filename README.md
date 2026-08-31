@@ -60,70 +60,10 @@ shasum -a 256 -c SHA256SUMS.txt
 
 ### 3. 对真实图片运行推理
 
-下面的最小示例严格复用本项目的 RGB、bicubic resize、Q90 JPEG format-debias 和模型张量转换逻辑。将代码保存为仓库根目录下的 `infer_hf_image.py`：
-
-```python
-from __future__ import annotations
-
-import argparse
-import json
-from pathlib import Path
-
-import torch
-from PIL import Image
-from safetensors.torch import load_file
-
-from repostguard.config import load_config
-from repostguard.data.dataset import build_format_debias_config
-from repostguard.data.transforms import harmonize_image_format, to_model_tensor
-from repostguard.models import build_model
-
-
-parser = argparse.ArgumentParser()
-parser.add_argument("--model-dir", required=True)
-parser.add_argument("--image", required=True)
-parser.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
-args = parser.parse_args()
-
-model_dir = Path(args.model_dir)
-config = load_config(model_dir / "resolved_config.yaml")
-threshold = json.loads((model_dir / "thresholds.json").read_text())["threshold"]
-
-model = build_model(config, load_pretrained=False)
-state = load_file(str(model_dir / "model.safetensors"), device="cpu")
-model.load_state_dict(state, strict=True)
-device = torch.device(args.device)
-model = model.to(device).eval()
-
-with Image.open(args.image) as image_file:
-    image = image_file.convert("RGB").copy()
-
-format_debias = build_format_debias_config(config["data"])
-if format_debias.enabled:
-    image = harmonize_image_format(
-        image,
-        int(config["data"]["image_size"]),
-        quality=format_debias.quality(training=False),
-        jpeg_subsampling=format_debias.jpeg_subsampling,
-    )
-
-tensor = to_model_tensor(image, int(config["data"]["image_size"]))
-with torch.inference_mode():
-    logit = model(tensor.unsqueeze(0).to(device))["logits"]
-    score = float(torch.sigmoid(logit).item())
-
-print(json.dumps({
-    "image": args.image,
-    "aigc_score": score,
-    "threshold": threshold,
-    "prediction": "AIGC" if score >= threshold else "Real",
-}, ensure_ascii=False, indent=2))
-```
-
-运行 M2：
+仓库已提供独立脚本 [`scripts/infer_hf_image.py`](scripts/infer_hf_image.py)，它严格复用本项目的 RGB、bicubic resize、Q90 JPEG format-debias 和模型张量转换逻辑。运行 M2：
 
 ```bash
-python infer_hf_image.py \
+python scripts/infer_hf_image.py \
   --model-dir models/repostguard-m2-train-v3 \
   --image /path/to/image.jpg \
   --device cpu
