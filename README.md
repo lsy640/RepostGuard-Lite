@@ -484,7 +484,7 @@ README_slurm.md           TC2 集群复现与运维说明
 
 | 成员 | 主要贡献 |
 |---|---|
-| **Liu Shiyuan（`@lsy640`）** | 项目设计、数据下载与协议审计、B0/B1/B2/M2/M3 实现、训练与批处理流程、鲁棒性评测、门控消融、报告生成和本地目录推理入口。 |
+| **Liu Shiyuan（`@lsy640`）** | 项目设计、数据下载与协议审计、B0/B1/B2/M2/M3 实现、训练与批处理流程、鲁棒性评测、门控消融、报告生成、网页前端展示和本地目录推理入口。 |
 | **Jiang Xinshuo（`@8309`）** | 负责 [`student_distillation/`](student_distillation/)：设计并实现 M2/M3→MobileNetV3 Student 蒸馏，完成 V1、V3.0、V3.1、V3.2 的训练、校准、鲁棒性评测、移动端 ONNX/TorchScript 导出与 parity 验证，并构建纯本地推理的轻量 Android App 原型；App 当前仍在开发。 |
 
 ## 许可与引用
