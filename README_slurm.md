@@ -10,7 +10,7 @@ are retained as historical prototype lineages only.
 The canonical project summary is
 [`reports/summaries/COMMUNITY_FORENSICS_PROJECT_SUMMARY.md`](reports/summaries/COMMUNITY_FORENSICS_PROJECT_SUMMARY.md).
 The complete report directory map and regeneration entry points are listed in
-[`reports/README.md`](reports/README.md).
+[`reports/README_reports.md`](reports/README_reports.md).
 It documents the model architectures, training lineage, the protocol-v1 data
 and results, format debiasing, internal checkpoint selection, external slices,
 21 clean/perturbation conditions, fixed-threshold metrics,

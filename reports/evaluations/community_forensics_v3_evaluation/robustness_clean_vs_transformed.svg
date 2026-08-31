@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="500" viewBox="0 0 1120 500" role="img" aria-labelledby="title desc">
+  <title id="title">Train-v3 strict unseen robustness: clean versus transformed images</title>
+  <desc id="desc">Two grouped bar charts compare clean performance with the equal-weight mean across twenty transformed conditions for B0, B1, B2, M2, and M3. The left chart shows AUROC and the right chart shows accuracy, which equals balanced accuracy on this balanced test set.</desc>
+  <rect width="1120" height="500" rx="16" fill="#ffffff"/>
+  <text x="560" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#111827">Train-v3 Strict Unseen Robustness</text>
+  <text x="560" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4b5563">4,000 images · Clean vs equal-weight mean of 20 transformed conditions · higher is better</text>
+
+  <rect x="432" y="62" width="14" height="14" rx="2" fill="#2563eb"/>
+  <text x="453" y="74" font-family="Arial, sans-serif" font-size="12" fill="#374151">Clean</text>
+  <rect x="522" y="62" width="14" height="14" rx="2" fill="#f97316"/>
+  <text x="543" y="74" font-family="Arial, sans-serif" font-size="12" fill="#374151">20 transformed mean</text>
+
+  <text x="290" y="94" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">AUROC</text>
+  <text x="835" y="94" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">Accuracy / Balanced Accuracy</text>
+
+  <g stroke="#e5e7eb" stroke-width="1">
+    <line x1="75" y1="100" x2="520" y2="100"/>
+    <line x1="75" y1="164" x2="520" y2="164"/>
+    <line x1="75" y1="228" x2="520" y2="228"/>
+    <line x1="75" y1="292" x2="520" y2="292"/>
+    <line x1="75" y1="356" x2="520" y2="356"/>
+    <line x1="75" y1="420" x2="520" y2="420"/>
+    <line x1="620" y1="100" x2="1065" y2="100"/>
+    <line x1="620" y1="164" x2="1065" y2="164"/>
+    <line x1="620" y1="228" x2="1065" y2="228"/>
+    <line x1="620" y1="292" x2="1065" y2="292"/>
+    <line x1="620" y1="356" x2="1065" y2="356"/>
+    <line x1="620" y1="420" x2="1065" y2="420"/>
+  </g>
+
+  <g font-family="Arial, sans-serif" font-size="10" fill="#6b7280" text-anchor="end">
+    <text x="68" y="104">1.0</text><text x="68" y="168">0.8</text><text x="68" y="232">0.6</text><text x="68" y="296">0.4</text><text x="68" y="360">0.2</text><text x="68" y="424">0.0</text>
+    <text x="613" y="104">1.0</text><text x="613" y="168">0.8</text><text x="613" y="232">0.6</text><text x="613" y="296">0.4</text><text x="613" y="360">0.2</text><text x="613" y="424">0.0</text>
+  </g>
+
+  <!-- AUROC bars -->
+  <g>
+    <rect x="105" y="160.00" width="26" height="260.00" rx="3" fill="#2563eb"/>
+    <rect x="134" y="179.83" width="26" height="240.17" rx="3" fill="#f97316"/>
+    <rect x="185" y="160.26" width="26" height="259.74" rx="3" fill="#2563eb"/>
+    <rect x="214" y="168.80" width="26" height="251.20" rx="3" fill="#f97316"/>
+    <rect x="265" y="173.38" width="26" height="246.62" rx="3" fill="#2563eb"/>
+    <rect x="294" y="172.91" width="26" height="247.09" rx="3" fill="#f97316"/>
+    <rect x="345" y="122.14" width="26" height="297.86" rx="3" fill="#2563eb"/>
+    <rect x="374" y="126.78" width="26" height="293.22" rx="3" fill="#f97316"/>
+    <rect x="425" y="122.23" width="26" height="297.77" rx="3" fill="#2563eb"/>
+    <rect x="454" y="127.08" width="26" height="292.92" rx="3" fill="#f97316"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="9" fill="#374151" text-anchor="middle">
+    <text x="118" y="154">.812</text><text x="147" y="174">.751</text>
+    <text x="198" y="154">.812</text><text x="227" y="163">.785</text>
+    <text x="278" y="168">.771</text><text x="307" y="167">.772</text>
+    <text x="358" y="116">.931</text><text x="387" y="121">.916</text>
+    <text x="438" y="116">.931</text><text x="467" y="121">.915</text>
+  </g>
+
+  <!-- Accuracy / balanced accuracy bars -->
+  <g>
+    <rect x="650" y="182.88" width="26" height="237.12" rx="3" fill="#2563eb"/>
+    <rect x="679" y="199.68" width="26" height="220.32" rx="3" fill="#f97316"/>
+    <rect x="730" y="182.16" width="26" height="237.84" rx="3" fill="#2563eb"/>
+    <rect x="759" y="191.27" width="26" height="228.73" rx="3" fill="#f97316"/>
+    <rect x="810" y="196.64" width="26" height="223.36" rx="3" fill="#2563eb"/>
+    <rect x="839" y="228.54" width="26" height="191.46" rx="3" fill="#f97316"/>
+    <rect x="890" y="145.52" width="26" height="274.48" rx="3" fill="#2563eb"/>
+    <rect x="919" y="152.15" width="26" height="267.85" rx="3" fill="#f97316"/>
+    <rect x="970" y="146.88" width="26" height="273.12" rx="3" fill="#2563eb"/>
+    <rect x="999" y="151.81" width="26" height="268.19" rx="3" fill="#f97316"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="9" fill="#374151" text-anchor="middle">
+    <text x="663" y="177">.741</text><text x="692" y="194">.688</text>
+    <text x="743" y="176">.743</text><text x="772" y="186">.715</text>
+    <text x="823" y="191">.698</text><text x="852" y="223">.598</text>
+    <text x="903" y="140">.858</text><text x="932" y="147">.837</text>
+    <text x="983" y="141">.854</text><text x="1012" y="146">.838</text>
+  </g>
+
+  <g font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#374151" text-anchor="middle">
+    <text x="133" y="440">B0</text><text x="213" y="440">B1</text><text x="293" y="440">B2</text><text x="373" y="440">M2</text><text x="453" y="440">M3</text>
+    <text x="678" y="440">B0</text><text x="758" y="440">B1</text><text x="838" y="440">B2</text><text x="918" y="440">M2</text><text x="998" y="440">M3</text>
+  </g>
+
+  <text x="560" y="474" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#4b5563">AUROC measures ranking; Accuracy/BA uses each model's threshold frozen on the internal clean validation set.</text>
+</svg>
