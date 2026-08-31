@@ -48,6 +48,13 @@ def _fake_result(model: str) -> dict:
     }
 
 
+def test_frontend_html_is_never_served_from_a_stale_localhost_cache() -> None:
+    response = TestClient(app).get("/")
+    assert response.headers["cache-control"] == "no-store, max-age=0"
+    assert response.headers["pragma"] == "no-cache"
+    assert response.headers["expires"] == "0"
+
+
 def test_single_infer_and_batch_api_without_model_stub_leak(monkeypatch) -> None:
     monkeypatch.setattr(model_registry, "predict", lambda image, model: _fake_result(model))
     client = TestClient(app)

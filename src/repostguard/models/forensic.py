@@ -42,6 +42,29 @@ def _srm_inspired_bank() -> torch.Tensor:
     return torch.stack(kernels[:30]).unsqueeze(1)
 
 
+def _adaptive_avg_pool2d_mps_safe(
+    values: torch.Tensor,
+    output_size: tuple[int, int],
+) -> torch.Tensor:
+    """Preserve CPU adaptive-pooling semantics for an incomplete MPS case.
+
+    PyTorch's MPS implementation currently rejects non-divisible input/output
+    sizes instead of honoring the general adaptive-pooling contract. The
+    RepostGuard checkpoints intentionally pool 56x56 forensic patches to a
+    16x16 DCT grid, so transfer only this small intermediate to CPU when needed
+    and return the pooled result to MPS for the rest of the model.
+    """
+
+    height, width = values.shape[-2:]
+    output_height, output_width = output_size
+    needs_cpu_pool = values.device.type == "mps" and (
+        height % output_height != 0 or width % output_width != 0
+    )
+    if needs_cpu_pool:
+        return F.adaptive_avg_pool2d(values.to("cpu"), output_size).to(values.device)
+    return F.adaptive_avg_pool2d(values, output_size)
+
+
 class DCTPatchSelector(nn.Module):
     def __init__(self, patch_size: int, patches_per_band: int, dct_size: int) -> None:
         super().__init__()
@@ -77,7 +100,10 @@ class DCTPatchSelector(nn.Module):
         gray = patches.mean(dim=2).reshape(
             batch_size * patch_count, 1, self.patch_size, self.patch_size
         )
-        gray = F.adaptive_avg_pool2d(gray, (self.dct_size, self.dct_size)).squeeze(1)
+        gray = _adaptive_avg_pool2d_mps_safe(
+            gray,
+            (self.dct_size, self.dct_size),
+        ).squeeze(1)
         coefficients = torch.matmul(self.dct_basis, gray)
         coefficients = torch.matmul(coefficients, self.dct_basis.transpose(0, 1))
         energy = coefficients.square().reshape(batch_size, patch_count, -1)
@@ -149,4 +175,3 @@ class ForensicBranch(nn.Module):
             "patch_attention": attention,
             "frequency_ratios": frequency_ratios,
         }
-

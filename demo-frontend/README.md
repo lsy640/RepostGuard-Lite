@@ -6,11 +6,21 @@ Vue 3 frontend and local FastAPI inference service for the train-v3 RepostGuard 
 
 ```bash
 cd /Users/liushiyuan/Downloads/AGI/TikTok_project_5/demo-frontend
+# First run only:
 ./scripts/setup.sh
+# Start or safely restart the local demo:
 ./scripts/run_demo.sh
 ```
 
 Open `http://127.0.0.1:8000`. The production runner builds the frontend and serves the UI and API from one local process. No uploaded image is sent to a remote service.
+
+`run_demo.sh` safely restarts an older AIGI Detect Demo already running from this directory, so a stale process cannot keep serving an old frontend. It will never terminate an unrelated process using port 8000; in that case, either stop that process or select another port:
+
+```bash
+AIGI_DEMO_PORT=8001 ./scripts/run_demo.sh
+```
+
+After the terminal prints `Uvicorn running on http://127.0.0.1:8000`, open that address. If the tab was already open before rebuilding, reload it once to fetch the new hashed frontend bundle.
 
 For hot-reload development, use `./scripts/run_dev.sh`; Vite runs on `http://127.0.0.1:5173` and proxies `/api` to port 8000.
 
