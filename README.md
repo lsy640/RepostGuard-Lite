@@ -6,7 +6,7 @@ RepostGuard-Lite 是一个面向社交平台转发、编辑和压缩场景的 AI
 
 面向日常手机端使用，Jiang Xinshuo（`@8309`）进一步完成了 M2/M3→Student 蒸馏实验。当前效果最好的 V3.2 corrected Student 将参数量压缩至 **7.96M**（约为 M3 的 **8.00%**），在同一 4,000 张 expanded strict-unseen 测试集上取得 **0.9063 Clean AUROC**；V3.0 的 **4.20M** 参数版本已生成约 **16.8 MB** 的 ONNX/TorchScript，并通过 ONNX parity。基于这些产物构建的纯本地推理 Android App 仍处于原型开发阶段，尚未作为完成产品发布。
 
-> 本仓库不包含原始数据，也不提交 M2/M3 教师模型权重；复现实验需要按照数据清单重新获取数据，并为每个 checkpoint 保留训练时生成的 `resolved_config.yaml`。为支持移动端复核，已完成的 Student 蒸馏 checkpoint、ONNX/TorchScript 导出和逐样本评测产物单独保存在 [`student_distillation/`](student_distillation/) 中。
+> 本仓库不包含原始数据，也不把 M2/M3 教师权重直接提交到 Git；经过逐张量一致性和远端回下载验证的 train-v3 M2/M3 `safetensors` 权重已经发布到 Hugging Face，下载与运行方法见 [公开模型权重](#公开模型权重hugging-face)。复现实验训练仍需按照数据清单重新获取数据，并保留训练时生成的 `resolved_config.yaml`。为支持移动端复核，已完成的 Student 蒸馏 checkpoint、ONNX/TorchScript 导出和逐样本评测产物单独保存在 [`student_distillation/`](student_distillation/) 中。
 
 ## 核心评测文档
 
@@ -17,6 +17,119 @@ RepostGuard-Lite 是一个面向社交平台转发、编辑和压缩场景的 AI
 | [Student Distillation 完整产物](student_distillation/README.md) | Jiang Xinshuo（`@8309`）完成的 M2/M3→Student 蒸馏实验：包含 V1、V3.0、V3.1 与 V3.2 的权重、配置、逐图预测、移动端导出和审计入口，并记录 Android App 原型及 full-refit 的未完成边界。 |
 | [Robustness Evaluation Summary](reports/summaries/COMMUNITY_FORENSICS_V3_ROBUSTNESS_EVALUATION_SUMMARY.md) | 在 4,000 张 strict unseen-generator 图片上，M2 的 Clean AUROC 为 0.9308，20 个 transformed 条件平均为 0.9163，最坏六阶段条件为 0.8525；文档包含紧凑对比表、可视化、扰动分组和证据边界。 |
 | [Error Analysis Note](reports/summaries/COMMUNITY_FORENSICS_V3_ERROR_ANALYSIS_NOTE.md) | M2 的 Clean 错误为 334 FP / 235 FN，六阶段增至 432 FP / 507 FN；文档列出并展示代表性误报和漏报、来源/生成器错误集中，以及 M2、M3、B2 的部署权衡。 |
+
+## 公开模型权重（Hugging Face）
+
+Community Forensics train-v3 的完整 M2/M3 教师模型已作为公开 Hugging Face Model 仓库发布。两个 `model.safetensors` 都包含冻结的 OpenCLIP visual state，使用 `load_pretrained=False` 构建模型后可以直接严格加载，不需要重新训练，也不会再次下载 OpenCLIP 基础权重。这里发布的是约 99.4M 参数的完整 FP32 M2/M3 教师模型，不是 [`student_distillation/`](student_distillation/) 中的手机端 Student。
+
+| 模型 | Hugging Face 仓库 | 发布版本 | 固定提交 | `model.safetensors` SHA-256 | 内部验证阈值 |
+|---|---|---|---|---|---:|
+| M2 train-v3 | [`LLL640/RepostGuard-Lite-M2-train-v3`](https://huggingface.co/LLL640/RepostGuard-Lite-M2-train-v3) | [`v1.0.0`](https://huggingface.co/LLL640/RepostGuard-Lite-M2-train-v3/tree/v1.0.0) | [`06e2ca7`](https://huggingface.co/LLL640/RepostGuard-Lite-M2-train-v3/commit/06e2ca759f69b48cb50ea81a581b6f1ce8a94317) | `79a9f366a92cf4469e7af4bcc08d844562060f39a9abbe1378dcfb5148b8c49e` | `0.99658203125` |
+| M3 train-v3 | [`LLL640/RepostGuard-Lite-M3-train-v3`](https://huggingface.co/LLL640/RepostGuard-Lite-M3-train-v3) | [`v1.0.0`](https://huggingface.co/LLL640/RepostGuard-Lite-M3-train-v3/tree/v1.0.0) | [`1b05886`](https://huggingface.co/LLL640/RepostGuard-Lite-M3-train-v3/commit/1b0588638ace3664cc51d571d9675c43f1a3ac68) | `cf7352889bc207eb696afabb5a88a0ab0fb3570661aa25a87e669187ecaaf818` | `0.9970703125` |
+
+每个仓库同时提供 `resolved_config.yaml`、`thresholds.json`、`preprocessor_config.json`、许可证、推理依赖和 `SHA256SUMS.txt`。为减少不必要的公开披露和 pickle 反序列化风险，Hugging Face 发布包不包含原始 `.pt` 中的优化器与训练恢复状态。
+
+### 1. 安装权重下载与加载依赖
+
+先按照本 README 的 [安装与环境](#安装与环境) 完成项目安装，再在同一个虚拟环境中安装：
+
+```bash
+python -m pip install "huggingface-hub>=1,<2" "safetensors>=0.4,<1"
+```
+
+### 2. 下载固定版本
+
+以下命令使用不可歧义的完整提交 SHA，而不是可能被后续更新的 `main`。如果已经激活虚拟环境，可以直接使用 `hf`；未激活时可将其替换为 macOS/Linux 的 `.venv/bin/hf` 或 Windows PowerShell 的 `.venv\Scripts\hf.exe`。
+
+```bash
+hf download LLL640/RepostGuard-Lite-M2-train-v3 \
+  --revision 06e2ca759f69b48cb50ea81a581b6f1ce8a94317 \
+  --local-dir models/repostguard-m2-train-v3
+
+hf download LLL640/RepostGuard-Lite-M3-train-v3 \
+  --revision 1b0588638ace3664cc51d571d9675c43f1a3ac68 \
+  --local-dir models/repostguard-m3-train-v3
+```
+
+下载后可在对应模型目录中校验发布文件。macOS 使用 `shasum`，Linux 通常使用 `sha256sum`：
+
+```bash
+cd models/repostguard-m2-train-v3
+shasum -a 256 -c SHA256SUMS.txt
+```
+
+### 3. 对真实图片运行推理
+
+下面的最小示例严格复用本项目的 RGB、bicubic resize、Q90 JPEG format-debias 和模型张量转换逻辑。将代码保存为仓库根目录下的 `infer_hf_image.py`：
+
+```python
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+
+import torch
+from PIL import Image
+from safetensors.torch import load_file
+
+from repostguard.config import load_config
+from repostguard.data.dataset import build_format_debias_config
+from repostguard.data.transforms import harmonize_image_format, to_model_tensor
+from repostguard.models import build_model
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--model-dir", required=True)
+parser.add_argument("--image", required=True)
+parser.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
+args = parser.parse_args()
+
+model_dir = Path(args.model_dir)
+config = load_config(model_dir / "resolved_config.yaml")
+threshold = json.loads((model_dir / "thresholds.json").read_text())["threshold"]
+
+model = build_model(config, load_pretrained=False)
+state = load_file(str(model_dir / "model.safetensors"), device="cpu")
+model.load_state_dict(state, strict=True)
+device = torch.device(args.device)
+model = model.to(device).eval()
+
+with Image.open(args.image) as image_file:
+    image = image_file.convert("RGB").copy()
+
+format_debias = build_format_debias_config(config["data"])
+if format_debias.enabled:
+    image = harmonize_image_format(
+        image,
+        int(config["data"]["image_size"]),
+        quality=format_debias.quality(training=False),
+        jpeg_subsampling=format_debias.jpeg_subsampling,
+    )
+
+tensor = to_model_tensor(image, int(config["data"]["image_size"]))
+with torch.inference_mode():
+    logit = model(tensor.unsqueeze(0).to(device))["logits"]
+    score = float(torch.sigmoid(logit).item())
+
+print(json.dumps({
+    "image": args.image,
+    "aigc_score": score,
+    "threshold": threshold,
+    "prediction": "AIGC" if score >= threshold else "Real",
+}, ensure_ascii=False, indent=2))
+```
+
+运行 M2：
+
+```bash
+python infer_hf_image.py \
+  --model-dir models/repostguard-m2-train-v3 \
+  --image /path/to/image.jpg \
+  --device cpu
+```
+
+运行 M3 时只需把 `--model-dir` 改为 `models/repostguard-m3-train-v3`。NVIDIA 环境可使用 `--device cuda`。运行时若出现 `No pretrained weights loaded` 提示属于预期行为：代码先用 `load_pretrained=False` 构建网络，随后立即通过 `strict=True` 加载 Hugging Face 中包含全部分支的 state dict。输出的 `aigc_score` 是 sigmoid 排序分数，不是经过目标部署域校准的真实性概率；表中的阈值仅由 train-v3 内部验证集选择，面向新平台或新设备部署时应使用独立校准集重新确定阈值。
 
 ## 项目概览
 
@@ -342,11 +455,11 @@ Linux + NVIDIA CUDA 12.1 可将 PyTorch index URL 改为 `https://download.pytor
 .venv/bin/python -m pip install -e ".[dev]"
 ```
 
-[`environment.yml`](environment.yml) 面向 Python 3.11 + CUDA 12.1 的 NVIDIA/集群环境，并不是 Windows、macOS 和 CPU Linux 的通用环境文件。B0/B1 首次使用可能下载 Torchvision 权重；B2/M2/M3 首次使用可能下载 OpenCLIP 权重。
+[`environment.yml`](environment.yml) 面向 Python 3.11 + CUDA 12.1 的 NVIDIA/集群环境，并不是 Windows、macOS 和 CPU Linux 的通用环境文件。B0/B1 首次从头构建或训练时可能下载 Torchvision 权重；B2/M2/M3 首次从头构建或训练时可能下载 OpenCLIP 权重。使用上方公开的完整 M2/M3 `safetensors` 并设置 `load_pretrained=False` 时不需要再次下载 OpenCLIP 权重。
 
-## 本地目录推理
+## 本地目录推理（原始 `.pt` 训练检查点）
 
-推理入口递归读取目录中的常见图片格式，为每张可读取图片输出 AIGC 置信分数。必须同时提供同一训练运行的：
+这一批量推理入口面向本地训练产生的原始 `.pt` checkpoint，递归读取目录中的常见图片格式，为每张可读取图片输出 AIGC 分数。Hugging Face 的安全发布包只包含 `model.safetensors`；使用公开权重时请采用上方的 [真实图片推理示例](#3-对真实图片运行推理)。使用原始批量入口时，必须同时提供同一训练运行的：
 
 ```text
 <MODEL_DIR>/
@@ -354,7 +467,7 @@ Linux + NVIDIA CUDA 12.1 可将 PyTorch index URL 改为 `https://download.pytor
 └── resolved_config.yaml
 ```
 
-程序会严格检查配置摘要，避免 checkpoint 与配置错配。模型权重默认不提交到 Git，请通过安全渠道复制，且不要在仓库中保存访问令牌。
+程序会严格检查配置摘要，避免 checkpoint 与配置错配。原始 `.pt` 权重默认不提交到 Git；公开 M2/M3 推理权重从上方 Hugging Face 仓库下载。不要在仓库中保存 Hugging Face 访问令牌。
 
 Linux/macOS 示例：
 
