@@ -35,6 +35,10 @@ RepostGuard-Lite 是一个面向社交平台转发、编辑和压缩场景的 AI
 | M2 | 冻结 CLIP 语义分支 + DCT/SRM/NPR 取证分支 + 特征融合分类器 | 99,423,442 | 11,574,226 |
 | M3 | M2 + 基于 6 维质量描述的双分支动态门控 | 99,423,744 | 11,574,528 |
 
+M2/M3 的构建受到 [AIDE](https://arxiv.org/abs/2406.19435)（[官方实现](https://github.com/shilinyan99/AIDE)）启发，延续其融合高层语义与低层取证证据的基本思想，但并非对 AIDE 的直接复现。M2 采用共享的轻量取证编码器，并结合 NPR-inspired 残差、注意力 patch 聚合及原图—退化图一致性训练，将研究重点转向有限参数预算下的真实转发鲁棒性；M3 则在 M2 基础上进一步研究质量条件化的动态分支融合。
+
+![RepostGuard-Lite M2/M3 模型架构](reports/assets/model_architecture/repostguard_m2_m3_architecture.svg)
+
 M2 的取证分支将 224×224 图像划分为 16 个 56×56 patch；DCT 选择 2 个低频和 2 个高频组，并联合 RGB、30 通道 SRM 响应和 3 通道 NPR 残差。特征经 1×1 适配器、从头训练的 ResNet-18、类型嵌入和注意力池化得到 256 维取证表示，再与投影后的 256 维 CLIP 表示融合。
 
 M3 在 M2 上增加 `LayerNorm(6) → Linear(6,32) → GELU → Linear(32,2) → Softmax` 门控。末层零初始化，因此训练初始状态等价于两分支等权融合。M3 只比 M2 多 302 个参数；差异来自融合策略而非容量规模。
