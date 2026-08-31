@@ -81,3 +81,72 @@ def test_all_community_forensics_v3_configs_resolve() -> None:
         assert config["output"]["directory"] == (
             f"outputs/community_forensics_v3/{experiment}"
         )
+
+
+def test_dual_teacher_student_config_resolves() -> None:
+    root = Path(__file__).resolve().parents[1]
+    config = load_config(
+        root / "configs" / "community_forensics" / "student_mnv3_dual_teacher.yaml"
+    )
+    assert config["model"]["experiment"] == "student_mnv3"
+    assert config["model"]["student_backbone"] == "mobilenet_v3_large"
+    assert config["distillation"]["m3_weight"] == 0.7
+    assert config["distillation"]["m2_weight"] == 0.3
+    assert config["distillation"]["m2_config"].endswith(
+        "distillation_teacher_m2.yaml"
+    )
+    assert config["distillation"]["m3_config"].endswith(
+        "distillation_teacher_m3.yaml"
+    )
+    assert config["distillation"]["views"][0]["id"] == "clean"
+    assert len(config["distillation"]["views"]) == 4
+
+
+def test_dual_teacher_student_smoke_config_resolves() -> None:
+    root = Path(__file__).resolve().parents[1]
+    config = load_config(
+        root
+        / "configs"
+        / "community_forensics"
+        / "student_mnv3_dual_teacher_smoke.yaml"
+    )
+    assert config["model"]["experiment"] == "student_mnv3"
+    assert config["train"]["epochs"] == 1
+    assert config["train"]["resume"] == "none"
+    assert config["distillation"]["m3_weight"] == 0.7
+
+
+def test_v3_dual_teacher_student_configs_resolve() -> None:
+    root = Path(__file__).resolve().parents[1]
+    full = load_config(
+        root
+        / "configs"
+        / "community_forensics_v3"
+        / "student_mnv3_dual_teacher.yaml"
+    )
+    smoke = load_config(
+        root
+        / "configs"
+        / "community_forensics_v3"
+        / "student_mnv3_dual_teacher_smoke.yaml"
+    )
+    m3_smoke = load_config(
+        root
+        / "configs"
+        / "community_forensics_v3"
+        / "student_mnv3_m3_primary_smoke.yaml"
+    )
+
+    assert full["data"]["train_manifest"].endswith("community_forensics_train_v3.csv")
+    assert full["distillation"]["m2_checkpoint"].endswith(
+        "outputs/community_forensics_v3/m2/best.pt"
+    )
+    assert full["distillation"]["m3_checkpoint"].endswith(
+        "outputs/community_forensics_v3/m3/best.pt"
+    )
+    assert smoke["train"]["epochs"] == 2
+    assert smoke["distillation"]["cache_directory"].endswith(
+        "community_forensics_m2_m3_smoke_v3"
+    )
+    assert m3_smoke["distillation"]["m2_weight"] == 0.0
+    assert m3_smoke["distillation"]["m3_weight"] == 1.0

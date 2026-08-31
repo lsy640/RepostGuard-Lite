@@ -1,0 +1,8 @@
+base: student_v32_full_refit_e20.yaml
+
+train:
+  epochs: 1
+  checkpoint_every_steps: 100
+
+output:
+  directory: outputs/community_forensics_v32_full_refit_e20/student_corrected_smoke

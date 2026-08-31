@@ -58,7 +58,7 @@ def infer(
     if device_name == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA requested but unavailable")
     device = torch.device(device_name)
-    model = build_model(config).to(device)
+    model = build_model(config, load_pretrained=False).to(device)
     model.load_state_dict(checkpoint["model"], strict=True)
     model.eval()
     root = Path(input_directory).resolve()

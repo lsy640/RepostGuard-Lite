@@ -8,6 +8,7 @@ import random
 import signal
 import sys
 import time
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -26,6 +27,7 @@ from repostguard.checkpoint import (
 )
 from repostguard.config import config_digest, load_config, save_resolved_config
 from repostguard.data.dataset import build_eval_loader, build_train_loader
+from repostguard.distillation import compute_dual_teacher_loss, validate_distillation_config
 from repostguard.losses import compute_training_loss
 from repostguard.metrics import binary_metrics, select_balanced_threshold
 from repostguard.models import build_model, count_parameters
@@ -115,7 +117,11 @@ def _predict_clean(
     return np.concatenate(labels), np.concatenate(probabilities)
 
 
-def train(config_path: str, resume_override: str | None = None) -> int:
+def train(
+    config_path: str,
+    resume_override: str | None = None,
+    stop_after_epoch: int | None = None,
+) -> int:
     config = load_config(config_path)
     output_directory = Path(config["output"]["directory"]).resolve()
     output_directory.mkdir(parents=True, exist_ok=True)
@@ -132,6 +138,8 @@ def train(config_path: str, resume_override: str | None = None) -> int:
     _set_seed(seed, bool(config.get("deterministic", True)))
     signal.signal(signal.SIGUSR1, _request_safe_stop)
 
+    if str(config["model"]["experiment"]).lower() == "student_mnv3":
+        validate_distillation_config(config)
     model = build_model(config).to(device)
     parameter_counts = count_parameters(model)
     trainable_parameters = [parameter for parameter in model.parameters() if parameter.requires_grad]
@@ -198,11 +206,28 @@ def train(config_path: str, resume_override: str | None = None) -> int:
         flush=True,
     )
 
+    configured_epochs = int(config["train"]["epochs"])
+    target_epochs = configured_epochs
+    if stop_after_epoch is not None:
+        target_epochs = int(stop_after_epoch)
+        if not 1 <= target_epochs <= configured_epochs:
+            raise ValueError(
+                f"stop_after_epoch must be in [1, {configured_epochs}]"
+            )
     optimizer.zero_grad(set_to_none=True)
-    for epoch in range(start_epoch, int(config["train"]["epochs"])):
+    for epoch in range(start_epoch, target_epochs):
         model.train()
         running: dict[str, float] = {}
         batches_since_log = 0
+        sampled_distribution: Counter[str] = Counter()
+        hierarchical_sampling = (
+            str(
+                config.get("distillation", {})
+                .get("sampling", {})
+                .get("strategy", "")
+            )
+            == "class_arch_generator_hierarchical"
+        )
         sampler_generator = getattr(train_loader.sampler, "generator", None)
         epoch_sampler_state = (
             sampler_generator.get_state() if sampler_generator is not None else None
@@ -210,22 +235,68 @@ def train(config_path: str, resume_override: str | None = None) -> int:
         for batch_index, batch in enumerate(train_loader):
             if epoch == start_epoch and batch_index < resume_batch_in_epoch:
                 continue
+            if hierarchical_sampling:
+                for label_value, architecture in zip(
+                    batch["label"].tolist(), batch["architecture"], strict=True
+                ):
+                    sampled_distribution[
+                        "Real" if int(label_value) == 0 else str(architecture)
+                    ] += 1
             labels = batch["label"].to(device, non_blocking=True)
             images = batch["image"].to(device, non_blocking=True)
             with torch.autocast(device_type="cuda", dtype=torch.float16, enabled=amp_enabled):
                 clean_output = model(images)
                 augmented_output = None
-                if experiment in {"m2", "m3"}:
+                if experiment in {"m2", "m3", "student_mnv3"}:
                     augmented_images = batch["image_aug"].to(device, non_blocking=True)
                     augmented_output = model(augmented_images)
-                loss, components = compute_training_loss(
-                    experiment,
-                    labels,
-                    clean_output,
-                    augmented_output,
-                    lambda_kl=float(config["train"]["lambda_kl"]),
-                    lambda_feature=float(config["train"]["lambda_feature"]),
-                )
+                if experiment == "student_mnv3":
+                    if augmented_output is None:
+                        raise ValueError("Student distillation requires paired augmented output")
+                    teacher_keys = [
+                        "teacher_m2_logit_clean",
+                        "teacher_m3_logit_clean",
+                        "teacher_m2_logit_aug",
+                        "teacher_m3_logit_aug",
+                    ]
+                    feature_config = dict(
+                        config["distillation"].get("feature_distillation", {})
+                    )
+                    if bool(feature_config.get("enabled", False)):
+                        teacher_keys.extend(
+                            f"teacher_m3_{branch}_{view}"
+                            for branch in ("semantic", "forensic", "fused")
+                            for view in ("clean", "aug")
+                        )
+                        gate_config = dict(
+                            feature_config.get("quality_gate_distillation", {})
+                        )
+                        if bool(gate_config.get("enabled", False)):
+                            teacher_keys.extend(
+                                ("teacher_m3_gate_clean", "teacher_m3_gate_aug")
+                            )
+                    teacher_batch = {
+                        key: batch[key].to(device, non_blocking=True)
+                        for key in teacher_keys
+                    }
+                    teacher_batch["view_id"] = list(batch["view_id"])
+                    loss, components = compute_dual_teacher_loss(
+                        config,
+                        labels,
+                        clean_output,
+                        augmented_output,
+                        teacher_batch,
+                        epoch=epoch,
+                    )
+                else:
+                    loss, components = compute_training_loss(
+                        experiment,
+                        labels,
+                        clean_output,
+                        augmented_output,
+                        lambda_kl=float(config["train"]["lambda_kl"]),
+                        lambda_feature=float(config["train"]["lambda_feature"]),
+                    )
                 scaled_loss = loss / accumulation
             if not bool(torch.isfinite(loss).item()):
                 raise FloatingPointError(
@@ -313,6 +384,24 @@ def train(config_path: str, resume_override: str | None = None) -> int:
                     return 75
 
         labels, probabilities = _predict_clean(model, config, device, amp_enabled)
+        if hierarchical_sampling:
+            sampled_total = sum(sampled_distribution.values())
+            print(
+                json.dumps(
+                    {
+                        "event": "distillation_sampler_epoch",
+                        "epoch": epoch,
+                        "sampled_items": sampled_total,
+                        "counts": dict(sorted(sampled_distribution.items())),
+                        "fractions": {
+                            key: value / max(1, sampled_total)
+                            for key, value in sorted(sampled_distribution.items())
+                        },
+                    },
+                    sort_keys=True,
+                ),
+                flush=True,
+            )
         threshold = select_balanced_threshold(labels, probabilities)
         validation = binary_metrics(labels, probabilities, threshold)
         validation["event"] = "validation"
@@ -356,6 +445,22 @@ def train(config_path: str, resume_override: str | None = None) -> int:
         atomic_torch_save(latest_payload, output_directory / "latest.pt")
         resume_batch_in_epoch = 0
 
+    if target_epochs < configured_epochs:
+        print(
+            json.dumps(
+                {
+                    "event": "training_stage_complete",
+                    "completed_epochs": target_epochs,
+                    "configured_epochs": configured_epochs,
+                    "best_clean_auroc": best_metric,
+                    "global_step": global_step,
+                },
+                sort_keys=True,
+            ),
+            flush=True,
+        )
+        return 0
+
     atomic_text(
         json.dumps(
             {
@@ -377,12 +482,23 @@ def _parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train one RepostGuard pilot experiment")
     parser.add_argument("--config", required=True)
     parser.add_argument("--resume", default=None, help="auto, none, or checkpoint path")
+    parser.add_argument(
+        "--stop-after-epoch",
+        type=int,
+        help="Stop cleanly after this epoch count without writing DONE",
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     arguments = _parse_args()
-    sys.exit(train(arguments.config, arguments.resume))
+    sys.exit(
+        train(
+            arguments.config,
+            arguments.resume,
+            stop_after_epoch=arguments.stop_after_epoch,
+        )
+    )
 
 
 if __name__ == "__main__":

@@ -1,0 +1,38 @@
+{
+  "checkpoint_path": "/home/msai/xjiang026/projects/repostguard-lite/outputs/community_forensics_v31/student_ablation_baseline_t3/best.pt",
+  "checkpoint_sha256": "7b20def1750c862e43702dd43eb1519e4fcd953826cad4905a33fa554e442ec4",
+  "config_path": "/home/msai/xjiang026/projects/repostguard-lite/configs/community_forensics_v3/student_v31_ablation_baseline_t3.yaml",
+  "config_sha256": "e68fcb4c8b268d7e3cc82db3aa9f11de15af49e83e74d4d7b6330f915264458f",
+  "cuda_runtime": "12.1",
+  "device": "NVIDIA L40S",
+  "evaluation_matrix_path": "/home/msai/xjiang026/projects/repostguard-lite/configs/transforms.yaml",
+  "evaluation_matrix_sha256": "ff8b2c24739a833b2c6a970d1c2e64ee14f25af8554bd2f3f7d8aa589a4acbea",
+  "evaluation_overrides": {},
+  "experiment": "student_mnv3",
+  "hostname": "TC2N03",
+  "output_directory": "/home/msai/xjiang026/projects/repostguard-lite/outputs/community_forensics_v31/student_ablation_baseline_t3/dev_family_unseen_robustness",
+  "parameters": {
+    "frozen": 0,
+    "total": 4203313,
+    "trainable": 4203313
+  },
+  "platform": "Linux-5.14.0-503.14.1.el9_5.x86_64-x86_64-with-glibc2.34",
+  "python": "3.10.20",
+  "slurm_job_id": "33015",
+  "summary": {
+    "clean_auroc": 0.791870849120123,
+    "clean_balanced_accuracy": 0.7210578842315369,
+    "conditions": 18,
+    "delta_auroc": 0.036626699635834536,
+    "experiment": "student_mnv3",
+    "robust_mean_auroc": 0.7552441494842884,
+    "robust_mean_balanced_accuracy": 0.6550722085241282,
+    "robust_worst_auroc": 0.6899374902888833,
+    "robust_worst_transform": "center_crop__ratio=0.8__jpeg__quality=50",
+    "threshold_from_clean_validation": 0.50634765625
+  },
+  "torch": "2.5.1+cu121",
+  "torchvision": "0.20.1+cu121",
+  "train_manifest_sha256": "7130f00e2cbacd4b220c54c093a4ae0c3bae50fd56598c89bda12178a9b83126",
+  "val_manifest_sha256": "d25711022cf049da9e0d92cc869b114d7528c81435e50d000ee42f369e3068ac"
+}

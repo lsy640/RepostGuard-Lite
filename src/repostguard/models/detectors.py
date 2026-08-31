@@ -10,6 +10,7 @@ from torchvision.models import EfficientNet_B0_Weights, efficientnet_b0
 
 from repostguard.models.forensic import ForensicBranch
 from repostguard.models.quality_gate import QualityAwareGate
+from repostguard.models.student import MobileNetV3ForensicStudent, MobileNetV3Student
 
 
 class ChannelNormalize(nn.Module):
@@ -46,7 +47,7 @@ class FrozenClipEncoder(nn.Module):
     def __init__(
         self,
         model_name: str,
-        pretrained: str,
+        pretrained: str | None,
         cache_dir: str,
         mean: list[float],
         std: list[float],
@@ -212,22 +213,65 @@ class RepostGuardM3(RepostGuardM2):
         }
 
 
-def build_model(config: dict[str, Any]) -> nn.Module:
+def build_model(
+    config: dict[str, Any], *, load_pretrained: bool = True
+) -> nn.Module:
     model_config = config["model"]
     experiment = str(model_config["experiment"]).lower()
     if experiment in {"b0", "b1"}:
         if model_config["cnn_backbone"] != "efficientnet_b0":
             raise ValueError("The pilot currently supports only efficientnet_b0 for B0/B1")
         return EfficientNetDetector(
-            bool(model_config["cnn_pretrained"]),
+            bool(model_config["cnn_pretrained"]) and load_pretrained,
             float(model_config["dropout"]),
         )
     if experiment == "b2":
-        return ClipLinearDetector(model_config)
+        runtime_config = dict(model_config)
+        if not load_pretrained:
+            runtime_config["clip_pretrained"] = None
+        return ClipLinearDetector(runtime_config)
     if experiment == "m2":
-        return RepostGuardM2(model_config)
+        runtime_config = dict(model_config)
+        if not load_pretrained:
+            runtime_config["clip_pretrained"] = None
+        return RepostGuardM2(runtime_config)
     if experiment == "m3":
-        return RepostGuardM3(model_config)
+        runtime_config = dict(model_config)
+        if not load_pretrained:
+            runtime_config["clip_pretrained"] = None
+        return RepostGuardM3(runtime_config)
+    if experiment == "student_mnv3":
+        backbone = str(model_config.get("student_backbone", "mobilenet_v3_large"))
+        if backbone != "mobilenet_v3_large":
+            raise ValueError("The first student stage supports only mobilenet_v3_large")
+        forensic_config = dict(model_config.get("student_forensic", {}))
+        if bool(forensic_config.get("enabled", False)):
+            return MobileNetV3ForensicStudent(
+                pretrained=bool(model_config.get("student_pretrained", True))
+                and load_pretrained,
+                forensic_pretrained=bool(
+                    forensic_config.get("pretrained", True)
+                )
+                and load_pretrained,
+                dropout=float(model_config["dropout"]),
+                distill_dim=int(forensic_config.get("distill_dim", 256)),
+                fusion_dim=int(forensic_config.get("fusion_dim", 512)),
+                use_npr=bool(forensic_config.get("use_npr", False)),
+                quality_gate_enabled=bool(
+                    forensic_config.get("quality_gate_enabled", False)
+                ),
+                quality_gate_hidden_dim=int(
+                    forensic_config.get("quality_gate_hidden_dim", 16)
+                ),
+                fusion_uses_projected_semantic=bool(
+                    forensic_config.get("fusion_uses_projected_semantic", False)
+                ),
+            )
+        return MobileNetV3Student(
+            pretrained=bool(model_config.get("student_pretrained", True))
+            and load_pretrained,
+            dropout=float(model_config["dropout"]),
+        )
     raise ValueError(f"Unsupported experiment: {experiment}")
 
 

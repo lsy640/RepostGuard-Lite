@@ -1,0 +1,21 @@
+# Compact external robustness matrix: clean plus one representative setting
+# per corruption family, one realistic repost chain, and the strict composite.
+evaluation:
+  - {name: clean, params: {}}
+  - {name: jpeg, params: {quality: 50}}
+  - {name: gaussian_blur, params: {sigma: 1.0}}
+  - {name: resize, params: {scale: 0.5, interpolation: bicubic}}
+  - {name: resize, params: {scale: 0.25, interpolation: bilinear}}
+  - {name: gaussian_noise, params: {sigma: 0.05, seed: 20260827}}
+  - {name: color_jitter, params: {brightness: 1.2, contrast: 1.2, saturation: 1.2}}
+  - name: combo_four_stage_platform_repost
+    params:
+      transforms:
+        - {name: center_crop, params: {ratio: 0.85}}
+        - {name: resize, params: {scale: 0.5, interpolation: bicubic}}
+        - {name: gaussian_blur, params: {sigma: 1.0}}
+        - {name: jpeg, params: {quality: 50}}
+  - name: strict_random_six
+    params:
+      profile: full_training_range_v1
+      seed: 20260829

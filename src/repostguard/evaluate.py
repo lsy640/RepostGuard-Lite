@@ -186,7 +186,7 @@ def evaluate(
         raise RuntimeError("CUDA is required for this SLURM evaluation job")
     device = torch.device("cuda")
     _set_seed(int(config["seed"]), bool(config.get("deterministic", True)))
-    model = build_model(config).to(device)
+    model = build_model(config, load_pretrained=False).to(device)
     model.load_state_dict(checkpoint["model"], strict=True)
 
     resolved_matrix_path = matrix_path or config["evaluation"]["matrix"]

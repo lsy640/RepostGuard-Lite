@@ -1,0 +1,114 @@
+seed: 20260830
+deterministic: true
+data:
+  root: data/raw/community_forensics
+  train_manifest: data/manifests/community_forensics_train_v31_family_holdout.csv
+  val_manifest: data/manifests/community_forensics_val_family_unseen_dev_v1.csv
+  image_size: 224
+  num_workers: 6
+  pin_memory: true
+  persistent_workers: true
+  train_clean_probability: 0.25
+  train_single_probability: 0.5
+  train_double_probability: 0.25
+  validation_slices:
+    exact_seen_generator: data/manifests/community_forensics_val_external_exact_seen_generator.csv
+    hard_hourglass_exact_seen: data/manifests/community_forensics_val_hard_hourglass_v2_exact_seen.csv
+    hard_dfgan_exact_seen: data/manifests/community_forensics_val_hard_dfgan_v2_exact_seen.csv
+    hard_galip_exact_seen: data/manifests/community_forensics_val_hard_galip_v2_exact_seen.csv
+  external_tests:
+    unseen_generator: data/manifests/community_forensics_test_external_unseen_generator.csv
+    unseen_generator_expanded: data/manifests/community_forensics_test_external_unseen_generator_v3_expanded.csv
+  format_debias:
+    enabled: true
+    train_qualities:
+    - 70
+    - 80
+    - 90
+    - 95
+    eval_quality: 90
+    jpeg_subsampling: 2
+model:
+  experiment: student_mnv3
+  student_backbone: mobilenet_v3_large
+  student_pretrained: true
+  dropout: 0.2
+  student_forensic:
+    enabled: false
+    pretrained: true
+    distill_dim: 256
+    fusion_dim: 512
+train:
+  epochs: 20
+  batch_size: 128
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  warmup_ratio: 0.05
+  min_learning_rate_ratio: 0.05
+  amp: true
+  gradient_accumulation: 1
+  grad_clip_norm: 1.0
+  log_every_steps: 20
+  checkpoint_every_steps: 250
+  resume: auto
+  lambda_kl: 0.5
+  lambda_feature: 0.25
+evaluation:
+  batch_size: 256
+  threshold: auto
+  matrix: configs/transforms.yaml
+distillation:
+  m2_config: configs/community_forensics_v3/m2.yaml
+  m2_checkpoint: outputs/community_forensics_v3/m2/best.pt
+  m3_config: configs/community_forensics_v3/m3.yaml
+  m3_checkpoint: outputs/community_forensics_v3/m3/best.pt
+  cache_directory: data/cache/teacher_logits/community_forensics_m3_v31_features
+  require_preprocessing_digest: true
+  m2_weight: 0.0
+  m3_weight: 1.0
+  temperature: 3.0
+  teacher_checkpoint_sha256:
+    m2: 468d3a58603fdf8dfe1b234a24fd8e52a99c6e4881e921bef6bb0cea64bbac34
+    m3: c83f70641a9c8d7f6808e794cfc8c28c0e478feeca7506e489c772a512115b2f
+  teacher_calibration_temperatures:
+    m2: 14.50161361694336
+    m3: 14.526344299316406
+  disagreement_threshold: 0.25
+  disagreement_scale: 0.25
+  hard_label_weight: 0.5
+  soft_teacher_weight: 0.4
+  consistency_weight: 0.1
+  views:
+  - id: clean
+    name: clean
+    params: {}
+  - id: jpeg50
+    name: jpeg
+    params:
+      quality: 50
+  - id: resize50_jpeg70
+    name: combo_resize_jpeg
+    params:
+      transforms:
+      - name: resize
+        params:
+          scale: 0.5
+          interpolation: bicubic
+      - name: jpeg
+        params:
+          quality: 70
+  - id: strict6
+    name: strict_random_six
+    params:
+      seed: 20260830
+      profile: full_training_range_v1
+  feature_weight: 0.0
+  feature_distillation:
+    enabled: false
+    teacher_dim: 256
+    branch_weights:
+      semantic: 0.35
+      forensic: 0.35
+      fused: 0.3
+output:
+  directory: outputs/community_forensics_v31/student_ablation_baseline_t3

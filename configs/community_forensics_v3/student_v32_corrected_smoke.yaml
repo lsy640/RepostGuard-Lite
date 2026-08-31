@@ -1,0 +1,8 @@
+base: student_v32_corrected.yaml
+
+train:
+  epochs: 2
+  checkpoint_every_steps: 100
+
+output:
+  directory: outputs/community_forensics_v32/student_corrected_smoke

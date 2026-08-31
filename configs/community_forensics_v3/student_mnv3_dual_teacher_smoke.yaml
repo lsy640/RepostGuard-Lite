@@ -1,0 +1,23 @@
+base: student_mnv3_dual_teacher.yaml
+
+data:
+  train_manifest: data/manifests/community_forensics_train_v3_student_smoke.csv
+  val_manifest: data/manifests/community_forensics_val_student_smoke_v3.csv
+  num_workers: 2
+  persistent_workers: false
+
+train:
+  epochs: 2
+  batch_size: 64
+  checkpoint_every_steps: 25
+  log_every_steps: 10
+  resume: none
+
+evaluation:
+  batch_size: 128
+
+distillation:
+  cache_directory: data/cache/teacher_logits/community_forensics_m2_m3_smoke_v3
+
+output:
+  directory: outputs/community_forensics_v3/student_mnv3_dual_teacher_smoke

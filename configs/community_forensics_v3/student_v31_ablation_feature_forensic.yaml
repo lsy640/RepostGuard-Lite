@@ -1,0 +1,26 @@
+base: student_v31_base.yaml
+
+model:
+  student_forensic:
+    enabled: true
+    pretrained: true
+    distill_dim: 256
+    fusion_dim: 512
+
+distillation:
+  temperature: 1.0
+  # Preserve the baseline 5:4:1 balance inside the non-feature 80% budget.
+  hard_label_weight: 0.40
+  soft_teacher_weight: 0.32
+  consistency_weight: 0.08
+  feature_weight: 0.20
+  feature_distillation:
+    enabled: true
+    teacher_dim: 256
+    branch_weights:
+      semantic: 0.35
+      forensic: 0.35
+      fused: 0.30
+
+output:
+  directory: outputs/community_forensics_v31/student_ablation_feature_forensic

@@ -1,0 +1,8 @@
+base: student_mnv3_dual_teacher_smoke.yaml
+
+distillation:
+  m2_weight: 0.0
+  m3_weight: 1.0
+
+output:
+  directory: outputs/community_forensics_v3/student_mnv3_m3_primary_smoke

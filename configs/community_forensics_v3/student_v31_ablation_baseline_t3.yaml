@@ -1,0 +1,7 @@
+base: student_v31_base.yaml
+
+distillation:
+  temperature: 3.0
+
+output:
+  directory: outputs/community_forensics_v31/student_ablation_baseline_t3

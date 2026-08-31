@@ -1,24 +1,53 @@
 # Student Distillation 完整产物
 
-本目录是 MobileNetV3-Large Student 蒸馏模型的完整交付入口。每一轮模型的权重、冻结配置、独立报告、测试结果、逐样本预测和手机端导出均放在对应模型子目录内。
+本目录是 RepostGuard-Lite Student 蒸馏模型的版本化交付入口。已完成轮次的 checkpoint、冻结配置、评测汇总、运行审计和逐样本预测均放在对应子目录内；尚在训练的 V3.2 full-refit 只发布代码、配置、数据清单与实验计划，不提前发布不完整权重或结果。
 
-| 模型目录 | M2 比例 | M3 比例 | Student 参数量 | 说明 |
+## 版本索引
+
+| 模型目录 | M2 比例 | M3 比例 | Student 参数量 | 状态与用途 |
 |---|---:|---:|---:|---|
-| [`v1_m2_30_m3_70/`](v1_m2_30_m3_70/) | 30% | 70% | 4,203,313 | 第一轮双教师蒸馏 |
-| [`v3_first_m2_0_m3_100/`](v3_first_m2_0_m3_100/) | 0% | 100% | 4,203,313 | train-v3 第一版，实际为 M3-only |
+| [`v1_m2_30_m3_70/`](v1_m2_30_m3_70/) | 30% | 70% | 4,203,313 | 第一轮双教师蒸馏；含移动端导出 |
+| [`v3_first_m2_0_m3_100/`](v3_first_m2_0_m3_100/) | 0% | 100% | 4,203,313 | **V3.0**：train-v3 第一版，M3-only；含移动端导出 |
+| [`v3_1_t3_baseline/`](v3_1_t3_baseline/) | 0% | 100% | 4,203,313 | **V3.1 baseline**：T=3，family-unseen 基线 |
+| [`v3_1_t1_diagnostic/`](v3_1_t1_diagnostic/) | 0% | 100% | 4,203,313 | **V3.1 diagnostic**：仅把 KD temperature 改为 T=1 |
+| [`v3_2_corrected_epoch3/`](v3_2_corrected_epoch3/) | 0% | 100% | 7,955,038 | **V3.2 corrected**：T=1 + feature/forensic distillation；冻结的 epoch-3 winner |
 
-## 同一内部验证协议下的简要对比
+V3.1/V3.2 当前完成运行没有生成 ONNX/TorchScript，因此这里只提交实际存在的全部产物，不伪造移动端文件。V1 与 V3.0 的 ONNX、TorchScript 和 parity 结果仍保留在各自的 `mobile/` 子目录。
 
-| 指标 | V1：M2 30% / M3 70% | V3 第一版：M2 0% / M3 100% |
-|---|---:|---:|
-| Clean AUROC | 0.975284 | 0.983660 |
-| Clean balanced accuracy | 0.930500 | 0.945500 |
-| Robust mean AUROC | 0.964239 | 0.973722 |
-| Robust mean balanced accuracy | 0.892059 | 0.899676 |
-| Robust worst AUROC | 0.927802 | 0.953880 |
+## 同一 family-unseen 内部验证协议下的对比
 
-两轮内部评测使用相同验证 manifest 和相同 transform matrix。外部测试的样本构成及协议并不完全相同，详细指标、限制和产物 SHA-256 请进入各模型目录查看 `README.md`。
+以下 V3.1 T=3 与 V3.2 corrected 使用相同的 19-family holdout manifest 和相同的 18-condition transform matrix，可以直接 A/B。V1/V3.0 使用的是另一套内部固定验证协议，不能把其高分直接与本表比较。
 
-## 为什么完整提交模型文件
+| 指标 | V3.1 T=3 baseline | V3.2 corrected epoch 3 | 变化 |
+|---|---:|---:|---:|
+| Clean AUROC | 0.791871 | 0.836965 | +0.045094 |
+| Clean balanced accuracy | 0.721058 | 0.780439 | +0.059381 |
+| Robust mean AUROC | 0.755244 | 0.816711 | +0.061467 |
+| Robust mean balanced accuracy | 0.655072 | 0.731273 | +0.076201 |
+| Robust worst AUROC | 0.689937 | 0.769403 | +0.079466 |
 
-本次两轮结果总量较小，单文件最大约 51 MB。为了让接收方可以直接复现评测、检查单样本错误并开展手机端测试，本目录完整保留 checkpoint、ONNX、TorchScript 和 `predictions.jsonl`。这些文件是有意覆盖仓库默认忽略规则后提交的。
+V3.2 corrected 还在一次性受保护 expanded V3 unseen 4k（21 conditions）上得到：Clean AUROC **0.906329**、Clean balanced accuracy **0.810500**、Robust mean AUROC **0.871061**、Robust mean balanced accuracy **0.732813**、Robust worst AUROC **0.812674**。该 4k 结果只作最终报告，未用于 checkpoint 选择或调参。
+
+V3.1 T=1 是诊断运行：best checkpoint 的内部 Clean AUROC 为 **0.783724**，低于同轮 T=3 baseline；它没有完成同口径的 18-condition robustness 评测，因此不放进上面的完整对比表。
+
+## 正在训练：V3.2 full-refit e20（含原 19 个 holdout families）
+
+报告撰写时正在训练的最终候选是 `student_v32_full_refit_e20`。它从头训练，并将 family-unseen 开发阶段暂时剔除的 **19 个 families、2,004 张样本**放回训练集，使用完整 **24,000 行** train-v3 manifest。冻结的 V3.2 epoch-3 模型仍作为 rollback 和 family-unseen 证据模型，不会被覆盖。
+
+架构和蒸馏方法：
+
+- M3-only teacher（M2 0% / M3 100%），不重训教师；
+- MobileNetV3-Large semantic branch + EfficientNet-B0 lightweight forensic/NPR branch；
+- projected feature fusion 与 quality gate，总参数量约 7.96M；
+- 每个 view 的 affine Platt calibration，KD temperature `T=1`；
+- hard / soft-KD / consistency / feature loss = `0.50 / 0.15 / 0.05 / 0.30`；
+- feature 项包含 pointwise、relational 与 quality-gate distillation；
+- 20 epochs，`best.pt` 只由冻结、训练不重叠、非 protected validation 选择；protected external 4k 不参与选 epoch。
+
+训练集为 24,000 行；独立 validation 为 1,500 行（750 Real + 750 AIGI，AIGI 中 LatDiff/GAN/PixDiff 各 250），并通过 `sample_id`、路径和 SHA-256 去重门禁。当前状态为 **training in progress / results pending**。完整定义见 [`../reports/plans/STUDENT_V32_FULL_REFIT_E20_PLAN.md`](../reports/plans/STUDENT_V32_FULL_REFIT_E20_PLAN.md)、[`../configs/community_forensics_v3/student_v32_full_refit_e20.yaml`](../configs/community_forensics_v3/student_v32_full_refit_e20.yaml) 和 [`../data/manifests/community_forensics_val_v32_full_refit_e20.csv`](../data/manifests/community_forensics_val_v32_full_refit_e20.csv)。训练完成后再在本目录增加最终模型版本，不能把当前 epoch-3 结果冒充 full-refit 结果。
+
+## 产物与复现边界
+
+本目录有意提交 `best.pt`、`latest.pt`、全部现有 `predictions.jsonl`、配置、metrics、summary、run card、quality-gate audit 和必要实现代码。原因是总体数据量仍较小，完整保留可让接收方复查单样本错误、checkpoint lineage 和评测口径。每个新增版本目录提供 `SHA256SUMS.txt`。
+
+外部测试之间的样本构成和协议并不完全一致；跨数据集数值不能视作严格 A/B。各目录中的 `resolved_config.yaml`、`run_card.json`、`summary.json` 和逐样本预测是最终审计依据。

@@ -1,0 +1,15 @@
+base: student_v32_corrected.yaml
+
+data:
+  train_manifest: data/manifests/community_forensics_train_v3.csv
+  val_manifest: data/manifests/community_forensics_val_v32_full_refit_e20.csv
+  num_workers: 10
+
+distillation:
+  cache_directory: data/cache/teacher_logits/community_forensics_m3_v32_full_refit_e20
+
+train:
+  epochs: 20
+
+output:
+  directory: outputs/community_forensics_v32_full_refit_e20/student_corrected

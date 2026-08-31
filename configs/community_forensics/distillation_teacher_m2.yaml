@@ -1,0 +1,4 @@
+base: m2.yaml
+
+output:
+  directory: outputs/community_forensics/distillation_teacher_m2

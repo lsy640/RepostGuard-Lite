@@ -1,0 +1,54 @@
+base: base.yaml
+
+model:
+  experiment: student_mnv3
+  student_backbone: mobilenet_v3_large
+  student_pretrained: true
+  dropout: 0.2
+
+train:
+  epochs: 20
+  batch_size: 128
+  gradient_accumulation: 1
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  checkpoint_every_steps: 250
+
+evaluation:
+  batch_size: 256
+
+distillation:
+  m2_config: configs/community_forensics/distillation_teacher_m2.yaml
+  m2_checkpoint: outputs/community_forensics/distillation_teacher_m2/best.pt
+  m3_config: configs/community_forensics/distillation_teacher_m3.yaml
+  m3_checkpoint: outputs/community_forensics/distillation_teacher_m3/best.pt
+  cache_directory: data/cache/teacher_logits/community_forensics_m2_m3_v1
+  m2_weight: 0.3
+  m3_weight: 0.7
+  temperature: 3.0
+  # Replace these values with scripts/calibrate_teacher_logits.py output
+  # before the frozen full run.  Keeping them explicit makes checkpoint
+  # configuration digests capture the exact calibration used.
+  teacher_calibration_temperatures:
+    m2: 1.0
+    m3: 1.0
+  disagreement_threshold: 0.25
+  disagreement_scale: 0.25
+  hard_label_weight: 0.5
+  soft_teacher_weight: 0.4
+  consistency_weight: 0.1
+  views:
+    - {id: clean, name: clean, params: {}}
+    - {id: jpeg50, name: jpeg, params: {quality: 50}}
+    - id: resize50_jpeg70
+      name: combo_resize_jpeg
+      params:
+        transforms:
+          - {name: resize, params: {scale: 0.5, interpolation: bicubic}}
+          - {name: jpeg, params: {quality: 70}}
+    - id: strict6
+      name: strict_random_six
+      params: {seed: 20260829, profile: full_training_range_v1}
+
+output:
+  directory: outputs/community_forensics/student_mnv3_dual_teacher

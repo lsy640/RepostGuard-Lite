@@ -1,0 +1,51 @@
+{
+  "dev_label_counts": {
+    "0": 1002,
+    "1": 1002
+  },
+  "dev_manifest": "data/manifests/community_forensics_val_family_unseen_dev_v1.csv",
+  "dev_real_sources": {
+    "COCO": 21,
+    "FFHQ": 21,
+    "LAION": 21,
+    "RAISE": 21,
+    "UNSPECIFIED": 918
+  },
+  "dev_rows": 2004,
+  "dev_sha256": "d25711022cf049da9e0d92cc869b114d7528c81435e50d000ee42f369e3068ac",
+  "input_manifest": "data/manifests/community_forensics_train_v3.csv",
+  "input_sha256": "fc0a7ab732faeb604ed1e77281fada715d7cffb353974a4985820548d871d9d6",
+  "schema_version": 1,
+  "seed": 20260831,
+  "selected_aigi_rows": 1002,
+  "selected_architectures": {
+    "GAN": 427,
+    "LatDiff": 120,
+    "PixDiff": 455
+  },
+  "selected_generator_groups": [
+    "004t/diffusion-4.0",
+    "004t/v3-5",
+    "biggan",
+    "circulus/sd-photoreal-semi-v2",
+    "guideddiffusion",
+    "guizmus/sdart-synesthesia",
+    "hourglass",
+    "jade1211/textual-inversion-bambi",
+    "johnhex/clam",
+    "mahmoudelaref/dilbert-dreambooth",
+    "progan",
+    "raw-vitor/henry",
+    "sam749/seekyou-mikan",
+    "stablediffusionapi/explicit-freedom-nsfw-wai",
+    "stylegan2-ada",
+    "stylesanxl",
+    "styleswin",
+    "tobin2003/my-pet-dog",
+    "vashu73/my-cat"
+  ],
+  "target_aigi_rows": 1000,
+  "train_manifest": "data/manifests/community_forensics_train_v31_family_holdout.csv",
+  "train_rows": 21996,
+  "train_sha256": "7130f00e2cbacd4b220c54c093a4ae0c3bae50fd56598c89bda12178a9b83126"
+}

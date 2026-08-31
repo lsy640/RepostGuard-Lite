@@ -1,0 +1,23 @@
+base: student_mnv3_dual_teacher_frozen.yaml
+
+data:
+  train_manifest: data/manifests/community_forensics_train_v31_family_holdout.csv
+  val_manifest: data/manifests/community_forensics_val_family_unseen_dev_v1.csv
+
+model:
+  student_forensic:
+    enabled: false
+    pretrained: true
+    distill_dim: 256
+    fusion_dim: 512
+
+distillation:
+  cache_directory: data/cache/teacher_logits/community_forensics_m3_v31_features
+  feature_weight: 0.0
+  feature_distillation:
+    enabled: false
+    teacher_dim: 256
+    branch_weights:
+      semantic: 0.35
+      forensic: 0.35
+      fused: 0.30

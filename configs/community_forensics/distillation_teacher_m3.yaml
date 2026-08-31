@@ -1,0 +1,4 @@
+base: m3.yaml
+
+output:
+  directory: outputs/community_forensics/distillation_teacher_m3

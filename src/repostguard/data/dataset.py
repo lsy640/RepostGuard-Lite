@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import csv
+import os
 import random
 from collections import Counter
 from pathlib import Path
@@ -176,6 +177,10 @@ def build_format_debias_config(data_config: dict[str, Any]) -> FormatDebiasConfi
 def build_train_loader(config: dict[str, Any]) -> DataLoader[dict[str, Any]]:
     data_config = config["data"]
     experiment = config["model"]["experiment"].lower()
+    if experiment == "student_mnv3":
+        from repostguard.data.distillation import build_distillation_train_loader
+
+        return build_distillation_train_loader(config)
     robust = experiment in {"b1", "m2", "m3"}
     paired = experiment in {"m2", "m3"}
     probabilities = AugmentationProbabilities(
@@ -201,7 +206,9 @@ def build_train_loader(config: dict[str, Any]) -> DataLoader[dict[str, Any]]:
         replacement=True,
         generator=generator,
     )
-    workers = int(data_config["num_workers"])
+    workers = int(os.environ.get("REPOSTGUARD_NUM_WORKERS", data_config["num_workers"]))
+    if workers < 0:
+        raise ValueError("REPOSTGUARD_NUM_WORKERS must be non-negative")
     return DataLoader(
         dataset,
         batch_size=int(config["train"]["batch_size"]),
@@ -227,7 +234,9 @@ def build_eval_loader(
         format_debias=build_format_debias_config(data_config),
         training=False,
     )
-    workers = int(data_config["num_workers"])
+    workers = int(os.environ.get("REPOSTGUARD_NUM_WORKERS", data_config["num_workers"]))
+    if workers < 0:
+        raise ValueError("REPOSTGUARD_NUM_WORKERS must be non-negative")
     generator = torch.Generator()
     generator.manual_seed(int(config["seed"]))
     return DataLoader(
