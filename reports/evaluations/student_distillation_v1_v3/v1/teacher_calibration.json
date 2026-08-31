@@ -1,0 +1,25 @@
+{
+  "binary_cross_entropy": {
+    "m2_after": 0.6597509980201721,
+    "m2_before": 2.3409039974212646,
+    "m3_after": 0.6554503440856934,
+    "m3_before": 2.300292491912842
+  },
+  "cache_files": [
+    {
+      "path": "/home/msai/xjiang026/projects/repostguard-lite/data/cache/teacher_logits/community_forensics_m2_m3_calibration_v1/teacher_cache_000-of-001.pt",
+      "sha256": "b86095ae6e819fae7fbb27496f9907e1cab241aa6caf21324e1a89a243eea98d"
+    }
+  ],
+  "manifest_sha256": "11bfa4b6d7c538ce0a3d774c3f2902ac11ffc7dbe513de354f87fbaad1d6b6ba",
+  "samples": 2000,
+  "schema_version": 1,
+  "teacher_checkpoint_sha256": {
+    "m2": "59a5465b6fa0efd009ce524494c171364e0107b18e7a736bf52069d10625560e",
+    "m3": "494909e45d47a39fb54695c5227912842d96f024181ca8380ec6283a39029637"
+  },
+  "temperatures": {
+    "m2": 12.79295539855957,
+    "m3": 12.153532028198242
+  }
+}

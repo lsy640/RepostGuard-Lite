@@ -1,0 +1,22 @@
+{
+  "artifacts": {
+    "onnx": {
+      "bytes": 16808474,
+      "path": "/home/msai/xjiang026/projects/repostguard-lite/outputs/community_forensics_v3/student_mnv3_dual_teacher/mobile/student_mnv3_fp32.onnx",
+      "sha256": "cdfcec7c56eed55218879ae2aa2eb00f0eac248fa0922b5687e72feb672f2306"
+    },
+    "torchscript": {
+      "bytes": 16812452,
+      "path": "/home/msai/xjiang026/projects/repostguard-lite/outputs/community_forensics_v3/student_mnv3_dual_teacher/mobile/student_mnv3_fp32.torchscript.pt",
+      "sha256": "ae5e1acaa18ec9d214a07db30d4dbd41033459606f5e6d8884f0287215654650"
+    }
+  },
+  "checkpoint_sha256": "362f618e3486d82761126b9b1d959f6c08e46e53d6d4aa8f66a73ac4f035be74",
+  "config_sha256": "95b79afebe97375fe95a7f7068026bc9f10673cae20d8b95152e6354cd92f782",
+  "experiment": "student_mnv3",
+  "image_size": 224,
+  "input": "float32 RGB in [0,1], NCHW; normalization is embedded",
+  "output": "one binary AIGI logit per image",
+  "quantized": false,
+  "schema_version": 1
+}

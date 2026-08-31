@@ -1,0 +1,38 @@
+{
+  "checkpoint_path": "/home/msai/xjiang026/projects/repostguard-lite/outputs/community_forensics/student_mnv3_dual_teacher/best.pt",
+  "checkpoint_sha256": "ee78e66239bb5c5a8394f4c9fe3d165c5d985d016e343728231e0f7d43a0982c",
+  "config_path": "/home/msai/xjiang026/projects/repostguard-lite/configs/community_forensics/student_mnv3_dual_teacher_frozen.yaml",
+  "config_sha256": "ec890cd92e199b8cede5cecc4beb7283bd0fccd7e800c7fb8ad3f6b7626f66eb",
+  "cuda_runtime": "12.1",
+  "device": "NVIDIA L40S",
+  "evaluation_matrix_path": "/home/msai/xjiang026/projects/repostguard-lite/configs/transforms.yaml",
+  "evaluation_matrix_sha256": "ff8b2c24739a833b2c6a970d1c2e64ee14f25af8554bd2f3f7d8aa589a4acbea",
+  "evaluation_overrides": {},
+  "experiment": "student_mnv3",
+  "hostname": "TC2N03",
+  "output_directory": "/home/msai/xjiang026/projects/repostguard-lite/outputs/community_forensics/student_mnv3_dual_teacher",
+  "parameters": {
+    "frozen": 0,
+    "total": 4203313,
+    "trainable": 4203313
+  },
+  "platform": "Linux-5.14.0-503.14.1.el9_5.x86_64-x86_64-with-glibc2.34",
+  "python": "3.10.20",
+  "slurm_job_id": "32845",
+  "summary": {
+    "clean_auroc": 0.9752835,
+    "clean_balanced_accuracy": 0.9305,
+    "conditions": 18,
+    "delta_auroc": 0.01104444117647052,
+    "experiment": "student_mnv3",
+    "robust_mean_auroc": 0.9642390588235294,
+    "robust_mean_balanced_accuracy": 0.8920588235294118,
+    "robust_worst_auroc": 0.9278015,
+    "robust_worst_transform": "resize__interpolation=bilinear_scale=0.25",
+    "threshold_from_clean_validation": 0.79833984375
+  },
+  "torch": "2.5.1+cu121",
+  "torchvision": "0.20.1+cu121",
+  "train_manifest_sha256": "fdfddade1b8b400183ec03aaa912f203f5fb1edc28bad6e92709372a4340dc55",
+  "val_manifest_sha256": "11bfa4b6d7c538ce0a3d774c3f2902ac11ffc7dbe513de354f87fbaad1d6b6ba"
+}

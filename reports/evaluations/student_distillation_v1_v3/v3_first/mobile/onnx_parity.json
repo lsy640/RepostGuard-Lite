@@ -1,0 +1,30 @@
+{
+  "cases": {
+    "ones": {
+      "max_abs_error": 2.291053533554077e-06,
+      "max_rel_error": 3.816178650595248e-05,
+      "shape": [
+        1
+      ]
+    },
+    "random_batch_3": {
+      "max_abs_error": 1.1920928955078125e-07,
+      "max_rel_error": 7.678328728388806e-08,
+      "shape": [
+        3
+      ]
+    },
+    "zeros": {
+      "max_abs_error": 7.152557373046875e-07,
+      "max_rel_error": 5.270435394777451e-07,
+      "shape": [
+        1
+      ]
+    }
+  },
+  "onnx": "/home/msai/xjiang026/projects/repostguard-lite/outputs/community_forensics_v3/student_mnv3_dual_teacher/mobile/student_mnv3_fp32.onnx",
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "status": "passed"
+}

@@ -1,0 +1,7 @@
+teacher_training=32755
+teacher_acceptance=32760
+teacher_train_cache=32763
+teacher_calibration=32767
+student_smoke=32769
+student_training=32770
+student_evaluation=32845

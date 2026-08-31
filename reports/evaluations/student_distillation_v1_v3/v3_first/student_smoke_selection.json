@@ -1,0 +1,14 @@
+{
+  "calibration_selected_m2_weight": 0.0,
+  "clean_auroc_regression": 0.0041680000000000605,
+  "dual_candidate_m2_weight": 0.3,
+  "dual_clean_auroc": 0.717344,
+  "dual_robust_mean_auroc": 0.7063774117647058,
+  "event": "student_smoke_selection",
+  "m3_clean_auroc": 0.721512,
+  "m3_robust_mean_auroc": 0.7124117647058823,
+  "maximum_clean_auroc_regression": 0.001,
+  "minimum_robust_auroc_gain": 0.002,
+  "robust_auroc_gain": -0.006034352941176491,
+  "winner": "m3_primary"
+}

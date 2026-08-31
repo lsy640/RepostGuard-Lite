@@ -1,0 +1,84 @@
+{
+  "accepted": true,
+  "data_root": "/home/msai/xjiang026/projects/repostguard-lite/data/raw/community_forensics",
+  "failure_count": 0,
+  "failures": [],
+  "manifests": [
+    {
+      "labels": {
+        "0": 9000,
+        "1": 9000
+      },
+      "path": "/home/msai/xjiang026/projects/repostguard-lite/data/manifests/community_forensics_train.csv",
+      "rows": 18000,
+      "sha256": "fdfddade1b8b400183ec03aaa912f203f5fb1edc28bad6e92709372a4340dc55"
+    },
+    {
+      "labels": {
+        "0": 1000,
+        "1": 1000
+      },
+      "path": "/home/msai/xjiang026/projects/repostguard-lite/data/manifests/community_forensics_val_unseen_generator.csv",
+      "rows": 2000,
+      "sha256": "11bfa4b6d7c538ce0a3d774c3f2902ac11ffc7dbe513de354f87fbaad1d6b6ba"
+    },
+    {
+      "labels": {
+        "0": 1000,
+        "1": 1000
+      },
+      "path": "/home/msai/xjiang026/projects/repostguard-lite/data/manifests/community_forensics_val_external_exact_seen_generator.csv",
+      "rows": 2000,
+      "sha256": "fc4bbd7d05c10f6b40b3009edd4213acd6e6cf4de5085930642353a7fc950ac3"
+    },
+    {
+      "labels": {
+        "0": 250,
+        "1": 250
+      },
+      "path": "/home/msai/xjiang026/projects/repostguard-lite/data/manifests/community_forensics_val_hard_hourglass.csv",
+      "rows": 500,
+      "sha256": "9cad78012352a0cee48475e1128f08cbecdd5b7283fa7e2f81a55dda5f3b2a3d"
+    },
+    {
+      "labels": {
+        "0": 250,
+        "1": 250
+      },
+      "path": "/home/msai/xjiang026/projects/repostguard-lite/data/manifests/community_forensics_val_hard_dfgan.csv",
+      "rows": 500,
+      "sha256": "1a60b7d517bb6d4935604778d146f4578d4e41b6469eee767b5d0aae9e9ba555"
+    },
+    {
+      "labels": {
+        "0": 250,
+        "1": 250
+      },
+      "path": "/home/msai/xjiang026/projects/repostguard-lite/data/manifests/community_forensics_val_hard_galip.csv",
+      "rows": 500,
+      "sha256": "bf9a5b60a52931f8d125182ac406c505678740a991b1d82367d03f52cb9e96dc"
+    },
+    {
+      "labels": {
+        "0": 1000,
+        "1": 1000
+      },
+      "path": "/home/msai/xjiang026/projects/repostguard-lite/data/manifests/community_forensics_test_external_seen_family.csv",
+      "rows": 2000,
+      "sha256": "c55d0652d4d95e17bf2c10c6a8dde2bdde5a4e5ea18a05baa22def0a669d1b42"
+    },
+    {
+      "labels": {
+        "0": 1000,
+        "1": 1000
+      },
+      "path": "/home/msai/xjiang026/projects/repostguard-lite/data/manifests/community_forensics_test_external_unseen_generator.csv",
+      "rows": 2000,
+      "sha256": "70434fc7b38ed2015cac67bc87897139fb202ffa13e736a5ce2f7c759833e42a"
+    }
+  ],
+  "schema_version": 1,
+  "unique_files": 27000,
+  "verified_bytes": 26318088950,
+  "workers": 10
+}

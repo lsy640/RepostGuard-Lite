@@ -1,0 +1,123 @@
+seed: 20260828
+deterministic: true
+data:
+  root: data/raw/community_forensics
+  train_manifest: data/manifests/community_forensics_train.csv
+  val_manifest: data/manifests/community_forensics_val_unseen_generator.csv
+  image_size: 224
+  num_workers: 6
+  pin_memory: true
+  persistent_workers: true
+  train_clean_probability: 0.25
+  train_single_probability: 0.5
+  train_double_probability: 0.25
+  validation_slices:
+    exact_seen_generator: data/manifests/community_forensics_val_external_exact_seen_generator.csv
+    hard_hourglass: data/manifests/community_forensics_val_hard_hourglass.csv
+    hard_dfgan: data/manifests/community_forensics_val_hard_dfgan.csv
+    hard_galip: data/manifests/community_forensics_val_hard_galip.csv
+  external_tests:
+    seen_family: data/manifests/community_forensics_test_external_seen_family.csv
+    unseen_generator: data/manifests/community_forensics_test_external_unseen_generator.csv
+  generator_protocol:
+    exact_seen_generator: exact identity seen in Small train, external source
+    seen_family: train-seen architecture family, exact identity unseen
+    unseen_generator: architecture family and exact identity both unseen
+  format_debias:
+    enabled: true
+    train_qualities:
+    - 70
+    - 80
+    - 90
+    - 95
+    eval_quality: 90
+    jpeg_subsampling: 2
+model:
+  experiment: student_mnv3
+  cnn_backbone: efficientnet_b0
+  cnn_pretrained: true
+  clip_model: ViT-B-32
+  clip_pretrained: laion2b_s34b_b79k
+  clip_cache_dir: data/cache/open_clip
+  clip_mean:
+  - 0.48145466
+  - 0.4578275
+  - 0.40821073
+  clip_std:
+  - 0.26862954
+  - 0.26130258
+  - 0.27577711
+  projection_dim: 256
+  dropout: 0.2
+  forensic:
+    patch_size: 56
+    patches_per_band: 2
+    dct_size: 16
+    output_dim: 256
+  student_backbone: mobilenet_v3_large
+  student_pretrained: true
+train:
+  epochs: 20
+  batch_size: 128
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  warmup_ratio: 0.05
+  min_learning_rate_ratio: 0.05
+  amp: true
+  gradient_accumulation: 1
+  grad_clip_norm: 1.0
+  log_every_steps: 20
+  checkpoint_every_steps: 250
+  resume: auto
+  lambda_kl: 0.5
+  lambda_feature: 0.25
+evaluation:
+  batch_size: 256
+  threshold: auto
+  matrix: configs/transforms.yaml
+output:
+  directory: outputs/community_forensics/student_mnv3_dual_teacher
+distillation:
+  m2_config: configs/community_forensics/distillation_teacher_m2.yaml
+  m2_checkpoint: outputs/community_forensics/distillation_teacher_m2/best.pt
+  m3_config: configs/community_forensics/distillation_teacher_m3.yaml
+  m3_checkpoint: outputs/community_forensics/distillation_teacher_m3/best.pt
+  cache_directory: data/cache/teacher_logits/community_forensics_m2_m3_v1
+  m2_weight: 0.3
+  m3_weight: 0.7
+  temperature: 3.0
+  teacher_calibration_temperatures:
+    m2: 12.79295539855957
+    m3: 12.153532028198242
+  disagreement_threshold: 0.25
+  disagreement_scale: 0.25
+  hard_label_weight: 0.5
+  soft_teacher_weight: 0.4
+  consistency_weight: 0.1
+  views:
+  - id: clean
+    name: clean
+    params: {}
+  - id: jpeg50
+    name: jpeg
+    params:
+      quality: 50
+  - id: resize50_jpeg70
+    name: combo_resize_jpeg
+    params:
+      transforms:
+      - name: resize
+        params:
+          scale: 0.5
+          interpolation: bicubic
+      - name: jpeg
+        params:
+          quality: 70
+  - id: strict6
+    name: strict_random_six
+    params:
+      seed: 20260829
+      profile: full_training_range_v1
+  teacher_checkpoint_sha256:
+    m2: 59a5465b6fa0efd009ce524494c171364e0107b18e7a736bf52069d10625560e
+    m3: 494909e45d47a39fb54695c5227912842d96f024181ca8380ec6283a39029637
