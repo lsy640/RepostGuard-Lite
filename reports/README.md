@@ -12,7 +12,6 @@
 | [`evaluations/robustness_v2/`](evaluations/robustness_v2/) | 六切片、21 条件的 B0/B1/B2/M2/M3 鲁棒性评测 | [Robustness-v2 报告](evaluations/robustness_v2/COMMUNITY_FORENSICS_B0_B1_B2_M2_M3_ROBUSTNESS_V2.html) |
 | [`evaluations/unseen_generator/`](evaluations/unseen_generator/) | strict unseen-generator 的详细固定阈值指标、曲线与切片结果 | [Unseen-generator 准确率报告](evaluations/unseen_generator/COMMUNITY_FORENSICS_UNSEEN_GENERATOR_ACCURACY.html) |
 | [`evaluations/train_v1_v2_comparison/`](evaluations/train_v1_v2_comparison/) | train-v1/v2 对齐指标、Strict unseen 105 条明细、审计与 HTML artifact | [对比 CSV](evaluations/train_v1_v2_comparison/community_forensics_train_v1_v2_split_comparison.csv) / [Strict unseen 全指标](evaluations/train_v1_v2_comparison/community_forensics_strict_unseen_all_metrics.csv) |
-| [`evaluations/student_distillation_v1_v3/`](evaluations/student_distillation_v1_v3/) | V1 与 train-v3 第一版 Student 的完整蒸馏、测试、checkpoint、逐样本预测和移动端导出 | [结果说明与指标对比](evaluations/student_distillation_v1_v3/README.md) |
 | [`atlases/`](atlases/) | 90 个精确生成器示意图、分图、索引和审计 | [总图](atlases/community_forensics_exact_generators_atlas.jpg) |
 | [`historical/`](historical/) | CIFAKE、SID-Set 原型阶段结果 | [CIFAKE](historical/INITIAL_RESULTS.md) / [SID-Set](historical/SIDSET_B0_B1_B2_M2_M3_SUMMARY.md) |
 
