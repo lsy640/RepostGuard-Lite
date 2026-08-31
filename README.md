@@ -11,6 +11,7 @@ RepostGuard-Lite 是一个面向社交平台转发、编辑和压缩场景的 AI
 | 文档 | 主 README 中的结论入口 |
 |---|---|
 | [完整 Reports 文件清单与审计索引](reports/README_reports.md) | 逐项覆盖 reports 下的主报告、CSV/JSON、审计、交付回执和图片资产，并标记当前、版本对比、历史与已知限制。 |
+| [Student Distillation 完整产物](student_distillation/README.md) | MobileNetV3-Large Student 的 V1 双教师与 train-v3 第一版蒸馏权重、配置、逐图预测、评测结果及 ONNX/TorchScript 导出入口。 |
 | [Robustness Evaluation Summary](reports/summaries/COMMUNITY_FORENSICS_V3_ROBUSTNESS_EVALUATION_SUMMARY.md) | 在 4,000 张 strict unseen-generator 图片上，M2 的 Clean AUROC 为 0.9308，20 个 transformed 条件平均为 0.9163，最坏六阶段条件为 0.8525；文档包含紧凑对比表、可视化、扰动分组和证据边界。 |
 | [Error Analysis Note](reports/summaries/COMMUNITY_FORENSICS_V3_ERROR_ANALYSIS_NOTE.md) | M2 的 Clean 错误为 334 FP / 235 FN，六阶段增至 432 FP / 507 FN；文档列出并展示代表性误报和漏报、来源/生成器错误集中，以及 M2、M3、B2 的部署权衡。 |
 
@@ -415,6 +416,7 @@ train-v3 配置位于 [`configs/community_forensics_v3/`](configs/community_fore
 configs/                 模型与数据配置
 src/repostguard/         数据、模型、损失、训练、评测与推理代码
 scripts/                 数据构建、诊断、报告和集群作业入口
+student_distillation/    Student 蒸馏权重、评测、逐图预测与移动端导出
 reports/README_reports.md 完整报告文件清单与静态审计索引
 reports/summaries/       当前数据、模型和实验总结
 reports/historical/      CIFAKE、SID-Set 等历史报告
