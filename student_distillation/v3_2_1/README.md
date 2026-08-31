@@ -39,7 +39,18 @@
 
 这里的冻结阈值为原 family-unseen 阈值 `0.060516357421875`；固定1500上计算的 `0.927734375` 只作为诊断阈值，不用于 protected external 4k。
 
-本版本没有生成 ONNX/TorchScript；移动端导出暂缓，因此目录只包含实际完成的 checkpoint、评测、审计和全部逐样本预测。
+## 移动端导出与 Galaxy S23 Ultra Demo
+
+最终 epoch-3 `best.pt` 已导出为 FP32 ONNX 与 TorchScript，见 [`mobile/`](mobile/)：
+
+| 产物 | Bytes | SHA-256 |
+|---|---:|---|
+| [`student_mnv3_fp32.onnx`](mobile/student_mnv3_fp32.onnx) | 31,333,268 | `f52796946ed3e2a770a7500e77a07aeb7ae8c9312bf414ad14b0be1b252c0a9a` |
+| [`student_mnv3_fp32.torchscript.pt`](mobile/student_mnv3_fp32.torchscript.pt) | 31,275,976 | `b2a29a4036b9978471993d1df0349d9843cbab8c1580037d03641362f2a19f7b` |
+
+导出同时返回 binary AIGI logit 与 `[semantic, forensic]` gate fractions。ONNX Runtime CPU parity 已通过：最大 probability error `0.000427231`，最大 gate error `0.000653714`。完整记录见 [`mobile/export_metadata.json`](mobile/export_metadata.json) 和 [`mobile/onnx_parity.json`](mobile/onnx_parity.json)。
+
+Galaxy S23 Ultra 离线测试 APK、30 张盲测图片包、安装说明与校验和见 [`android/`](android/)；可复现 Android 工程见仓库根目录 [`android/RepostGuardDemo/`](../../android/RepostGuardDemo/)。Demo 包含输入与结果、六类扰动鲁棒性实验台，以及语义/取证门控比例与 SRM-like/NPR proxy 热图。概率信号可能误报或漏报，热图不是模型 attribution，也不能替代内容溯源。
 
 ## 核心文件 SHA-256
 

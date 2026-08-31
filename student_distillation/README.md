@@ -12,7 +12,7 @@
 | [`v3_1_t1_diagnostic/`](v3_1_t1_diagnostic/) | 0% | 100% | 4,203,313 | **V3.1 diagnostic**：仅把 KD temperature 改为 T=1 |
 | [`v3_2_1/`](v3_2_1/) | 0% | 100% | 7,955,038 | **V3.2.1**：T=1 + feature/forensic distillation；冻结的 epoch-3 winner |
 
-V3.1/V3.2 当前完成运行没有生成 ONNX/TorchScript，因此这里只提交实际存在的全部产物，不伪造移动端文件。V1 与 V3.0 的 ONNX、TorchScript 和 parity 结果仍保留在各自的 `mobile/` 子目录。
+V3.1 两个诊断版本没有生成 ONNX/TorchScript。V3.2.1 已从最终 epoch-3 `best.pt` 导出 FP32 ONNX 与 TorchScript，并完成 PyTorch/ONNX Runtime parity；Galaxy S23 Ultra 测试 APK、Android 源码和 30 张盲测图片包也已发布。V1 与 V3.0 的原移动端导出仍保留在各自的 `mobile/` 子目录。
 
 ## 同一 family-unseen 内部验证协议下的对比
 

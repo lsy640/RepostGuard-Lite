@@ -13,6 +13,7 @@ RepostGuard-Lite 是一个面向社交平台转发、编辑和压缩场景的 AI
 | [前端演示与本地推理说明](demo-frontend/README.md) | Vue 3 前端与本地 FastAPI 推理服务的安装、启动、模型契约和测试入口；支持 M2/M3 单图分析、证据展示和鲁棒性实验。 |
 | [完整 Reports 文件清单与审计索引](reports/README_reports.md) | 逐项覆盖 reports 下的主报告、CSV/JSON、审计、交付回执和图片资产，并标记当前、版本对比、历史与已知限制。 |
 | [Student Distillation 完整产物](student_distillation/README.md) | V1、V3.0、V3.1 与 V3.2.1 Student 的完整权重、配置、逐图预测、评测和审计入口；同时记录 V3.2.2 full-refit 的诊断结论与停止原因。 |
+| [Galaxy S23 Ultra Android Demo](android/RepostGuardDemo/README.md) | V3.2.1 完全离线 Android 工程；包含结果、六类扰动实验台、门控比例和 SRM-like/NPR proxy 热图。测试 APK 与盲测图片包位于 `student_distillation/v3_2_1/android/`。 |
 | [Robustness Evaluation Summary](reports/summaries/COMMUNITY_FORENSICS_V3_ROBUSTNESS_EVALUATION_SUMMARY.md) | 在 4,000 张 strict unseen-generator 图片上，M2 的 Clean AUROC 为 0.9308，20 个 transformed 条件平均为 0.9163，最坏六阶段条件为 0.8525；文档包含紧凑对比表、可视化、扰动分组和证据边界。 |
 | [Error Analysis Note](reports/summaries/COMMUNITY_FORENSICS_V3_ERROR_ANALYSIS_NOTE.md) | M2 的 Clean 错误为 334 FP / 235 FN，六阶段增至 432 FP / 507 FN；文档列出并展示代表性误报和漏报、来源/生成器错误集中，以及 M2、M3、B2 的部署权衡。 |
 
@@ -421,7 +422,8 @@ train-v3 配置位于 [`configs/community_forensics_v3/`](configs/community_fore
 configs/                 模型与数据配置
 src/repostguard/         数据、模型、损失、训练、评测与推理代码
 scripts/                 数据构建、诊断、报告和集群作业入口
-student_distillation/    V1/V3.0/V3.1/V3.2 Student 权重、评测、预测、审计与 full-refit 计划
+student_distillation/    V1/V3.0/V3.1/V3.2.1 Student 权重、评测、移动端产物与 full-refit 诊断
+android/RepostGuardDemo/ V3.2.1 Galaxy S23 Ultra 完全离线测试工程
 reports/README_reports.md 完整报告文件清单与静态审计索引
 reports/summaries/       当前数据、模型和实验总结
 reports/historical/      CIFAKE、SID-Set 等历史报告

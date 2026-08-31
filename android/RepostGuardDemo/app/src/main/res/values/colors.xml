@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#F4F6FA</color>
+    <color name="surface">#FFFFFFFF</color>
+    <color name="primary">#335CFF</color>
+    <color name="text_primary">#172033</color>
+    <color name="text_secondary">#657087</color>
+    <color name="border">#DDE3EE</color>
+    <color name="result_real">#16794B</color>
+    <color name="result_ai">#B93838</color>
+    <color name="semantic">#335CFF</color>
+    <color name="forensic">#B24A9A</color>
+    <color name="warning">#E59A20</color>
+    <color name="notice_background">#FFF3D9</color>
+</resources>
