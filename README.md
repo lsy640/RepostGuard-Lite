@@ -10,6 +10,7 @@ RepostGuard-Lite 是一个面向社交平台转发、编辑和压缩场景的 AI
 
 | 文档 | 主 README 中的结论入口 |
 |---|---|
+| [前端演示与本地推理说明](demo-frontend/README.md) | Vue 3 前端与本地 FastAPI 推理服务的安装、启动、模型契约和测试入口；支持 M2/M3 单图分析、证据展示和鲁棒性实验。 |
 | [完整 Reports 文件清单与审计索引](reports/README_reports.md) | 逐项覆盖 reports 下的主报告、CSV/JSON、审计、交付回执和图片资产，并标记当前、版本对比、历史与已知限制。 |
 | [Student Distillation 完整产物](student_distillation/README.md) | MobileNetV3-Large Student 的 V1 双教师与 train-v3 第一版蒸馏权重、配置、逐图预测、评测结果及 ONNX/TorchScript 导出入口。 |
 | [Robustness Evaluation Summary](reports/summaries/COMMUNITY_FORENSICS_V3_ROBUSTNESS_EVALUATION_SUMMARY.md) | 在 4,000 张 strict unseen-generator 图片上，M2 的 Clean AUROC 为 0.9308，20 个 transformed 条件平均为 0.9163，最坏六阶段条件为 0.8525；文档包含紧凑对比表、可视化、扰动分组和证据边界。 |
