@@ -1,5 +1,14 @@
 # Student V3.2 full-data 20-epoch refit plan
 
+## Final status
+
+The frozen family-unseen winner is now named **V3.2.1**. The full-data refit is
+the **V3.2.2 diagnostic**. It completed the epoch-1 gate and resumed through
+epoch 10, but the fixed 1,500-image validation AUROC peaked at **0.726831** in
+epoch 1 and fell to **0.628780** by epoch 10. The planned epoch 11-20 stage was
+therefore not submitted. V3.2.1 epoch 3 remains the published winner; V3.2.2 is
+not released as a replacement model.
+
 ## Objective
 
 Train one final competition-oriented Student V3.2 experiment from scratch on the
