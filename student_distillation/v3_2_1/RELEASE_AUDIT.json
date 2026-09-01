@@ -1,0 +1,10 @@
+{
+  "checkpoint_sha256": "05edd57825cf28608d26fe77db92f364f37dcf7f070d757e82f85b9e2711cfea",
+  "external4k_rerun": false,
+  "family_unseen_rerun": false,
+  "repository_files_hashed": 24,
+  "remote_release_files_hashed": 33,
+  "fixed1500_inference_completed": true,
+  "release_name": "v3.2.1",
+  "schema_version": 1
+}

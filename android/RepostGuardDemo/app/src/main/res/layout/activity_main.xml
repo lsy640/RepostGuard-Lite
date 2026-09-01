@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="22dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="32dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textColor="@color/text_primary"
+            android:textSize="29sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/app_subtitle"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp" />
+
+        <!-- 1. Input and result -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/card_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/section_input_result"
+                android:textColor="@color/text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/inputImagePreview"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/image_background"
+                android:contentDescription="@string/image_placeholder"
+                android:padding="6dp"
+                android:scaleType="fitCenter" />
+
+            <Button
+                android:id="@+id/selectImageButton"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/primary"
+                android:text="@string/select_image"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp" />
+
+                <TextView
+                    android:id="@+id/statusText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:text="@string/loading_model"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/resultText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/result_waiting"
+                android:textColor="@color/text_primary"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/scoreText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@string/score_waiting"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/uncertaintyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:text="@string/uncertainty_waiting"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <ProgressBar
+                android:id="@+id/uncertaintyBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="4dp"
+                android:max="1000"
+                android:progress="0"
+                android:progressTint="@color/warning" />
+
+            <TextView
+                android:id="@+id/timingText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/timing_waiting"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/detailText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="@string/model_note"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- 2. Robustness workbench -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/card_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/section_robustness"
+                android:textColor="@color/text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/robustness_intro"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/original_image" android:textColor="@color/text_secondary" android:textSize="12sp" />
+                    <ImageView android:id="@+id/originalRobustnessPreview" android:layout_width="match_parent" android:layout_height="150dp" android:layout_marginTop="4dp" android:background="@drawable/image_background" android:contentDescription="@string/original_image" android:scaleType="fitCenter" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/perturbed_image" android:textColor="@color/text_secondary" android:textSize="12sp" />
+                    <ImageView android:id="@+id/transformedPreview" android:layout_width="match_parent" android:layout_height="150dp" android:layout_marginTop="4dp" android:background="@drawable/image_background" android:contentDescription="@string/perturbed_image" android:scaleType="fitCenter" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/robustnessScoreText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="9dp"
+                android:text="@string/robustness_waiting"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/robustnessStatusText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@string/robustness_ready"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <TextView android:id="@+id/jpegLabel" style="@style/ControlLabel" android:text="@string/jpeg_default" />
+            <SeekBar android:id="@+id/jpegSeek" style="@style/ControlSeekBar" android:max="6" android:progress="0" />
+            <TextView android:id="@+id/blurLabel" style="@style/ControlLabel" android:text="@string/blur_default" />
+            <SeekBar android:id="@+id/blurSeek" style="@style/ControlSeekBar" android:max="10" android:progress="0" />
+            <TextView android:id="@+id/resizeLabel" style="@style/ControlLabel" android:text="@string/resize_default" />
+            <SeekBar android:id="@+id/resizeSeek" style="@style/ControlSeekBar" android:max="9" android:progress="9" />
+            <TextView android:id="@+id/noiseLabel" style="@style/ControlLabel" android:text="@string/noise_default" />
+            <SeekBar android:id="@+id/noiseSeek" style="@style/ControlSeekBar" android:max="20" android:progress="0" />
+            <TextView android:id="@+id/jitterLabel" style="@style/ControlLabel" android:text="@string/jitter_default" />
+            <SeekBar android:id="@+id/jitterSeek" style="@style/ControlSeekBar" android:max="20" android:progress="10" />
+            <TextView android:id="@+id/cropLabel" style="@style/ControlLabel" android:text="@string/crop_default" />
+            <SeekBar android:id="@+id/cropSeek" style="@style/ControlSeekBar" android:max="10" android:progress="10" />
+
+            <Button
+                android:id="@+id/resetTransformsButton"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/reset_transforms"
+                android:textAllCaps="false" />
+        </LinearLayout>
+
+        <!-- 3. Evidence and limitations -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/card_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/section_evidence"
+                android:textColor="@color/text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/evidenceContextText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/evidence_context_waiting"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <TextView android:id="@+id/gateWeightsText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="@string/gate_waiting" android:textColor="@color/text_primary" android:textSize="14sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7dp" android:text="@string/semantic_branch" android:textColor="@color/text_secondary" android:textSize="12sp" />
+            <ProgressBar android:id="@+id/semanticGateBar" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="8dp" android:max="1000" android:progressTint="@color/semantic" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7dp" android:text="@string/forensic_branch" android:textColor="@color/text_secondary" android:textSize="12sp" />
+            <ProgressBar android:id="@+id/forensicGateBar" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="8dp" android:max="1000" android:progressTint="@color/forensic" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginEnd="4dp" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/srm_heatmap" android:textColor="@color/text_secondary" android:textSize="12sp" />
+                    <ImageView android:id="@+id/srmHeatmap" android:layout_width="match_parent" android:layout_height="150dp" android:layout_marginTop="4dp" android:background="@drawable/image_background" android:contentDescription="@string/srm_heatmap" android:scaleType="fitCenter" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginStart="4dp" android:layout_weight="1" android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/npr_heatmap" android:textColor="@color/text_secondary" android:textSize="12sp" />
+                    <ImageView android:id="@+id/nprHeatmap" android:layout_width="match_parent" android:layout_height="150dp" android:layout_marginTop="4dp" android:background="@drawable/image_background" android:contentDescription="@string/npr_heatmap" android:scaleType="fitCenter" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/evidence_note"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/notice_background"
+                android:padding="10dp"
+                android:text="@string/disclaimer"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

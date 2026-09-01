@@ -1,0 +1,61 @@
+{
+  "cases": {
+    "ones": {
+      "gate_shape": [
+        1,
+        2
+      ],
+      "max_abs_error": 0.0050013065338134766,
+      "max_gate_abs_error": 0.0006537139415740967,
+      "max_gate_sum_error": 0.0,
+      "max_probability_abs_error": 0.00042723119258880615,
+      "max_rel_error": 0.0022085439413785934,
+      "shape": [
+        1
+      ]
+    },
+    "random_batch_3": {
+      "gate_shape": [
+        3,
+        2
+      ],
+      "max_abs_error": 1.1801719665527344e-05,
+      "max_gate_abs_error": 5.960464477539063e-08,
+      "max_gate_sum_error": 0.0,
+      "max_probability_abs_error": 1.5497207641601562e-06,
+      "max_rel_error": 6.901286269567208e-06,
+      "shape": [
+        3
+      ]
+    },
+    "zeros": {
+      "gate_shape": [
+        1,
+        2
+      ],
+      "max_abs_error": 5.8650970458984375e-05,
+      "max_gate_abs_error": 0.0,
+      "max_gate_sum_error": 0.0,
+      "max_probability_abs_error": 1.0132789611816406e-06,
+      "max_rel_error": 1.4644818293163553e-05,
+      "shape": [
+        1
+      ]
+    }
+  },
+  "observed": {
+    "max_gate_abs_error": 0.0006537139415740967,
+    "max_logit_abs_error": 0.0050013065338134766,
+    "max_probability_abs_error": 0.00042723119258880615
+  },
+  "onnx": "/home/msai/xjiang026/projects/repostguard-lite/outputs/releases/v32_corrected_family_unseen_epoch3/mobile/student_mnv3_fp32.onnx",
+  "providers": [
+    "CPUExecutionProvider"
+  ],
+  "status": "passed",
+  "thresholds": {
+    "max_gate_abs_error": 0.001,
+    "max_logit_abs_error": 0.0051,
+    "max_probability_abs_error": 0.001
+  }
+}

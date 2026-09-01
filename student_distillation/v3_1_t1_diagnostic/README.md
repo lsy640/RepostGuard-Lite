@@ -14,7 +14,7 @@
 | Best internal Clean AUROC | 0.783724 |
 | Best internal balanced accuracy | 0.715569 |
 
-T=1 单独改动没有超过同协议 T=3 baseline（0.791871 Clean AUROC），说明温度并非唯一问题；这一结论推动了 V3.2 同时修正采样、校准并加入 feature/forensic distillation。
+T=1 单独改动没有超过同协议 T=3 baseline（0.791871 Clean AUROC），说明温度并非唯一问题；这一结论推动了 V3.2.1 同时修正采样、校准并加入 feature/forensic distillation。
 
 本运行只完成训练诊断，没有同口径 18-condition robustness、逐样本预测或移动端导出。`best.pt`、`latest.pt`、`DONE` 和冻结配置均完整保留，但不能把缺失评测写成已完成结果。
 

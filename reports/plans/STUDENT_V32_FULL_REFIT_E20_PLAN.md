@@ -1,8 +1,17 @@
-# Student V3.2 full-data 20-epoch refit plan
+# Student V3.2.2 full-data refit diagnostic record
 
-## Objective
+## Final status
 
-Train one final competition-oriented Student V3.2 experiment from scratch on the
+The frozen family-unseen winner is now named **V3.2.1**. The full-data refit is
+the **V3.2.2 diagnostic**. It completed the epoch-1 gate and resumed through
+epoch 10, but the fixed 1,500-image validation AUROC peaked at **0.726831** in
+epoch 1 and fell to **0.628780** by epoch 10. The planned epoch 11-20 stage was
+therefore not submitted. V3.2.1 epoch 3 remains the published winner; V3.2.2 is
+not released as a replacement model.
+
+## Original objective (superseded)
+
+The original plan was to train one competition-oriented Student V3.2.2 diagnostic from scratch on the
 full 24,000-row V3 training manifest, including the 2,004 samples from the 19
 families previously reserved for family-unseen development. Preserve the current
 family-unseen-selected epoch-3 model as the rollback and evidence model.
@@ -23,7 +32,7 @@ family-holdout experiment.
 ## Fixed experiment definition
 
 Create a new config, `configs/community_forensics_v3/student_v32_full_refit_e20.yaml`,
-that inherits the corrected V3.2 method and changes only the data/output/runtime
+that inherits the corrected V3.2.1 method and changes only the data/output/runtime
 fields required for the full refit:
 
 - train manifest: `data/manifests/community_forensics_train_v3.csv`
@@ -56,7 +65,7 @@ Gate before training:
 - cache sample count is exactly 24,000;
 - manifest SHA-256 matches the full manifest;
 - four configured views are present;
-- preprocessing and teacher checkpoint digests match V3.2;
+- preprocessing and teacher checkpoint digests match the V3.2.1 lineage;
 - logit, feature and gate shapes are valid;
 - sample IDs are unique and source bounds are valid.
 
@@ -65,8 +74,8 @@ job. Treat this as an estimate, not a guarantee.
 
 ## Stage 2: formal epoch-1 gate
 
-Start the final experiment itself with 1 GPU, 10 CPU and 30 GB, using
-`STOP_AFTER_EPOCH=1`. Epoch 1 is the smoke gate and writes directly to the final
+Start the diagnostic run itself with 1 GPU, 10 CPU and 30 GB, using
+`STOP_AFTER_EPOCH=1`. Epoch 1 is the smoke gate and writes directly to the run
 output directory; no separate throwaway training run is used. Confirm finite
 losses, deterministic startup, checkpoint lineage, sampling proportions and a
 successful resumable checkpoint. No mobile export and no protected external
@@ -81,7 +90,7 @@ training stage.
 ## Stage 3: epochs 2-10
 
 After the epoch-1 gate passes, resume the same experiment with
-`STOP_AFTER_EPOCH=10`. Do not clear the final output directory or reset any
+`STOP_AFTER_EPOCH=10`. Do not clear the run output directory or reset any
 training state.
 
 Gate at epoch 10:

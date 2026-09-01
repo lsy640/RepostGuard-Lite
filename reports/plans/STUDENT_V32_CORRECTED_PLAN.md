@@ -1,4 +1,8 @@
-# Student V3.2 corrected distillation
+# Student V3.2.1 corrected distillation
+
+> Naming note: this experiment was developed under the V3.2 corrected working
+> name and is released as **V3.2.1**. Configuration and output paths retain
+> `v32` for checkpoint-lineage compatibility.
 
 ## Why this is a separate version
 

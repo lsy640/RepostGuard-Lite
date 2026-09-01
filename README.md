@@ -4,7 +4,7 @@ RepostGuard-Lite 是一个面向社交平台转发、编辑和压缩场景的 AI
 
 当前主实验版本为 **Community Forensics train-v3**。在完整 4,000 张 strict unseen-generator 测试集上，M2 的 Clean AUROC 为 **0.9308**、Accuracy 为 **85.78%**；六阶段随机组合扰动下 AUROC 为 **0.8525**。因此，在 **train-v3 当前部署目标**下优先选择 M2，并将 B2 作为困难生成器排序能力的补充基线。不过，M3 不能被简单判定为无效：它在数据量和生成器覆盖更受限的 SID-Set 与 train-v2 设置中相对 M2 呈现了一致优势，更合适的定位是具有训练数据规模/多样性依赖的候选融合策略。
 
-面向日常手机端使用，Jiang Xinshuo（`@8309`）进一步完成了 M2/M3→Student 蒸馏实验。当前效果最好的 V3.2 corrected Student 将参数量压缩至 **7.96M**（约为 M3 的 **8.00%**），在同一 4,000 张 expanded strict-unseen 测试集上取得 **0.9063 Clean AUROC**；V3.0 的 **4.20M** 参数版本已生成约 **16.8 MB** 的 ONNX/TorchScript，并通过 ONNX parity。基于这些产物构建的纯本地推理 Android App 仍处于原型开发阶段，尚未作为完成产品发布。
+面向日常手机端使用，Jiang Xinshuo（`@8309`）进一步完成了 M2/M3→Student 蒸馏实验。最终选定的 **V3.2.1**（原 V3.2 corrected）将参数量压缩至 **7.96M**（约为 M3 的 **8.00%**），在同一 4,000 张 expanded strict-unseen 测试集上取得 **0.9063 Clean AUROC**。其 FP32 ONNX/TorchScript、ONNX Runtime parity 记录、Galaxy S23 Ultra 完全离线 Android Demo 源码、测试 APK 与盲测图片包均已发布；标准化真机延迟、功耗和峰值内存仍待实测。
 
 > 本仓库不包含原始数据，也不把 M2/M3 教师权重直接提交到 Git；经过逐张量一致性和远端回下载验证的 train-v3 M2/M3 `safetensors` 权重已经发布到 Hugging Face，下载与运行方法见 [公开模型权重](#公开模型权重hugging-face)。复现实验训练仍需按照数据清单重新获取数据，并保留训练时生成的 `resolved_config.yaml`。为支持移动端复核，已完成的 Student 蒸馏 checkpoint、ONNX/TorchScript 导出和逐样本评测产物单独保存在 [`student_distillation/`](student_distillation/) 中。
 
@@ -14,7 +14,8 @@ RepostGuard-Lite 是一个面向社交平台转发、编辑和压缩场景的 AI
 |---|---|
 | [前端演示与本地推理说明](demo-frontend/README.md) | Vue 3 前端与本地 FastAPI 推理服务的安装、启动、模型契约和测试入口；支持 M2/M3 单图分析、证据展示和鲁棒性实验。 |
 | [完整 Reports 文件清单与审计索引](reports/README_reports.md) | 逐项覆盖 reports 下的主报告、CSV/JSON、审计、交付回执和图片资产，并标记当前、版本对比、历史与已知限制。 |
-| [Student Distillation 完整产物](student_distillation/README.md) | Jiang Xinshuo（`@8309`）完成的 M2/M3→Student 蒸馏实验：包含 V1、V3.0、V3.1 与 V3.2 的权重、配置、逐图预测、移动端导出和审计入口，并记录 Android App 原型及 full-refit 的未完成边界。 |
+| [Student Distillation 完整产物](student_distillation/README.md) | Jiang Xinshuo（`@8309`）完成的 M2/M3→Student 蒸馏实验：包含 V1、V3.0、V3.1 与最终选定 V3.2.1 的完整权重、配置、逐图预测、评测、移动端导出和审计入口；同时记录 V3.2.2 full-refit 的诊断结论与停止原因。 |
+| [Galaxy S23 Ultra Android Demo](android/RepostGuardDemo/README.md) | V3.2.1 完全离线 Android 工程；包含结果、六类扰动实验台、门控比例和 SRM-like/NPR proxy 热图。测试 APK 与盲测图片包位于 `student_distillation/v3_2_1/android/`。 |
 | [Robustness Evaluation Summary](reports/summaries/COMMUNITY_FORENSICS_V3_ROBUSTNESS_EVALUATION_SUMMARY.md) | 在 4,000 张 strict unseen-generator 图片上，M2 的 Clean AUROC 为 0.9308，20 个 transformed 条件平均为 0.9163，最坏六阶段条件为 0.8525；文档包含紧凑对比表、可视化、扰动分组和证据边界。 |
 | [Error Analysis Note](reports/summaries/COMMUNITY_FORENSICS_V3_ERROR_ANALYSIS_NOTE.md) | M2 的 Clean 错误为 334 FP / 235 FN，六阶段增至 432 FP / 507 FN；文档列出并展示代表性误报和漏报、来源/生成器错误集中，以及 M2、M3、B2 的部署权衡。 |
 
@@ -92,7 +93,7 @@ python scripts/infer_hf_image.py \
 | M2 | 冻结 CLIP 语义分支 + DCT/SRM/NPR 取证分支 + 特征融合分类器 | 99,423,442 | 11,574,226 |
 | M3 | M2 + 基于 6 维质量描述的双分支动态门控 | 99,423,744 | 11,574,528 |
 | Student V3.0 | MobileNetV3-Large；以 M3 为唯一教师的 logits/KD 蒸馏 | 4,203,313 | 4,203,313 |
-| Student V3.2 corrected | MobileNetV3-Large 语义分支 + EfficientNet-B0 轻量取证/NPR 分支；加入 feature/forensic/gate 蒸馏 | 7,955,038 | 7,955,038 |
+| Student V3.2.1 | MobileNetV3-Large 语义分支 + EfficientNet-B0 轻量取证/NPR 分支；加入 feature/forensic/gate 蒸馏 | 7,955,038 | 7,955,038 |
 
 M2/M3 的构建受到 [AIDE](https://arxiv.org/abs/2406.19435)（[官方实现](https://github.com/shilinyan99/AIDE)）启发，延续其融合高层语义与低层取证证据的基本思想，但并非对 AIDE 的直接复现。M2 采用共享的轻量取证编码器，并结合 NPR-inspired 残差、注意力 patch 聚合及原图—退化图一致性训练，将研究重点转向有限参数预算下的真实转发鲁棒性；M3 则在 M2 基础上进一步研究质量条件化的动态分支融合。
 
@@ -113,7 +114,7 @@ M3 在 M2 上增加 `LayerNorm(6) → Linear(6,32) → GELU → Linear(32,2) →
 
 两者都不到 **0.1B**，约为比赛 2B 参数上限的二十分之一，明确满足 `<2B` 要求；M3 引入动态门控后也只比 M2 增加 302 个参数。冻结大部分语义主干且仅训练约 11.57M 参数，也降低了重训和任务适配成本。因此 M2/M3 适合作为端侧轻量化部署的候选起点，可进一步结合 FP16/INT8 量化、结构化剪枝、ONNX/Core ML/TensorRT 导出和算子融合压缩资源开销。需要注意，参数量达标不等同于已经完成端侧部署：正式宣称设备可用前仍需在目标手机或边缘硬件上测量模型文件大小、峰值内存、延迟、吞吐、功耗以及 DCT/SRM/NPR 算子的后端兼容性。
 
-针对这一部署瓶颈，Student 蒸馏将大模型融合后的知识迁移到移动友好架构：V3.0 的 4.20M 参数仅为 M3 的 **4.23%**（约缩小 **23.65×**），V3.2 corrected 的 7.96M 参数为 M3 的 **8.00%**（约缩小 **12.50×**）。V3.0 已导出约 **16.8 MB** 的 FP32 ONNX 与 TorchScript；这说明模型已经具备移动运行时承载形式，但不等同于 Android App 已完成或真机性能已被系统验证。
+针对这一部署瓶颈，Student 蒸馏将大模型融合后的知识迁移到移动友好架构：V3.0 的 4.20M 参数仅为 M3 的 **4.23%**（约缩小 **23.65×**），V3.2.1 的 7.96M 参数为 M3 的 **8.00%**（约缩小 **12.50×**）。V3.2.1 已导出约 **31.3 MB** 的 FP32 ONNX 与 TorchScript，ONNX Runtime parity 已通过，并已集成到 Galaxy S23 Ultra 完全离线 Android Demo；这证明交付链路可运行，但不等同于已完成生产级真机性能验证。
 
 相关实现：
 
@@ -226,7 +227,6 @@ strict unseen-generator 的 12 个生成器为 `dalle2`、`dalle3`、`firefly-im
 数据重建所需的仓库 revision、manifest、抽样种子、类别配额、marker 和重下载顺序见：
 
 - [`reports/summaries/COMMUNITY_FORENSICS_TRAIN_V3_DATASET_MANIFEST_SUMMARY.md`](reports/summaries/COMMUNITY_FORENSICS_TRAIN_V3_DATASET_MANIFEST_SUMMARY.md)
-- [`Community_Forensics训练与测试集构建方案.md`](../Community_Forensics训练与测试集构建方案.md)
 
 固定数据源 revision：
 
@@ -333,22 +333,22 @@ External exact-seen Clean AUROC：B0 0.7933、B1 0.7999、B2 0.8114、M2 0.8558�
 | [V3.0](student_distillation/v3_first_m2_0_m3_100/) | M3-only；MobileNetV3-Large；T=3 | 4,203,313 | 在 expanded V3 unseen 4k 上取得 Clean/robust mean/worst AUROC 0.8784/0.8490/0.7931；约 16.8 MB ONNX/TorchScript，ONNX parity 通过 |
 | [V3.1 T=3](student_distillation/v3_1_t3_baseline/) | M3-only；19-family holdout 基线 | 4,203,313 | family-unseen dev Clean/robust mean AUROC 0.7919/0.7552；没有移动端导出 |
 | [V3.1 T=1](student_distillation/v3_1_t1_diagnostic/) | 只把 KD temperature 从 3 改为 1 | 4,203,313 | Clean AUROC 0.7837，未超过 T=3；说明温度不是唯一问题，也未完成同口径 robustness 与移动端导出 |
-| [V3.2 corrected](student_distillation/v3_2_corrected_epoch3/) | M3-only；修正采样与 teacher calibration，加入轻量取证分支和 feature/forensic/gate distillation | 7,955,038 | family-unseen dev 显著超过 V3.1；在 protected expanded V3 unseen 4k 上取得 Clean/robust mean/worst AUROC 0.9063/0.8711/0.8127；当前版本尚未导出 ONNX/TorchScript |
+| [V3.2.1](student_distillation/v3_2_1/) | M3-only；修正采样与 teacher calibration，加入轻量取证分支和 feature/forensic/gate distillation | 7,955,038 | family-unseen dev 显著超过 V3.1；在 protected expanded V3 unseen 4k 上取得 Clean/robust mean/worst AUROC 0.9063/0.8711/0.8127；包含 ONNX、TorchScript、parity、Android 源码、APK 与盲测图片包 |
 
-V1/V3.0 的内部验证与 V3.1/V3.2 family-unseen 开发集不是同一协议，不能用内部高分进行跨版本排名。下面只比较共享同一 expanded strict-unseen 4k manifest（SHA-256 `59ca2e4c...`）和同一 21-condition 扰动矩阵（SHA-256 `69531f3f...`）的结果；各模型的阈值均来自各自内部验证集。V3.2 的训练清单与 M2/M3/V3.0 不同，因此该表反映的是部署候选的端到端效果，不是单因素蒸馏消融。
+V1/V3.0 的内部验证与 V3.1/V3.2.1 family-unseen 开发集不是同一协议，不能用内部高分进行跨版本排名。下面只比较共享同一 expanded strict-unseen 4k manifest（SHA-256 `59ca2e4c...`）和同一 21-condition 扰动矩阵（SHA-256 `69531f3f...`）的结果；各模型的阈值均来自各自内部验证集。V3.2.1 的训练清单与 M2/M3/V3.0 不同，因此该表反映的是部署候选的端到端效果，不是单因素蒸馏消融。
 
 | 模型 | 参数量 | 相对 M3 参数量 | Clean AUROC | Clean balanced accuracy | Robust mean AUROC | Robust mean balanced accuracy | Worst AUROC |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | M2 teacher | 99,423,442 | 100.00% | **0.9308** | **0.8578** | **0.9163** | 0.8370 | **0.8525** |
 | M3 teacher | 99,423,744 | 100.00% | 0.9305 | 0.8535 | 0.9154 | **0.8381** | 0.8489 |
 | Student V3.0 | 4,203,313 | 4.23% | 0.8784 | 0.8030 | 0.8490 | 0.7745 | 0.7931 |
-| **Student V3.2 corrected** | **7,955,038** | **8.00%** | **0.9063** | **0.8105** | **0.8711** | **0.7328** | **0.8127** |
+| **Student V3.2.1** | **7,955,038** | **8.00%** | **0.9063** | **0.8105** | **0.8711** | **0.7328** | **0.8127** |
 
-在 Student 内部，V3.2 corrected 的排序性能最好；相对 M3 teacher，其 Clean AUROC 差 **0.0242**、robust mean AUROC 差 **0.0443**、worst AUROC 差 **0.0363**，同时减少约 **92.0%** 参数。阈值指标的损失更明显：Clean balanced accuracy 低 **4.30 个百分点**，robust mean balanced accuracy 低 **10.53 个百分点**，说明进一步的独立校准和目标设备域阈值选择仍是部署前必需步骤，不能仅凭 AUROC 宣称与教师模型完全等价。
+在 Student 内部，V3.2.1 的排序性能最好；相对 M3 teacher，其 Clean AUROC 差 **0.0242**、robust mean AUROC 差 **0.0443**、worst AUROC 差 **0.0363**，同时减少约 **92.0%** 参数。阈值指标的损失更明显：Clean balanced accuracy 低 **4.30 个百分点**，robust mean balanced accuracy 低 **10.53 个百分点**，说明进一步的独立校准和目标设备域阈值选择仍是部署前必需步骤，不能仅凭 AUROC 宣称与教师模型完全等价。
 
-V3.0 的 [`student_mnv3_fp32.onnx`](student_distillation/v3_first_m2_0_m3_100/mobile/student_mnv3_fp32.onnx) 和 [`student_mnv3_fp32.torchscript.pt`](student_distillation/v3_first_m2_0_m3_100/mobile/student_mnv3_fp32.torchscript.pt) 均已交付；ONNX Runtime CPU parity 测试状态为 `passed`，最大绝对误差为 `2.2911e-6`。团队已在这些轻量产物基础上构建 Android App 原型，采用**纯本地推理**，不上传待检测图片，当前工程观察为低延迟。该 App **仍在开发、尚未完成**，且 App 源码、安装包、峰值内存、功耗和标准化真机 latency/throughput benchmark 尚未纳入本仓库，因此当前只能表述为移动端可行性与原型验证，不能表述为已完成的生产级 Android 交付。
+V3.2.1 的 [`student_mnv3_fp32.onnx`](student_distillation/v3_2_1/mobile/student_mnv3_fp32.onnx) 和 [`student_mnv3_fp32.torchscript.pt`](student_distillation/v3_2_1/mobile/student_mnv3_fp32.torchscript.pt) 均已交付；ONNX Runtime parity 已通过，最大 probability error 为 `0.000427231`、最大 gate error 为 `0.000653714`。[`android/RepostGuardDemo/`](android/RepostGuardDemo/) 提供默认 English、保留简体中文本地化的完全离线 Android Demo，不申请 Internet 或存储权限；测试 APK、30 张盲测图片包与安装说明见 [`student_distillation/v3_2_1/android/`](student_distillation/v3_2_1/android/)。该交付用于 Galaxy S23 Ultra 试测，尚不能替代生产级安全审计和标准化真机 latency/throughput、峰值内存及功耗基准。
 
-正在训练的 V3.2 full-refit e20 将此前作为 family-unseen 开发集的 19 个 families、2,004 张样本重新放回 24,000 行训练清单，并使用独立 1,500 张 validation。它目前只有冻结计划、配置和数据清单，结果仍为 pending，不能以 V3.2 epoch-3 的数值代替。完整 checkpoint、逐样本预测、run card、审计和复现边界见 [`student_distillation/README.md`](student_distillation/README.md)。
+V3.2.2 full-refit 将此前作为 family-unseen 开发集的 19 个 families、2,004 张样本放回完整 24,000 行训练清单，并使用独立 1,500 张 validation。该诊断已训练到 epoch 10：最佳 checkpoint 出现在 epoch 1（AUROC **0.726831**），epoch 10 降至 **0.628780**，因此按门禁停止、未继续到 epoch 20。冻结的 V3.2.1 epoch-3 模型继续作为正式 evidence/release 模型；完整 checkpoint、逐样本预测、run card、审计和复现边界见 [`student_distillation/README.md`](student_distillation/README.md)。
 
 ## 安装与环境
 
@@ -510,7 +510,8 @@ train-v3 配置位于 [`configs/community_forensics_v3/`](configs/community_fore
 configs/                 模型与数据配置
 src/repostguard/         数据、模型、损失、训练、评测与推理代码
 scripts/                 数据构建、诊断、报告和集群作业入口
-student_distillation/    V1/V3.0/V3.1/V3.2 Student 权重、评测、预测、审计与 full-refit 计划
+student_distillation/    V1/V3.0/V3.1/V3.2.1 Student 权重、评测、移动端产物与 full-refit 诊断
+android/RepostGuardDemo/ V3.2.1 Galaxy S23 Ultra 完全离线测试工程
 reports/README_reports.md 完整报告文件清单与静态审计索引
 reports/summaries/       当前数据、模型和实验总结
 reports/historical/      CIFAKE、SID-Set 等历史报告
@@ -529,7 +530,7 @@ README_slurm.md           TC2 集群复现与运维说明
 7. **M3 门控收益具有数据依赖性。** SID-Set 和 train-v2 上 M3 相对 M2 有一致优势，但 train-v3 的固定/打乱门控消融显示逐样本收益几乎消失。后续应在受控的数据规模与生成器多样性阶梯上使用共享初始化、多 seed 和相同 checkpoint 消融，区分门控本身、随机训练差异与数据覆盖带来的作用；若大规模多样数据下仍无边际收益，再考虑固定融合。
 8. **数据重建工程仍需收敛。** 应补充真正的 data-only 入口、端到端 manifest rehydration、内容哈希去重和 COCO/DALL-E 保留集审计。
 9. **部署域差异。** 当前测试先验为 50%，分数未经部署域概率校准；生产使用前必须在目标平台重新估计阈值、误报成本和漂移。
-10. **端侧性能尚未形成可复现真机基准。** V3.0 Student 已生成约 16.8 MB 的 FP32 ONNX/TorchScript 并通过 CPU parity，Android App 原型采用纯本地推理但尚未完成；V3.2 corrected 尚无移动端导出。双分支计算、预处理、激活内存和设备后端仍会影响速度、功耗与稳定性，需要补充量化、App 交付和标准化真机 benchmark 后再确认目标设备等级。
+10. **端侧性能尚未形成可复现真机基准。** V3.2.1 已生成约 31.3 MB 的 FP32 ONNX/TorchScript、通过 parity，并交付完全离线 Android Demo 源码与测试 APK；但双分支计算、预处理、激活内存和设备后端仍会影响速度、功耗与稳定性，需要在 Galaxy S23 Ultra 上补充标准化 latency/throughput、峰值内存、功耗和量化基准后再确认部署等级。
 
 如果有更多时间，优先顺序是：多 seed 重训 → M3 数据规模/多样性阶梯消融 → 低 FPR 校准 → 困难生成器定向诊断 → 因子化数据消融 → 完整数据一键可恢复构建 → 目标平台真实转发链验证。
 
@@ -538,7 +539,7 @@ README_slurm.md           TC2 集群复现与运维说明
 | 成员 | 主要贡献 |
 |---|---|
 | **Liu Shiyuan（`@lsy640`）** | 项目设计、数据下载与协议审计、B0/B1/B2/M2/M3 实现、训练与批处理流程、鲁棒性评测、门控消融、报告生成、网页前端展示和本地目录推理入口。 |
-| **Jiang Xinshuo（`@8309`）** | 负责 [`student_distillation/`](student_distillation/)：设计并实现 M2/M3→MobileNetV3 Student 蒸馏，完成 V1、V3.0、V3.1、V3.2 的训练、校准、鲁棒性评测、移动端 ONNX/TorchScript 导出与 parity 验证，并构建纯本地推理的轻量 Android App 原型；App 当前仍在开发。 |
+| **Jiang Xinshuo（`@8309`）** | 负责 [`student_distillation/`](student_distillation/)：设计并实现 M2/M3→MobileNetV3 Student 蒸馏，完成 V1、V3.0、V3.1、V3.2.1 的训练、校准、鲁棒性评测、移动端 ONNX/TorchScript 导出与 parity 验证，并交付面向 Galaxy S23 Ultra 的完全离线 Android Demo 源码、测试 APK 与盲测图片包；同时完成 V3.2.2 full-refit 诊断。 |
 
 ## 许可与引用
 

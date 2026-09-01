@@ -1,0 +1,23 @@
+{
+  "artifacts": {
+    "onnx": {
+      "bytes": 31333268,
+      "path": "/home/msai/xjiang026/projects/repostguard-lite/outputs/releases/v32_corrected_family_unseen_epoch3/mobile/student_mnv3_fp32.onnx",
+      "sha256": "f52796946ed3e2a770a7500e77a07aeb7ae8c9312bf414ad14b0be1b252c0a9a"
+    },
+    "torchscript": {
+      "bytes": 31275976,
+      "path": "/home/msai/xjiang026/projects/repostguard-lite/outputs/releases/v32_corrected_family_unseen_epoch3/mobile/student_mnv3_fp32.torchscript.pt",
+      "sha256": "b2a29a4036b9978471993d1df0349d9843cbab8c1580037d03641362f2a19f7b"
+    }
+  },
+  "checkpoint_sha256": "05edd57825cf28608d26fe77db92f364f37dcf7f070d757e82f85b9e2711cfea",
+  "config_sha256": "c90e19d241d12b576f5394bbe9d88f81d9a2192e54bcd27795ee8d05d31491a0",
+  "experiment": "student_mnv3",
+  "image_size": 224,
+  "include_evidence": true,
+  "input": "float32 RGB in [0,1], NCHW; normalization is embedded",
+  "output": "one binary AIGI logit and [semantic, forensic] gate fractions per image",
+  "quantized": false,
+  "schema_version": 1
+}

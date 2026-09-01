@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RepostGuard Lite</string>
+    <string name="app_subtitle">V3.2.1 · Galaxy S23 Ultra · Fully offline demo</string>
+    <string name="section_input_result">1 · Input &amp; result</string>
+    <string name="section_robustness">2 · Robustness workbench</string>
+    <string name="section_evidence">3 · Evidence &amp; limitations</string>
+    <string name="select_image">Select image from device</string>
+    <string name="loading_model">Verifying and loading V3.2.1 (7.96M parameters)…</string>
+    <string name="ready">Model ready. Select an image.</string>
+    <string name="image_placeholder">Input image preview</string>
+    <string name="result_waiting">Waiting for an image</string>
+    <string name="score_waiting">AIGC probability signal: —</string>
+    <string name="uncertainty_waiting">Uncertainty (heuristic): —</string>
+    <string name="timing_waiting">Timing: —</string>
+    <string name="model_note">V3.2.1 · MobileNetV3 + lightweight forensic/NPR branch · FP32 ONNX</string>
+    <string name="model_details_format">V3.2.1 · 7,955,038 parameters · FP32 ONNX · CPU\nModel %1$.1f MB · init + warm-up %2$.1f ms\nFrozen operating threshold %3$.5f · images never leave the device</string>
+    <string name="processing_image">Running on-device inference and evidence visualization…</string>
+    <string name="model_not_ready">The model is not ready</string>
+    <string name="result_ai">Frozen-threshold label: More likely AI-generated</string>
+    <string name="result_real">Frozen-threshold label: More likely a real image</string>
+    <string name="score_format">AIGC probability signal: %1$.2f%%  ·  logit %2$.4f</string>
+    <string name="uncertainty_format">Uncertainty (threshold-distance proxy): %1$.1f%%</string>
+    <string name="timing_format">Preprocess %1$.1f ms  ·  inference %2$.1f ms  ·  total %3$.1f ms</string>
+    <string name="complete_offline">Detection complete (fully offline)</string>
+    <string name="error_detail">%1$s: %2$s</string>
+    <string name="app_unavailable">App unavailable</string>
+
+    <string name="robustness_intro">Move a slider to rebuild the transformed image and run inference again on the phone. Images and score changes are shown side by side.</string>
+    <string name="original_image">Original</string>
+    <string name="perturbed_image">Transformed</string>
+    <string name="robustness_waiting">Original / transformed score: —</string>
+    <string name="robustness_ready">Select an image, then adjust any of the six transforms.</string>
+    <string name="robustness_running">Applying transforms and running inference…</string>
+    <string name="robustness_format">Original %1$.2f%%  →  transformed %2$.2f%%  ·  Δ %3$+.2f pp</string>
+    <string name="robustness_stability_format">Current transform: %1$s · label %2$s</string>
+    <string name="label_stable">stable</string>
+    <string name="label_changed">flipped</string>
+    <string name="jpeg_default">JPEG: off (Q100)</string>
+    <string name="blur_default">Blur: off (σ0.0)</string>
+    <string name="resize_default">Resize: 100%%</string>
+    <string name="noise_default">Noise: off (σ0.0)</string>
+    <string name="jitter_default">Jitter: neutral</string>
+    <string name="crop_default">Crop: 100%%</string>
+    <string name="jpeg_format">JPEG: Q%d</string>
+    <string name="blur_format">Blur: σ%.1f</string>
+    <string name="resize_format">Resize: %.0f%%</string>
+    <string name="noise_format">Noise: σ%.1f / 255</string>
+    <string name="jitter_format">Jitter: brightness/contrast/saturation %+d%%</string>
+    <string name="crop_format">Crop: %.0f%%</string>
+    <string name="reset_transforms">Reset all transforms</string>
+
+    <string name="gate_waiting">Semantic / forensic branch weights: waiting for an image</string>
+    <string name="evidence_context_waiting">Current evidence: waiting for an image</string>
+    <string name="evidence_context_original">Current evidence: original input</string>
+    <string name="evidence_context_transformed">Current evidence: transformed image on the right</string>
+    <string name="gate_format">Model gate: semantic %1$.1f%%  ·  forensic %2$.1f%%</string>
+    <string name="semantic_branch">Semantic branch (MobileNetV3)</string>
+    <string name="forensic_branch">Forensic branch (high-frequency + NPR)</string>
+    <string name="srm_heatmap">SRM-like high-frequency map</string>
+    <string name="npr_heatmap">NPR pixel-residual map</string>
+    <string name="evidence_note">The maps visualize high-frequency residual signals related to the forensic input. They are interpretation proxies, not model localization, and cannot prove a specific generator or edited region.</string>
+    <string name="disclaimer">⚠ This output is a probability signal and can produce false positives or false negatives. Uncertainty is heuristic. This demo cannot replace content credentials, metadata verification, provenance tracing, or human forensic review.</string>
+</resources>
