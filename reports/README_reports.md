@@ -1,14 +1,14 @@
 # Reports 文件清单与审计索引
 
-本文件是 RepostGuard-Lite 的完整报告目录。审计快照日期为 **2026-08-31**，范围为 [reports/](./) 下的全部 **75 个文件、15 个目录**，文件逻辑大小约 **20 MiB**。本次仅做静态文件、结构、链接和血缘核验，没有重新训练、推理或计算评测指标。
+本文件是 RepostGuard-Lite 的完整报告目录。审计快照日期为 **2026-09-01**，范围为 [reports/](./) 下的全部 **77 个文件、15 个目录**，文件逻辑大小约 **20 MiB**。本次仅做静态文件、结构、链接和血缘核验，没有重新训练、推理或计算评测指标。
 
 ## 建议阅读顺序
 
 | 目的 | 首选入口 | 协议状态 |
 |---|---|---|
 | 查看 M2/M3 共享编码器、静态融合与质量条件门控架构 | [M2/M3 模型架构 SVG](assets/model_architecture/repostguard_m2_m3_architecture.svg) | 当前支持产物 |
-| 快速查看当前 train-v3 鲁棒性 | [Robustness Evaluation Summary](summaries/COMMUNITY_FORENSICS_V3_ROBUSTNESS_EVALUATION_SUMMARY.md) | 当前 |
-| 查看代表性 FP/FN 与部署权衡 | [Error Analysis Note](summaries/COMMUNITY_FORENSICS_V3_ERROR_ANALYSIS_NOTE.md) | 当前 |
+| 快速查看当前 train-v3 鲁棒性 | [Robustness Evaluation Summary（English）](summaries/COMMUNITY_FORENSICS_V3_ROBUSTNESS_EVALUATION_SUMMARY.md) / [中文](summaries/COMMUNITY_FORENSICS_V3_ROBUSTNESS_EVALUATION_SUMMARY_Chinese.md) | 当前；双语 |
+| 查看代表性 FP/FN 与部署权衡 | [Error Analysis Note（English）](summaries/COMMUNITY_FORENSICS_V3_ERROR_ANALYSIS_NOTE.md) / [中文](summaries/COMMUNITY_FORENSICS_V3_ERROR_ANALYSIS_NOTE_Chinese.md) | 当前；双语 |
 | 查看五模型、五切片、21 条件完整结果 | [train-v3 完整评测 Markdown](summaries/COMMUNITY_FORENSICS_V3_EVALUATION_REPORT.md) / [便携 HTML](summaries/COMMUNITY_FORENSICS_V3_EVALUATION_REPORT.html) | 当前 |
 | 重建 train-v1/v2/v3 与评测数据 | [Train/Val Dataset Manifest Summary](summaries/COMMUNITY_FORENSICS_TRAIN_V3_DATASET_MANIFEST_SUMMARY.md) | 当前 |
 | 比较 train-v2 与 train-v3 | [v2/v3 交集对比 Markdown](summaries/COMMUNITY_FORENSICS_TRAIN_V2_V3_UNSEEN_INTERSECTION_COMPARISON.md) | 当前版本对比 |
@@ -18,8 +18,8 @@
 
 | 检查项 | 结果 |
 |---|---|
-| 文件覆盖 | 本索引逐项列出 75/75 个文件；不是只列主报告 |
-| 类型分布 | 22 CSV、16 JSON、10 Markdown、10 JPEG、7 HTML、6 LOG、2 SVG、1 PNG、1 TSV |
+| 文件覆盖 | 本索引逐项列出 77/77 个文件；不是只列主报告 |
+| 类型分布 | 22 CSV、16 JSON、12 Markdown、10 JPEG、7 HTML、6 LOG、2 SVG、1 PNG、1 TSV |
 | JSON | 16/16 可由 jq 解析 |
 | HTML | 7/7 非空且含标题；其中 6 份有交付回执 |
 | 交付回执 | 6/6 显示 validation/package passed；浏览器验证均为 structural_only，因为 browser_unavailable |
@@ -50,7 +50,7 @@
 
 | 文件 | 用途 | 状态与审计 |
 |---|---|---|
-| [README_reports.md](README_reports.md) | 本目录完整索引 | 当前；覆盖 75 个文件 |
+| [README_reports.md](README_reports.md) | 本目录完整索引 | 当前；覆盖 77 个文件 |
 
 ### assets/error_analysis
 
@@ -77,7 +77,9 @@
 | 文件 | 用途 | 状态与审计 |
 |---|---|---|
 | [COMMUNITY_FORENSICS_V3_ROBUSTNESS_EVALUATION_SUMMARY.md](summaries/COMMUNITY_FORENSICS_V3_ROBUSTNESS_EVALUATION_SUMMARY.md) | 4,000 张 strict unseen 上 Clean 与 20 个 transformed 条件的紧凑总结 | **当前首要摘要** |
+| [COMMUNITY_FORENSICS_V3_ROBUSTNESS_EVALUATION_SUMMARY_Chinese.md](summaries/COMMUNITY_FORENSICS_V3_ROBUSTNESS_EVALUATION_SUMMARY_Chinese.md) | 上述 Robustness Evaluation Summary 的中文版本 | **当前首要摘要**；与英文版双向链接 |
 | [COMMUNITY_FORENSICS_V3_ERROR_ANALYSIS_NOTE.md](summaries/COMMUNITY_FORENSICS_V3_ERROR_ANALYSIS_NOTE.md) | M2 代表性 FP/FN、错误集中与方法权衡 | **当前错误分析**；已嵌入 7 张有血缘记录的缩略图 |
+| [COMMUNITY_FORENSICS_V3_ERROR_ANALYSIS_NOTE_Chinese.md](summaries/COMMUNITY_FORENSICS_V3_ERROR_ANALYSIS_NOTE_Chinese.md) | 上述 Error Analysis Note 的中文版本 | **当前错误分析**；与英文版双向链接并嵌入同一组 7 张缩略图 |
 | [COMMUNITY_FORENSICS_V3_EVALUATION_REPORT.md](summaries/COMMUNITY_FORENSICS_V3_EVALUATION_REPORT.md) | train-v3 五模型、五切片、21 条件完整文本报告 | **当前完整评测** |
 | [COMMUNITY_FORENSICS_V3_EVALUATION_REPORT.html](summaries/COMMUNITY_FORENSICS_V3_EVALUATION_REPORT.html) | 上述评测的便携交互版本 | 当前；配套 receipt 为 structural_only |
 | [COMMUNITY_FORENSICS_TRAIN_V3_DATASET_MANIFEST_SUMMARY.md](summaries/COMMUNITY_FORENSICS_TRAIN_V3_DATASET_MANIFEST_SUMMARY.md) | train-v1/v2/v3、val/test 清单及从空目录重建流程 | **当前数据复现入口** |

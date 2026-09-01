@@ -1,5 +1,7 @@
 # RepostGuard-Lite
 
+> **English** | [中文](README_Chinese.md)
+
 RepostGuard-Lite is an AIGC image binary-classification research project for social-platform reposting, editing, and compression scenarios. In addition to comparing single-branch RGB/semantic baselines, the project studies the fusion of semantic features with frequency-domain and residual forensic features, and evaluates generalization under strict unseen-generator tests and multi-stage perturbations.
 
 The current primary experimental version is **Community Forensics train-v3**. On the complete 4,000-image strict unseen-generator test set, M2 achieves **0.9308 Clean AUROC** and **85.78% Accuracy**; under the six-stage random combined perturbation, its AUROC is **0.8525**. M2 is therefore preferred for the **current train-v3 deployment objective**, with B2 retained as a complementary baseline for ranking difficult generators. M3, however, should not be dismissed as ineffective: it consistently outperformed M2 in the more data- and generator-constrained SID-Set and train-v2 settings, so it is better understood as a candidate fusion strategy whose value depends on training-set scale and diversity.
