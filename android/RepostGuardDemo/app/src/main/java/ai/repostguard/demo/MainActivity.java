@@ -177,7 +177,7 @@ public final class MainActivity extends Activity {
                     ));
                 });
             } catch (IOException | OrtException | RuntimeException error) {
-                runOnUiThread(() -> showFatalError("模型加载失败", error));
+                runOnUiThread(() -> showFatalError("Model load failed", error));
             } finally {
                 closeQuietly(loaded);
             }
@@ -241,7 +241,7 @@ public final class MainActivity extends Activity {
                 });
             } catch (IOException | OrtException | RuntimeException error) {
                 recycle(bitmap, newSrm, newNpr);
-                runOnUiThread(() -> showRecoverableError("检测失败", error));
+                runOnUiThread(() -> showRecoverableError("Detection failed", error));
             }
         });
     }
@@ -355,7 +355,7 @@ public final class MainActivity extends Activity {
                 runOnUiThread(() -> {
                     if (requestGeneration == generation.get()) {
                         robustnessStatusText.setText(getString(
-                                R.string.error_detail, "扰动评测失败", safeMessage(error)
+                                R.string.error_detail, "Robustness evaluation failed", safeMessage(error)
                         ));
                     }
                 });

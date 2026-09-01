@@ -50,7 +50,7 @@
 
 导出同时返回 binary AIGI logit 与 `[semantic, forensic]` gate fractions。ONNX Runtime CPU parity 已通过：最大 probability error `0.000427231`，最大 gate error `0.000653714`。完整记录见 [`mobile/export_metadata.json`](mobile/export_metadata.json) 和 [`mobile/onnx_parity.json`](mobile/onnx_parity.json)。
 
-Galaxy S23 Ultra 离线测试 APK、30 张盲测图片包、安装说明与校验和见 [`android/`](android/)；可复现 Android 工程见仓库根目录 [`android/RepostGuardDemo/`](../../android/RepostGuardDemo/)。Demo 包含输入与结果、六类扰动鲁棒性实验台，以及语义/取证门控比例与 SRM-like/NPR proxy 热图。概率信号可能误报或漏报，热图不是模型 attribution，也不能替代内容溯源。
+Galaxy S23 Ultra 离线测试 APK、30 张盲测图片包、安装说明与校验和见 [`android/`](android/)；可复现 Android 工程见仓库根目录 [`android/RepostGuardDemo/`](../../android/RepostGuardDemo/)。APK `versionCode=3`，默认界面为 English，另保留简体中文 `zh-rCN` 本地化。Demo 包含输入与结果、六类扰动鲁棒性实验台，以及语义/取证门控比例与 SRM-like/NPR proxy 热图。概率信号可能误报或漏报，热图不是模型 attribution，也不能替代内容溯源。
 
 ## 核心文件 SHA-256
 

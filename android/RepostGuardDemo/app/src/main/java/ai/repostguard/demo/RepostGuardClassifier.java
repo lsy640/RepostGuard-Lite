@@ -56,7 +56,7 @@ final class RepostGuardClassifier implements AutoCloseable {
         }
         String actualHash = sha256(model);
         if (!MODEL_SHA256.equals(actualHash)) {
-            throw new IOException("模型校验失败：" + actualHash);
+            throw new IOException("Model checksum verification failed: " + actualHash);
         }
 
         OrtEnvironment environment = OrtEnvironment.getEnvironment();
@@ -69,11 +69,11 @@ final class RepostGuardClassifier implements AutoCloseable {
             options.setOptimizationLevel(OrtSession.SessionOptions.OptLevel.ALL_OPT);
             session = environment.createSession(model, options);
             if (!session.getInputNames().contains("images")) {
-                throw new OrtException("ONNX 输入名称不是 images");
+                throw new OrtException("The ONNX input is not named images");
             }
             if (!session.getOutputNames().contains("logits")
                     || !session.getOutputNames().contains("gate_fractions")) {
-                throw new OrtException("ONNX 缺少 logits 或 gate_fractions 输出");
+                throw new OrtException("The ONNX model is missing logits or gate_fractions");
             }
             RepostGuardClassifier classifier = new RepostGuardClassifier(
                     environment, session, options, model.length
@@ -121,10 +121,10 @@ final class RepostGuardClassifier implements AutoCloseable {
                 environment, FloatBuffer.wrap(input), INPUT_SHAPE
         ); OrtSession.Result outputs = session.run(Collections.singletonMap("images", tensor))) {
             float logit = parseScalar(outputs.get("logits").orElseThrow(
-                    () -> new OrtException("缺少 logits 输出")
+                    () -> new OrtException("Missing logits output")
             ));
             float[] gates = parseGateFractions(outputs.get("gate_fractions").orElseThrow(
-                    () -> new OrtException("缺少 gate_fractions 输出")
+                    () -> new OrtException("Missing gate_fractions output")
             ));
             return new ModelOutput(logit, gates[0], gates[1]);
         }
@@ -133,14 +133,14 @@ final class RepostGuardClassifier implements AutoCloseable {
     private static float parseScalar(OnnxValue output) throws OrtException {
         Object value = output.getValue();
         if (value instanceof float[] vector && vector.length == 1) {
-            if (!Float.isFinite(vector[0])) throw new OrtException("ONNX logit 不是有限数值");
+            if (!Float.isFinite(vector[0])) throw new OrtException("The ONNX logit is not finite");
             return vector[0];
         }
         if (value instanceof float[][] matrix && matrix.length == 1 && matrix[0].length == 1) {
-            if (!Float.isFinite(matrix[0][0])) throw new OrtException("ONNX logit 不是有限数值");
+            if (!Float.isFinite(matrix[0][0])) throw new OrtException("The ONNX logit is not finite");
             return matrix[0][0];
         }
-        throw new OrtException("无法解析 ONNX logit 输出");
+        throw new OrtException("Unable to parse the ONNX logit output");
     }
 
     private static float[] parseGateFractions(OnnxValue output) throws OrtException {
@@ -149,11 +149,11 @@ final class RepostGuardClassifier implements AutoCloseable {
             float semantic = matrix[0][0];
             float forensic = matrix[0][1];
             if (!Float.isFinite(semantic) || !Float.isFinite(forensic)) {
-                throw new OrtException("门控权重不是有限数值");
+                throw new OrtException("The branch gate weights are not finite");
             }
             return new float[]{semantic, forensic};
         }
-        throw new OrtException("无法解析 ONNX gate_fractions 输出");
+        throw new OrtException("Unable to parse the ONNX gate_fractions output");
     }
 
     private static float[] preprocess(Bitmap source) throws IOException {
@@ -163,13 +163,13 @@ final class RepostGuardClassifier implements AutoCloseable {
             byte[] jpeg;
             try (ByteArrayOutputStream buffer = new ByteArrayOutputStream(96 * 1024)) {
                 if (!scaled.compress(Bitmap.CompressFormat.JPEG, 90, buffer)) {
-                    throw new IOException("JPEG 质量统一处理失败");
+                    throw new IOException("JPEG format harmonization failed");
                 }
                 jpeg = buffer.toByteArray();
             }
             harmonized = BitmapFactory.decodeByteArray(jpeg, 0, jpeg.length);
             if (harmonized == null) {
-                throw new IOException("JPEG 质量统一处理后无法解码");
+                throw new IOException("Unable to decode the harmonized JPEG image");
             }
             int[] pixels = new int[PIXEL_COUNT];
             harmonized.getPixels(pixels, 0, IMAGE_SIZE, 0, 0, IMAGE_SIZE, IMAGE_SIZE);
@@ -215,7 +215,7 @@ final class RepostGuardClassifier implements AutoCloseable {
             }
             return output.toString();
         } catch (NoSuchAlgorithmException error) {
-            throw new IOException("设备不支持 SHA-256", error);
+            throw new IOException("SHA-256 is unavailable on this device", error);
         }
     }
 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RepostGuard Lite</string>
+    <string name="app_subtitle">V3.2.1 · Galaxy S23 Ultra · 完全离线 Demo</string>
+    <string name="section_input_result">1 · 输入与结果</string>
+    <string name="section_robustness">2 · 鲁棒性实验台</string>
+    <string name="section_evidence">3 · 证据与限制</string>
+    <string name="select_image">从设备选择图像</string>
+    <string name="loading_model">正在校验并加载 V3.2.1（7.96M 参数）…</string>
+    <string name="ready">模型已就绪，请选择图片</string>
+    <string name="image_placeholder">输入图片预览</string>
+    <string name="result_waiting">等待检测</string>
+    <string name="score_waiting">AIGC 概率信号：—</string>
+    <string name="uncertainty_waiting">不确定性（启发式）：—</string>
+    <string name="timing_waiting">耗时：—</string>
+    <string name="model_note">V3.2.1 · MobileNetV3 + 轻量取证/NPR 分支 · FP32 ONNX</string>
+    <string name="model_details_format">V3.2.1 · 7,955,038 参数 · FP32 ONNX · CPU\n模型 %1$.1f MB · 初始化+预热 %2$.1f ms\n冻结操作阈值 %3$.5f · 图片不会上传</string>
+    <string name="processing_image">正在进行本地推理与证据可视化…</string>
+    <string name="model_not_ready">模型尚未加载</string>
+    <string name="result_ai">冻结阈值标签：更可能为 AI 生成</string>
+    <string name="result_real">冻结阈值标签：更可能为真实图片</string>
+    <string name="score_format">AIGC 概率信号：%1$.2f%%  ·  logit %2$.4f</string>
+    <string name="uncertainty_format">不确定性（阈值距离 proxy）：%1$.1f%%</string>
+    <string name="timing_format">预处理 %1$.1f ms  ·  推理 %2$.1f ms  ·  合计 %3$.1f ms</string>
+    <string name="complete_offline">检测完成（完全离线）</string>
+    <string name="error_detail">%1$s：%2$s</string>
+    <string name="app_unavailable">应用暂不可用</string>
+
+    <string name="robustness_intro">调整滑块会在手机端重建扰动图并重新推理；左右图与分数变化同屏显示。</string>
+    <string name="original_image">原图</string>
+    <string name="perturbed_image">扰动图</string>
+    <string name="robustness_waiting">原始 / 扰动分数：—</string>
+    <string name="robustness_ready">选择图片后可调节六类扰动</string>
+    <string name="robustness_running">正在应用扰动并重新推理…</string>
+    <string name="robustness_format">原始 %1$.2f%%  →  扰动 %2$.2f%%  ·  Δ %3$+.2f pp</string>
+    <string name="robustness_stability_format">当前扰动：%1$s · 标签%2$s</string>
+    <string name="label_stable">稳定</string>
+    <string name="label_changed">发生翻转</string>
+    <string name="jpeg_default">JPEG：关闭（Q100）</string>
+    <string name="blur_default">Blur：关闭（σ0.0）</string>
+    <string name="resize_default">Resize：100%%</string>
+    <string name="noise_default">Noise：关闭（σ0.0）</string>
+    <string name="jitter_default">Jitter：中性</string>
+    <string name="crop_default">Crop：100%%</string>
+    <string name="jpeg_format">JPEG：Q%d</string>
+    <string name="blur_format">Blur：σ%.1f</string>
+    <string name="resize_format">Resize：%.0f%%</string>
+    <string name="noise_format">Noise：σ%.1f / 255</string>
+    <string name="jitter_format">Jitter：亮度/对比/饱和 %+d%%</string>
+    <string name="crop_format">Crop：%.0f%%</string>
+    <string name="reset_transforms">重置全部扰动</string>
+
+    <string name="gate_waiting">语义 / 取证分支权重：等待图片</string>
+    <string name="evidence_context_waiting">当前证据对应：等待图片</string>
+    <string name="evidence_context_original">当前证据对应：原始输入</string>
+    <string name="evidence_context_transformed">当前证据对应：实验台右侧扰动图</string>
+    <string name="gate_format">模型门控：语义 %1$.1f%%  ·  取证 %2$.1f%%</string>
+    <string name="semantic_branch">语义分支（MobileNetV3）</string>
+    <string name="forensic_branch">取证分支（高频 + NPR）</string>
+    <string name="srm_heatmap">SRM-like 高频热图</string>
+    <string name="npr_heatmap">NPR 像素残差热图</string>
+    <string name="evidence_note">热图展示与模型取证输入相近的高频残差信号，是解释性 proxy，不是模型定位结果，也不能证明具体生成器或编辑区域。</string>
+    <string name="disclaimer">⚠ 输出是概率信号，可能误报或漏报；不确定性为启发式指标。该 Demo 不能替代内容凭证、元数据核验、来源追踪或人工取证结论。</string>
+</resources>

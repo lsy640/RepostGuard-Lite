@@ -3,6 +3,9 @@
 Offline Galaxy S23 Ultra test application for the selected V3.2.1 distilled
 Student checkpoint (`epoch=3`, `global_step=1545`).
 
+English is the default resource language. Simplified Chinese is retained as a
+`zh-rCN` localization for devices or per-app language settings that request it.
+
 ## Demo layout
 
 The app has three areas:

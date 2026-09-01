@@ -2,8 +2,9 @@
 
 - APK：`RepostGuardLite-V3.2.1-S23Ultra-debug.apk`
 - 包名：`ai.repostguard.demo.debug`
-- 版本：`3.2.1-demo-debug`（versionCode 2）
-- 大小：63,827,574 bytes（60.87 MiB）
+- 版本：`3.2.1-demo-en-debug`（versionCode 3）
+- 默认语言：English；简体中文作为 `zh-rCN` 可选本地化
+- 大小：63,831,578 bytes（60.87 MiB）
 - ABI：仅 `arm64-v8a`
 - 最低 Android：API 28
 - 目标 Android：API 35
